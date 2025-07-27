@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace auto_salon.Entities
 {
-    internal class PravnoLice
+    public class PravnoLice
     {
         //TODO - teramo dalje
     }

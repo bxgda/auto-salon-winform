@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace auto_salon.Entities
 {
-    internal class Kupac
+    public class Kupac
     {
         public virtual int ID { get; protected set; }
     }

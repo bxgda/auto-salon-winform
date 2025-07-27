@@ -13,7 +13,7 @@ namespace auto_salon.Entities
         SERVISER,
         FINANSIJSKI_SAVETNIK
     }
-    internal class Zaposleni
+    public class Zaposleni
     {
         public virtual required string JMBG { get; set; }
         public virtual required Uloga Uloga { get; set; }

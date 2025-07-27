@@ -23,10 +23,10 @@ namespace auto_salon.Entities
         POLOVNO
     }
 
-    internal class Vozilo
+    public class Vozilo
     {
         public virtual required string BrojSasije { get; set; }
-        public virtual required string Model { get; set; } = string.Empty;
+        public virtual required string Model { get; set; } 
         public virtual required TipGoriva TipGoriva { get; set; }
         public virtual int Kilometraza { get; set; } = 0;
         public virtual int BrojVrata { get; set; }
