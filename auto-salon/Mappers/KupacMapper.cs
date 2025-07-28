@@ -1,0 +1,29 @@
+﻿using auto_salon.Entities;
+using FluentNHibernate.Mapping;
+
+namespace auto_salon.Mappers
+{
+    public class KupacMapper : ClassMap<Kupac>
+    {
+        public KupacMapper()
+        {
+            Table("KUPAC");
+
+            Id(x => x.ID).Column("ID").GeneratedBy.TriggerIdentity();
+
+            HasOne(x => x.FizickoLice).PropertyRef(x => x.Kupac).Cascade.All();
+
+            HasOne(x => x.PravnoLice).PropertyRef(x => x.Kupac).Cascade.All();
+
+            HasMany(x => x.KupoprodajniUgovori).KeyColumn("ID_KUPCA").LazyLoad().Cascade.All().Inverse();
+
+            HasManyToMany(x => x.JeOcenioProdavci)
+                .Table("JE_OCENIO")
+                .ParentKeyColumn("ID_KUPCA")
+                .ChildKeyColumn("JMBG_PRODAVCA")
+                .Cascade.All();
+
+            HasMany(x => x.TestVoznje).KeyColumn("ID_KUPCA").LazyLoad().Cascade.All().Inverse();
+        }
+    }
+}

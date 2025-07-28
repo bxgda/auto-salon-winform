@@ -24,10 +24,13 @@
 
         public virtual KupoprodajniUgovor? Ugovor { get; set; }
 
+        public virtual IList<PromotivnaPonuda> PromotivnePonude { get; set; }
+
         public virtual IList<TestVoznja> TestVoznje { get; set; }
 
         public Vozilo()
         {
+            PromotivnePonude = new List<PromotivnaPonuda>();
             TestVoznje = new List<TestVoznja>();
         }
     }

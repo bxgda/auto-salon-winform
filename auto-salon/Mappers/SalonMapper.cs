@@ -24,35 +24,35 @@ namespace auto_salon.Mappers
             HasMany(x => x.Zaposleni).KeyColumn("SALON_ID").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.Vozila).KeyColumn("SALON_ID").LazyLoad().Cascade.All().Inverse();
         }
-
-        public class SalonNovaMapper : SubclassMap<SalonNova>
+    }
+    public class SalonNovaMapper : SubclassMap<SalonNova>
+    {
+        public SalonNovaMapper()
         {
-            public SalonNovaMapper()
-            {
-                DiscriminatorValue("NOVA");
-                HasManyToMany(x => x.Proizvodjaci)
-                    .Table("NUDI")
-                    .ParentKeyColumn("ID_SALONA")
-                    .ChildKeyColumn("ID_PROIZVODJACA")
-                    .Inverse()
-                    .Cascade.All();
-            }
+            DiscriminatorValue("NOVA");
+
+            HasManyToMany(x => x.Proizvodjaci)
+                .Table("NUDI")
+                .ParentKeyColumn("ID_SALONA")
+                .ChildKeyColumn("ID_PROIZVODJACA")
+                .Inverse()
+                .Cascade.All();
         }
+    }
 
-        public class SalonPolovnaMapper : SubclassMap<SalonPolovna>
+    public class SalonPolovnaMapper : SubclassMap<SalonPolovna>
+    {
+        public SalonPolovnaMapper()
         {
-            public SalonPolovnaMapper()
-            {
-                DiscriminatorValue("POLOVNA");
-            }
+            DiscriminatorValue("POLOVNA");
         }
+    }
 
-        public class SalonKombinovanMapper : SubclassMap<SalonKombinovan>
+    public class SalonKombinovanMapper : SubclassMap<SalonKombinovan>
+    {
+        public SalonKombinovanMapper()
         {
-            public SalonKombinovanMapper()
-            {
-                DiscriminatorValue("KOMBINOVANA");
-            }
+            DiscriminatorValue("KOMBINOVANA");
         }
     }
 }

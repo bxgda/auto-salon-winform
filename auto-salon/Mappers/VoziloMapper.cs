@@ -24,7 +24,31 @@ namespace auto_salon.Mappers
             References(x => x.Proizvodjac).Column("ID_PROIZVODJACA").LazyLoad();
             References(x => x.Salon).Column("ID_SALONA").LazyLoad();
 
-            //TODO ostale reference
+            HasOne(x => x.Ugovor).PropertyRef(x => x.Vozilo);
+
+            HasMany(x => x.PromotivnePonude).KeyColumn("BROJ_SASIJE").Inverse().Cascade.All().LazyLoad();
+            HasMany(x => x.TestVoznje).KeyColumn("BROJ_SASIJE").Inverse().Cascade.All().LazyLoad();
+        }
+    }
+
+    public class PolovnoVoziloMapper : SubclassMap<PolovnoVozilo>
+    {
+        public PolovnoVoziloMapper()
+        {
+            DiscriminatorValue("POLOVNO");
+
+            Map(x => x.DatumRegistracije).Column("DATUM_REGISTRACIJE");
+            Map(x => x.BrojVlasnika).Column("BROJ_VLASNIKA");
+            
+            HasMany(x => x.ServisnaIstorija).KeyColumn("BROJ_SASIJE").Inverse().Cascade.All().LazyLoad();
+        }
+    }
+
+    public class NovoVoziloMapper : SubclassMap<NovoVozilo>
+    {
+        public NovoVoziloMapper()
+        {
+            DiscriminatorValue("NOVO");
         }
     }
 }

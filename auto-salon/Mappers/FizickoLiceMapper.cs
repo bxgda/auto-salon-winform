@@ -1,0 +1,23 @@
+﻿using auto_salon.Entities;
+using FluentNHibernate.Mapping;
+
+namespace auto_salon.Mappers
+{
+    public class FizickoLiceMapper : ClassMap<FizickoLice>
+    {
+        public FizickoLiceMapper()
+        {
+            Table("FIZICKO_LICE");
+
+            Id(x => x.JMBG).Column("JMBG");
+
+            Map(x => x.Ime).Column("IME");
+            Map(x => x.Prezime).Column("PREZIME");
+            Map(x => x.Email).Column("EMAIL");
+            Map(x => x.KontaktTelefon).Column("KONTAKT_TELEFON");
+            Map(x => x.Adresa).Column("ADRESA");
+
+            References(x => x.Kupac, "ID_KUPCA").Unique();
+        }
+    }
+}

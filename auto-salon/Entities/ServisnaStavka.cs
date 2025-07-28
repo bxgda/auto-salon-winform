@@ -8,6 +8,6 @@ namespace auto_salon.Entities
 
         public virtual required string Opis { get; set; }
 
-        public virtual required Vozilo Vozilo { get; set; }
+        public virtual required PolovnoVozilo Vozilo { get; set; }
     }
 }

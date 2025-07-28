@@ -8,12 +8,12 @@
 
         public virtual IList<Vozilo> Vozila { get; set; }
 
-        public virtual IList<Salon> Saloni { get; set; }
+        public virtual IList<SalonNova> Saloni { get; set; }
 
         public Proizvodjac()
         {
             Vozila = new List<Vozilo>();
-            Saloni = new List<Salon>();
+            Saloni = new List<SalonNova>();
         }
     }
 }
