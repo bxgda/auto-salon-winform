@@ -2,6 +2,7 @@
 using FluentNHibernate.Cfg;
 using NHibernate;
 using System.Configuration;
+using auto_salon.Entities;
 
 namespace StanNaDan;
 static class DataLayer
@@ -43,7 +44,7 @@ static class DataLayer
 
             return Fluently.Configure()
                 .Database(cfg)
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Poslovnica>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Salon>())
                 .BuildSessionFactory();
         }
         catch (Exception e)
