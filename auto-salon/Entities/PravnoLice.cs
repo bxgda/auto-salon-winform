@@ -2,6 +2,12 @@
 {
     public class PravnoLice
     {
-        //TODO - teramo dalje
+        public virtual required string PIB { get; set; }
+        public virtual required string NazivFirme{ get; set; }
+        public virtual string? Email { get; set; }
+        public virtual required string Telefon{ get; set; }
+        public virtual required string Sediste{ get; set; }
+        public virtual string KontaktOsoba { get; set; }
+        public virtual Kupac Kupac { get; set; }
     }
 }
