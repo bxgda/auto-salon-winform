@@ -1,0 +1,30 @@
+﻿using auto_salon.Entities;
+using FluentNHibernate.Mapping;
+
+namespace auto_salon.Mappers
+{
+    public class VoziloMapper : ClassMap<Vozilo>
+    {
+        public VoziloMapper() 
+        {
+            Table("VOZILO");
+
+            Id(x => x.BrojSasije).Column("BROJ_SASIJE");
+
+            DiscriminateSubClassesOnColumn("STANJE");
+
+            Map(x => x.Model).Column("MODEL");
+            Map(x => x.TipGoriva).Column("TIP_GORIVA").CustomType<TipGoriva>();
+            Map(x => x.Kilometraza).Column("KILOMETRAZA");
+            Map(x => x.BrojVrata).Column("BROJ_VRATA");
+            Map(x => x.SnagaMotora).Column("SNAGA_MOTORA");
+            Map(x => x.Boja).Column("BOJA");
+            Map(x => x.GodinaProizvodnje).Column("GODINA_PROIZVODNJE");
+
+            References(x => x.Proizvodjac).Column("ID_PROIZVODJACA").LazyLoad();
+            References(x => x.Salon).Column("ID_SALONA").LazyLoad();
+
+            //TODO ostale reference
+        }
+    }
+}
