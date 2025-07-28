@@ -24,10 +24,13 @@
 
         public virtual IList<JeOcenio> JeOcenjenKupci { get; set; }
 
+        public virtual IList<TestVoznja> TestVoznje { get; set; }
+
         public Prodavac()
         {
             Ugovori = new List<KupoprodajniUgovor>();
             JeOcenjenKupci = new List<JeOcenio>();
+            TestVoznje = new List<TestVoznja>();
         }
     }
 }

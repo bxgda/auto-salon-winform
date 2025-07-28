@@ -6,14 +6,14 @@
 
         public virtual required string NazivFirme{ get; set; }
 
-        public virtual string? Email { get; set; } // u sql smo stavili da je notnull
+        public virtual required string Email { get; set; }
 
         public virtual required string Telefon{ get; set; }
 
         public virtual required string Sediste{ get; set; }
 
-        public virtual string KontaktOsoba { get; set; }
+        public virtual string? KontaktOsoba { get; set; }
 
-        public virtual Kupac Kupac { get; set; }
+        public virtual required Kupac Kupac { get; set; }
     }
 }

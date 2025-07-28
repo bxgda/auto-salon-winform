@@ -22,18 +22,28 @@
 
         public virtual required Salon Salon { get; set; }
 
-        public virtual IList<KupoprodajniUgovor> Ugovori { get; set; }
+        public virtual KupoprodajniUgovor? Ugovor { get; set; }
+
+        public virtual IList<TestVoznja> TestVoznje { get; set; }
 
         public Vozilo()
         {
-            Ugovori = new List<KupoprodajniUgovor>();
+            TestVoznje = new List<TestVoznja>();
         }
     }
 
     public class PolovnoVozilo : Vozilo
     {
         public virtual DateTime DatumRegistracije { get; set; }
+
         public virtual int BrojVlasnika { get; set; }
+
+        public virtual IList<ServisnaStavka> ServisnaIstorija { get; set; }
+
+        public PolovnoVozilo()
+        {
+            ServisnaIstorija = new List<ServisnaStavka>();
+        }
     }
 
     public class NovoVozilo : Vozilo { }

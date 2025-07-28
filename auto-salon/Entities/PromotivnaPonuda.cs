@@ -1,6 +1,6 @@
 ﻿namespace auto_salon.Entities
 {
-    internal class PromotivnaPonuda
+    public class PromotivnaPonuda
     {
         public virtual int ID { get; protected set; }
 
