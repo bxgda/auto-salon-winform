@@ -3,7 +3,9 @@
     public class Zaposleni : FizickoLice
     {
         public virtual required string Pozicija { get; set; }
+
         public virtual required DateTime DatumZaposlenja { get; set; } = DateTime.Now;
+
         public virtual required Salon Salon { get; set; }
     }
 

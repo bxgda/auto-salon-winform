@@ -3,6 +3,7 @@
     public class Proizvodjac
     {
         public virtual int ID { get; protected set; }
+
         public virtual required string Naziv { get; set; }
 
         public virtual IList<Vozilo> Vozila { get; set; }
