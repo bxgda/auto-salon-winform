@@ -1,7 +1,7 @@
 using auto_salon.Entities;
 using FluentNHibernate.Mapping;
 
-namespace AutoSalonMac.Mappers
+namespace auto_salon.Infrastructure.Mappers
 {
     public class PravnoLiceMapper : ClassMap<PravnoLice>
     {

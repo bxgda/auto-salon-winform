@@ -2,7 +2,7 @@
 using FluentNHibernate.Mapping;
 using NHibernate.Type;
 
-namespace auto_salon.Mappers
+namespace auto_salon.Infrastructure.Mappers
 {
     public class VoziloMapper : ClassMap<Vozilo>
     {

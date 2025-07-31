@@ -1,7 +1,7 @@
 ﻿using FluentNHibernate.Mapping;
 using auto_salon.Entities;
 
-namespace auto_salon.Mappers
+namespace auto_salon.Infrastructure.Mappers
 {
     public class SalonMapper : ClassMap<Salon>
     {
