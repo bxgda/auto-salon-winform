@@ -1,7 +1,7 @@
-﻿using FluentNHibernate.Cfg.Db;
-using FluentNHibernate.Cfg;
+﻿using System.Configuration;
 using NHibernate;
-using System.Configuration;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using auto_salon.Mappers;
 
 namespace StanNaDan;
@@ -32,11 +32,12 @@ static class DataLayer
             return factory?.OpenSession();
             }
 
-        private static ISessionFactory CreateSessionFactory()
+        private static ISessionFactory? CreateSessionFactory()
         {
             try
             {
-                var cfg = OracleManagedDataClientConfiguration.Oracle10.ConnectionString(c => c.Is("Data Source=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;User Id=S19095;Password=oracle-db-elfak"));
+                string connectionString = ConfigurationManager.ConnectionStrings["OracleCS"].ConnectionString;
+                var cfg = OracleManagedDataClientConfiguration.Oracle10.ConnectionString(c => c.Is(connectionString));
 
                 return Fluently.Configure()
                     .Database(cfg.ShowSql())
@@ -45,9 +46,9 @@ static class DataLayer
             }
             catch (Exception ec)
             {
-                System.Windows.Forms.MessageBox.Show(ec.Message);
+                MessageBox.Show("Greska prilikom kreiranja sesije: " + ec.Message);
                 return null;
-            }
+        }
 
         }
 }

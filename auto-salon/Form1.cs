@@ -1,6 +1,7 @@
 using auto_salon.Entities;
 using NHibernate;
 using StanNaDan;
+using System.Diagnostics;
 
 namespace auto_salon
 {
@@ -25,15 +26,15 @@ namespace auto_salon
                     return;
                 }
 
-                Salon ss = session.Load<Salon>(1);
+                KupoprodajniUgovor ss = session.Load<KupoprodajniUgovor>(2);
 
-                MessageBox.Show(ss.Naziv);
+                MessageBox.Show(ss.Kupac.PravnoLice?.PIB);
 
                 session.Close();
             }
             catch (Exception ec)
             {
-                MessageBox.Show(ec.Message);
+                MessageBox.Show(ec.ToString());
             }
         }
     }

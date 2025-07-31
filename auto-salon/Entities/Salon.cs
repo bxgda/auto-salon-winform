@@ -12,7 +12,7 @@
 
         public virtual required string Naziv { get; set; }
 
-        public virtual DateTime RadnoVreme { get; set; }
+        public virtual required string RadnoVreme { get; set; }
 
         public virtual required string KontaktTelefon { get; set; }
 

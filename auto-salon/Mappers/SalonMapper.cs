@@ -21,8 +21,8 @@ namespace auto_salon.Mappers
             Map(x => x.KontaktTelefon).Column("KONTAKT_TELEFON");
             Map(x => x.BrojZaposlenih).Column("BROJ_ZAPOSLENIH");
 
-            HasMany(x => x.Zaposleni).KeyColumn("SALON_ID").LazyLoad().Cascade.All().Inverse();
-            HasMany(x => x.Vozila).KeyColumn("SALON_ID").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.Zaposleni).KeyColumn("ID_SALONA").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.Vozila).KeyColumn("ID_SALONA").LazyLoad().Cascade.All().Inverse();
         }
     }
     public class SalonNovaMapper : SubclassMap<SalonNova>
