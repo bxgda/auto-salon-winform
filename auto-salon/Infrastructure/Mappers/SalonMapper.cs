@@ -35,7 +35,6 @@ namespace auto_salon.Infrastructure.Mappers
                 .Table("NUDI")
                 .ParentKeyColumn("ID_SALONA")
                 .ChildKeyColumn("ID_PROIZVODJACA")
-                .Inverse()
                 .Cascade.All();
         }
     }

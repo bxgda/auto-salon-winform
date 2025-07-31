@@ -27,8 +27,8 @@ namespace auto_salon.Infrastructure.Mappers
 
             HasOne(x => x.Ugovor).PropertyRef(x => x.Vozilo);
 
-            HasMany(x => x.PromotivnePonude).KeyColumn("BROJ_SASIJE").Inverse().Cascade.All().LazyLoad();
-            HasMany(x => x.TestVoznje).KeyColumn("BROJ_SASIJE").Inverse().Cascade.All().LazyLoad();
+            HasMany(x => x.PromotivnePonude).KeyColumn("BROJ_SASIJE").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.TestVoznje).KeyColumn("BROJ_SASIJE").LazyLoad().Cascade.All().Inverse();
         }
     }
 
@@ -41,7 +41,7 @@ namespace auto_salon.Infrastructure.Mappers
             Map(x => x.DatumRegistracije).Column("DATUM_REGISTRACIJE");
             Map(x => x.BrojVlasnika).Column("BROJ_VLASNIKA");
             
-            HasMany(x => x.ServisnaIstorija).KeyColumn("BROJ_SASIJE").Inverse().Cascade.All().LazyLoad();
+            HasMany(x => x.ServisnaIstorija).KeyColumn("BROJ_SASIJE").LazyLoad().Cascade.All().Inverse();
         }
     }
 

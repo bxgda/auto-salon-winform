@@ -17,7 +17,7 @@ namespace auto_salon.Infrastructure.Mappers
             Map(x => x.Sediste).Column("SEDISTE");
             Map(x => x.KontaktOsoba).Column("KONTAKT_OSOBA");
 
-            References(x => x.Kupac).Column("ID_KUPCA").Unique().Cascade.All();
+            References(x => x.Kupac).Column("ID_KUPCA").Cascade.All();
         }
     }
 }

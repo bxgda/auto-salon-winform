@@ -14,16 +14,50 @@ namespace auto_salon.App.Services
             _session = DataLayer.GetSession();
         }
 
-        public IList<SalonTableDTO> GetAll()
+        public ServiceResult<bool> Delete(int id)
         {
-            if (_session == null)
+            try
             {
-                return [];
+                if (_session == null)
+                {
+                    return ServiceResult<bool>.Failure("Nema konekcije sa bazom podataka.");
+                }
+
+                Salon salon = _session.Load<Salon>(id);
+                if (salon is SalonNova salonNova)
+                {
+                    salonNova.Proizvodjaci.Clear();
+                    _session.Flush();
+                }
+
+                _session.Delete(salon);
+                _session.Flush();
+                return ServiceResult<bool>.Success(true);
             }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri brisanju salona: {ex.Message}");
+            }
+        }
 
-            var saloni = _session.Query<Salon>().ToList();
+        public ServiceResult<IList<SalonTableDTO>> GetAll()
+        {
+            try
+            {
+                if (_session == null)
+                {
+                    return ServiceResult<IList<SalonTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
+                }
 
-            return saloni.Select(salon => salon.ToSalonTableDTO()).ToList();
+                var saloni = _session.Query<Salon>().ToList();
+                var result = saloni.Select(salon => salon.ToSalonTableDTO()).ToList();
+
+                return ServiceResult<IList<SalonTableDTO>>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<IList<SalonTableDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
+            }
         }
     }
 }

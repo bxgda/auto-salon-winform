@@ -9,7 +9,7 @@ namespace auto_salon.Infrastructure.Mappers
         {
             Table("FIZICKO_LICE");
 
-            Id(x => x.JMBG).Column("JMBG");
+            Id(x => x.JMBG).Column("JMBG").GeneratedBy.Assigned();
 
             Map(x => x.Ime).Column("IME");
             Map(x => x.Prezime).Column("PREZIME");
@@ -17,7 +17,7 @@ namespace auto_salon.Infrastructure.Mappers
             Map(x => x.KontaktTelefon).Column("KONTAKT_TELEFON");
             Map(x => x.Adresa).Column("ADRESA");
 
-            References(x => x.Kupac).Column("ID_KUPCA").Unique().Cascade.All();
+            References(x => x.Kupac).Column("ID_KUPCA").Cascade.All();
         }
     }
 }

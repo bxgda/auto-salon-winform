@@ -102,6 +102,7 @@
             Controls.Add(tblMainLayout);
             MinimumSize = new Size(1000, 600);
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Auto Salon";
             tblMainLayout.ResumeLayout(false);
             pnlDashboard.ResumeLayout(false);

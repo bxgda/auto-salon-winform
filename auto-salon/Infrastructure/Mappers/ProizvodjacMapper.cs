@@ -17,6 +17,7 @@ namespace auto_salon.Infrastructure.Mappers
                 .Table("NUDI")
                 .ParentKeyColumn("ID_PROIZVODJACA")
                 .ChildKeyColumn("ID_SALONA")
+                .Inverse()
                 .Cascade.All();
 
             HasMany(x => x.Vozila).KeyColumn("ID_PROIZVODJACA").LazyLoad().Cascade.All().Inverse();

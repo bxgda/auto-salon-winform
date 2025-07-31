@@ -14,7 +14,7 @@ namespace auto_salon.Infrastructure.Mappers
             Map(x => x.DatumOd).Column("DATUM_OD");
             Map(x => x.DatumDo).Column("DATUM_DO");
             Map(x => x.NazivPromocije).Column("NAZIV_PROMOCIJE");
-            Map(x => x.PopustUProcentima).Column("POPUST_U_PROCENTIMA");
+            Map(x => x.PopustUProcentima).Column("POPUST_PROCENAT");
             Map(x => x.Uslovi).Column("USLOVI");
 
             References(x => x.Vozilo).Column("BROJ_SASIJE").LazyLoad();

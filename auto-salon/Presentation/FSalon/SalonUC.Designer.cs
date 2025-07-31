@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             dgvSaloni = new DataGridView();
+            btnDelete = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvSaloni).BeginInit();
             SuspendLayout();
             // 
@@ -38,18 +39,31 @@
             dgvSaloni.Dock = DockStyle.Top;
             dgvSaloni.Location = new Point(0, 0);
             dgvSaloni.Name = "dgvSaloni";
-            dgvSaloni.Size = new Size(750, 294);
+            dgvSaloni.Size = new Size(750, 270);
             dgvSaloni.TabIndex = 0;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.Location = new Point(3, 460);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(88, 37);
+            btnDelete.TabIndex = 1;
+            btnDelete.Text = "Obriši";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // SalonUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            Controls.Add(btnDelete);
             Controls.Add(dgvSaloni);
-            MinimumSize = new Size(750, 600);
+            MinimumSize = new Size(750, 500);
             Name = "SalonUC";
-            Size = new Size(750, 600);
+            Size = new Size(750, 500);
             ((System.ComponentModel.ISupportInitialize)dgvSaloni).EndInit();
             ResumeLayout(false);
         }
@@ -57,5 +71,6 @@
         #endregion
 
         private DataGridView dgvSaloni;
+        private Button btnDelete;
     }
 }
