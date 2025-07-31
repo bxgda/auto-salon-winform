@@ -1,5 +1,6 @@
 ﻿using auto_salon.Entities;
 using FluentNHibernate.Mapping;
+using NHibernate.Type;
 
 namespace auto_salon.Mappers
 {
@@ -14,7 +15,7 @@ namespace auto_salon.Mappers
             DiscriminateSubClassesOnColumn("STANJE");
 
             Map(x => x.Model).Column("MODEL");
-            Map(x => x.TipGoriva).Column("TIP_GORIVA").CustomType<TipGoriva>();
+            Map(x => x.TipGoriva).Column("TIP_GORIVA").CustomType<EnumStringType<TipGoriva>>();
             Map(x => x.Kilometraza).Column("KILOMETRAZA");
             Map(x => x.BrojVrata).Column("BROJ_VRATA");
             Map(x => x.SnagaMotora).Column("SNAGA_MOTORA");

@@ -4,7 +4,7 @@
     {
         public virtual int ID { get; protected set; }
 
-        public virtual DateOnly Datum { get; set; } = DateOnly.FromDateTime(DateTime.Now);
+        public virtual DateTime Datum { get; set; } = DateTime.Now;
 
         public virtual required string Vreme { get; set; }
 
@@ -16,6 +16,6 @@
 
         public virtual required Kupac Kupac { get; set; }
 
-        public virtual required Prodavac Prodavac { get; set; }
+        public virtual required Zaposleni Prodavac { get; set; }
     }
 }

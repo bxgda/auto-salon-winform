@@ -1,10 +1,9 @@
 ﻿using auto_salon.Entities;
 using FluentNHibernate.Mapping;
+using NHibernate.Type;
 
 namespace auto_salon.Mappers
 {
-    // TODO: Mapirati i ULOGA jer nemamo posebne klase za sve izvedene entitete
-    // kako bi izbegli duboko nasledjivanje
     public class ZaposleniMapper : SubclassMap<Zaposleni>
     {
         public ZaposleniMapper()
@@ -15,8 +14,19 @@ namespace auto_salon.Mappers
 
             Map(x => x.Pozicija).Column("POZICIJA");
             Map(x => x.DatumZaposlenja).Column("DATUM_ZAPOSLENJA");
-            
-            References(x => x.Salon, "ID_SALONA");
+            Map(x => x.Uloga).Column("ULOGA").CustomType<EnumStringType<Uloga>>();
+            Map(x => x.DatumPostavljenja).Column("DATUM_POSTAVLJANJA");
+
+            References(x => x.Salon).Column("ID_SALONA").LazyLoad();
+
+            HasMany(x => x.TestVoznje).Table("TEST_VOZNJE").KeyColumn("JMBG_ZAPOSLENOG").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.Ugovori).Table("KUPOPRODAJNI_UGOVOR").KeyColumn("JMBG_PRODAVCA").LazyLoad().Cascade.All().Inverse();
+
+            HasManyToMany(x => x.JeOcenjenOdKupaca)
+                .Table("JE_OCENIO")
+                .ParentKeyColumn("JMBG_PRODAVCA")
+                .ChildKeyColumn("ID_KUPCA")
+                .Cascade.All();
         }
     }
 }

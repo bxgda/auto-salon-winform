@@ -17,7 +17,7 @@ namespace auto_salon.Mappers
             Map(x => x.KontaktTelefon).Column("KONTAKT_TELEFON");
             Map(x => x.Adresa).Column("ADRESA");
 
-            References(x => x.Kupac, "ID_KUPCA").Unique();
+            References(x => x.Kupac).Column("ID_KUPCA").Unique().Cascade.All();
         }
     }
 }

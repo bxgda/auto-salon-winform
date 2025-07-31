@@ -2,7 +2,7 @@
 {
     public class FizickoLice
     {
-        public virtual required int JMBG { get; set; }
+        public virtual required string JMBG { get; set; }
 
         public virtual required string Ime { get; set; }
 

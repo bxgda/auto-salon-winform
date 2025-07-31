@@ -1,12 +1,5 @@
 ﻿namespace auto_salon.Entities
 {
-    public enum NacinPlacanja
-    {
-        GOTOVINA,
-        KREDIT,
-        LIZING
-    }
-
     public class KupoprodajniUgovor
     {
         public virtual int ID { get; protected set; }
@@ -19,10 +12,17 @@
 
         public virtual decimal OcenaProdavca { get; set; } = 0;
 
-        public virtual required Prodavac Prodavac { get; set; }
+        public virtual required Zaposleni Prodavac { get; set; }
 
         public virtual required Kupac Kupac { get; set; }
 
         public virtual required Vozilo Vozilo { get; set; }
+    }
+
+    public enum NacinPlacanja
+    {
+        GOTOVINA,
+        KREDIT,
+        LIZING
     }
 }

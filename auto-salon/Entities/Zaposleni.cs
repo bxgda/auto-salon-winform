@@ -11,38 +11,24 @@
         public virtual DateTime DatumPostavljenja { get; set; }
 
         public virtual required Salon Salon { get; set; }
+
+        public virtual IList<TestVoznja> TestVoznje { get; set; }
+
+        public virtual IList<KupoprodajniUgovor>? Ugovori { get; set; }
+
+        public virtual IList<JeOcenio>? JeOcenjenOdKupaca { get; set; }
+
+        public Zaposleni()
+        {
+            TestVoznje = new List<TestVoznja>();
+        }
     }
 
     public enum Uloga
     {
-        Menadzer,
-        FinansijskiSavetnik,
-        Serviser,
-        Prodavac
+        MENADZER,
+        FINANSIJSKI_SAVETNIK,
+        SERVISER,
+        PRODAVAC
     }
-
-    //public class Menadzer : Zaposleni
-    //{
-    //    public virtual DateTime DatumPostavljenja { get; set; }
-    //}
-
-    //public class FinansijskiSavetnik : Zaposleni { }
-
-    //public class Serviser : Zaposleni { }
-
-    //public class Prodavac : Zaposleni
-    //{
-    //    public virtual IList<KupoprodajniUgovor> Ugovori { get; set; }
-
-    //    public virtual IList<JeOcenio> JeOcenjenKupci { get; set; }
-
-    //    public virtual IList<TestVoznja> TestVoznje { get; set; }
-
-    //    public Prodavac()
-    //    {
-    //        Ugovori = new List<KupoprodajniUgovor>();
-    //        JeOcenjenKupci = new List<JeOcenio>();
-    //        TestVoznje = new List<TestVoznja>();
-    //    }
-    //}
 }

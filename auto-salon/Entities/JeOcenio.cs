@@ -8,6 +8,6 @@
 
         public virtual required Kupac Kupac { get; set; }
 
-        public virtual required Prodavac Prodavac { get; set; }
+        public virtual required Zaposleni Prodavac { get; set; }
     }
 }
