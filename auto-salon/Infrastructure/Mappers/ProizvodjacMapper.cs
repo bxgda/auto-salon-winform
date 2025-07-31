@@ -16,9 +16,8 @@ namespace auto_salon.Infrastructure.Mappers
             HasManyToMany(x => x.Saloni)
                 .Table("NUDI")
                 .ParentKeyColumn("ID_PROIZVODJACA")
-                .ChildKeyColumn("ID_SALONA")
-                .Inverse()
-                .Cascade.All();
+                .ChildKeyColumn("ID_SALONA");
+                //.Cascade.All(); // Kada se obrise proizvodjac ne brisemo salone, samo se uklanja veza iz NUDI tabele
 
             HasMany(x => x.Vozila).KeyColumn("ID_PROIZVODJACA").LazyLoad().Cascade.All().Inverse();
         }

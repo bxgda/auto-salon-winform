@@ -1,4 +1,3 @@
-using auto_salon.App.Services;
 using auto_salon.Presentation.FSalon;
 
 namespace auto_salon
@@ -15,7 +14,7 @@ namespace auto_salon
         private void btnSaloni_Click(object sender, EventArgs e)
         {
             pnlContent.Controls.Clear();
-            pnlContent.Controls.Add(new SalonUC(new SalonService()));
+            pnlContent.Controls.Add(new SalonUC());
         }
     }
 }

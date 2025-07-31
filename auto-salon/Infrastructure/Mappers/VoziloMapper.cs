@@ -25,7 +25,9 @@ namespace auto_salon.Infrastructure.Mappers
             References(x => x.Proizvodjac).Column("ID_PROIZVODJACA").LazyLoad();
             References(x => x.Salon).Column("ID_SALONA").LazyLoad();
 
-            HasOne(x => x.Ugovor).PropertyRef(x => x.Vozilo);
+            HasOne(x => x.Ugovor)
+                .PropertyRef(x => x.Vozilo)
+                .Cascade.All(); // Kad se vozilo brise, brisi i ugovore vezane za njega
 
             HasMany(x => x.PromotivnePonude).KeyColumn("BROJ_SASIJE").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.TestVoznje).KeyColumn("BROJ_SASIJE").LazyLoad().Cascade.All().Inverse();

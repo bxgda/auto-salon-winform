@@ -34,8 +34,8 @@ namespace auto_salon.Infrastructure.Mappers
             HasManyToMany(x => x.Proizvodjaci)
                 .Table("NUDI")
                 .ParentKeyColumn("ID_SALONA")
-                .ChildKeyColumn("ID_PROIZVODJACA")
-                .Cascade.All();
+                .ChildKeyColumn("ID_PROIZVODJACA");
+                //.Cascade.All(); // Kada se obrise salon ne brisemo proizvodjace, samo se uklanja veza automatski iz NUDI
         }
     }
 

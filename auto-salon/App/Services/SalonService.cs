@@ -7,36 +7,33 @@ namespace auto_salon.App.Services
 {
     public class SalonService : ISalonService
     {
-        private readonly ISession? _session;
-
-        public SalonService()
-        {
-            _session = DataLayer.GetSession();
-        }
+        private ISession? _session;
 
         public ServiceResult<bool> Delete(int id)
         {
             try
             {
+                _session = DataLayer.GetSession();
+
                 if (_session == null)
                 {
-                    return ServiceResult<bool>.Failure("Nema konekcije sa bazom podataka.");
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
 
                 Salon salon = _session.Load<Salon>(id);
-                if (salon is SalonNova salonNova)
-                {
-                    salonNova.Proizvodjaci.Clear();
-                    _session.Flush();
-                }
 
                 _session.Delete(salon);
                 _session.Flush();
+
                 return ServiceResult<bool>.Success(true);
             }
             catch (Exception ex)
             {
                 return ServiceResult<bool>.Failure($"Greška pri brisanju salona: {ex.Message}");
+            }
+            finally
+            {
+                _session?.Close();
             }
         }
 
@@ -44,6 +41,8 @@ namespace auto_salon.App.Services
         {
             try
             {
+                _session = DataLayer.GetSession();
+
                 if (_session == null)
                 {
                     return ServiceResult<IList<SalonTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
@@ -57,6 +56,10 @@ namespace auto_salon.App.Services
             catch (Exception ex)
             {
                 return ServiceResult<IList<SalonTableDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
+            }
+            finally
+            {
+                _session?.Close();
             }
         }
     }

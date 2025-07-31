@@ -1,9 +1,5 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services;
-using auto_salon.Entities;
-using NHibernate;
-using System.Data;
-using System.Windows.Forms;
 
 namespace auto_salon.Presentation.FSalon
 {
@@ -12,11 +8,11 @@ namespace auto_salon.Presentation.FSalon
         private readonly ISalonService _salonService;
         private IList<SalonTableDTO> _saloni = [];
 
-        public SalonUC(ISalonService salonService)
+        public SalonUC()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            _salonService = salonService;
+            _salonService = new SalonService();
             LoadData();
         }
 
@@ -34,6 +30,8 @@ namespace auto_salon.Presentation.FSalon
                 MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        # region Event Handlers
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -80,7 +78,8 @@ namespace auto_salon.Presentation.FSalon
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-
         }
+
+        #endregion
     }
 }

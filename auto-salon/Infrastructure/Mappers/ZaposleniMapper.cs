@@ -22,11 +22,11 @@ namespace auto_salon.Infrastructure.Mappers
             HasMany(x => x.TestVoznje).Table("TEST_VOZNJE").KeyColumn("JMBG_ZAPOSLENOG").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.Ugovori).Table("KUPOPRODAJNI_UGOVOR").KeyColumn("JMBG_PRODAVCA").LazyLoad().Cascade.All().Inverse();
 
+            // Brisanjem zaposlenog se automatski brisu i ocene koje je dobio iz tabele JE_OCENIO
             HasManyToMany(x => x.JeOcenjenOdKupaca)
                 .Table("JE_OCENIO")
                 .ParentKeyColumn("JMBG_PRODAVCA")
-                .ChildKeyColumn("ID_KUPCA")
-                .Cascade.All();
+                .ChildKeyColumn("ID_KUPCA");
         }
     }
 }

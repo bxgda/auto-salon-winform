@@ -17,11 +17,11 @@ namespace auto_salon.Infrastructure.Mappers
 
             HasMany(x => x.KupoprodajniUgovori).KeyColumn("ID_KUPCA").LazyLoad().Cascade.All().Inverse();
 
+            // Brisanjem kupca se automatski brisu i ocene koje je dao iz tabele JE_OCENIO
             HasManyToMany(x => x.JeOcenioProdavci)
                 .Table("JE_OCENIO")
                 .ParentKeyColumn("ID_KUPCA")
-                .ChildKeyColumn("JMBG_PRODAVCA")
-                .Cascade.All();
+                .ChildKeyColumn("JMBG_PRODAVCA");
 
             HasMany(x => x.TestVoznje).KeyColumn("ID_KUPCA").LazyLoad().Cascade.All().Inverse();
         }
