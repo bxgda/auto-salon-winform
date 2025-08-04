@@ -47,17 +47,6 @@ namespace auto_salon.Presentation.FSalon
             }
 
             int selectedRowIndex = dgvSaloni.SelectedRows[0].Index;
-
-            if (selectedRowIndex < 0 || selectedRowIndex >= dgvSaloni.Rows.Count)
-            {
-                MessageBox.Show(
-                    "Izabrani red nije validan.",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return;
-            }
-
             int salonId = _saloni[selectedRowIndex].ID;
             var result = _salonService.Delete(salonId);
 
@@ -92,5 +81,27 @@ namespace auto_salon.Presentation.FSalon
 
         #endregion
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgvSaloni.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(
+                    "Molimo izaberite salon koji želite da izmenite.",
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            int selectedRowIndex = dgvSaloni.SelectedRows[0].Index;
+
+            DialogResult dialogResult = new EditSalon(_salonService, _saloni[selectedRowIndex]).ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
+            }
+        }
     }
 }

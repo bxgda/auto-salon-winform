@@ -31,7 +31,10 @@
             dgvSaloni = new DataGridView();
             btnDelete = new Button();
             btnAdd = new Button();
+            btnEdit = new Button();
+            groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dgvSaloni).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // dgvSaloni
@@ -47,7 +50,7 @@
             // 
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(3, 460);
+            btnDelete.Location = new Point(220, 20);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(88, 37);
             btnDelete.TabIndex = 1;
@@ -59,26 +62,51 @@
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(97, 460);
+            btnAdd.Location = new Point(8, 20);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(100, 37);
             btnAdd.TabIndex = 2;
-            btnAdd.Text = "Dodaj salon";
+            btnAdd.Text = "Dodaj";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.Location = new Point(114, 20);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(100, 37);
+            btnEdit.TabIndex = 3;
+            btnEdit.Text = "Izmeni";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBox1.Controls.Add(btnEdit);
+            groupBox1.Controls.Add(btnDelete);
+            groupBox1.Controls.Add(btnAdd);
+            groupBox1.Location = new Point(3, 434);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(319, 63);
+            groupBox1.TabIndex = 4;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Saloni";
             // 
             // SalonUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            Controls.Add(btnAdd);
-            Controls.Add(btnDelete);
+            Controls.Add(groupBox1);
             Controls.Add(dgvSaloni);
             MinimumSize = new Size(750, 500);
             Name = "SalonUC";
             Size = new Size(750, 500);
             ((System.ComponentModel.ISupportInitialize)dgvSaloni).EndInit();
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -87,5 +115,7 @@
         private DataGridView dgvSaloni;
         private Button btnDelete;
         private Button btnAdd;
+        private Button btnEdit;
+        private GroupBox groupBox1;
     }
 }

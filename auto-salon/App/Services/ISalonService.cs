@@ -9,5 +9,7 @@ namespace auto_salon.App.Services
         ServiceResult<Boolean> Delete(int id);
 
         ServiceResult<Boolean> Add(SalonTableDTO salon);
+
+        ServiceResult<Boolean> Update(SalonTableDTO salon);
     }
 }

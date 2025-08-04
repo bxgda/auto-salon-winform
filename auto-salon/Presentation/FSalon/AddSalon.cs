@@ -12,6 +12,14 @@ namespace auto_salon.Presentation.FSalon
         {
             InitializeComponent();
             _salonService = salonService;
+
+            timePickerOd.Format = DateTimePickerFormat.Custom;
+            timePickerOd.CustomFormat = "HH:mm";
+            timePickerOd.ShowUpDown = true;
+
+            timePickerDo.Format = DateTimePickerFormat.Custom;
+            timePickerDo.CustomFormat = "HH:mm";
+            timePickerDo.ShowUpDown = true;
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -21,7 +29,8 @@ namespace auto_salon.Presentation.FSalon
             string telefon = txtKontaktTelefon.Text.Trim();
             string drzava = txtDrzava.Text.Trim();
             string grad = txtGrad.Text.Trim();
-            string radnoVreme = txtRadnoVreme.Text.Trim();
+            string radnoVremeOd = timePickerOd.Value.ToString("HH:mm");
+            string radnoVremeDo = timePickerDo.Value.ToString("HH:mm");
             string tip = cbxTip.SelectedItem?.ToString() ?? string.Empty;
 
             if (string.IsNullOrWhiteSpace(naziv) ||
@@ -29,12 +38,15 @@ namespace auto_salon.Presentation.FSalon
                 string.IsNullOrWhiteSpace(telefon) ||
                 string.IsNullOrWhiteSpace(drzava) ||
                 string.IsNullOrWhiteSpace(grad) ||
-                string.IsNullOrWhiteSpace(radnoVreme) ||
+                string.IsNullOrWhiteSpace(radnoVremeOd) ||
+                string.IsNullOrWhiteSpace(radnoVremeDo) ||
                 string.IsNullOrWhiteSpace(tip))
             {
                 MessageBox.Show("Molimo popunite sva polja.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            string radnoVreme = $"{radnoVremeOd}-{radnoVremeDo}";
 
             SalonTableDTO newSalon = new SalonTableDTO
             {

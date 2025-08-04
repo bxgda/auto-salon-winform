@@ -35,7 +35,7 @@ namespace auto_salon.App.Services
             }
             catch (Exception ex)
             {
-                return ServiceResult<bool>.Failure($"Greška pri brisanju salona: {ex.Message}");
+                return ServiceResult<bool>.Failure($"Greška pri kreiranju salona: {ex.Message}");
             }
             finally
             {
@@ -90,6 +90,51 @@ namespace auto_salon.App.Services
             catch (Exception ex)
             {
                 return ServiceResult<IList<SalonTableDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
+            }
+            finally
+            {
+                _session?.Close();
+            }
+        }
+
+        public ServiceResult<bool> Update(SalonTableDTO salonDto)
+        {
+            try
+            {
+                _session = DataLayer.GetSession();
+
+                if (_session == null)
+                {
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+                }
+
+                if (salonDto == null)
+                {
+                    return ServiceResult<bool>.Failure("Salon ne može biti null.");
+                }
+
+                Salon oldSalon = _session.Load<Salon>(salonDto.ID);
+                
+                if (oldSalon == null)
+                {
+                    return ServiceResult<bool>.Failure("Salon sa datim ID-jem ne postoji.");
+                }
+
+                oldSalon.Naziv = salonDto.Naziv;
+                oldSalon.Adresa = salonDto.Adresa;
+                oldSalon.Drzava = salonDto.Drzava;
+                oldSalon.KontaktTelefon = salonDto.KontaktTelefon;
+                oldSalon.Grad= salonDto.Grad;
+                oldSalon.RadnoVreme = salonDto.RadnoVreme;
+
+                _session.Update(oldSalon);
+                _session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri izmeni salona: {ex.Message}");
             }
             finally
             {
