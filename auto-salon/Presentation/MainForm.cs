@@ -1,5 +1,6 @@
 using auto_salon.Presentation.FSalon;
 using auto_salon.Presentation.FZaposleni;
+using auto_salon.Presentation.FVozilo;
 
 namespace auto_salon
 {
@@ -22,6 +23,12 @@ namespace auto_salon
         {
             pnlContent.Controls.Clear();
             pnlContent.Controls.Add(new ZaposleniUC());
+        }
+
+        private void btnVozila_Click(object sender, EventArgs e)
+        {
+            pnlContent.Controls.Clear();
+            pnlContent.Controls.Add(new VoziloUC());
         }
     }
 }

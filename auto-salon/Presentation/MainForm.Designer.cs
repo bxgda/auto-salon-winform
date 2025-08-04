@@ -30,10 +30,11 @@
         {
             tblMainLayout = new TableLayoutPanel();
             pnlDashboard = new Panel();
+            btnZaposleni = new Button();
             btnSaloni = new Button();
             lblTitle = new Label();
             pnlContent = new Panel();
-            btnZaposleni = new Button();
+            btnVozila = new Button();
             tblMainLayout.SuspendLayout();
             pnlDashboard.SuspendLayout();
             SuspendLayout();
@@ -57,6 +58,7 @@
             // 
             // pnlDashboard
             // 
+            pnlDashboard.Controls.Add(btnVozila);
             pnlDashboard.Controls.Add(btnZaposleni);
             pnlDashboard.Controls.Add(btnSaloni);
             pnlDashboard.Controls.Add(lblTitle);
@@ -65,6 +67,18 @@
             pnlDashboard.Name = "pnlDashboard";
             pnlDashboard.Size = new Size(250, 553);
             pnlDashboard.TabIndex = 0;
+            // 
+            // btnZaposleni
+            // 
+            btnZaposleni.AutoSize = true;
+            btnZaposleni.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnZaposleni.Location = new Point(3, 104);
+            btnZaposleni.Name = "btnZaposleni";
+            btnZaposleni.Size = new Size(244, 39);
+            btnZaposleni.TabIndex = 3;
+            btnZaposleni.Text = "Zaposleni";
+            btnZaposleni.UseVisualStyleBackColor = true;
+            btnZaposleni.Click += btnZaposleni_Click;
             // 
             // btnSaloni
             // 
@@ -96,17 +110,17 @@
             pnlContent.Size = new Size(719, 553);
             pnlContent.TabIndex = 1;
             // 
-            // btnZaposleni
+            // btnVozila
             // 
-            btnZaposleni.AutoSize = true;
-            btnZaposleni.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnZaposleni.Location = new Point(3, 104);
-            btnZaposleni.Name = "btnZaposleni";
-            btnZaposleni.Size = new Size(244, 39);
-            btnZaposleni.TabIndex = 3;
-            btnZaposleni.Text = "Zaposleni";
-            btnZaposleni.UseVisualStyleBackColor = true;
-            btnZaposleni.Click += btnZaposleni_Click;
+            btnVozila.AutoSize = true;
+            btnVozila.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVozila.Location = new Point(3, 149);
+            btnVozila.Name = "btnVozila";
+            btnVozila.Size = new Size(244, 39);
+            btnVozila.TabIndex = 4;
+            btnVozila.Text = "Vozila";
+            btnVozila.UseVisualStyleBackColor = true;
+            btnVozila.Click += btnVozila_Click;
             // 
             // MainForm
             // 
@@ -132,5 +146,6 @@
         private Button btnSaloni;
         private Panel pnlContent;
         private Button btnZaposleni;
+        private Button btnVozila;
     }
 }
