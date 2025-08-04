@@ -1,4 +1,5 @@
 using auto_salon.Presentation.FSalon;
+using auto_salon.Presentation.FZaposleni;
 
 namespace auto_salon
 {
@@ -15,6 +16,12 @@ namespace auto_salon
         {
             pnlContent.Controls.Clear();
             pnlContent.Controls.Add(new SalonUC());
+        }
+
+        private void btnZaposleni_Click(object sender, EventArgs e)
+        {
+            pnlContent.Controls.Clear();
+            pnlContent.Controls.Add(new ZaposleniUC());
         }
     }
 }

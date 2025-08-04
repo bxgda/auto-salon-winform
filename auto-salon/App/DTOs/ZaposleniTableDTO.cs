@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace auto_salon.App.DTOs
 {
-    internal class ZapolseniTableDTO
+    public class ZaposleniTableDTO
     {
         public required string JMBG { get; set; }
 
@@ -21,6 +21,13 @@ namespace auto_salon.App.DTOs
         [DisplayName("Datum postavljenja")]
         public DateTime DatumPostavljenja { get; set; }
 
+        [Browsable(false)]
         public required Salon Salon { get; set; }
+
+        [DisplayName("Kontakt telefon")]
+        public virtual required string KontaktTelefon { get; set; }
+
+        [Browsable(false)]
+        public virtual required Kupac Kupac { get; set; }
     }
 }
