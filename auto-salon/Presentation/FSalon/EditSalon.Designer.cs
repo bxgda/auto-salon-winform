@@ -35,7 +35,9 @@
             label9 = new Label();
             txtNaziv = new TextBox();
             txtDrzava = new TextBox();
+            label7 = new Label();
             txtGrad = new TextBox();
+            cbxTip = new ComboBox();
             label6 = new Label();
             txtAdresa = new TextBox();
             label1 = new Label();
@@ -44,8 +46,6 @@
             label2 = new Label();
             label3 = new Label();
             btnSubmit = new Button();
-            label7 = new Label();
-            cbxTip = new ComboBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -123,12 +123,32 @@
             txtDrzava.Size = new Size(170, 23);
             txtDrzava.TabIndex = 2;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(212, 129);
+            label7.Name = "label7";
+            label7.Size = new Size(24, 15);
+            label7.TabIndex = 15;
+            label7.Text = "Tip";
+            label7.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // txtGrad
             // 
             txtGrad.Location = new Point(16, 147);
             txtGrad.Name = "txtGrad";
             txtGrad.Size = new Size(170, 23);
             txtGrad.TabIndex = 3;
+            // 
+            // cbxTip
+            // 
+            cbxTip.Enabled = false;
+            cbxTip.FormattingEnabled = true;
+            cbxTip.Items.AddRange(new object[] { "Nova", "Polovna", "Kombinovan" });
+            cbxTip.Location = new Point(212, 147);
+            cbxTip.Name = "cbxTip";
+            cbxTip.Size = new Size(170, 23);
+            cbxTip.TabIndex = 8;
             // 
             // label6
             // 
@@ -200,26 +220,6 @@
             btnSubmit.Text = "Izmeni";
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(212, 129);
-            label7.Name = "label7";
-            label7.Size = new Size(24, 15);
-            label7.TabIndex = 15;
-            label7.Text = "Tip";
-            label7.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // cbxTip
-            // 
-            cbxTip.Enabled = false;
-            cbxTip.FormattingEnabled = true;
-            cbxTip.Items.AddRange(new object[] { "Nova", "Polovna", "Kombinovan" });
-            cbxTip.Location = new Point(212, 147);
-            cbxTip.Name = "cbxTip";
-            cbxTip.Size = new Size(170, 23);
-            cbxTip.TabIndex = 8;
             // 
             // EditSalon
             // 

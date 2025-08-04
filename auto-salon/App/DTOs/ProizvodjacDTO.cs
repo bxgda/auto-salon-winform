@@ -1,6 +1,6 @@
 ﻿namespace auto_salon.App.DTOs
 {
-    public class ProizvodjacTableDTO
+    public class ProizvodjacDTO
     {
         public int ID { get; protected set; }
 

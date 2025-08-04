@@ -2,7 +2,7 @@
 
 namespace auto_salon.App.DTOs
 {
-    public class FizickoLiceTableDTO
+    public class FizickoLiceDTO
     {
         public required string JMBG { get; set; }
 

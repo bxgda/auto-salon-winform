@@ -2,7 +2,7 @@
 
 namespace auto_salon.App.DTOs
 {
-    public class SalonTableDTO
+    public class SalonDTO
     {
         public int ID { get; set; }
 

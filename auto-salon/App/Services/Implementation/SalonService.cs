@@ -1,15 +1,16 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Extensions;
+using auto_salon.App.Services.Interfaces;
 using auto_salon.Entities;
 using NHibernate;
 
-namespace auto_salon.App.Services
+namespace auto_salon.App.Services.Implementation
 {
     public class SalonService : ISalonService
     {
         private ISession? _session;
 
-        public ServiceResult<bool> Add(SalonTableDTO salonDto)
+        public ServiceResult<bool> Add(SalonDTO salonDto)
         {
             try
             {
@@ -71,7 +72,7 @@ namespace auto_salon.App.Services
             }
         }
 
-        public ServiceResult<IList<SalonTableDTO>> GetAll()
+        public ServiceResult<IList<SalonDTO>> GetAll()
         {
             try
             {
@@ -79,17 +80,17 @@ namespace auto_salon.App.Services
 
                 if (_session == null)
                 {
-                    return ServiceResult<IList<SalonTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
+                    return ServiceResult<IList<SalonDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
                 var saloni = _session.Query<Salon>().ToList();
                 var result = saloni.Select(salon => salon.ToSalonTableDTO()).ToList();
 
-                return ServiceResult<IList<SalonTableDTO>>.Success(result);
+                return ServiceResult<IList<SalonDTO>>.Success(result);
             }
             catch (Exception ex)
             {
-                return ServiceResult<IList<SalonTableDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
+                return ServiceResult<IList<SalonDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
             }
             finally
             {
@@ -97,7 +98,7 @@ namespace auto_salon.App.Services
             }
         }
 
-        public ServiceResult<bool> Update(SalonTableDTO salonDto)
+        public ServiceResult<bool> Update(SalonDTO salonDto)
         {
             try
             {

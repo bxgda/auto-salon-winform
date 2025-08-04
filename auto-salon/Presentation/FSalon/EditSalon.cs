@@ -1,18 +1,20 @@
 ﻿using auto_salon.App.DTOs;
-using auto_salon.App.Services;
+using auto_salon.App.Services.Interfaces;
 
 namespace auto_salon.Presentation.FSalon
 {
     public partial class EditSalon : Form
     {
         private readonly ISalonService _salonService;
-        private SalonTableDTO _salon;
+        private SalonDTO _salon;
 
-        public EditSalon(ISalonService salonService, SalonTableDTO salon)
+        public EditSalon(ISalonService salonService, SalonDTO salon)
         {
             InitializeComponent();
             _salonService = salonService;
             _salon = salon;
+
+            this.Text = $"Ažuriranje salona: {_salon.Naziv}";
 
             LoadUIWithData();
         }

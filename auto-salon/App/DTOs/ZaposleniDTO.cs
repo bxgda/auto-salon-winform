@@ -3,9 +3,11 @@ using System.ComponentModel;
 
 namespace auto_salon.App.DTOs
 {
-    public class ZaposleniTableDTO
+    public class ZaposleniDTO
     {
         public required string JMBG { get; set; }
+
+        public required Uloga Uloga { get; set; }
 
         public required string Ime { get; set; }
 
@@ -15,8 +17,6 @@ namespace auto_salon.App.DTOs
 
         [DisplayName("Datum zaposlenja")]
         public required DateTime DatumZaposlenja { get; set; }
-
-        public required Uloga Uloga { get; set; }
 
         [DisplayName("Datum postavljenja")]
         public DateTime DatumPostavljenja { get; set; }

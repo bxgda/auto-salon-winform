@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace auto_salon.App.DTOs
 {
-    public class PromotivnaPonudaTableDTO
+    public class PromotivnaPonudaDTO
     {
         public int ID { get; protected set; }
 

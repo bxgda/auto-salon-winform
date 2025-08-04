@@ -2,7 +2,7 @@
 
 namespace auto_salon.App.DTOs
 {
-    public class PravnoLiceTableDTO
+    public class PravnoLiceDTO
     {
         public required string PIB { get; set; }
 

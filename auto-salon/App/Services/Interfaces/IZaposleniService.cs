@@ -4,10 +4,10 @@ namespace auto_salon.App.Services.Implementation
 {
     public interface IZaposleniService
     {
-        ServiceResult<IList<ZaposleniTableDTO>> GetAll();
+        ServiceResult<IList<ZaposleniDTO>> GetAll();
 
         ServiceResult<Boolean> Delete(string jmbg);
 
-        ServiceResult<Boolean> Add(ZaposleniTableDTO zaposleni);
+        ServiceResult<Boolean> Add(ZaposleniDTO zaposleni);
     }
 }

@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace auto_salon.App.DTOs
 {
-    public class VoziloTableDTO
+    public class VoziloDTO
     {
         public KupoprodajniUgovor? Ugovor { get; set; }
 
@@ -35,7 +35,7 @@ namespace auto_salon.App.DTOs
         public int GodinaProizvodnje { get; set; }
     }
 
-    public class PolovnoVoziloTableDTO : VoziloTableDTO
+    public class PolovnoVoziloTableDTO : VoziloDTO
     {
         [DisplayName("Datum registracije")]
         public DateTime DatumRegistracije { get; set; }
@@ -44,5 +44,5 @@ namespace auto_salon.App.DTOs
         public int BrojVlasnika { get; set; }
     }
 
-    public class NovoVoziloTableDTO : VoziloTableDTO { }
+    public class NovoVoziloTableDTO : VoziloDTO { }
 }

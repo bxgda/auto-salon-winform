@@ -9,7 +9,7 @@ namespace auto_salon.App.Services.Implementation
     {
         private ISession? _session;
 
-        public ServiceResult<IList<ZaposleniTableDTO>> GetAll()
+        public ServiceResult<IList<ZaposleniDTO>> GetAll()
         {
             try
             {
@@ -17,17 +17,17 @@ namespace auto_salon.App.Services.Implementation
 
                 if (_session == null)
                 {
-                    return ServiceResult<IList<ZaposleniTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
+                    return ServiceResult<IList<ZaposleniDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
                 var zaposleni = _session.Query<Zaposleni>().ToList();
                 var result = zaposleni.Select(z => z.ToZaposleniTableDTO()).ToList();
 
-                return ServiceResult<IList<ZaposleniTableDTO>>.Success(result);
+                return ServiceResult<IList<ZaposleniDTO>>.Success(result);
             }
             catch (Exception ex)
             {
-                return ServiceResult<IList<ZaposleniTableDTO>>.Failure($"Greška pri dohvatanju zaposlenih: {ex.Message}");
+                return ServiceResult<IList<ZaposleniDTO>>.Failure($"Greška pri dohvatanju zaposlenih: {ex.Message}");
             }
             finally
             {
@@ -63,7 +63,7 @@ namespace auto_salon.App.Services.Implementation
             }
         }
 
-        public ServiceResult<Boolean> Add(ZaposleniTableDTO zaposleniDto)
+        public ServiceResult<Boolean> Add(ZaposleniDTO zaposleniDto)
         {
             try
             {

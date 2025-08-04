@@ -5,9 +5,9 @@ namespace AutoSalonMac.App.Extensions
 {
     public static class ZaposleniExtension
     {
-        public static ZaposleniTableDTO ToZaposleniTableDTO(this Zaposleni zaposleni)
+        public static ZaposleniDTO ToZaposleniTableDTO(this Zaposleni zaposleni)
         {
-            return new ZaposleniTableDTO
+            return new ZaposleniDTO
             {
                 Pozicija = zaposleni.Pozicija,
                 Uloga = zaposleni.Uloga,
@@ -21,7 +21,7 @@ namespace AutoSalonMac.App.Extensions
                 Kupac = zaposleni.Kupac
             };
         }
-        public static Zaposleni ZaposleniTableToEntity(this ZaposleniTableDTO zaposleniDto)
+        public static Zaposleni ZaposleniTableToEntity(this ZaposleniDTO zaposleniDto)
         {
             return new Zaposleni
             { 

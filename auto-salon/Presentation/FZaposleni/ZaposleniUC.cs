@@ -6,7 +6,7 @@ namespace auto_salon.Presentation.FZaposleni
     public partial class ZaposleniUC : UserControl
     {
         private readonly IZaposleniService _zaposleniService;
-        private IList<ZaposleniTableDTO> _zaposleni = [];
+        private IList<ZaposleniDTO> _zaposleni = [];
 
         public ZaposleniUC()
         {

@@ -1,12 +1,13 @@
 ﻿using auto_salon.App.DTOs;
-using auto_salon.App.Services;
+using auto_salon.App.Services.Implementation;
+using auto_salon.App.Services.Interfaces;
 
 namespace auto_salon.Presentation.FSalon
 {
     public partial class SalonUC : UserControl
     {
         private readonly ISalonService _salonService;
-        private IList<SalonTableDTO> _saloni = [];
+        private IList<SalonDTO> _saloni = [];
 
         public SalonUC()
         {

@@ -33,17 +33,19 @@
             btnAdd = new Button();
             btnEdit = new Button();
             groupBox1 = new GroupBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dgvSaloni).BeginInit();
             groupBox1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // dgvSaloni
             // 
             dgvSaloni.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSaloni.Dock = DockStyle.Top;
-            dgvSaloni.Location = new Point(0, 0);
+            dgvSaloni.Dock = DockStyle.Fill;
+            dgvSaloni.Location = new Point(3, 3);
             dgvSaloni.Name = "dgvSaloni";
-            dgvSaloni.Size = new Size(750, 270);
+            dgvSaloni.Size = new Size(1018, 680);
             dgvSaloni.TabIndex = 0;
             // 
             // btnDelete
@@ -88,25 +90,41 @@
             groupBox1.Controls.Add(btnEdit);
             groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnAdd);
-            groupBox1.Location = new Point(3, 434);
+            groupBox1.Location = new Point(3, 730);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(319, 63);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Saloni";
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(dgvSaloni, 0, 0);
+            tableLayoutPanel1.Controls.Add(groupBox1, 0, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 86.18091F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 13.8190956F));
+            tableLayoutPanel1.Size = new Size(1024, 796);
+            tableLayoutPanel1.TabIndex = 5;
+            // 
             // SalonUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            Controls.Add(groupBox1);
-            Controls.Add(dgvSaloni);
+            Controls.Add(tableLayoutPanel1);
             MinimumSize = new Size(750, 500);
             Name = "SalonUC";
-            Size = new Size(750, 500);
+            Size = new Size(1024, 796);
             ((System.ComponentModel.ISupportInitialize)dgvSaloni).EndInit();
             groupBox1.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -117,5 +135,6 @@
         private Button btnAdd;
         private Button btnEdit;
         private GroupBox groupBox1;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

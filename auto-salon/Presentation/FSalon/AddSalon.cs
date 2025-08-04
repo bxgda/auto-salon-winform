@@ -1,5 +1,5 @@
 ﻿using auto_salon.App.DTOs;
-using auto_salon.App.Services;
+using auto_salon.App.Services.Interfaces;
 using auto_salon.Entities;
 
 namespace auto_salon.Presentation.FSalon
@@ -48,7 +48,7 @@ namespace auto_salon.Presentation.FSalon
 
             string radnoVreme = $"{radnoVremeOd}-{radnoVremeDo}";
 
-            SalonTableDTO newSalon = new SalonTableDTO
+            SalonDTO newSalon = new SalonDTO
             {
                 Naziv = naziv,
                 Adresa = adresa,
