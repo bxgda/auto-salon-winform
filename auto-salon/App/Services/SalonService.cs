@@ -9,6 +9,40 @@ namespace auto_salon.App.Services
     {
         private ISession? _session;
 
+        public ServiceResult<bool> Add(SalonTableDTO salonDto)
+        {
+            try
+            {
+                _session = DataLayer.GetSession();
+
+                if (_session == null)
+                {
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+                }
+
+                if (salonDto == null)
+                {
+                    return ServiceResult<bool>.Failure("Salon ne može biti null.");
+                }
+
+                // Prebaci u domenski entitet
+                Salon salonEntity = salonDto.SalonTableToEntity();
+
+                _session.SaveOrUpdate(salonEntity);
+                _session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri brisanju salona: {ex.Message}");
+            }
+            finally
+            {
+                _session?.Close();
+            }
+        }
+
         public ServiceResult<bool> Delete(int id)
         {
             try

@@ -7,5 +7,7 @@ namespace auto_salon.App.Services
         ServiceResult<IList<SalonTableDTO>> GetAll();
 
         ServiceResult<Boolean> Delete(int id);
+
+        ServiceResult<Boolean> Add(SalonTableDTO salon);
     }
 }

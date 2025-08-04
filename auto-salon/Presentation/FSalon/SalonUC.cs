@@ -80,6 +80,17 @@ namespace auto_salon.Presentation.FSalon
             }
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = new AddSalon(_salonService).ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
+            }
+        }
+
         #endregion
+
     }
 }

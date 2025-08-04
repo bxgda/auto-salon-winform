@@ -30,6 +30,7 @@
         {
             dgvSaloni = new DataGridView();
             btnDelete = new Button();
+            btnAdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvSaloni).BeginInit();
             SuspendLayout();
             // 
@@ -54,11 +55,24 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
+            // btnAdd
+            // 
+            btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdd.Location = new Point(97, 460);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(100, 37);
+            btnAdd.TabIndex = 2;
+            btnAdd.Text = "Dodaj salon";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
             // SalonUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            Controls.Add(btnAdd);
             Controls.Add(btnDelete);
             Controls.Add(dgvSaloni);
             MinimumSize = new Size(750, 500);
@@ -72,5 +86,6 @@
 
         private DataGridView dgvSaloni;
         private Button btnDelete;
+        private Button btnAdd;
     }
 }
