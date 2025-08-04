@@ -34,13 +34,19 @@
             btnEdit = new Button();
             groupBox1 = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
+            panel1 = new Panel();
+            groupBox2 = new GroupBox();
+            btnZaposleni = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvSaloni).BeginInit();
             groupBox1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            panel1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // dgvSaloni
             // 
+            dgvSaloni.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dgvSaloni.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSaloni.Dock = DockStyle.Fill;
             dgvSaloni.Location = new Point(3, 3);
@@ -90,9 +96,9 @@
             groupBox1.Controls.Add(btnEdit);
             groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnAdd);
-            groupBox1.Location = new Point(3, 730);
+            groupBox1.Location = new Point(3, 38);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(319, 63);
+            groupBox1.Size = new Size(316, 63);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Saloni";
@@ -103,7 +109,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(dgvSaloni, 0, 0);
-            tableLayoutPanel1.Controls.Add(groupBox1, 0, 1);
+            tableLayoutPanel1.Controls.Add(panel1, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -112,6 +118,39 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 13.8190956F));
             tableLayoutPanel1.Size = new Size(1024, 796);
             tableLayoutPanel1.TabIndex = 5;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(groupBox2);
+            panel1.Controls.Add(groupBox1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 689);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1018, 104);
+            panel1.TabIndex = 5;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBox2.Controls.Add(btnZaposleni);
+            groupBox2.Location = new Point(325, 38);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(104, 63);
+            groupBox2.TabIndex = 5;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Zaposleni";
+            // 
+            // btnZaposleni
+            // 
+            btnZaposleni.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnZaposleni.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnZaposleni.Location = new Point(6, 17);
+            btnZaposleni.Name = "btnZaposleni";
+            btnZaposleni.Size = new Size(88, 37);
+            btnZaposleni.TabIndex = 2;
+            btnZaposleni.Text = "Zaposleni";
+            btnZaposleni.UseVisualStyleBackColor = true;
+            btnZaposleni.Click += btnZaposleni_Click;
             // 
             // SalonUC
             // 
@@ -125,6 +164,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvSaloni).EndInit();
             groupBox1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -136,5 +177,8 @@
         private Button btnEdit;
         private GroupBox groupBox1;
         private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel1;
+        private GroupBox groupBox2;
+        private Button btnZaposleni;
     }
 }

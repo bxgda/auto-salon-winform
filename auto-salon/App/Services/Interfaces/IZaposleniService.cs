@@ -6,6 +6,8 @@ namespace auto_salon.App.Services.Implementation
     {
         ServiceResult<IList<ZaposleniDTO>> GetAll();
 
+        ServiceResult<IList<ZaposleniDTO>> GetBySalonId(int salonId);
+
         ServiceResult<Boolean> Delete(string jmbg);
 
         ServiceResult<Boolean> Add(ZaposleniDTO zaposleni);

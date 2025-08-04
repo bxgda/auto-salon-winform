@@ -1,6 +1,7 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Presentation.FZaposleni;
 
 namespace auto_salon.Presentation.FSalon
 {
@@ -32,7 +33,7 @@ namespace auto_salon.Presentation.FSalon
             }
         }
 
-        # region Event Handlers
+        # region Osnovni podaci
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -80,8 +81,6 @@ namespace auto_salon.Presentation.FSalon
             }
         }
 
-        #endregion
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dgvSaloni.SelectedRows.Count == 0)
@@ -104,5 +103,31 @@ namespace auto_salon.Presentation.FSalon
                 LoadData();
             }
         }
+
+        #endregion
+
+        #region Zaposleni
+
+        private void btnZaposleni_Click(object sender, EventArgs e)
+        {
+            if (dgvSaloni.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(
+                    "Molimo izaberite salon za koji želite da vidite zaposlene.",
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                
+                return;
+            }
+
+            int selectedRowIndex = dgvSaloni.SelectedRows[0].Index;
+
+            ZaposleniSalona zaposleniSalonForm = new ZaposleniSalona(_saloni[selectedRowIndex]);
+
+            zaposleniSalonForm.ShowDialog();
+        }
+
+        #endregion
     }
 }

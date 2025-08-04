@@ -21,7 +21,7 @@ namespace auto_salon.App.Services.Implementation
                 }
 
                 var zaposleni = _session.Query<Zaposleni>().ToList();
-                var result = zaposleni.Select(z => z.ToZaposleniTableDTO()).ToList();
+                var result = zaposleni.Select(z => z.ToZaposleniDTO()).ToList();
 
                 return ServiceResult<IList<ZaposleniDTO>>.Success(result);
             }
@@ -80,7 +80,7 @@ namespace auto_salon.App.Services.Implementation
                 }
 
                 // Prebaci u domenski entitet
-                Zaposleni zaposleniEntity = zaposleniDto.ZaposleniTableToEntity();
+                Zaposleni zaposleniEntity = zaposleniDto.ZaposleniToEntity();
 
                 _session.SaveOrUpdate(zaposleniEntity);
                 _session.Flush();
@@ -90,6 +90,35 @@ namespace auto_salon.App.Services.Implementation
             catch (Exception ex)
             {
                 return ServiceResult<bool>.Failure($"Greška pri kreiranju zaposlenog: {ex.Message}");
+            }
+            finally
+            {
+                _session?.Close();
+            }
+        }
+
+        public ServiceResult<IList<ZaposleniDTO>> GetBySalonId(int salonId)
+        {
+            try
+            {
+                _session = DataLayer.GetSession();
+
+                if (_session == null)
+                {
+                    return ServiceResult<IList<ZaposleniDTO>>.Failure("Greška prilikom uspostavljanja sesije.");
+                }
+
+                IEnumerable<Zaposleni> zaposleni = _session.Query<Zaposleni>()
+                    .Where(z => z.Salon.ID == salonId)
+                    .ToList();
+
+                IList<ZaposleniDTO> result = zaposleni.Select(z => z.ToZaposleniDTO()).ToList();
+
+                return ServiceResult<IList<ZaposleniDTO>>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<IList<ZaposleniDTO>>.Failure($"Greška pri pribavljanju zaposlenih: {ex.Message}");
             }
             finally
             {
