@@ -228,6 +228,8 @@
             Controls.Add(groupBox1);
             Controls.Add(btnSubmit);
             MaximizeBox = false;
+            MaximumSize = new Size(436, 341);
+            MinimizeBox = false;
             MinimumSize = new Size(436, 341);
             Name = "AddSalon";
             ShowInTaskbar = false;

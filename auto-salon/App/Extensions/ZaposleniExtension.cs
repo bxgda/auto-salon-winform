@@ -1,4 +1,5 @@
 using auto_salon.App.DTOs;
+using auto_salon.App.Extensions;
 using auto_salon.Entities;
 
 namespace AutoSalonMac.App.Extensions
@@ -12,29 +13,33 @@ namespace AutoSalonMac.App.Extensions
                 Pozicija = zaposleni.Pozicija,
                 Uloga = zaposleni.Uloga,
                 DatumPostavljenja = zaposleni.DatumPostavljenja,
-                Salon = zaposleni.Salon,
                 Ime = zaposleni.Ime,
                 Prezime = zaposleni.Prezime,
                 JMBG = zaposleni.JMBG,
                 DatumZaposlenja = zaposleni.DatumZaposlenja,
                 KontaktTelefon = zaposleni.KontaktTelefon,
-                Kupac = zaposleni.Kupac
+                Email = zaposleni.Email,
+                Adresa = zaposleni.Adresa,
+                Kupac = zaposleni.Kupac?.ToKupacDTO()
             };
         }
-        public static Zaposleni ZaposleniToEntity(this ZaposleniDTO zaposleniDto)
+
+        public static Zaposleni CreateNewEntity(this ZaposleniDTO zaposleniDto, Salon salon, Kupac? kupac = null)
         {
             return new Zaposleni
-            { 
-                Kupac = zaposleniDto.Kupac,
-                KontaktTelefon = zaposleniDto.KontaktTelefon,
-                JMBG = zaposleniDto.JMBG,
-                Ime = zaposleniDto.Ime,
-                Prezime = zaposleniDto.Prezime,
+            {
                 Pozicija = zaposleniDto.Pozicija,
-                DatumZaposlenja = zaposleniDto.DatumZaposlenja,
                 Uloga = zaposleniDto.Uloga,
                 DatumPostavljenja = zaposleniDto.DatumPostavljenja,
-                Salon = zaposleniDto.Salon
+                Ime = zaposleniDto.Ime,
+                Prezime = zaposleniDto.Prezime,
+                JMBG = zaposleniDto.JMBG,
+                DatumZaposlenja = zaposleniDto.DatumZaposlenja,
+                KontaktTelefon = zaposleniDto.KontaktTelefon,
+                Email = zaposleniDto.Email,
+                Adresa = zaposleniDto.Adresa,
+                Salon = salon,
+                Kupac = kupac
             };
         }
     }

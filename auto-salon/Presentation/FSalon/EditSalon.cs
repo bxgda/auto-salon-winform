@@ -14,6 +14,14 @@ namespace auto_salon.Presentation.FSalon
             _salonService = salonService;
             _salon = salon;
 
+            timePickerOd.Format = DateTimePickerFormat.Custom;
+            timePickerOd.CustomFormat = "HH:mm";
+            timePickerOd.ShowUpDown = true;
+
+            timePickerDo.Format = DateTimePickerFormat.Custom;
+            timePickerDo.CustomFormat = "HH:mm";
+            timePickerDo.ShowUpDown = true;
+
             this.Text = $"Ažuriranje salona: {_salon.Naziv}";
 
             LoadUIWithData();

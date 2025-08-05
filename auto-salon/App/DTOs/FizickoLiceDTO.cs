@@ -10,11 +10,12 @@ namespace auto_salon.App.DTOs
 
         public required string Prezime { get; set; }
 
-        public required string Email { get; set; }
+        public string? Email { get; set; }
 
-        [DisplayName("Kontakt telefon")]
         public required string KontaktTelefon { get; set; }
 
         public string? Adresa { get; set; }
+
+        public KupacDTO? Kupac { get; set; }
     }
 }

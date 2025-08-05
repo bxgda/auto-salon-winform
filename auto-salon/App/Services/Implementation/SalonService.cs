@@ -26,8 +26,8 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<bool>.Failure("Salon ne može biti null.");
                 }
 
-                // Prebaci u domenski entitet
-                Salon salonEntity = salonDto.SalonTableToEntity();
+                // Kreiraj domenski entitet
+                Salon salonEntity = salonDto.CreateNewEntity();
 
                 _session.SaveOrUpdate(salonEntity);
                 _session.Flush();
@@ -74,6 +74,8 @@ namespace auto_salon.App.Services.Implementation
 
         public ServiceResult<IList<SalonDTO>> GetAll()
         {
+            IList<SalonDTO> result = new List<SalonDTO>();
+
             try
             {
                 _session = DataLayer.GetSession();
@@ -83,8 +85,11 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<IList<SalonDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                var saloni = _session.Query<Salon>().ToList();
-                var result = saloni.Select(salon => salon.ToSalonTableDTO()).ToList();
+                IEnumerable<Salon> sviSaloni = _session.Query<Salon>();
+                foreach (var salon in sviSaloni)
+                {
+                    result.Add(salon.ToSalonDTO());
+                }
 
                 return ServiceResult<IList<SalonDTO>>.Success(result);
             }
@@ -114,6 +119,7 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<bool>.Failure("Salon ne može biti null.");
                 }
 
+                // Pribavi domenski entitet
                 Salon oldSalon = _session.Load<Salon>(salonDto.ID);
                 
                 if (oldSalon == null)
@@ -121,6 +127,7 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<bool>.Failure("Salon sa datim ID-jem ne postoji.");
                 }
 
+                // Azuriraj property-e
                 oldSalon.Naziv = salonDto.Naziv;
                 oldSalon.Adresa = salonDto.Adresa;
                 oldSalon.Drzava = salonDto.Drzava;

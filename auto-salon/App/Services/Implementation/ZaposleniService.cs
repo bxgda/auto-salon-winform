@@ -11,6 +11,8 @@ namespace auto_salon.App.Services.Implementation
 
         public ServiceResult<IList<ZaposleniDTO>> GetAll()
         {
+            IList<ZaposleniDTO> result = new List<ZaposleniDTO>();
+
             try
             {
                 _session = DataLayer.GetSession();
@@ -20,8 +22,11 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<IList<ZaposleniDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                var zaposleni = _session.Query<Zaposleni>().ToList();
-                var result = zaposleni.Select(z => z.ToZaposleniDTO()).ToList();
+                IEnumerable<Zaposleni> sviZaposleni = _session.Query<Zaposleni>();
+                foreach (var zaposleni in sviZaposleni)
+                {
+                    result.Add(zaposleni.ToZaposleniDTO());
+                }
 
                 return ServiceResult<IList<ZaposleniDTO>>.Success(result);
             }
@@ -63,7 +68,7 @@ namespace auto_salon.App.Services.Implementation
             }
         }
 
-        public ServiceResult<Boolean> Add(ZaposleniDTO zaposleniDto)
+        public ServiceResult<Boolean> Add(ZaposleniDTO zaposleniDto, int salondId)
         {
             try
             {
@@ -79,8 +84,15 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<bool>.Failure("Salon ne može biti null.");
                 }
 
-                // Prebaci u domenski entitet
-                Zaposleni zaposleniEntity = zaposleniDto.ZaposleniToEntity();
+                // Pribavi domenski entitet salona
+                Salon salon = _session.Load<Salon>(salondId);
+                if (salon == null)
+                {
+                    return ServiceResult<bool>.Failure("Salon u koji želite da dodate novog zaposlenog ne postoji.");
+                }
+
+                // Kreiraj domenski entitet i zakaci salon
+                Zaposleni zaposleniEntity = zaposleniDto.CreateNewEntity(salon);
 
                 _session.SaveOrUpdate(zaposleniEntity);
                 _session.Flush();
@@ -99,6 +111,8 @@ namespace auto_salon.App.Services.Implementation
 
         public ServiceResult<IList<ZaposleniDTO>> GetBySalonId(int salonId)
         {
+            IList<ZaposleniDTO> result = new List<ZaposleniDTO>();
+
             try
             {
                 _session = DataLayer.GetSession();
@@ -108,11 +122,11 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<IList<ZaposleniDTO>>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
 
-                IEnumerable<Zaposleni> zaposleni = _session.Query<Zaposleni>()
-                    .Where(z => z.Salon.ID == salonId)
-                    .ToList();
-
-                IList<ZaposleniDTO> result = zaposleni.Select(z => z.ToZaposleniDTO()).ToList();
+                IEnumerable<Zaposleni> zaposleni = _session.Query<Zaposleni>().Where(z => z.Salon.ID == salonId);
+                foreach (var z in zaposleni)
+                {
+                    result.Add(z.ToZaposleniDTO());
+                }
 
                 return ServiceResult<IList<ZaposleniDTO>>.Success(result);
             }

@@ -13,6 +13,7 @@ namespace auto_salon.App.Services.Implementation
 
         public ServiceResult<bool> Add(VoziloTableDTO vozilo)
         {
+            // TODO: Implementacija dodavanja vozila
             throw new NotImplementedException();
         }
 
@@ -46,6 +47,8 @@ namespace auto_salon.App.Services.Implementation
 
         public ServiceResult<IList<VoziloTableDTO>> GetAll()
         {
+            IList<VoziloTableDTO> result = new List<VoziloTableDTO>();
+
             try
             {
                 _session = DataLayer.GetSession();
@@ -55,8 +58,11 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<IList<VoziloTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                var vozila = _session.Query<Vozilo>().ToList();
-                var result = vozila.Select(v => v.ToVoziloTableDTO()).ToList();
+                IEnumerable<Vozilo> svaVozila = _session.Query<Vozilo>();
+                foreach (var vozilo in svaVozila)
+                {
+                    result.Add(vozilo.ToVoziloTableDTO());
+                }
 
                 return ServiceResult<IList<VoziloTableDTO>>.Success(result);
             }

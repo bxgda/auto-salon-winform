@@ -15,6 +15,19 @@ namespace auto_salon.Presentation.FSalon
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             _salonService = new SalonService();
+
+            // Define columns for ListView
+            lvSaloni.Columns.Add("ID");
+            lvSaloni.Columns.Add("Tip");
+            lvSaloni.Columns.Add("Naziv");
+            lvSaloni.Columns.Add("Adresa");
+            lvSaloni.Columns.Add("Kontakt Telefon");
+            lvSaloni.Columns.Add("Radno Vreme");
+            lvSaloni.Columns.Add("Država");
+            lvSaloni.Columns.Add("Grad");
+            lvSaloni.Columns.Add("Broj Zaposlenih");
+
+
             LoadData();
         }
 
@@ -25,7 +38,32 @@ namespace auto_salon.Presentation.FSalon
             if (result.IsSuccess)
             {
                 _saloni = result.Data!;
-                dgvSaloni.DataSource = result.Data;
+
+                lvSaloni.Items.Clear();
+                foreach (var salon in _saloni)
+                {
+                    ListViewItem item = new ListViewItem(new string[]
+                    {
+                        salon.ID.ToString(),
+                        salon.Tip.ToString(),
+                        salon.Naziv,
+                        salon.Adresa,
+                        salon.KontaktTelefon,
+                        salon.RadnoVreme,
+                        salon.Drzava,
+                        salon.Grad,
+                        salon.BrojZaposlenih.ToString()
+                    });
+                    lvSaloni.Items.Add(item);
+                }
+
+                // Automatically resize columns based on content
+                foreach (ColumnHeader column in lvSaloni.Columns)
+                {
+                    column.Width = -2; // Auto size to fit content
+                }
+
+                lvSaloni.Refresh();
             }
             else
             {
@@ -37,7 +75,7 @@ namespace auto_salon.Presentation.FSalon
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgvSaloni.SelectedRows.Count == 0)
+            if (lvSaloni.SelectedItems.Count == 0)
             {
                 MessageBox.Show(
                     "Molimo izaberite salon koji želite da obrišete.",
@@ -48,7 +86,7 @@ namespace auto_salon.Presentation.FSalon
                 return;
             }
 
-            int selectedRowIndex = dgvSaloni.SelectedRows[0].Index;
+            int selectedRowIndex = lvSaloni.SelectedItems[0].Index;
             int salonId = _saloni[selectedRowIndex].ID;
             var result = _salonService.Delete(salonId);
 
@@ -83,7 +121,7 @@ namespace auto_salon.Presentation.FSalon
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (dgvSaloni.SelectedRows.Count == 0)
+            if (lvSaloni.SelectedItems.Count == 0)
             {
                 MessageBox.Show(
                     "Molimo izaberite salon koji želite da izmenite.",
@@ -94,7 +132,7 @@ namespace auto_salon.Presentation.FSalon
                 return;
             }
 
-            int selectedRowIndex = dgvSaloni.SelectedRows[0].Index;
+            int selectedRowIndex = lvSaloni.SelectedItems[0].Index;
 
             DialogResult dialogResult = new EditSalon(_salonService, _saloni[selectedRowIndex]).ShowDialog();
 
@@ -110,7 +148,7 @@ namespace auto_salon.Presentation.FSalon
 
         private void btnZaposleni_Click(object sender, EventArgs e)
         {
-            if (dgvSaloni.SelectedRows.Count == 0)
+            if (lvSaloni.SelectedItems.Count == 0)
             {
                 MessageBox.Show(
                     "Molimo izaberite salon za koji želite da vidite zaposlene.",
@@ -121,7 +159,7 @@ namespace auto_salon.Presentation.FSalon
                 return;
             }
 
-            int selectedRowIndex = dgvSaloni.SelectedRows[0].Index;
+            int selectedRowIndex = lvSaloni.SelectedItems[0].Index;
 
             ZaposleniSalona zaposleniSalonForm = new ZaposleniSalona(_saloni[selectedRowIndex]);
 

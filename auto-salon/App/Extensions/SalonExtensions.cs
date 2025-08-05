@@ -5,7 +5,7 @@ namespace auto_salon.App.Extensions
 {
     public static class SalonExtensions
     {
-        public static SalonDTO ToSalonTableDTO(this Salon salon)
+        public static SalonDTO ToSalonDTO(this Salon salon)
         {
             return new SalonDTO
             {
@@ -27,7 +27,7 @@ namespace auto_salon.App.Extensions
             };
         }
 
-        public static Salon SalonTableToEntity(this SalonDTO salonDto)
+        public static Salon CreateNewEntity(this SalonDTO salonDto)
         {
             switch (salonDto.Tip)
             {

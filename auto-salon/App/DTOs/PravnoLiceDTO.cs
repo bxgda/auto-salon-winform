@@ -15,5 +15,7 @@ namespace auto_salon.App.DTOs
 
         [DisplayName("Sedište")]
         public required string Sediste { get; set; }
+
+        public required KupacDTO Kupac { get; set; }
     }
 }

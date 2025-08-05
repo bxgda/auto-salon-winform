@@ -13,10 +13,12 @@ namespace auto_salon.Presentation.FSalon
             InitializeComponent();
             _salonService = salonService;
 
+            timePickerOd.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0);
             timePickerOd.Format = DateTimePickerFormat.Custom;
             timePickerOd.CustomFormat = "HH:mm";
             timePickerOd.ShowUpDown = true;
 
+            timePickerDo.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 16, 0, 0);
             timePickerDo.Format = DateTimePickerFormat.Custom;
             timePickerDo.CustomFormat = "HH:mm";
             timePickerDo.ShowUpDown = true;

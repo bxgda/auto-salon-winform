@@ -14,6 +14,6 @@
 
         public virtual string? Adresa { get; set; }
         
-        public virtual required Kupac Kupac { get; set; }
+        public virtual Kupac? Kupac { get; set; }
     }
 }
