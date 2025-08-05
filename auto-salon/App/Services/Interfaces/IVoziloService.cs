@@ -6,6 +6,8 @@ namespace auto_salon.App.Services.Interfaces
     {
         ServiceResult<IList<VoziloTableDTO>> GetAll();
 
+        ServiceResult<IList<VoziloTableDTO>> GetBySalonId(int salonId);
+
         ServiceResult<Boolean> Delete(string brSasije);
 
         ServiceResult<Boolean> Add(VoziloTableDTO vozilo);

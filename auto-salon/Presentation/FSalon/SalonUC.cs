@@ -1,6 +1,7 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Presentation.FVozilo;
 using auto_salon.Presentation.FZaposleni;
 
 namespace auto_salon.Presentation.FSalon
@@ -155,7 +156,7 @@ namespace auto_salon.Presentation.FSalon
                     "Greška",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
-                
+
                 return;
             }
 
@@ -164,6 +165,30 @@ namespace auto_salon.Presentation.FSalon
             ZaposleniSalona zaposleniSalonForm = new ZaposleniSalona(_saloni[selectedRowIndex]);
 
             zaposleniSalonForm.ShowDialog();
+        }
+
+        #endregion
+
+        #region Vozila
+
+        private void btnVozila_Click(object sender, EventArgs e)
+        {
+            if (lvSaloni.SelectedItems.Count == 0)
+            {
+                MessageBox.Show(
+                    "Molimo izaberite salon za koji želite da vidite vozila.",
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            int selectedRowIndex = lvSaloni.SelectedItems[0].Index;
+
+            VozilaSalona vozilaSalonForm = new VozilaSalona(_saloni[selectedRowIndex]);
+
+            vozilaSalonForm.ShowDialog();
         }
 
         #endregion

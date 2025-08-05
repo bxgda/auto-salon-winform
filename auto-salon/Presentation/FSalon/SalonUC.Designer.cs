@@ -36,6 +36,7 @@
             panel1 = new Panel();
             btnZaposleni = new Button();
             lvSaloni = new ListView();
+            btnVozila = new Button();
             groupBox1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
@@ -108,6 +109,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnVozila);
             panel1.Controls.Add(btnZaposleni);
             panel1.Controls.Add(groupBox1);
             panel1.Dock = DockStyle.Fill;
@@ -140,6 +142,18 @@
             lvSaloni.UseCompatibleStateImageBehavior = false;
             lvSaloni.View = View.Details;
             // 
+            // btnVozila
+            // 
+            btnVozila.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnVozila.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVozila.Location = new Point(399, 32);
+            btnVozila.Name = "btnVozila";
+            btnVozila.Size = new Size(148, 37);
+            btnVozila.TabIndex = 5;
+            btnVozila.Text = "Pregled vozila";
+            btnVozila.UseVisualStyleBackColor = true;
+            btnVozila.Click += btnVozila_Click;
+            // 
             // SalonUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -164,5 +178,6 @@
         private Panel panel1;
         private Button btnZaposleni;
         private ListView lvSaloni;
+        private Button btnVozila;
     }
 }

@@ -75,5 +75,36 @@ namespace auto_salon.App.Services.Implementation
                 _session?.Close();
             }
         }
+
+        public ServiceResult<IList<VoziloTableDTO>> GetBySalonId(int salonId)
+        {
+            IList<VoziloTableDTO> result = new List<VoziloTableDTO>();
+
+            try
+            {
+                _session = DataLayer.GetSession();
+
+                if (_session == null)
+                {
+                    return ServiceResult<IList<VoziloTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
+                }
+
+                IEnumerable<Vozilo> vozila = _session.Query<Vozilo>().Where(v => v.Salon.ID == salonId);
+                foreach (var v in vozila)
+                {
+                    result.Add(v.ToVoziloTableDTO());
+                }
+
+                return ServiceResult<IList<VoziloTableDTO>>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<IList<VoziloTableDTO>>.Failure($"Greška pri pribavljanju vozila: {ex.Message}");
+            }
+            finally
+            {
+                _session?.Close();
+            }
+        }
     }
 }

@@ -5,16 +5,17 @@ using auto_salon.Entities;
 
 namespace auto_salon.Presentation.FVozilo
 {
-    public partial class VoziloUC : UserControl
+    public partial class VozilaSalona : Form
     {
-        private readonly IVoziloService _voziloService;
+        private readonly IVoziloService _vozilaService;
+        private readonly SalonDTO _salon;
         private IList<VoziloTableDTO> _vozila = [];
 
-        public VoziloUC()
+        public VozilaSalona(SalonDTO salon)
         {
             InitializeComponent();
-            this.Dock = DockStyle.Fill;
-            _voziloService = new VoziloService();
+            _vozilaService = new VoziloService();
+            _salon = salon;
 
             // Define columns for ListView
             lvVozila.Columns.Add("Stanje");
@@ -27,18 +28,19 @@ namespace auto_salon.Presentation.FVozilo
             lvVozila.Columns.Add("Kilometraža");
             lvVozila.Columns.Add("Godina proizvodnje");
 
+            this.Text = $"Vozila salona: {_salon.Naziv}";
+
             LoadData();
         }
 
         private void LoadData()
         {
-            var result = _voziloService.GetAll();
-
+            var result = _vozilaService.GetBySalonId(_salon.ID);
             if (result.IsSuccess)
             {
                 _vozila = result.Data!;
-
                 lvVozila.Items.Clear();
+
                 foreach (var vozilo in _vozila)
                 {
                     ListViewItem item = new ListViewItem(new string[]
@@ -56,10 +58,9 @@ namespace auto_salon.Presentation.FVozilo
                     lvVozila.Items.Add(item);
                 }
 
-                // Automatically resize columns based on content
                 foreach (ColumnHeader column in lvVozila.Columns)
                 {
-                    column.Width = -2; // Auto size to fit content
+                    column.Width = -2; // Auto-size columns based on content
                 }
 
                 lvVozila.Refresh();
@@ -84,8 +85,9 @@ namespace auto_salon.Presentation.FVozilo
             }
 
             int selectedRowIndex = lvVozila.SelectedItems[0].Index;
-            string zaposleniId = _vozila[selectedRowIndex].BrojSasije;
-            var result = _voziloService.Delete(zaposleniId);
+            string brojSasije = _vozila[selectedRowIndex].BrojSasije;
+
+            var result = _vozilaService.Delete(brojSasije);
 
             if (result.IsSuccess)
             {
@@ -98,11 +100,7 @@ namespace auto_salon.Presentation.FVozilo
             }
             else
             {
-                MessageBox.Show(
-                    result.ErrorMessage,
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
