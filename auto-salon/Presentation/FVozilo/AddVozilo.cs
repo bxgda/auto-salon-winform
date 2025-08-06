@@ -54,5 +54,34 @@ namespace auto_salon.Presentation.FVozilo
                 _ => throw new NotImplementedException(),
             };
         }
+
+        private void rbNovo_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDatumRegistracije.Enabled = false;
+            numBrojVlasnika.Enabled = false;
+        }
+
+        private void rbPolovno_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDatumRegistracije.Enabled = true;
+            numBrojVlasnika.Enabled = true;
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string brojSasije = tbxBrSasije.Text.Trim();
+            string marka = cbMarka.Text.Trim();
+            string model = tbxModel.Text.Trim();
+            int kilometraza = (int)numKilometraza.Value;
+            int snagaMotora = (int)numSnagaMotora.Value;
+            int godinaProizvodnje = (int)numGodinaProizvodnje.Value;
+            TipGoriva tipGoriva1 = cbxItemToEnum(cbTipGoriva.SelectedItem?.ToString() ?? string.Empty);
+            string boja = tbxBoja.Text.Trim();
+            int brojVrata = (int)numBrVrata.Value;
+            DateTime datumRegistracije;
+            if (rbPolovno.Checked) datumRegistracije = dtpDatumRegistracije.Value;
+            int brojVlasnika;
+            if (rbPolovno.Checked) brojVlasnika = (int)numBrojVlasnika.Value;
+        }
     }
 }

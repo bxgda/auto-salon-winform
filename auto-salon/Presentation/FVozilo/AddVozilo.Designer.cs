@@ -52,16 +52,20 @@
             label10 = new Label();
             btnSubmit = new Button();
             gbStanje = new GroupBox();
+            numBrVrata = new NumericUpDown();
+            label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)numKilometraza).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numSnagaMotora).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numGodinaProizvodnje).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numBrojVlasnika).BeginInit();
             gbStanje.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numBrVrata).BeginInit();
             SuspendLayout();
             // 
             // tbxBrSasije
             // 
             tbxBrSasije.Location = new Point(34, 93);
+            tbxBrSasije.MaxLength = 17;
             tbxBrSasije.Name = "tbxBrSasije";
             tbxBrSasije.Size = new Size(159, 23);
             tbxBrSasije.TabIndex = 2;
@@ -182,6 +186,7 @@
             rbNovo.TabStop = true;
             rbNovo.Text = "Novo";
             rbNovo.UseVisualStyleBackColor = true;
+            rbNovo.CheckedChanged += rbNovo_CheckedChanged;
             // 
             // rbPolovno
             // 
@@ -193,10 +198,11 @@
             rbPolovno.TabStop = true;
             rbPolovno.Text = "Polovno";
             rbPolovno.UseVisualStyleBackColor = true;
+            rbPolovno.CheckedChanged += rbPolovno_CheckedChanged;
             // 
             // dtpDatumRegistracije
             // 
-            dtpDatumRegistracije.Location = new Point(255, 210);
+            dtpDatumRegistracije.Location = new Point(255, 267);
             dtpDatumRegistracije.Name = "dtpDatumRegistracije";
             dtpDatumRegistracije.Size = new Size(159, 23);
             dtpDatumRegistracije.TabIndex = 19;
@@ -204,7 +210,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(255, 192);
+            label8.Location = new Point(255, 249);
             label8.Name = "label8";
             label8.Size = new Size(103, 15);
             label8.TabIndex = 20;
@@ -212,7 +218,7 @@
             // 
             // numBrojVlasnika
             // 
-            numBrojVlasnika.Location = new Point(255, 267);
+            numBrojVlasnika.Location = new Point(255, 324);
             numBrojVlasnika.Name = "numBrojVlasnika";
             numBrojVlasnika.Size = new Size(159, 23);
             numBrojVlasnika.TabIndex = 22;
@@ -220,7 +226,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(255, 249);
+            label9.Location = new Point(255, 306);
             label9.Name = "label9";
             label9.Size = new Size(73, 15);
             label9.TabIndex = 21;
@@ -253,6 +259,7 @@
             btnSubmit.TabIndex = 25;
             btnSubmit.Text = "Dodaj";
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // gbStanje
             // 
@@ -265,11 +272,29 @@
             gbStanje.TabStop = false;
             gbStanje.Text = "Stanje vozila";
             // 
+            // numBrVrata
+            // 
+            numBrVrata.Location = new Point(255, 211);
+            numBrVrata.Name = "numBrVrata";
+            numBrVrata.Size = new Size(159, 23);
+            numBrVrata.TabIndex = 28;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(255, 193);
+            label11.Name = "label11";
+            label11.Size = new Size(57, 15);
+            label11.TabIndex = 27;
+            label11.Text = "Broj vrata";
+            // 
             // AddVozilo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(444, 435);
+            Controls.Add(numBrVrata);
+            Controls.Add(label11);
             Controls.Add(gbStanje);
             Controls.Add(btnSubmit);
             Controls.Add(label10);
@@ -304,6 +329,7 @@
             ((System.ComponentModel.ISupportInitialize)numBrojVlasnika).EndInit();
             gbStanje.ResumeLayout(false);
             gbStanje.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numBrVrata).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -334,5 +360,7 @@
         private Label label10;
         private Button btnSubmit;
         private GroupBox gbStanje;
+        private NumericUpDown numBrVrata;
+        private Label label11;
     }
 }
