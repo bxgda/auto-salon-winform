@@ -8,11 +8,11 @@ namespace auto_salon.Presentation.FZaposleni
         private readonly IZaposleniService _zaposleniService;
         private IList<ZaposleniDTO> _zaposleni = [];
 
-        public ZaposleniUC()
+        public ZaposleniUC(IZaposleniService zaposleniService)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            _zaposleniService = new ZaposleniService();
+            _zaposleniService = zaposleniService;
 
             // Define columns for ListView
             lvZaposleni.Columns.Add("JMBG");

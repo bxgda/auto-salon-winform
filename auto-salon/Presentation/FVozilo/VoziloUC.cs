@@ -1,7 +1,5 @@
 ﻿using auto_salon.App.DTOs;
-using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
-using auto_salon.Entities;
 
 namespace auto_salon.Presentation.FVozilo
 {
@@ -10,11 +8,11 @@ namespace auto_salon.Presentation.FVozilo
         private readonly IVoziloService _voziloService;
         private IList<VoziloTableDTO> _vozila = [];
 
-        public VoziloUC()
+        public VoziloUC(IVoziloService voziloService)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            _voziloService = new VoziloService();
+            _voziloService = voziloService;
 
             // Define columns for ListView
             lvVozila.Columns.Add("Stanje");

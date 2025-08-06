@@ -1,21 +1,24 @@
 ﻿using auto_salon.App.DTOs;
-using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Presentation.FVozilo;
 using auto_salon.Presentation.FZaposleni;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FSalon
 {
     public partial class SalonUC : UserControl
     {
         private readonly ISalonService _salonService;
+        private readonly IServiceProvider _serviceProvider;
         private IList<SalonDTO> _saloni = [];
 
-        public SalonUC()
+        public SalonUC(IServiceProvider serviceProvider, ISalonService salonService)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            _salonService = new SalonService();
+
+            _serviceProvider = serviceProvider;
+            _salonService = salonService;
 
             // Define columns for ListView
             lvSaloni.Columns.Add("ID");
@@ -27,7 +30,6 @@ namespace auto_salon.Presentation.FSalon
             lvSaloni.Columns.Add("Država");
             lvSaloni.Columns.Add("Grad");
             lvSaloni.Columns.Add("Broj Zaposlenih");
-
 
             LoadData();
         }
@@ -72,18 +74,14 @@ namespace auto_salon.Presentation.FSalon
             }
         }
 
-        # region Osnovni podaci
+        #region Osnovni podaci
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (lvSaloni.SelectedItems.Count == 0)
             {
-                MessageBox.Show(
-                    "Molimo izaberite salon koji želite da obrišete.",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                MessageBox.Show("Molimo izaberite salon koji želite da obrišete.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -94,25 +92,20 @@ namespace auto_salon.Presentation.FSalon
             if (result.IsSuccess)
             {
                 LoadData();
-                MessageBox.Show(
-                    "Salon je uspešno obrisan.",
-                    "Uspeh",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("Salon je uspešno obrisan.",
+                    "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(
-                    result.ErrorMessage,
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show(result.ErrorMessage,
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = new AddSalon(_salonService).ShowDialog();
+            var form = _serviceProvider.GetRequiredService<AddSalon>();
+            DialogResult dialogResult = form.ShowDialog();
 
             if (dialogResult == DialogResult.OK)
             {
@@ -124,18 +117,16 @@ namespace auto_salon.Presentation.FSalon
         {
             if (lvSaloni.SelectedItems.Count == 0)
             {
-                MessageBox.Show(
-                    "Molimo izaberite salon koji želite da izmenite.",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                MessageBox.Show("Molimo izaberite salon koji želite da izmenite.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             int selectedRowIndex = lvSaloni.SelectedItems[0].Index;
 
-            DialogResult dialogResult = new EditSalon(_salonService, _saloni[selectedRowIndex]).ShowDialog();
+            // Prosleđivanje DTO-a se i dalje može raditi ručno
+            var form = ActivatorUtilities.CreateInstance<EditSalon>(_serviceProvider, _saloni[selectedRowIndex]);
+            DialogResult dialogResult = form.ShowDialog();
 
             if (dialogResult == DialogResult.OK)
             {
@@ -151,20 +142,15 @@ namespace auto_salon.Presentation.FSalon
         {
             if (lvSaloni.SelectedItems.Count == 0)
             {
-                MessageBox.Show(
-                    "Molimo izaberite salon za koji želite da vidite zaposlene.",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                MessageBox.Show("Molimo izaberite salon za koji želite da vidite zaposlene.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             int selectedRowIndex = lvSaloni.SelectedItems[0].Index;
 
-            ZaposleniSalona zaposleniSalonForm = new ZaposleniSalona(_saloni[selectedRowIndex]);
-
-            zaposleniSalonForm.ShowDialog();
+            var form = ActivatorUtilities.CreateInstance<ZaposleniSalona>(_serviceProvider, _saloni[selectedRowIndex]);
+            form.ShowDialog();
         }
 
         #endregion
@@ -175,20 +161,15 @@ namespace auto_salon.Presentation.FSalon
         {
             if (lvSaloni.SelectedItems.Count == 0)
             {
-                MessageBox.Show(
-                    "Molimo izaberite salon za koji želite da vidite vozila.",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                MessageBox.Show("Molimo izaberite salon za koji želite da vidite vozila.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             int selectedRowIndex = lvSaloni.SelectedItems[0].Index;
 
-            VozilaSalona vozilaSalonForm = new VozilaSalona(_saloni[selectedRowIndex], _salonService);
-
-            vozilaSalonForm.ShowDialog();
+            var form = ActivatorUtilities.CreateInstance<VozilaSalona>(_serviceProvider, _saloni[selectedRowIndex]);
+            form.ShowDialog();
         }
 
         #endregion

@@ -1,28 +1,32 @@
 ﻿using auto_salon.App.DTOs;
+using auto_salon.Data;
 using auto_salon.Entities;
 using AutoSalonMac.App.Extensions;
-using NHibernate;
 
 namespace auto_salon.App.Services.Implementation
 {
-    internal class ZaposleniService : IZaposleniService
+    public class ZaposleniService : IZaposleniService
     {
-        private ISession? _session;
+        private readonly IDataLayer _dataLayer;
+
+        public ZaposleniService(IDataLayer dataLayer)
+        {
+            _dataLayer = dataLayer;
+        }
 
         public ServiceResult<IList<ZaposleniDTO>> GetAll()
         {
+            var session = _dataLayer.OpenSession();
             IList<ZaposleniDTO> result = new List<ZaposleniDTO>();
 
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<IList<ZaposleniDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                IEnumerable<Zaposleni> sviZaposleni = _session.Query<Zaposleni>();
+                IEnumerable<Zaposleni> sviZaposleni = session.Query<Zaposleni>();
                 foreach (var zaposleni in sviZaposleni)
                 {
                     result.Add(zaposleni.ToZaposleniDTO());
@@ -36,25 +40,25 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
 
         public ServiceResult<Boolean> Delete(string jmbg)
         {
+            var session = _dataLayer.OpenSession();
+
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
 
-                Zaposleni zaposleni = _session.Load<Zaposleni>(jmbg);
+                Zaposleni zaposleni = session.Load<Zaposleni>(jmbg);
 
-                _session.Delete(zaposleni);
-                _session.Flush();
+                session.Delete(zaposleni);
+                session.Flush();
 
                 return ServiceResult<bool>.Success(true);
             }
@@ -64,17 +68,16 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
 
         public ServiceResult<Boolean> Add(ZaposleniDTO zaposleniDto, int salondId)
         {
+            var session = _dataLayer.OpenSession();
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
@@ -85,7 +88,7 @@ namespace auto_salon.App.Services.Implementation
                 }
 
                 // Pribavi domenski entitet salona
-                Salon salon = _session.Load<Salon>(salondId);
+                Salon salon = session.Load<Salon>(salondId);
                 if (salon == null)
                 {
                     return ServiceResult<bool>.Failure("Salon u koji želite da dodate novog zaposlenog ne postoji.");
@@ -94,8 +97,8 @@ namespace auto_salon.App.Services.Implementation
                 // Kreiraj domenski entitet i zakaci salon
                 Zaposleni zaposleniEntity = zaposleniDto.CreateNewEntity(salon);
 
-                _session.SaveOrUpdate(zaposleniEntity);
-                _session.Flush();
+                session.SaveOrUpdate(zaposleniEntity);
+                session.Flush();
 
                 return ServiceResult<bool>.Success(true);
             }
@@ -105,24 +108,23 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
 
         public ServiceResult<IList<ZaposleniDTO>> GetBySalonId(int salonId)
         {
+            var session = _dataLayer.OpenSession();
             IList<ZaposleniDTO> result = new List<ZaposleniDTO>();
 
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<IList<ZaposleniDTO>>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
 
-                IEnumerable<Zaposleni> zaposleni = _session.Query<Zaposleni>().Where(z => z.Salon.ID == salonId);
+                IEnumerable<Zaposleni> zaposleni = session.Query<Zaposleni>().Where(z => z.Salon.ID == salonId);
                 foreach (var z in zaposleni)
                 {
                     result.Add(z.ToZaposleniDTO());
@@ -136,7 +138,7 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
     }

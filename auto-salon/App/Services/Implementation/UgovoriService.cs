@@ -1,29 +1,33 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Extensions;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Data;
 using auto_salon.Entities;
-using NHibernate;
 
 namespace auto_salon.App.Services.Implementation
 {
     public class UgovoriService : IUgovoriService
     {
-        private ISession? _session;
+        private readonly IDataLayer _dataLayer;
+
+        public UgovoriService(IDataLayer dataLayer)
+        {
+            _dataLayer = dataLayer;
+        }
 
         public ServiceResult<IList<UgovorTableDTO>> GetAll()
         {
+            var session = _dataLayer.OpenSession();
             IList<UgovorTableDTO> result = new List<UgovorTableDTO>();
 
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<IList<UgovorTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                IEnumerable<KupoprodajniUgovor> sviUgovori = _session.Query<KupoprodajniUgovor>();
+                IEnumerable<KupoprodajniUgovor> sviUgovori = session.Query<KupoprodajniUgovor>();
                 foreach (var ugovor in sviUgovori)
                 {
                     result.Add(ugovor.ToUgovorTableDTO());
@@ -37,25 +41,25 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
 
         public ServiceResult<bool> Delete(int id)
         {
+            var session = _dataLayer.OpenSession();
+
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
 
-                KupoprodajniUgovor ugovor = _session.Load<KupoprodajniUgovor>(id);
+                KupoprodajniUgovor ugovor = session.Load<KupoprodajniUgovor>(id);
 
-                _session.Delete(ugovor);
-                _session.Flush();
+                session.Delete(ugovor);
+                session.Flush();
 
                 return ServiceResult<bool>.Success(true);
             }
@@ -65,7 +69,7 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
     }

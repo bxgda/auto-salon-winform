@@ -1,19 +1,58 @@
-using System.Windows.Forms;
+using auto_salon.App.Services.Implementation;
+using auto_salon.App.Services.Interfaces;
+using auto_salon.Data;
+using auto_salon.Presentation.FSalon;
+using auto_salon.Presentation.FUgovori;
+using auto_salon.Presentation.FVozilo;
+using auto_salon.Presentation.FZaposleni;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+        public static IServiceProvider? ServiceProvider { get; private set; }
+
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            // WinForm inicijalizacija
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+
+            var services = new ServiceCollection();
+
+            // Data Layer
+            services.AddSingleton<IDataLayer, DataLayer>();
+
+            // Servisi
+            services.AddSingleton<ISalonService, SalonService>();
+            services.AddSingleton<IZaposleniService, ZaposleniService>();
+            services.AddSingleton<IProizvodjacService, ProizvodjacService>();
+            services.AddSingleton<IUgovoriService, UgovoriService>();
+            services.AddSingleton<IVoziloService, VoziloService>();
+
+            // Forme i UserControl-i
+            services.AddTransient<MainForm>();
+
+            services.AddTransient<SalonUC>();
+            services.AddTransient<AddSalon>();
+            services.AddTransient<EditSalon>();
+
+            services.AddTransient<VoziloUC>();
+            services.AddTransient<AddVozilo>();
+            services.AddTransient<VozilaSalona>();
+
+            services.AddTransient<ZaposleniUC>();
+            services.AddTransient<AddZaposleni>();
+            services.AddTransient<ZaposleniSalona>();
+
+            services.AddTransient<UgovoriUC>();
+
+            // 3. Kreiranje ServiceProvider-a
+            ServiceProvider = services.BuildServiceProvider();
+
+            // 4. Pokretanje glavne forme preko DI-ja
+            Application.Run(ServiceProvider.GetRequiredService<MainForm>());
         }
     }
 }

@@ -1,15 +1,20 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Data;
 using auto_salon.Entities;
 using AutoSalonMac.App.Extensions;
-using NHibernate;
 
 namespace auto_salon.App.Services.Implementation
 {
 
     public class VoziloService : IVoziloService
     {
-        private ISession? _session;
+        private readonly IDataLayer _dataLayer;
+
+        public VoziloService(IDataLayer dataLayer)
+        {
+            _dataLayer = dataLayer;
+        }
 
         public ServiceResult<bool> Add(VoziloTableDTO vozilo)
         {
@@ -19,19 +24,19 @@ namespace auto_salon.App.Services.Implementation
 
         public ServiceResult<bool> Delete(string brSasije)
         {
+            var session = _dataLayer.OpenSession();
+
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
 
-                Vozilo vozilo = _session.Load<Vozilo>(brSasije);
+                Vozilo vozilo = session.Load<Vozilo>(brSasije);
 
-                _session.Delete(vozilo);
-                _session.Flush();
+                session.Delete(vozilo);
+                session.Flush();
 
                 return ServiceResult<bool>.Success(true);
             }
@@ -41,24 +46,23 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
 
         public ServiceResult<IList<VoziloTableDTO>> GetAll()
         {
+            var session = _dataLayer.OpenSession();
             IList<VoziloTableDTO> result = new List<VoziloTableDTO>();
 
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<IList<VoziloTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                IEnumerable<Vozilo> svaVozila = _session.Query<Vozilo>();
+                IEnumerable<Vozilo> svaVozila = session.Query<Vozilo>();
                 foreach (var vozilo in svaVozila)
                 {
                     result.Add(vozilo.ToVoziloTableDTO());
@@ -72,24 +76,23 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
 
         public ServiceResult<IList<VoziloTableDTO>> GetBySalonId(int salonId)
         {
+            var session = _dataLayer.OpenSession();
             IList<VoziloTableDTO> result = new List<VoziloTableDTO>();
 
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<IList<VoziloTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                IEnumerable<Vozilo> vozila = _session.Query<Vozilo>().Where(v => v.Salon.ID == salonId);
+                IEnumerable<Vozilo> vozila = session.Query<Vozilo>().Where(v => v.Salon.ID == salonId);
                 foreach (var v in vozila)
                 {
                     result.Add(v.ToVoziloTableDTO());
@@ -103,7 +106,7 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
     }

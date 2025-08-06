@@ -1,23 +1,27 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Extensions;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Data;
 using auto_salon.Entities;
-using auto_salon.Presentation.FSalon;
-using NHibernate;
 
 namespace auto_salon.App.Services.Implementation
 {
     public class SalonService : ISalonService
     {
-        private ISession? _session;
+        private readonly IDataLayer _dataLayer;
+
+        public SalonService(IDataLayer dataLayer)
+        {
+            _dataLayer = dataLayer;
+        }
 
         public ServiceResult<bool> Add(SalonDTO salonDto)
         {
+            var session = _dataLayer.OpenSession();
+
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
@@ -30,8 +34,8 @@ namespace auto_salon.App.Services.Implementation
                 // Kreiraj domenski entitet
                 Salon salonEntity = salonDto.CreateNewEntity();
 
-                _session.SaveOrUpdate(salonEntity);
-                _session.Flush();
+                session.SaveOrUpdate(salonEntity);
+                session.Flush();
 
                 return ServiceResult<bool>.Success(true);
             }
@@ -41,25 +45,25 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
 
         public ServiceResult<bool> Delete(int id)
         {
+            var session = _dataLayer.OpenSession();
+
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
 
-                Salon salon = _session.Load<Salon>(id);
+                Salon salon = session.Load<Salon>(id);
 
-                _session.Delete(salon);
-                _session.Flush();
+                session.Delete(salon);
+                session.Flush();
 
                 return ServiceResult<bool>.Success(true);
             }
@@ -69,24 +73,23 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
 
         public ServiceResult<IList<SalonDTO>> GetAll()
         {
+            var session = _dataLayer.OpenSession();
             IList<SalonDTO> result = new List<SalonDTO>();
 
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<IList<SalonDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                IEnumerable<Salon> sviSaloni = _session.Query<Salon>();
+                IEnumerable<Salon> sviSaloni = session.Query<Salon>();
                 foreach (var salon in sviSaloni)
                 {
                     result.Add(salon.ToSalonDTO());
@@ -100,17 +103,17 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
 
         public ServiceResult<bool> Update(SalonDTO salonDto)
         {
+            var session = _dataLayer.OpenSession();
+
             try
             {
-                _session = DataLayer.GetSession();
-
-                if (_session == null)
+                if (session == null)
                 {
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
@@ -121,7 +124,7 @@ namespace auto_salon.App.Services.Implementation
                 }
 
                 // Pribavi domenski entitet
-                Salon oldSalon = _session.Load<Salon>(salonDto.ID);
+                Salon oldSalon = session.Load<Salon>(salonDto.ID);
                 
                 if (oldSalon == null)
                 {
@@ -136,8 +139,8 @@ namespace auto_salon.App.Services.Implementation
                 oldSalon.Grad= salonDto.Grad;
                 oldSalon.RadnoVreme = salonDto.RadnoVreme;
 
-                _session.Update(oldSalon);
-                _session.Flush();
+                session.Update(oldSalon);
+                session.Flush();
 
                 return ServiceResult<bool>.Success(true);
             }
@@ -147,7 +150,7 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
     }

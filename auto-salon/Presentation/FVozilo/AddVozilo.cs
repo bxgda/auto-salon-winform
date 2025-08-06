@@ -9,14 +9,16 @@ namespace auto_salon.Presentation.FVozilo
     {
         private readonly ISalonService _salonService;
         private readonly IVoziloService _voziloService;
+        private readonly IProizvodjacService _proizvodjacService;
         private readonly SalonDTO _salon;
 
-        public AddVozilo(IVoziloService voziloService, ISalonService salonService, SalonDTO salon)
+        public AddVozilo(SalonDTO salon, IVoziloService voziloService, ISalonService salonService, IProizvodjacService proizvodjacService)
         {
             InitializeComponent();
+            _salon = salon;
             _voziloService = voziloService;
             _salonService = salonService;
-            _salon = salon;
+            _proizvodjacService = proizvodjacService;
 
             PostaviRadioButtonTip();
         }
@@ -33,11 +35,6 @@ namespace auto_salon.Presentation.FVozilo
                 else
                     rbPolovno.Checked = true;
             }
-        }
-
-        private void AddVozilo_Load(object sender, EventArgs e)
-        {
-
         }
 
         private TipGoriva cbxItemToEnum(string tipGoriva)

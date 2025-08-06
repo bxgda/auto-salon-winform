@@ -30,12 +30,12 @@
         {
             tblMainLayout = new TableLayoutPanel();
             pnlDashboard = new Panel();
+            btnUgovori = new Button();
             btnVozila = new Button();
             btnZaposleni = new Button();
             btnSaloni = new Button();
             lblTitle = new Label();
             pnlContent = new Panel();
-            button1 = new Button();
             tblMainLayout.SuspendLayout();
             pnlDashboard.SuspendLayout();
             SuspendLayout();
@@ -59,7 +59,7 @@
             // 
             // pnlDashboard
             // 
-            pnlDashboard.Controls.Add(button1);
+            pnlDashboard.Controls.Add(btnUgovori);
             pnlDashboard.Controls.Add(btnVozila);
             pnlDashboard.Controls.Add(btnZaposleni);
             pnlDashboard.Controls.Add(btnSaloni);
@@ -69,6 +69,18 @@
             pnlDashboard.Name = "pnlDashboard";
             pnlDashboard.Size = new Size(250, 553);
             pnlDashboard.TabIndex = 0;
+            // 
+            // btnUgovori
+            // 
+            btnUgovori.AutoSize = true;
+            btnUgovori.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUgovori.Location = new Point(3, 194);
+            btnUgovori.Name = "btnUgovori";
+            btnUgovori.Size = new Size(244, 39);
+            btnUgovori.TabIndex = 5;
+            btnUgovori.Text = "Ugovori";
+            btnUgovori.UseVisualStyleBackColor = true;
+            btnUgovori.Click += btnUgovori_Click;
             // 
             // btnVozila
             // 
@@ -124,18 +136,6 @@
             pnlContent.Size = new Size(719, 553);
             pnlContent.TabIndex = 1;
             // 
-            // button1
-            // 
-            button1.AutoSize = true;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(3, 194);
-            button1.Name = "button1";
-            button1.Size = new Size(244, 39);
-            button1.TabIndex = 5;
-            button1.Text = "Ugovori";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -161,6 +161,6 @@
         private Panel pnlContent;
         private Button btnZaposleni;
         private Button btnVozila;
-        private Button button1;
+        private Button btnUgovori;
     }
 }

@@ -1,19 +1,25 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Implementation;
+using auto_salon.App.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FZaposleni
 {
     public partial class ZaposleniSalona : Form
     {
         private readonly IZaposleniService _zaposleniService;
+        private readonly IServiceProvider _serviceProvider;
         private readonly SalonDTO _salon;
-        private IList<ZaposleniDTO> _zapos = [];
+        private IList<ZaposleniDTO> _zaposleni = [];
 
-        public ZaposleniSalona(SalonDTO salon)
+        // Konstruktor za DI
+        public ZaposleniSalona(SalonDTO salon, IZaposleniService zaposleniService, IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            _zaposleniService = new ZaposleniService();
+
             _salon = salon;
+            _zaposleniService = zaposleniService;
+            _serviceProvider = serviceProvider;
 
             // Define columns for ListView
             lvZaposleni.Columns.Add("JMBG");
@@ -37,10 +43,10 @@ namespace auto_salon.Presentation.FZaposleni
             var result = _zaposleniService.GetBySalonId(_salon.ID);
             if (result.IsSuccess)
             {
-                _zapos = result.Data!;
+                _zaposleni = result.Data!;
                 lvZaposleni.Items.Clear();
 
-                foreach (var zaposleni in _zapos)
+                foreach (var zaposleni in _zaposleni)
                 {
                     ListViewItem item = new ListViewItem(new string[]
                     {
@@ -58,12 +64,11 @@ namespace auto_salon.Presentation.FZaposleni
                     lvZaposleni.Items.Add(item);
                 }
 
-                // Automatically resize columns based on content
+                // Auto resize
                 foreach (ColumnHeader column in lvZaposleni.Columns)
                 {
-                    column.Width = -2; // Auto-size to fit content
+                    column.Width = -2;
                 }
-
                 lvZaposleni.Refresh();
             }
             else
@@ -81,23 +86,19 @@ namespace auto_salon.Presentation.FZaposleni
                     "Greška",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
-
                 return;
             }
 
             int selectedRowIndex = lvZaposleni.SelectedItems[0].Index;
-            string jmbg = _zapos[selectedRowIndex].JMBG;
+            string jmbg = _zaposleni[selectedRowIndex].JMBG;
 
             var result = _zaposleniService.Delete(jmbg);
 
             if (result.IsSuccess)
             {
                 LoadData();
-                MessageBox.Show(
-                    "Zaposleni je uspešno obrisan.",
-                    "Uspeh",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("Zaposleni je uspešno obrisan.",
+                    "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -107,7 +108,8 @@ namespace auto_salon.Presentation.FZaposleni
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = new AddZaposleni(_zaposleniService, _salon).ShowDialog();
+            var form = ActivatorUtilities.CreateInstance<AddZaposleni>(_serviceProvider, _salon);
+            DialogResult dialogResult = form.ShowDialog();
 
             if (dialogResult == DialogResult.OK)
             {

@@ -1,23 +1,29 @@
 ﻿using auto_salon.App.Services.Interfaces;
+using auto_salon.Data;
 using auto_salon.Entities;
-using NHibernate;
 
 namespace auto_salon.App.Services.Implementation
 {
-    internal class ProizvodjacService : IProizvodjacService
+    public class ProizvodjacService : IProizvodjacService
     {
-        private ISession? _session;
+        private readonly IDataLayer _dataLayer;
+
+        public ProizvodjacService(IDataLayer dataLayer)
+        {
+            _dataLayer = dataLayer;
+        }
 
         public ServiceResult<IList<Proizvodjac>> GetProizvodjaciZaSalonNova(int salonId)
         {
+            var session = _dataLayer.OpenSession();
+            
             try
             {
-                _session = DataLayer.GetSession();
-                if (_session == null)
+                if (session == null)
                     return ServiceResult<IList<Proizvodjac>>.Failure("Nema konekcije sa bazom.");
 
                 // Povuci samo proizvođače vezane za salon novih vozila
-                var salonNova = _session.Query<SalonNova>().FirstOrDefault(s => s.ID == salonId);
+                var salonNova = session.Query<SalonNova>().FirstOrDefault(s => s.ID == salonId);
                 if (salonNova == null)
                     return ServiceResult<IList<Proizvodjac>>.Failure("Salon nije pronađen ili nije tip NOVA.");
 
@@ -30,19 +36,20 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
 
         public ServiceResult<IList<Proizvodjac>> GetSviProizvodjaci()
         {
+            var session = _dataLayer.OpenSession();
+
             try
             {
-                _session = DataLayer.GetSession();
-                if (_session == null)
+                if (session == null)
                     return ServiceResult<IList<Proizvodjac>>.Failure("Nema konekcije sa bazom.");
 
-                var proizvodjaci = _session.Query<Proizvodjac>().ToList();
+                var proizvodjaci = session.Query<Proizvodjac>().ToList();
                 return ServiceResult<IList<Proizvodjac>>.Success(proizvodjaci);
             }
             catch (Exception ex)
@@ -51,7 +58,7 @@ namespace auto_salon.App.Services.Implementation
             }
             finally
             {
-                _session?.Close();
+                session?.Close();
             }
         }
     }

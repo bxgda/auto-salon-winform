@@ -1,5 +1,4 @@
 ﻿using auto_salon.App.DTOs;
-using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
 
 namespace auto_salon.Presentation.FUgovori
@@ -9,11 +8,11 @@ namespace auto_salon.Presentation.FUgovori
         private readonly IUgovoriService _ugovoriService;
         private IList<UgovorTableDTO> _ugovori = [];
 
-        public UgovoriUC()
+        public UgovoriUC(IUgovoriService ugovoriService)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            _ugovoriService = new UgovoriService();
+            _ugovoriService = ugovoriService;
 
             // Define columns for ListView
             lvUgovori.Columns.Add("ID");

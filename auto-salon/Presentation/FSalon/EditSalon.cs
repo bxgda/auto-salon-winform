@@ -8,7 +8,7 @@ namespace auto_salon.Presentation.FSalon
         private readonly ISalonService _salonService;
         private SalonDTO _salon;
 
-        public EditSalon(ISalonService salonService, SalonDTO salon)
+        public EditSalon(SalonDTO salon, ISalonService salonService)
         {
             InitializeComponent();
             _salonService = salonService;

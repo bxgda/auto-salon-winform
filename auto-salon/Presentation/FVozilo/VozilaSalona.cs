@@ -1,21 +1,22 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FVozilo
 {
     public partial class VozilaSalona : Form
     {
+        private readonly IServiceProvider _serviceProvider;
         private readonly IVoziloService _vozilaService;
-        private readonly ISalonService _salonService;
         private readonly SalonDTO _salon;
         private IList<VoziloTableDTO> _vozila = [];
 
-        public VozilaSalona(SalonDTO salon, ISalonService salonService)
+        public VozilaSalona(SalonDTO salon, IVoziloService voziloService, IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            _vozilaService = new VoziloService();
-            _salonService = salonService;
+            _serviceProvider = serviceProvider;
+            _vozilaService = voziloService;
             _salon = salon;
 
             // Define columns for ListView
@@ -107,7 +108,9 @@ namespace auto_salon.Presentation.FVozilo
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = new AddVozilo(_vozilaService,_salonService, _salon).ShowDialog();
+            // Kreiranje AddVozilo forme preko DI + prosleđivanje salona
+            var form = ActivatorUtilities.CreateInstance<AddVozilo>(_serviceProvider, _salon);
+            DialogResult dialogResult = form.ShowDialog();
 
             if (dialogResult == DialogResult.OK)
             {
