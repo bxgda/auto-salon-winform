@@ -186,7 +186,7 @@ namespace auto_salon.Presentation.FSalon
 
             int selectedRowIndex = lvSaloni.SelectedItems[0].Index;
 
-            VozilaSalona vozilaSalonForm = new VozilaSalona(_saloni[selectedRowIndex]);
+            VozilaSalona vozilaSalonForm = new VozilaSalona(_saloni[selectedRowIndex], _salonService);
 
             vozilaSalonForm.ShowDialog();
         }

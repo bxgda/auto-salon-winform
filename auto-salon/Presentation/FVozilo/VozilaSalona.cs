@@ -1,20 +1,21 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
-using auto_salon.Entities;
 
 namespace auto_salon.Presentation.FVozilo
 {
     public partial class VozilaSalona : Form
     {
         private readonly IVoziloService _vozilaService;
+        private readonly ISalonService _salonService;
         private readonly SalonDTO _salon;
         private IList<VoziloTableDTO> _vozila = [];
 
-        public VozilaSalona(SalonDTO salon)
+        public VozilaSalona(SalonDTO salon, ISalonService salonService)
         {
             InitializeComponent();
             _vozilaService = new VoziloService();
+            _salonService = salonService;
             _salon = salon;
 
             // Define columns for ListView
@@ -101,6 +102,16 @@ namespace auto_salon.Presentation.FVozilo
             else
             {
                 MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = new AddVozilo(_vozilaService,_salonService, _salon).ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
             }
         }
     }

@@ -2,6 +2,7 @@
 using auto_salon.App.Extensions;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Entities;
+using auto_salon.Presentation.FSalon;
 using NHibernate;
 
 namespace auto_salon.App.Services.Implementation

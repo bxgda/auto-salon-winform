@@ -32,6 +32,7 @@
             lvVozila = new ListView();
             panel1 = new Panel();
             btnDelete = new Button();
+            btnAdd = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnAdd);
             panel1.Controls.Add(btnDelete);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 376);
@@ -83,6 +85,18 @@
             btnDelete.Text = "Obriši";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
+            // 
+            // btnAdd
+            // 
+            btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdd.Location = new Point(97, 31);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(88, 37);
+            btnAdd.TabIndex = 4;
+            btnAdd.Text = "Dodaj";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // VozilaSalona
             // 
@@ -104,5 +118,6 @@
         private ListView lvVozila;
         private Panel panel1;
         private Button btnDelete;
+        private Button btnAdd;
     }
 }
