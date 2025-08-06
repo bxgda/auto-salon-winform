@@ -30,6 +30,7 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
+            btnEdit = new Button();
             btnAdd = new Button();
             btnDelete = new Button();
             lvZaposleni = new ListView();
@@ -49,24 +50,37 @@
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 82.8888855F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 17.11111F));
-            tableLayoutPanel1.Size = new Size(800, 450);
+            tableLayoutPanel1.Size = new Size(952, 450);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnAdd);
             panel1.Controls.Add(btnDelete);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 376);
             panel1.Name = "panel1";
-            panel1.Size = new Size(794, 71);
+            panel1.Size = new Size(946, 71);
             panel1.TabIndex = 1;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.Location = new Point(97, 31);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(88, 37);
+            btnEdit.TabIndex = 4;
+            btnEdit.Text = "Izmeni";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnAdd
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(97, 31);
+            btnAdd.Location = new Point(3, 31);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(88, 37);
             btnAdd.TabIndex = 3;
@@ -78,7 +92,7 @@
             // 
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(3, 31);
+            btnDelete.Location = new Point(191, 31);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(88, 37);
             btnDelete.TabIndex = 2;
@@ -93,7 +107,7 @@
             lvZaposleni.GridLines = true;
             lvZaposleni.Location = new Point(3, 3);
             lvZaposleni.Name = "lvZaposleni";
-            lvZaposleni.Size = new Size(794, 367);
+            lvZaposleni.Size = new Size(946, 367);
             lvZaposleni.TabIndex = 2;
             lvZaposleni.UseCompatibleStateImageBehavior = false;
             lvZaposleni.View = View.Details;
@@ -102,8 +116,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(952, 450);
             Controls.Add(tableLayoutPanel1);
+            MinimumSize = new Size(332, 489);
             Name = "ZaposleniSalona";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ZaposleniSalona";
@@ -118,5 +133,6 @@
         private Button btnDelete;
         private Button btnAdd;
         private ListView lvZaposleni;
+        private Button btnEdit;
     }
 }

@@ -31,13 +31,11 @@
             btnDelete = new Button();
             btnAdd = new Button();
             btnEdit = new Button();
-            groupBox1 = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
             btnVozila = new Button();
             btnZaposleni = new Button();
             lvSaloni = new ListView();
-            groupBox1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -46,7 +44,7 @@
             // 
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(220, 20);
+            btnDelete.Location = new Point(215, 32);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(88, 37);
             btnDelete.TabIndex = 1;
@@ -58,7 +56,7 @@
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(8, 20);
+            btnAdd.Location = new Point(3, 32);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(100, 37);
             btnAdd.TabIndex = 2;
@@ -70,26 +68,13 @@
             // 
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(114, 20);
+            btnEdit.Location = new Point(109, 32);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(100, 37);
             btnEdit.TabIndex = 3;
             btnEdit.Text = "Izmeni";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            groupBox1.Controls.Add(btnEdit);
-            groupBox1.Controls.Add(btnDelete);
-            groupBox1.Controls.Add(btnAdd);
-            groupBox1.Location = new Point(3, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(316, 63);
-            groupBox1.TabIndex = 4;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Saloni";
             // 
             // tableLayoutPanel1
             // 
@@ -109,9 +94,11 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnAdd);
+            panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnVozila);
+            panel1.Controls.Add(btnDelete);
             panel1.Controls.Add(btnZaposleni);
-            panel1.Controls.Add(groupBox1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 419);
             panel1.Name = "panel1";
@@ -162,7 +149,6 @@
             Controls.Add(tableLayoutPanel1);
             Name = "SalonUC";
             Size = new Size(719, 500);
-            groupBox1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -172,7 +158,6 @@
         private Button btnDelete;
         private Button btnAdd;
         private Button btnEdit;
-        private GroupBox groupBox1;
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel1;
         private Button btnZaposleni;

@@ -4,33 +4,48 @@ using auto_salon.Entities;
 
 namespace auto_salon.Presentation.FZaposleni
 {
-    public partial class AddZaposleni : Form
+    public partial class EditZaposleni : Form
     {
         private readonly IZaposleniService _zaposleniService;
-        private readonly SalonDTO _salon;
+        private readonly ZaposleniDTO _zaposleni;
 
-        public AddZaposleni(IZaposleniService zaposleniService, SalonDTO salon)
+        public EditZaposleni(IZaposleniService zaposleniService, ZaposleniDTO zaposleni)
         {
             InitializeComponent();
             _zaposleniService = zaposleniService;
-            _salon = salon;
+            _zaposleni = zaposleni;
+
+            this.Text = $"Izmena zaposlenog: {zaposleni.Ime} {zaposleni.Prezime}";
+
+            LoadUIWithData();
         }
 
-        #region Event Handlers
+        private void LoadUIWithData()
+        {
+            tbxIme.Text = _zaposleni.Ime;
+            tbxPrezime.Text = _zaposleni.Prezime;
+            tbxJmbg.Text = _zaposleni.JMBG;
+            tbxPozicija.Text = _zaposleni.Pozicija;
+            dtpDatumZaposlenja.Value = _zaposleni.DatumZaposlenja;
+            tbxKontaktTelefon.Text = _zaposleni.KontaktTelefon;
+            tbxEmail.Text = _zaposleni.Email ?? string.Empty;
+            tbxAdresa.Text = _zaposleni.Adresa ?? string.Empty;
+            cbxUloga.SelectedItem = cbxEnumToItem(_zaposleni.Uloga);
+        }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!TryGetZaposleniFromForm(out var newZaposleni, out var errorMessage))
+            if (!TryGetZaposleniFromForm(out var zaposleniDto, out var errorMessage))
             {
                 MessageBox.Show(errorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var result = _zaposleniService.Add(newZaposleni, _salon.ID);
+            var result = _zaposleniService.Update(zaposleniDto);
 
             if (result.IsSuccess)
             {
-                MessageBox.Show("Zaposleni uspešno dodat.", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Zaposleni uspešno izmenjen.", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -39,16 +54,6 @@ namespace auto_salon.Presentation.FZaposleni
                 MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void cbxUserCurrentDate_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxUserCurrentDate.Checked == true)
-                dtpDatumZaposlenja.Enabled = false;
-            else
-                dtpDatumZaposlenja.Enabled = true;
-        }
-
-        #endregion
 
         #region Helper Methods
 
@@ -60,15 +65,12 @@ namespace auto_salon.Presentation.FZaposleni
             // Required fields
             string ime = tbxIme.Text.Trim();
             string prezime = tbxPrezime.Text.Trim();
-            string jmbg = tbxJmbg.Text.Trim();
             string kontaktTelefon = tbxKontaktTelefon.Text.Trim();
             string pozicija = tbxPozicija.Text.Trim();
-            DateTime datumZaposlenja = cbxUserCurrentDate.Checked ? DateTime.Now : dtpDatumZaposlenja.Value;
             string? uloga = cbxUloga.SelectedItem?.ToString();
 
             if (string.IsNullOrWhiteSpace(ime) ||
                 string.IsNullOrWhiteSpace(prezime) ||
-                string.IsNullOrWhiteSpace(jmbg) ||
                 string.IsNullOrWhiteSpace(kontaktTelefon) ||
                 string.IsNullOrWhiteSpace(pozicija) ||
                 string.IsNullOrWhiteSpace(uloga))
@@ -87,9 +89,9 @@ namespace auto_salon.Presentation.FZaposleni
             {
                 Ime = ime,
                 Prezime = prezime,
-                JMBG = jmbg,
+                JMBG = _zaposleni.JMBG, // JMBG se ne menja
                 Pozicija = pozicija,
-                DatumZaposlenja = datumZaposlenja,
+                DatumZaposlenja = _zaposleni.DatumZaposlenja, // datum zaposlenja se ne menja
                 Uloga = ulogaEnum,
                 KontaktTelefon = kontaktTelefon,
                 Email = email,
@@ -107,6 +109,18 @@ namespace auto_salon.Presentation.FZaposleni
                 "Prodavac" => Uloga.PRODAVAC,
                 "Serviser" => Uloga.SERVISER,
                 "Finansijski savetnik" => Uloga.FINANSIJSKI_SAVETNIK,
+                _ => throw new NotImplementedException(),
+            };
+        }
+
+        private string cbxEnumToItem(Uloga uloga)
+        {
+            return uloga switch
+            {
+                Uloga.MENADZER => "Menadžer",
+                Uloga.PRODAVAC => "Prodavac",
+                Uloga.SERVISER => "Serviser",
+                Uloga.FINANSIJSKI_SAVETNIK => "Finansijski savetnik",
                 _ => throw new NotImplementedException(),
             };
         }

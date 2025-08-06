@@ -116,5 +116,28 @@ namespace auto_salon.Presentation.FZaposleni
                 LoadData();
             }
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (lvZaposleni.SelectedItems.Count == 0)
+            {
+                MessageBox.Show(
+                    "Molimo izaberite zaposlenog čije podatke želite da izmenite.",
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedRowIndex = lvZaposleni.SelectedItems[0].Index;
+
+            var form = ActivatorUtilities.CreateInstance<EditZaposleni>(_serviceProvider, _zaposleni[selectedRowIndex]);
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
+            }
+        }
     }
 }

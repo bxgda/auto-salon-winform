@@ -10,6 +10,8 @@ namespace auto_salon.App.Services.Implementation
 
         ServiceResult<Boolean> Delete(string jmbg);
 
-        ServiceResult<Boolean> Add(ZaposleniDTO zaposleni, int salonId);
+        ServiceResult<Boolean> Add(ZaposleniDTO zaposleniDto, int salonId);
+
+        ServiceResult<Boolean> Update(ZaposleniDTO zaposleniDto); // TODO: omoguciti izmenu salona u kome radi zaposleni
     }
 }

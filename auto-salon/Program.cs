@@ -47,6 +47,7 @@ namespace auto_salon
 
             services.AddTransient<ZaposleniUC>();
             services.AddTransient<AddZaposleni>();
+            services.AddTransient<EditZaposleni>();
             services.AddTransient<ZaposleniSalona>();
 
             services.AddTransient<UgovoriUC>();

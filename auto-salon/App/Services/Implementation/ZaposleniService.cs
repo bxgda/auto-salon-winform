@@ -76,16 +76,12 @@ namespace auto_salon.App.Services.Implementation
         public ServiceResult<Boolean> Add(ZaposleniDTO zaposleniDto, int salondId)
         {
             var session = _dataLayer.OpenSession();
+            
             try
             {
                 if (session == null)
                 {
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
-                }
-
-                if (zaposleniDto == null)
-                {
-                    return ServiceResult<bool>.Failure("Salon ne može biti null.");
                 }
 
                 // Pribavi domenski entitet salona
@@ -97,6 +93,13 @@ namespace auto_salon.App.Services.Implementation
 
                 // Kreiraj domenski entitet i zakaci salon (u extension metodi se salon dodeli i to je dovoljno)
                 Zaposleni zaposleniEntity = zaposleniDto.CreateNewEntity(salon);
+
+                // Ako je odmah dobio ulogu mendzera odma mu se postavlja datum postavljenja na isti datum kada je zaposlen
+                if (zaposleniEntity.Uloga == Uloga.MENADZER)
+                {
+                    zaposleniEntity.DatumPostavljenja = zaposleniEntity.DatumZaposlenja;
+                }
+
                 salon.BrojZaposlenih++;
 
                 session.SaveOrUpdate(zaposleniEntity);
@@ -137,6 +140,60 @@ namespace auto_salon.App.Services.Implementation
             catch (Exception ex)
             {
                 return ServiceResult<IList<ZaposleniDTO>>.Failure($"Greška pri pribavljanju zaposlenih: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<bool> Update(ZaposleniDTO zaposleniDto)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+                }
+
+                // Pribavi domenski entitet zaposlenog
+                Zaposleni zaposleni = session.Load<Zaposleni>(zaposleniDto.JMBG);
+                if (zaposleni == null)
+                {
+                    return ServiceResult<bool>.Failure("Zaposleni kojeg želite da izmenite ne postoji.");
+                }
+
+                // Ažuriraj podatke zaposlenog
+                zaposleni.JMBG = zaposleniDto.JMBG;
+                zaposleni.Ime = zaposleniDto.Ime;
+                zaposleni.Prezime = zaposleniDto.Prezime;
+                zaposleni.KontaktTelefon = zaposleniDto.KontaktTelefon;
+                zaposleni.Email = zaposleniDto.Email;
+                zaposleni.Adresa = zaposleniDto.Adresa;
+                zaposleni.DatumZaposlenja = zaposleniDto.DatumZaposlenja;
+                zaposleni.Pozicija = zaposleniDto.Pozicija;
+                zaposleni.Uloga = zaposleniDto.Uloga;
+
+                // Ako je promenjena uloga na menadžera, postavi datum postavljenja
+                if (zaposleniDto.Uloga == Uloga.MENADZER)
+                {
+                    zaposleni.DatumPostavljenja = DateTime.Now;
+                }
+                else if (zaposleniDto.Uloga != Uloga.MENADZER)
+                {
+                    zaposleni.DatumPostavljenja = default; // Resetuj datum postavljenja ako nije menadzer
+                }
+
+                session.SaveOrUpdate(zaposleni);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri kreiranju zaposlenog: {ex.Message}");
             }
             finally
             {

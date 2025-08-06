@@ -156,7 +156,7 @@
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 1;
-            btnSubmit.Text = "Kreiraj";
+            btnSubmit.Text = "Dodaj";
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
             // 
@@ -234,7 +234,7 @@
             Name = "AddSalon";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Kreiranje novog salona";
+            Text = "Dodavanje salona";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
