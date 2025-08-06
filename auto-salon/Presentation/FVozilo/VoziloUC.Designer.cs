@@ -89,7 +89,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel1);
-            MinimumSize = new Size(719, 500);
             Name = "VoziloUC";
             Size = new Size(719, 500);
             tableLayoutPanel1.ResumeLayout(false);

@@ -26,11 +26,6 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
 
-                if (voziloTableDTO == null)
-                {
-                    return ServiceResult<bool>.Failure("Vozilo ne može biti null.");
-                }
-
                 Salon salon = session.Load<Salon>(salonId);
                 if (salon == null)
                 {

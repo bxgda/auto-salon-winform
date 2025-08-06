@@ -103,5 +103,33 @@ namespace auto_salon.Presentation.FUgovori
                     MessageBoxIcon.Error);
             }
         }
+
+        private void lvUgovori_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = lvUgovori.SelectedIndices.Count > 0 ? lvUgovori.SelectedIndices[0] : -1;
+            if (selectedIndex == -1)
+                return;
+
+            int ugovorId = _ugovori[selectedIndex].ID;
+            var result = _ugovoriService.GetDetails(ugovorId);
+
+            if (result.IsSuccess && result.Data != null)
+            {
+                UgovorDetailsDTO selectedUgovor = result.Data;
+                lblBrojSasije.Text = selectedUgovor.BrojSasije;
+                lblStanje.Text = selectedUgovor.StanjeVozila;
+                lblModel.Text = selectedUgovor.Model;
+                lblProizvodjac.Text = selectedUgovor.SedisteFirmeKupca;
+                lblGodinaProizvodnje.Text = selectedUgovor.GodinaProizvodnje.ToString();
+            }
+            else
+            {
+                MessageBox.Show(
+                    result.ErrorMessage,
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
     }
 }

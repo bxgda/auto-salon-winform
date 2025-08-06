@@ -151,6 +151,8 @@ namespace auto_salon.Presentation.FSalon
 
             var form = ActivatorUtilities.CreateInstance<ZaposleniSalona>(_serviceProvider, _saloni[selectedRowIndex]);
             form.ShowDialog();
+
+            LoadData(); // Ako je obrisan zaposleni da osvezi prikaz broja zaposlenih u poslednjoj koloni
         }
 
         #endregion

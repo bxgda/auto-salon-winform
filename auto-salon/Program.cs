@@ -30,6 +30,7 @@ namespace auto_salon
             services.AddSingleton<IProizvodjacService, ProizvodjacService>();
             services.AddSingleton<IUgovoriService, UgovoriService>();
             services.AddSingleton<IVoziloService, VoziloService>();
+            services.AddSingleton<IUgovoriService, UgovoriService>();
 
             // Forme i UserControl-i
             services.AddTransient<MainForm>();

@@ -34,9 +34,9 @@
             groupBox1 = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
+            btnVozila = new Button();
             btnZaposleni = new Button();
             lvSaloni = new ListView();
-            btnVozila = new Button();
             groupBox1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
@@ -118,6 +118,18 @@
             panel1.Size = new Size(713, 78);
             panel1.TabIndex = 5;
             // 
+            // btnVozila
+            // 
+            btnVozila.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnVozila.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVozila.Location = new Point(399, 32);
+            btnVozila.Name = "btnVozila";
+            btnVozila.Size = new Size(148, 37);
+            btnVozila.TabIndex = 5;
+            btnVozila.Text = "Pregled vozila";
+            btnVozila.UseVisualStyleBackColor = true;
+            btnVozila.Click += btnVozila_Click;
+            // 
             // btnZaposleni
             // 
             btnZaposleni.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -142,25 +154,12 @@
             lvSaloni.UseCompatibleStateImageBehavior = false;
             lvSaloni.View = View.Details;
             // 
-            // btnVozila
-            // 
-            btnVozila.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnVozila.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVozila.Location = new Point(399, 32);
-            btnVozila.Name = "btnVozila";
-            btnVozila.Size = new Size(148, 37);
-            btnVozila.TabIndex = 5;
-            btnVozila.Text = "Pregled vozila";
-            btnVozila.UseVisualStyleBackColor = true;
-            btnVozila.Click += btnVozila_Click;
-            // 
             // SalonUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             Controls.Add(tableLayoutPanel1);
-            MinimumSize = new Size(719, 500);
             Name = "SalonUC";
             Size = new Size(719, 500);
             groupBox1.ResumeLayout(false);

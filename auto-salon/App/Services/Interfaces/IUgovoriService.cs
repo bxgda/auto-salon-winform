@@ -7,5 +7,7 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<IList<UgovorTableDTO>> GetAll();
 
         ServiceResult<bool> Delete(int id);
+
+        ServiceResult<UgovorDetailsDTO> GetDetails(int id);
     }
 }

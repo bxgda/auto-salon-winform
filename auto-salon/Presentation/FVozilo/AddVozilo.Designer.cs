@@ -250,7 +250,7 @@
             label10.AutoSize = true;
             label10.Location = new Point(253, 109);
             label10.Name = "label10";
-            label10.Size = new Size(64, 15);
+            label10.Size = new Size(65, 15);
             label10.TabIndex = 24;
             label10.Text = "Tip goriva*";
             // 
@@ -323,9 +323,12 @@
             Controls.Add(tbxModel);
             Controls.Add(label1);
             Controls.Add(tbxBrSasije);
+            MaximizeBox = false;
             MaximumSize = new Size(460, 540);
+            MinimizeBox = false;
             MinimumSize = new Size(460, 540);
             Name = "AddVozilo";
+            ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Dodavanje vozila";
             ((System.ComponentModel.ISupportInitialize)numKilometraza).EndInit();

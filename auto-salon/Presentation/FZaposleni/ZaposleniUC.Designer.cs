@@ -79,7 +79,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel1);
-            MinimumSize = new Size(750, 500);
             Name = "ZaposleniUC";
             Size = new Size(1124, 775);
             tableLayoutPanel1.ResumeLayout(false);

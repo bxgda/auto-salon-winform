@@ -54,7 +54,8 @@
             tblMainLayout.Name = "tblMainLayout";
             tblMainLayout.RowCount = 1;
             tblMainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblMainLayout.Size = new Size(984, 561);
+            tblMainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblMainLayout.Size = new Size(1184, 561);
             tblMainLayout.TabIndex = 0;
             // 
             // pnlDashboard
@@ -133,16 +134,16 @@
             pnlContent.Dock = DockStyle.Fill;
             pnlContent.Location = new Point(261, 4);
             pnlContent.Name = "pnlContent";
-            pnlContent.Size = new Size(719, 553);
+            pnlContent.Size = new Size(919, 553);
             pnlContent.TabIndex = 1;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(984, 561);
+            ClientSize = new Size(1184, 561);
             Controls.Add(tblMainLayout);
-            MinimumSize = new Size(1000, 600);
+            MinimumSize = new Size(1200, 600);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Auto Salon";

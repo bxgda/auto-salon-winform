@@ -56,6 +56,7 @@ namespace auto_salon.App.Services.Implementation
                 }
 
                 Zaposleni zaposleni = session.Load<Zaposleni>(jmbg);
+                zaposleni.Salon.BrojZaposlenih--;
 
                 session.Delete(zaposleni);
                 session.Flush();
@@ -94,8 +95,9 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<bool>.Failure("Salon u koji želite da dodate novog zaposlenog ne postoji.");
                 }
 
-                // Kreiraj domenski entitet i zakaci salon
+                // Kreiraj domenski entitet i zakaci salon (u extension metodi se salon dodeli i to je dovoljno)
                 Zaposleni zaposleniEntity = zaposleniDto.CreateNewEntity(salon);
+                salon.BrojZaposlenih++;
 
                 session.SaveOrUpdate(zaposleniEntity);
                 session.Flush();

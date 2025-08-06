@@ -5,7 +5,6 @@ namespace AutoSalonMac.App.Extensions
 {
     public static class VoziloExtension
     {
-
         public static VoziloTableDTO ToVoziloTableDTO(this Vozilo vozilo)
         {
             if (vozilo.GetType().Name == "NovoVozilo")
