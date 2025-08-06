@@ -10,6 +10,6 @@ namespace auto_salon.App.Services.Interfaces
 
         ServiceResult<Boolean> Delete(string brSasije);
 
-        ServiceResult<Boolean> Add(VoziloTableDTO vozilo);
+        ServiceResult<Boolean> Add(VoziloTableDTO vozilo, int salonId, int proizvodjacId);
     }
 }

@@ -16,10 +16,48 @@ namespace auto_salon.App.Services.Implementation
             _dataLayer = dataLayer;
         }
 
-        public ServiceResult<bool> Add(VoziloTableDTO vozilo)
+        public ServiceResult<bool> Add(VoziloTableDTO voziloTableDTO, int salonId, int proizvodjacId)
         {
-            // TODO: Implementacija dodavanja vozila
-            throw new NotImplementedException();
+            var session = _dataLayer.OpenSession();
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+                }
+
+                if (voziloTableDTO == null)
+                {
+                    return ServiceResult<bool>.Failure("Vozilo ne može biti null.");
+                }
+
+                Salon salon = session.Load<Salon>(salonId);
+                if (salon == null)
+                {
+                    return ServiceResult<bool>.Failure("Salon u koji želite da dodate nova vozila ne postoji.");
+                }
+
+                Proizvodjac proizvodjac = session.Load<Proizvodjac>(proizvodjacId);
+                if (salon == null)
+                {
+                    return ServiceResult<bool>.Failure("Proizvodjac ne postoji.");
+                }
+
+                Vozilo voziloEntity = voziloTableDTO.CreateNewEntity(salon, proizvodjac);
+
+                session.SaveOrUpdate(voziloEntity);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri kreiranju vozila: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
         }
 
         public ServiceResult<bool> Delete(string brSasije)

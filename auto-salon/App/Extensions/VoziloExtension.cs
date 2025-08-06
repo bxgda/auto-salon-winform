@@ -8,99 +8,69 @@ namespace AutoSalonMac.App.Extensions
 
         public static VoziloTableDTO ToVoziloTableDTO(this Vozilo vozilo)
         {
-            return new VoziloTableDTO
-            {
-                Stanje = vozilo.GetType().Name switch
+            if (vozilo.GetType().Name == "NovoVozilo")
+                return new VoziloTableDTO
                 {
-                    "NovoVozilo" => "Novo",
-                    "PolovnoVozilo" => "Polovno",
-                    _ => "Nepoznato stanje"
-                },
-                BrojSasije = vozilo.BrojSasije,
-                Proizvodjac = vozilo.Proizvodjac,
-                Model = vozilo.Model,
-                Boja = vozilo.Boja,
-                BrojVrata = vozilo.BrojVrata,
-                TipGoriva = vozilo.TipGoriva,
-                SnagaMotora = vozilo.SnagaMotora,
-                Kilometraza = vozilo.Kilometraza,
-                GodinaProizvodnje = vozilo.GodinaProizvodnje
-            };
+                    Stanje = "Novo",
+                    BrojSasije = vozilo.BrojSasije,
+                    Model = vozilo.Model,
+                    Boja = vozilo.Boja,
+                    BrojVrata = vozilo.BrojVrata,
+                    TipGoriva = vozilo.TipGoriva,
+                    SnagaMotora = vozilo.SnagaMotora,
+                    Kilometraza = vozilo.Kilometraza,
+                    GodinaProizvodnje = vozilo.GodinaProizvodnje
+                };
+            else
+                return new VoziloTableDTO
+                {
+                    Stanje = "Polovno",
+                    BrojSasije = vozilo.BrojSasije,
+                    Model = vozilo.Model,
+                    Boja = vozilo.Boja,
+                    BrojVrata = vozilo.BrojVrata,
+                    TipGoriva = vozilo.TipGoriva,
+                    SnagaMotora = vozilo.SnagaMotora,
+                    Kilometraza = vozilo.Kilometraza,
+                    GodinaProizvodnje = vozilo.GodinaProizvodnje,
+                    BrojVlasnika = (vozilo as PolovnoVozilo)!.BrojVlasnika,
+                    DatumRegistracije = (vozilo as PolovnoVozilo)!.DatumRegistracije
+                };
         }
 
-        //NOVO VOZILO
-        public static NovoVoziloDTO ToVoziloNovoTableDTO(this NovoVozilo vozilo)
+        public static Vozilo CreateNewEntity(this VoziloTableDTO vozilo, Salon salon, Proizvodjac proizvodjac)
         {
-            return new NovoVoziloDTO
-            {
-                Salon = vozilo.Salon,
-                Proizvodjac = vozilo.Proizvodjac,
-                Model = vozilo.Model,
-                GodinaProizvodnje = vozilo.GodinaProizvodnje,
-                Kilometraza = vozilo.Kilometraza,
-                Boja = vozilo.Boja,
-                BrojSasije = vozilo.BrojSasije,
-                TipGoriva = vozilo.TipGoriva,
-                SnagaMotora = vozilo.SnagaMotora,
-                BrojVrata = vozilo.BrojVrata
-            };
-        }
 
-        public static NovoVozilo VoziloNovoToEntity(this NovoVoziloDTO voziloDto)
-        {
-            return new NovoVozilo
-            {
-                Salon = voziloDto.Salon,
-                Proizvodjac = voziloDto.Proizvodjac,
-                Model = voziloDto.Model,
-                GodinaProizvodnje = voziloDto.GodinaProizvodnje,
-                Kilometraza = voziloDto.Kilometraza,
-                Boja = voziloDto.Boja,
-                BrojSasije = voziloDto.BrojSasije,
-                TipGoriva = voziloDto.TipGoriva,
-                SnagaMotora = voziloDto.SnagaMotora,
-                BrojVrata = voziloDto.BrojVrata
-            };
-        }
-
-
-        //POLOVNO VOZILO
-        public static PolovnoVoziloDTO ToVoziloPolovnoTableDTO(this PolovnoVozilo vozilo)
-        {
-            return new PolovnoVoziloDTO
-            {
-                Salon = vozilo.Salon,
-                Proizvodjac = vozilo.Proizvodjac,
-                Model = vozilo.Model,
-                GodinaProizvodnje = vozilo.GodinaProizvodnje,
-                Kilometraza = vozilo.Kilometraza,
-                Boja = vozilo.Boja,
-                BrojSasije = vozilo.BrojSasije,
-                TipGoriva = vozilo.TipGoriva,
-                SnagaMotora = vozilo.SnagaMotora,
-                BrojVrata = vozilo.BrojVrata,
-                DatumRegistracije = vozilo.DatumRegistracije,
-                BrojVlasnika = vozilo.BrojVlasnika
-            };
-        }
-
-        public static PolovnoVozilo VoziloPolovnoToEntity(this PolovnoVoziloDTO voziloDto)
-        {
-            return new PolovnoVozilo
-            {
-                Salon = voziloDto.Salon,
-                Proizvodjac = voziloDto.Proizvodjac,
-                Model = voziloDto.Model,
-                GodinaProizvodnje = voziloDto.GodinaProizvodnje,
-                Kilometraza = voziloDto.Kilometraza,
-                Boja = voziloDto.Boja,
-                BrojSasije = voziloDto.BrojSasije,
-                TipGoriva = voziloDto.TipGoriva,
-                SnagaMotora = voziloDto.SnagaMotora,
-                BrojVrata = voziloDto.BrojVrata,
-                DatumRegistracije = voziloDto.DatumRegistracije,
-                BrojVlasnika = voziloDto.BrojVlasnika
-            };
+            if (vozilo.Stanje == "Novo")
+                return new NovoVozilo
+                {
+                    BrojSasije = vozilo.BrojSasije,
+                    Model = vozilo.Model,
+                    Boja = vozilo.Boja,
+                    BrojVrata = vozilo.BrojVrata,
+                    TipGoriva = vozilo.TipGoriva,
+                    SnagaMotora = vozilo.SnagaMotora,
+                    Kilometraza = vozilo.Kilometraza,
+                    GodinaProizvodnje = vozilo.GodinaProizvodnje,
+                    Salon = salon,
+                    Proizvodjac = proizvodjac
+                };
+            else
+                return new PolovnoVozilo
+                {
+                    BrojSasije = vozilo.BrojSasije,
+                    Model = vozilo.Model,
+                    Boja = vozilo.Boja,
+                    BrojVrata = vozilo.BrojVrata,
+                    TipGoriva = vozilo.TipGoriva,
+                    SnagaMotora = vozilo.SnagaMotora,
+                    Kilometraza = vozilo.Kilometraza,
+                    GodinaProizvodnje = vozilo.GodinaProizvodnje,
+                    Salon = salon,
+                    Proizvodjac = proizvodjac,
+                    BrojVlasnika = vozilo.BrojVlasnika,
+                    DatumRegistracije = vozilo.DatumRegistracije
+                };
         }
     }
 }

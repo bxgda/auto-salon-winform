@@ -5,15 +5,15 @@ namespace auto_salon.App.DTOs
 {
     public class VoziloDTO
     {
-        public KupoprodajniUgovor? Ugovor { get; set; }
+        public UgovorDTO? Ugovor { get; set; }
 
-        public required Salon Salon { get; set; }
+        public required SalonDTO Salon { get; set; }
 
         [DisplayName("Broj šasije")]
         public required string BrojSasije { get; set; }
         
         [DisplayName("Proizvođač")]
-        public required Proizvodjac Proizvodjac { get; set; }
+        public required ProizvodjacDTO Proizvodjac { get; set; }
 
         public required string Model { get; set; }
 

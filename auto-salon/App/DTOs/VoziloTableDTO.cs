@@ -10,9 +10,6 @@ namespace auto_salon.App.DTOs
         [DisplayName("Broj šasije")]
         public required string BrojSasije { get; set; }
 
-        [Browsable(false)]
-        public required Proizvodjac Proizvodjac { get; set; }
-
         public required string Model { get; set; }
 
         public required string Boja { get; set; }
@@ -31,5 +28,11 @@ namespace auto_salon.App.DTOs
 
         [DisplayName("Godina proizvodnje")]
         public int GodinaProizvodnje { get; set; }
+
+        [Browsable(false)]
+        public int BrojVlasnika { get; set; }
+
+        [Browsable(false)]
+        public DateTime DatumRegistracije { get; set; }
     }
 }
