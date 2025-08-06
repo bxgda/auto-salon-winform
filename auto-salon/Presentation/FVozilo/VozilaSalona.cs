@@ -20,8 +20,10 @@ namespace auto_salon.Presentation.FVozilo
             _salon = salon;
 
             // Define columns for ListView
+            lvVozila.Columns.Add("Status");
             lvVozila.Columns.Add("Stanje");
             lvVozila.Columns.Add("Broj šasije");
+            lvVozila.Columns.Add("Proizvođač");
             lvVozila.Columns.Add("Model");
             lvVozila.Columns.Add("Boja");
             lvVozila.Columns.Add("Broj vrata");
@@ -47,8 +49,10 @@ namespace auto_salon.Presentation.FVozilo
                 {
                     ListViewItem item = new ListViewItem(new string[]
                     {
+                        vozilo.JeProdato ? "Prodato" : "Dostupno",
                         vozilo.Stanje,
                         vozilo.BrojSasije,
+                        vozilo.NazivProizvodjaca ?? "N/A",
                         vozilo.Model,
                         vozilo.Boja,
                         vozilo.BrojVrata.ToString(),

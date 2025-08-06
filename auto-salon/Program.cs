@@ -2,6 +2,7 @@ using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Presentation.FSalon;
+using auto_salon.Presentation.FServisnaStavka;
 using auto_salon.Presentation.FUgovori;
 using auto_salon.Presentation.FVozilo;
 using auto_salon.Presentation.FZaposleni;
@@ -31,6 +32,7 @@ namespace auto_salon
             services.AddSingleton<IUgovoriService, UgovoriService>();
             services.AddSingleton<IVoziloService, VoziloService>();
             services.AddSingleton<IUgovoriService, UgovoriService>();
+            services.AddSingleton<IServisnaStavkaService, ServisnaStavkaService>();
 
             // Forme i UserControl-i
             services.AddTransient<MainForm>();
@@ -48,6 +50,8 @@ namespace auto_salon
             services.AddTransient<ZaposleniSalona>();
 
             services.AddTransient<UgovoriUC>();
+
+            services.AddTransient<ServisnaIstorijaVozila>();
 
             // 3. Kreiranje ServiceProvider-a
             ServiceProvider = services.BuildServiceProvider();

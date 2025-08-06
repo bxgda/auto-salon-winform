@@ -38,11 +38,9 @@
             label2 = new Label();
             groupBox1 = new GroupBox();
             lblGodinaProizvodnje = new Label();
-            lblProizvodjac = new Label();
             lblModel = new Label();
             lblBrojSasije = new Label();
             label6 = new Label();
-            label5 = new Label();
             label4 = new Label();
             lblStanje = new Label();
             label3 = new Label();
@@ -134,7 +132,7 @@
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             groupBox2.Location = new Point(3, 44);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(337, 155);
+            groupBox2.Size = new Size(337, 195);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "Podaci o kupcu";
@@ -154,18 +152,16 @@
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(lblGodinaProizvodnje);
-            groupBox1.Controls.Add(lblProizvodjac);
             groupBox1.Controls.Add(lblModel);
             groupBox1.Controls.Add(lblBrojSasije);
             groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(lblStanje);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(3, 205);
+            groupBox1.Location = new Point(3, 245);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(337, 204);
+            groupBox1.Size = new Size(337, 148);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Podaci o vozilu";
@@ -174,21 +170,11 @@
             // 
             lblGodinaProizvodnje.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblGodinaProizvodnje.AutoSize = true;
-            lblGodinaProizvodnje.Location = new Point(207, 142);
+            lblGodinaProizvodnje.Location = new Point(207, 114);
             lblGodinaProizvodnje.Name = "lblGodinaProizvodnje";
             lblGodinaProizvodnje.Size = new Size(12, 15);
             lblGodinaProizvodnje.TabIndex = 10;
             lblGodinaProizvodnje.Text = "/";
-            // 
-            // lblProizvodjac
-            // 
-            lblProizvodjac.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblProizvodjac.AutoSize = true;
-            lblProizvodjac.Location = new Point(207, 113);
-            lblProizvodjac.Name = "lblProizvodjac";
-            lblProizvodjac.Size = new Size(12, 15);
-            lblProizvodjac.TabIndex = 9;
-            lblProizvodjac.Text = "/";
             // 
             // lblModel
             // 
@@ -213,20 +199,11 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(6, 142);
+            label6.Location = new Point(6, 114);
             label6.Name = "label6";
             label6.Size = new Size(113, 15);
             label6.TabIndex = 6;
             label6.Text = "Godina proizvodnje:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(6, 113);
-            label5.Name = "label5";
-            label5.Size = new Size(68, 15);
-            label5.TabIndex = 5;
-            label5.Text = "Proizvođač:";
             // 
             // label4
             // 
@@ -296,10 +273,8 @@
         private Label label3;
         private Label lblStanje;
         private Label label6;
-        private Label label5;
         private Label label4;
         private Label lblGodinaProizvodnje;
-        private Label lblProizvodjac;
         private Label lblModel;
         private Label lblBrojSasije;
         private GroupBox groupBox2;

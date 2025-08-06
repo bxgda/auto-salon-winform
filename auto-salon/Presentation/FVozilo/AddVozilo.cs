@@ -138,7 +138,8 @@ namespace auto_salon.Presentation.FVozilo
                 snagaMotora <= 0 ||
                 string.IsNullOrWhiteSpace(boja) ||
                 brojVrata <= 0 ||
-                string.IsNullOrWhiteSpace(cbTipGoriva.SelectedItem?.ToString()))
+                string.IsNullOrWhiteSpace(cbTipGoriva.SelectedItem?.ToString()) ||
+                rbNovo.Checked == false && rbPolovno.Checked == false)
             {
                 MessageBox.Show("Molimo popunite sva obavezna polja.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

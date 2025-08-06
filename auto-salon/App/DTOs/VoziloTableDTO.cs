@@ -9,6 +9,8 @@ namespace auto_salon.App.DTOs
         public required string BrojSasije { get; set; }
 
         public required string Model { get; set; }
+        
+        public string? NazivProizvodjaca { get; set; }
 
         public required string Boja { get; set; }
 
@@ -25,5 +27,7 @@ namespace auto_salon.App.DTOs
         public int BrojVlasnika { get; set; }
 
         public DateTime DatumRegistracije { get; set; }
+
+        public bool JeProdato { get; set; } = false;
     }
 }

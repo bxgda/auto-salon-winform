@@ -13,12 +13,14 @@ namespace AutoSalonMac.App.Extensions
                     Stanje = "Novo",
                     BrojSasije = vozilo.BrojSasije,
                     Model = vozilo.Model,
+                    NazivProizvodjaca = vozilo.Proizvodjac.Naziv,
                     Boja = vozilo.Boja,
                     BrojVrata = vozilo.BrojVrata,
                     TipGoriva = vozilo.TipGoriva,
                     SnagaMotora = vozilo.SnagaMotora,
                     Kilometraza = vozilo.Kilometraza,
-                    GodinaProizvodnje = vozilo.GodinaProizvodnje
+                    GodinaProizvodnje = vozilo.GodinaProizvodnje,
+                    JeProdato = vozilo.Ugovor != null,
                 };
             else
                 return new VoziloTableDTO
@@ -26,6 +28,7 @@ namespace AutoSalonMac.App.Extensions
                     Stanje = "Polovno",
                     BrojSasije = vozilo.BrojSasije,
                     Model = vozilo.Model,
+                    NazivProizvodjaca = vozilo.Proizvodjac.Naziv,
                     Boja = vozilo.Boja,
                     BrojVrata = vozilo.BrojVrata,
                     TipGoriva = vozilo.TipGoriva,
@@ -33,7 +36,8 @@ namespace AutoSalonMac.App.Extensions
                     Kilometraza = vozilo.Kilometraza,
                     GodinaProizvodnje = vozilo.GodinaProizvodnje,
                     BrojVlasnika = (vozilo as PolovnoVozilo)!.BrojVlasnika,
-                    DatumRegistracije = (vozilo as PolovnoVozilo)!.DatumRegistracije
+                    DatumRegistracije = (vozilo as PolovnoVozilo)!.DatumRegistracije,
+                    JeProdato = vozilo.Ugovor != null
                 };
         }
 

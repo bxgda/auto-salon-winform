@@ -54,8 +54,8 @@
             tblMainLayout.Name = "tblMainLayout";
             tblMainLayout.RowCount = 1;
             tblMainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblMainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblMainLayout.Size = new Size(1184, 561);
+            tblMainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 860F));
+            tblMainLayout.Size = new Size(1284, 861);
             tblMainLayout.TabIndex = 0;
             // 
             // pnlDashboard
@@ -68,7 +68,7 @@
             pnlDashboard.Dock = DockStyle.Fill;
             pnlDashboard.Location = new Point(4, 4);
             pnlDashboard.Name = "pnlDashboard";
-            pnlDashboard.Size = new Size(250, 553);
+            pnlDashboard.Size = new Size(250, 853);
             pnlDashboard.TabIndex = 0;
             // 
             // btnUgovori
@@ -77,7 +77,7 @@
             btnUgovori.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnUgovori.Location = new Point(3, 194);
             btnUgovori.Name = "btnUgovori";
-            btnUgovori.Size = new Size(244, 39);
+            btnUgovori.Size = new Size(243, 39);
             btnUgovori.TabIndex = 5;
             btnUgovori.Text = "Ugovori";
             btnUgovori.UseVisualStyleBackColor = true;
@@ -89,7 +89,7 @@
             btnVozila.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnVozila.Location = new Point(3, 149);
             btnVozila.Name = "btnVozila";
-            btnVozila.Size = new Size(244, 39);
+            btnVozila.Size = new Size(243, 39);
             btnVozila.TabIndex = 4;
             btnVozila.Text = "Vozila";
             btnVozila.UseVisualStyleBackColor = true;
@@ -101,7 +101,7 @@
             btnZaposleni.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnZaposleni.Location = new Point(3, 104);
             btnZaposleni.Name = "btnZaposleni";
-            btnZaposleni.Size = new Size(244, 39);
+            btnZaposleni.Size = new Size(243, 39);
             btnZaposleni.TabIndex = 3;
             btnZaposleni.Text = "Zaposleni";
             btnZaposleni.UseVisualStyleBackColor = true;
@@ -113,7 +113,7 @@
             btnSaloni.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSaloni.Location = new Point(3, 59);
             btnSaloni.Name = "btnSaloni";
-            btnSaloni.Size = new Size(244, 39);
+            btnSaloni.Size = new Size(243, 39);
             btnSaloni.TabIndex = 2;
             btnSaloni.Text = "Saloni";
             btnSaloni.UseVisualStyleBackColor = true;
@@ -123,7 +123,7 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitle.Location = new Point(8, 5);
+            lblTitle.Location = new Point(9, 5);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(115, 30);
             lblTitle.TabIndex = 1;
@@ -134,16 +134,17 @@
             pnlContent.Dock = DockStyle.Fill;
             pnlContent.Location = new Point(261, 4);
             pnlContent.Name = "pnlContent";
-            pnlContent.Size = new Size(919, 553);
+            pnlContent.Size = new Size(1019, 853);
             pnlContent.TabIndex = 1;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1184, 561);
+            ClientSize = new Size(1284, 861);
             Controls.Add(tblMainLayout);
-            MinimumSize = new Size(1200, 600);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            MinimumSize = new Size(1300, 900);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Auto Salon";

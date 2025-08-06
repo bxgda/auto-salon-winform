@@ -116,10 +116,12 @@ namespace auto_salon.Presentation.FUgovori
             if (result.IsSuccess && result.Data != null)
             {
                 UgovorDetailsDTO selectedUgovor = result.Data;
+                // TODO: Za kupca i prodavca
+
+                // Za vozilo
                 lblBrojSasije.Text = selectedUgovor.BrojSasije;
                 lblStanje.Text = selectedUgovor.StanjeVozila;
                 lblModel.Text = selectedUgovor.Model;
-                lblProizvodjac.Text = selectedUgovor.SedisteFirmeKupca;
                 lblGodinaProizvodnje.Text = selectedUgovor.GodinaProizvodnje.ToString();
             }
             else
