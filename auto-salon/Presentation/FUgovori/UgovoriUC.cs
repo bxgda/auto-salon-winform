@@ -116,13 +116,43 @@ namespace auto_salon.Presentation.FUgovori
             if (result.IsSuccess && result.Data != null)
             {
                 UgovorDetailsDTO selectedUgovor = result.Data;
-                // TODO: Za kupca i prodavca
 
-                // Za vozilo
+                lblKupacJe.Text = selectedUgovor.TipKupca;
+                // Kupac
+                if (selectedUgovor.TipKupca == "Fizicko lice")
+                {
+                    lbl1Kupac.Text = "Ime:";
+                    lblImeKupca.Text = selectedUgovor.ImeKupca;
+                    lbl2Kupac.Text = "Prezime:";
+                    lblPrezimeKupca.Text = selectedUgovor.PrezimeKupca;
+                    lbl3Kupac.Text = "Email:";
+                    lblEmailKupca.Text = selectedUgovor.EmailKupca;
+                    lbl4Kupac.Text = "Telefon:";
+                    lblTelefonKupca.Text = selectedUgovor.TelefonKupca;
+                }
+                else if (selectedUgovor.TipKupca == "Pravno lice")
+                {
+                    lbl1Kupac.Text = "PIB:";
+                    lblImeKupca.Text = selectedUgovor.PIBKupca;
+                    lbl2Kupac.Text = "Naziv:";
+                    lblPrezimeKupca.Text = selectedUgovor.NazivFirmeKupca;
+                    lbl3Kupac.Text = "Sedište:";
+                    lblEmailKupca.Text = selectedUgovor.SedisteFirmeKupca;
+                    lbl4Kupac.Text = "Kontakt osoba:";
+                    lblTelefonKupca.Text = selectedUgovor.KontaktOsobaFirme;
+                }
+
+                // Vozilo
                 lblBrojSasije.Text = selectedUgovor.BrojSasije;
                 lblStanje.Text = selectedUgovor.StanjeVozila;
                 lblModel.Text = selectedUgovor.Model;
                 lblGodinaProizvodnje.Text = selectedUgovor.GodinaProizvodnje.ToString();
+
+                // Prodavac
+                lblImeProdavca.Text = selectedUgovor.ImeProdavca;
+                lblPrezimeProdavca.Text = selectedUgovor.PrezimeProdavca;
+                lblPozicijaProdavca.Text = selectedUgovor.PozicijaProdavca;
+                lblTelefonProdavca.Text = selectedUgovor.TelefonProdavca;
             }
             else
             {
