@@ -1,17 +1,20 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Implementation;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FZaposleni
 {
     public partial class ZaposleniUC : UserControl
     {
+        private readonly IServiceProvider _serviceProvider;
         private readonly IZaposleniService _zaposleniService;
         private IList<ZaposleniDTO> _zaposleni = [];
 
-        public ZaposleniUC(IZaposleniService zaposleniService)
+        public ZaposleniUC(IServiceProvider serviceProvider, IZaposleniService zaposleniService)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
+            _serviceProvider = serviceProvider;
             _zaposleniService = zaposleniService;
 
             // Define columns for ListView
@@ -49,9 +52,11 @@ namespace auto_salon.Presentation.FZaposleni
                         zaposleni.Pozicija,
                         zaposleni.DatumZaposlenja.ToShortDateString(),
                         zaposleni.KontaktTelefon,
-                        zaposleni.Email ?? "N/A",
-                        zaposleni.Adresa ?? "N/A",
-                        zaposleni.DatumPostavljenja.ToShortDateString()
+                        zaposleni.Email ?? "",
+                        zaposleni.Adresa ?? "",
+                        zaposleni.DatumPostavljenja == default
+                            ? ""
+                            : zaposleni.DatumPostavljenja.ToShortDateString()
                     });
 
                     lvZaposleni.Items.Add(item);
@@ -104,6 +109,29 @@ namespace auto_salon.Presentation.FZaposleni
                     "Greška",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (lvZaposleni.SelectedItems.Count == 0)
+            {
+                MessageBox.Show(
+                    "Molimo izaberite zaposlenog čije podatke želite da izmenite.",
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedRowIndex = lvZaposleni.SelectedItems[0].Index;
+
+            var form = ActivatorUtilities.CreateInstance<EditZaposleni>(_serviceProvider, _zaposleni[selectedRowIndex]);
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
             }
         }
     }

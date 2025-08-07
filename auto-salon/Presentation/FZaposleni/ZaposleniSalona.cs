@@ -57,9 +57,11 @@ namespace auto_salon.Presentation.FZaposleni
                         zaposleni.Pozicija,
                         zaposleni.DatumZaposlenja.ToShortDateString(),
                         zaposleni.KontaktTelefon,
-                        zaposleni.Email ?? "N/A",
-                        zaposleni.Adresa ?? "N/A",
-                        zaposleni.DatumPostavljenja.ToShortDateString()
+                        zaposleni.Email ?? "",
+                        zaposleni.Adresa ?? "",
+                        zaposleni.DatumPostavljenja == default
+                            ? ""
+                            : zaposleni.DatumPostavljenja.ToShortDateString()
                     });
                     lvZaposleni.Items.Add(item);
                 }

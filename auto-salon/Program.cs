@@ -26,13 +26,12 @@ namespace auto_salon
             services.AddSingleton<IDataLayer, DataLayer>();
 
             // Servisi
-            services.AddSingleton<ISalonService, SalonService>();
-            services.AddSingleton<IZaposleniService, ZaposleniService>();
-            services.AddSingleton<IProizvodjacService, ProizvodjacService>();
-            services.AddSingleton<IUgovoriService, UgovoriService>();
-            services.AddSingleton<IVoziloService, VoziloService>();
-            services.AddSingleton<IUgovoriService, UgovoriService>();
-            services.AddSingleton<IServisnaStavkaService, ServisnaStavkaService>();
+            services.AddTransient<ISalonService, SalonService>();
+            services.AddTransient<IZaposleniService, ZaposleniService>();
+            services.AddTransient<IProizvodjacService, ProizvodjacService>();
+            services.AddTransient<IVoziloService, VoziloService>();
+            services.AddTransient<IUgovoriService, UgovoriService>();
+            services.AddTransient<IServisnaStavkaService, ServisnaStavkaService>();
 
             // Forme i UserControl-i
             services.AddTransient<MainForm>();
