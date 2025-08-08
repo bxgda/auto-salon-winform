@@ -53,6 +53,8 @@ namespace auto_salon
 
             services.AddTransient<ServisnaIstorijaVozila>();
 
+            services.AddTransient<SklapanjeUgovora>();
+
             // 3. Kreiranje ServiceProvider-a
             ServiceProvider = services.BuildServiceProvider();
 

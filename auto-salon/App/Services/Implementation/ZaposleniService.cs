@@ -200,5 +200,40 @@ namespace auto_salon.App.Services.Implementation
                 session?.Close();
             }
         }
+
+        public ServiceResult<IList<ZaposleniDTO>> GetAllProdavciKojiMoguDaProdajuVozilo(string brojSasije)
+        {
+            var session = _dataLayer.OpenSession();
+            IList<ZaposleniDTO> result = new List<ZaposleniDTO>();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<IList<ZaposleniDTO>>.Failure("Nema konekcije sa bazom podataka.");
+                }
+
+                // Ovo bi trebalo da vrati prodavce koji rade u salonima koji imaju vozilo sa datim brojem šasije
+                // jer prodavac moze da proda samo vozilo iz salona u kojem radi
+                IEnumerable<Zaposleni> prodavci = session.Query<Zaposleni>()
+                    .Where(z => z.Uloga == Uloga.PRODAVAC)
+                    .Where(z => z.Salon.Vozila.Any(v => v.BrojSasije == brojSasije));
+
+                foreach (var prodavac in prodavci)
+                {
+                    result.Add(prodavac.ToZaposleniDTO());
+                }
+
+                return ServiceResult<IList<ZaposleniDTO>>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<IList<ZaposleniDTO>>.Failure($"Greška pri pribavljanju zaposlenih: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
     }
 }

@@ -36,6 +36,7 @@
             panel2 = new Panel();
             label1 = new Label();
             cbFilter = new ComboBox();
+            btnProdaj = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnProdaj);
             panel1.Controls.Add(btnServisnaIstorija);
             panel1.Controls.Add(btnDelete);
             panel1.Dock = DockStyle.Fill;
@@ -134,6 +136,18 @@
             cbFilter.TabIndex = 0;
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
             // 
+            // btnProdaj
+            // 
+            btnProdaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnProdaj.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnProdaj.Location = new Point(554, 20);
+            btnProdaj.Name = "btnProdaj";
+            btnProdaj.Size = new Size(156, 37);
+            btnProdaj.TabIndex = 5;
+            btnProdaj.Text = "Prodaj";
+            btnProdaj.UseVisualStyleBackColor = true;
+            btnProdaj.Click += btnProdaj_Click;
+            // 
             // VoziloUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -158,5 +172,6 @@
         private Panel panel2;
         private Label label1;
         private ComboBox cbFilter;
+        private Button btnProdaj;
     }
 }

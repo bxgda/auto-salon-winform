@@ -54,25 +54,27 @@
             gbStanje = new GroupBox();
             label11 = new Label();
             cbBrojVrata = new ComboBox();
+            groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)numKilometraza).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numSnagaMotora).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numGodinaProizvodnje).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numBrojVlasnika).BeginInit();
             gbStanje.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // tbxBrSasije
             // 
-            tbxBrSasije.Location = new Point(38, 127);
+            tbxBrSasije.Location = new Point(17, 49);
             tbxBrSasije.MaxLength = 17;
             tbxBrSasije.Name = "tbxBrSasije";
             tbxBrSasije.Size = new Size(159, 23);
-            tbxBrSasije.TabIndex = 2;
+            tbxBrSasije.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(39, 109);
+            label1.Location = new Point(18, 31);
             label1.Name = "label1";
             label1.Size = new Size(64, 15);
             label1.TabIndex = 3;
@@ -81,7 +83,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(39, 226);
+            label2.Location = new Point(18, 148);
             label2.Name = "label2";
             label2.Size = new Size(46, 15);
             label2.TabIndex = 5;
@@ -89,15 +91,15 @@
             // 
             // tbxModel
             // 
-            tbxModel.Location = new Point(38, 244);
+            tbxModel.Location = new Point(17, 166);
             tbxModel.Name = "tbxModel";
             tbxModel.Size = new Size(159, 23);
-            tbxModel.TabIndex = 4;
+            tbxModel.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(38, 283);
+            label3.Location = new Point(17, 205);
             label3.Name = "label3";
             label3.Size = new Size(74, 15);
             label3.TabIndex = 7;
@@ -105,24 +107,24 @@
             // 
             // numKilometraza
             // 
-            numKilometraza.Location = new Point(38, 301);
+            numKilometraza.Location = new Point(17, 223);
             numKilometraza.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
             numKilometraza.Name = "numKilometraza";
             numKilometraza.Size = new Size(159, 23);
-            numKilometraza.TabIndex = 8;
+            numKilometraza.TabIndex = 3;
             // 
             // cbMarka
             // 
             cbMarka.FormattingEnabled = true;
-            cbMarka.Location = new Point(38, 183);
+            cbMarka.Location = new Point(17, 105);
             cbMarka.Name = "cbMarka";
             cbMarka.Size = new Size(159, 23);
-            cbMarka.TabIndex = 9;
+            cbMarka.TabIndex = 1;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(38, 165);
+            label4.Location = new Point(17, 87);
             label4.Name = "label4";
             label4.Size = new Size(45, 15);
             label4.TabIndex = 10;
@@ -130,16 +132,16 @@
             // 
             // numSnagaMotora
             // 
-            numSnagaMotora.Location = new Point(38, 358);
+            numSnagaMotora.Location = new Point(17, 280);
             numSnagaMotora.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             numSnagaMotora.Name = "numSnagaMotora";
             numSnagaMotora.Size = new Size(159, 23);
-            numSnagaMotora.TabIndex = 12;
+            numSnagaMotora.TabIndex = 4;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(38, 340);
+            label5.Location = new Point(17, 262);
             label5.Name = "label5";
             label5.Size = new Size(86, 15);
             label5.TabIndex = 11;
@@ -148,7 +150,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(253, 165);
+            label6.Location = new Point(214, 87);
             label6.Name = "label6";
             label6.Size = new Size(35, 15);
             label6.TabIndex = 14;
@@ -156,25 +158,25 @@
             // 
             // tbxBoja
             // 
-            tbxBoja.Location = new Point(253, 183);
+            tbxBoja.Location = new Point(214, 105);
             tbxBoja.Name = "tbxBoja";
             tbxBoja.Size = new Size(159, 23);
-            tbxBoja.TabIndex = 13;
+            tbxBoja.TabIndex = 7;
             // 
             // numGodinaProizvodnje
             // 
-            numGodinaProizvodnje.Location = new Point(38, 416);
+            numGodinaProizvodnje.Location = new Point(17, 338);
             numGodinaProizvodnje.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             numGodinaProizvodnje.Minimum = new decimal(new int[] { 1887, 0, 0, 0 });
             numGodinaProizvodnje.Name = "numGodinaProizvodnje";
             numGodinaProizvodnje.Size = new Size(159, 23);
-            numGodinaProizvodnje.TabIndex = 16;
+            numGodinaProizvodnje.TabIndex = 5;
             numGodinaProizvodnje.Value = new decimal(new int[] { 2025, 0, 0, 0 });
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(38, 398);
+            label7.Location = new Point(17, 320);
             label7.Name = "label7";
             label7.Size = new Size(115, 15);
             label7.TabIndex = 15;
@@ -186,7 +188,7 @@
             rbNovo.Location = new Point(17, 22);
             rbNovo.Name = "rbNovo";
             rbNovo.Size = new Size(54, 19);
-            rbNovo.TabIndex = 17;
+            rbNovo.TabIndex = 1;
             rbNovo.TabStop = true;
             rbNovo.Text = "Novo";
             rbNovo.UseVisualStyleBackColor = true;
@@ -195,10 +197,10 @@
             // rbPolovno
             // 
             rbPolovno.AutoSize = true;
-            rbPolovno.Location = new Point(17, 47);
+            rbPolovno.Location = new Point(77, 22);
             rbPolovno.Name = "rbPolovno";
             rbPolovno.Size = new Size(69, 19);
-            rbPolovno.TabIndex = 18;
+            rbPolovno.TabIndex = 1;
             rbPolovno.TabStop = true;
             rbPolovno.Text = "Polovno";
             rbPolovno.UseVisualStyleBackColor = true;
@@ -206,15 +208,15 @@
             // 
             // dtpDatumRegistracije
             // 
-            dtpDatumRegistracije.Location = new Point(253, 301);
+            dtpDatumRegistracije.Location = new Point(214, 223);
             dtpDatumRegistracije.Name = "dtpDatumRegistracije";
             dtpDatumRegistracije.Size = new Size(159, 23);
-            dtpDatumRegistracije.TabIndex = 19;
+            dtpDatumRegistracije.TabIndex = 9;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(253, 283);
+            label8.Location = new Point(214, 205);
             label8.Name = "label8";
             label8.Size = new Size(103, 15);
             label8.TabIndex = 20;
@@ -222,15 +224,15 @@
             // 
             // numBrojVlasnika
             // 
-            numBrojVlasnika.Location = new Point(253, 358);
+            numBrojVlasnika.Location = new Point(214, 280);
             numBrojVlasnika.Name = "numBrojVlasnika";
             numBrojVlasnika.Size = new Size(159, 23);
-            numBrojVlasnika.TabIndex = 22;
+            numBrojVlasnika.TabIndex = 10;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(253, 340);
+            label9.Location = new Point(214, 262);
             label9.Name = "label9";
             label9.Size = new Size(73, 15);
             label9.TabIndex = 21;
@@ -238,17 +240,18 @@
             // 
             // cbTipGoriva
             // 
+            cbTipGoriva.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTipGoriva.FormattingEnabled = true;
             cbTipGoriva.Items.AddRange(new object[] { "Dizel", "Benzin", "Struja", "Hidrogen", "Plin", "Metan", "Hibrid" });
-            cbTipGoriva.Location = new Point(253, 127);
+            cbTipGoriva.Location = new Point(214, 49);
             cbTipGoriva.Name = "cbTipGoriva";
             cbTipGoriva.Size = new Size(159, 23);
-            cbTipGoriva.TabIndex = 23;
+            cbTipGoriva.TabIndex = 6;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(253, 109);
+            label10.Location = new Point(214, 31);
             label10.Name = "label10";
             label10.Size = new Size(65, 15);
             label10.TabIndex = 24;
@@ -257,10 +260,10 @@
             // btnSubmit
             // 
             btnSubmit.Font = new Font("Segoe UI", 11F);
-            btnSubmit.Location = new Point(287, 450);
+            btnSubmit.Location = new Point(267, 483);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(145, 39);
-            btnSubmit.TabIndex = 25;
+            btnSubmit.TabIndex = 2;
             btnSubmit.Text = "Dodaj";
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
@@ -269,17 +272,17 @@
             // 
             gbStanje.Controls.Add(rbNovo);
             gbStanje.Controls.Add(rbPolovno);
-            gbStanje.Location = new Point(153, 12);
+            gbStanje.Location = new Point(22, 12);
             gbStanje.Name = "gbStanje";
-            gbStanje.Size = new Size(135, 75);
-            gbStanje.TabIndex = 26;
+            gbStanje.Size = new Size(390, 51);
+            gbStanje.TabIndex = 0;
             gbStanje.TabStop = false;
             gbStanje.Text = "Stanje vozila";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(253, 227);
+            label11.Location = new Point(214, 149);
             label11.Name = "label11";
             label11.Size = new Size(62, 15);
             label11.TabIndex = 27;
@@ -287,46 +290,57 @@
             // 
             // cbBrojVrata
             // 
+            cbBrojVrata.DropDownStyle = ComboBoxStyle.DropDownList;
             cbBrojVrata.FormattingEnabled = true;
             cbBrojVrata.Items.AddRange(new object[] { "2", "3", "4", "5" });
-            cbBrojVrata.Location = new Point(253, 244);
+            cbBrojVrata.Location = new Point(214, 166);
             cbBrojVrata.Name = "cbBrojVrata";
             cbBrojVrata.Size = new Size(159, 23);
-            cbBrojVrata.TabIndex = 28;
+            cbBrojVrata.TabIndex = 8;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(cbTipGoriva);
+            groupBox1.Controls.Add(cbBrojVrata);
+            groupBox1.Controls.Add(tbxBrSasije);
+            groupBox1.Controls.Add(label11);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(tbxModel);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(numKilometraza);
+            groupBox1.Controls.Add(numBrojVlasnika);
+            groupBox1.Controls.Add(cbMarka);
+            groupBox1.Controls.Add(label9);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(dtpDatumRegistracije);
+            groupBox1.Controls.Add(numSnagaMotora);
+            groupBox1.Controls.Add(numGodinaProizvodnje);
+            groupBox1.Controls.Add(tbxBoja);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Location = new Point(22, 69);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(390, 398);
+            groupBox1.TabIndex = 1;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Podaci o vozilu";
             // 
             // AddVozilo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(444, 501);
-            Controls.Add(cbBrojVrata);
-            Controls.Add(label11);
+            ClientSize = new Size(434, 537);
+            Controls.Add(groupBox1);
             Controls.Add(gbStanje);
             Controls.Add(btnSubmit);
-            Controls.Add(label10);
-            Controls.Add(cbTipGoriva);
-            Controls.Add(numBrojVlasnika);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(dtpDatumRegistracije);
-            Controls.Add(numGodinaProizvodnje);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(tbxBoja);
-            Controls.Add(numSnagaMotora);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(cbMarka);
-            Controls.Add(numKilometraza);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(tbxModel);
-            Controls.Add(label1);
-            Controls.Add(tbxBrSasije);
             MaximizeBox = false;
-            MaximumSize = new Size(460, 540);
+            MaximumSize = new Size(450, 576);
             MinimizeBox = false;
-            MinimumSize = new Size(460, 540);
+            MinimumSize = new Size(450, 576);
             Name = "AddVozilo";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
@@ -337,8 +351,9 @@
             ((System.ComponentModel.ISupportInitialize)numBrojVlasnika).EndInit();
             gbStanje.ResumeLayout(false);
             gbStanje.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -369,5 +384,6 @@
         private GroupBox gbStanje;
         private Label label11;
         private ComboBox cbBrojVrata;
+        private GroupBox groupBox1;
     }
 }

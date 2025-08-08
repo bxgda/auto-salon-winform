@@ -31,8 +31,8 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             lvVozila = new ListView();
             panel1 = new Panel();
-            btnDelete = new Button();
             btnAdd = new Button();
+            btnDelete = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -74,29 +74,29 @@
             panel1.Size = new Size(794, 71);
             panel1.TabIndex = 3;
             // 
-            // btnDelete
-            // 
-            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(3, 31);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(88, 37);
-            btnDelete.TabIndex = 3;
-            btnDelete.Text = "Obriši";
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
-            // 
             // btnAdd
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(97, 31);
+            btnAdd.Location = new Point(3, 31);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(88, 37);
             btnAdd.TabIndex = 4;
             btnAdd.Text = "Dodaj";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.Location = new Point(97, 31);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(88, 37);
+            btnDelete.TabIndex = 3;
+            btnDelete.Text = "Obriši";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // VozilaSalona
             // 
