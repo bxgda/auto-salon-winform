@@ -32,6 +32,7 @@ namespace auto_salon
             services.AddTransient<IVoziloService, VoziloService>();
             services.AddTransient<IUgovoriService, UgovoriService>();
             services.AddTransient<IServisnaStavkaService, ServisnaStavkaService>();
+            services.AddTransient<IKupacService, KupacService>();
 
             // Forme i UserControl-i
             services.AddTransient<MainForm>();
@@ -55,10 +56,10 @@ namespace auto_salon
 
             services.AddTransient<SklapanjeUgovora>();
 
-            // 3. Kreiranje ServiceProvider-a
+            // Kreiranje ServiceProvider-a
             ServiceProvider = services.BuildServiceProvider();
 
-            // 4. Pokretanje glavne forme preko DI-ja
+            // Pokretanje glavne forme preko DI-ja
             Application.Run(ServiceProvider.GetRequiredService<MainForm>());
         }
     }

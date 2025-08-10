@@ -10,9 +10,11 @@ namespace auto_salon.App.Extensions
             return new KupacDTO
             {
                 ID = kupac.ID,
+                FizickoLice = kupac.FizickoLice?.ToFizickoLiceDTO(),
+                PravnoLice = kupac.PravnoLice?.ToPravnoLiceDTO()
             };
         }
-        public static Kupac ToEntity(this KupacDTO kupacDto)
+        public static Kupac CreateNewEntity(this KupacDTO kupacDto)
         {
             return new Kupac { };
         }

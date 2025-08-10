@@ -15,7 +15,5 @@ namespace auto_salon.App.DTOs
         public required string KontaktTelefon { get; set; }
 
         public string? Adresa { get; set; }
-
-        public KupacDTO? Kupac { get; set; }
     }
 }

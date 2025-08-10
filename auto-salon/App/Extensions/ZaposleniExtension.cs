@@ -1,5 +1,4 @@
 using auto_salon.App.DTOs;
-using auto_salon.App.Extensions;
 using auto_salon.Entities;
 
 namespace AutoSalonMac.App.Extensions
@@ -20,7 +19,6 @@ namespace AutoSalonMac.App.Extensions
                 KontaktTelefon = zaposleni.KontaktTelefon,
                 Email = zaposleni.Email,
                 Adresa = zaposleni.Adresa,
-                Kupac = zaposleni.Kupac?.ToKupacDTO()
             };
         }
 

@@ -14,10 +14,9 @@ namespace auto_salon.App.Extensions
                 NazivFirme = pravnoLice.NazivFirme,
                 Sediste = pravnoLice.Sediste,
                 Telefon = pravnoLice.Telefon,
-                Kupac = pravnoLice.Kupac.ToKupacDTO()
             };
         }
-        public static PravnoLice ToEntity(this PravnoLiceDTO pravnoLiceDto)
+        public static PravnoLice CreateNewEntity(this PravnoLiceDTO pravnoLiceDto, Kupac kupac)
         {
             return new PravnoLice
             {
@@ -26,7 +25,7 @@ namespace auto_salon.App.Extensions
                 NazivFirme = pravnoLiceDto.NazivFirme,
                 Sediste = pravnoLiceDto.Sediste,
                 Telefon = pravnoLiceDto.Telefon,
-                Kupac = pravnoLiceDto.Kupac.ToEntity()
+                Kupac = kupac
             };
         }
     }

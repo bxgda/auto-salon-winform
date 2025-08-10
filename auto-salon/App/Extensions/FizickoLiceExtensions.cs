@@ -15,7 +15,6 @@ namespace auto_salon.App.Extensions
                 Email = fizickoLice.Email,
                 KontaktTelefon = fizickoLice.KontaktTelefon,
                 Adresa = fizickoLice.Adresa,
-                Kupac = fizickoLice.Kupac?.ToKupacDTO()
             };
         }
         public static FizickoLice ToEntity(this FizickoLiceDTO fizickoLiceDto)
@@ -28,7 +27,6 @@ namespace auto_salon.App.Extensions
                 Email = fizickoLiceDto.Email,
                 KontaktTelefon = fizickoLiceDto.KontaktTelefon,
                 Adresa = fizickoLiceDto.Adresa,
-                Kupac = fizickoLiceDto.Kupac?.ToEntity()
             };
         }
     }
