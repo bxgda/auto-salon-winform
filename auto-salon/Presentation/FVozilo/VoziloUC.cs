@@ -203,6 +203,8 @@ namespace auto_salon.Presentation.FVozilo
 
             var form = ActivatorUtilities.CreateInstance<SklapanjeUgovora>(_serviceProvider, vozilo);
             form.ShowDialog();
+
+            LoadData();
         }
 
         #endregion

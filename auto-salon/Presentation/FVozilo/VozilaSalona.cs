@@ -1,6 +1,7 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Presentation.FUgovori;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FVozilo
@@ -120,6 +121,39 @@ namespace auto_salon.Presentation.FVozilo
             {
                 LoadData();
             }
+        }
+
+        private void btnProdaj_Click(object sender, EventArgs e)
+        {
+            if (lvVozila.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite vozilo koje želite da prodate.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            // Broj sasije je u trecoj koloni (indeks 2)
+            string brojSasije = lvVozila.SelectedItems[0].SubItems[2].Text;
+
+            // Pronadji vozilo u _vozila po BrojSasije
+            var vozilo = _vozila.FirstOrDefault(v => v.BrojSasije == brojSasije);
+            if (vozilo == null)
+            {
+                MessageBox.Show(
+                    "Došlo je do greške pri pronalaženju vozila.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (vozilo.JeProdato)
+            {
+                MessageBox.Show("Vozilo je već prodato.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var form = ActivatorUtilities.CreateInstance<SklapanjeUgovora>(_serviceProvider, vozilo);
+            form.ShowDialog();
+
+            LoadData();
         }
     }
 }

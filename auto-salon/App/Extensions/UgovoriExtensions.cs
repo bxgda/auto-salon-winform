@@ -35,6 +35,7 @@ namespace auto_salon.App.Extensions
                 Kupac = ugovor.Kupac.ToKupacDTO()
             };
         }
+
         public static UgovorDetailsDTO ToUgovorDetailsDTO(this KupoprodajniUgovor ugovor)
         {
             var dto = new UgovorDetailsDTO
@@ -95,7 +96,6 @@ namespace auto_salon.App.Extensions
 
             return dto;
         }
-
     }
 
 }

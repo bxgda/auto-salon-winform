@@ -39,20 +39,31 @@
             tblKupci = new TableLayoutPanel();
             label2 = new Label();
             tcKupci = new TabControl();
-            tabPage1 = new TabPage();
+            tpFizickoLice = new TabPage();
             lvFizickaLica = new ListView();
-            tabPage2 = new TabPage();
+            tpPravnoLice = new TabPage();
             lvPravnaLica = new ListView();
             btnDodajKupca = new Button();
             groupBox1 = new GroupBox();
+            label7 = new Label();
+            nupKonacnaOcena = new NumericUpDown();
+            label6 = new Label();
+            nupOcenaProdavca = new NumericUpDown();
+            cbNacinPlacanja = new ComboBox();
+            label5 = new Label();
+            tbxDodatnaOprema = new TextBox();
+            label3 = new Label();
             tblMain.SuspendLayout();
             tblLeft.SuspendLayout();
             panel2.SuspendLayout();
             tblProdavci.SuspendLayout();
             tblKupci.SuspendLayout();
             tcKupci.SuspendLayout();
-            tabPage1.SuspendLayout();
-            tabPage2.SuspendLayout();
+            tpFizickoLice.SuspendLayout();
+            tpPravnoLice.SuspendLayout();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nupKonacnaOcena).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nupOcenaProdavca).BeginInit();
             SuspendLayout();
             // 
             // lvProdavci
@@ -66,6 +77,7 @@
             lvProdavci.TabIndex = 0;
             lvProdavci.UseCompatibleStateImageBehavior = false;
             lvProdavci.View = View.Details;
+            lvProdavci.SelectedIndexChanged += lvProdavci_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -83,9 +95,9 @@
             label4.Font = new Font("Segoe UI", 15F);
             label4.Location = new Point(18, 15);
             label4.Name = "label4";
-            label4.Size = new Size(423, 28);
+            label4.Size = new Size(241, 28);
             label4.TabIndex = 6;
-            label4.Text = "Izaberite kupca i prodavca koji sklapaju ugovor";
+            label4.Text = "Izaberite kupca i prodavca";
             // 
             // btnSubmit
             // 
@@ -97,6 +109,7 @@
             btnSubmit.TabIndex = 7;
             btnSubmit.Text = "Kreiraj ugovor";
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // tblMain
             // 
@@ -188,25 +201,26 @@
             // 
             // tcKupci
             // 
-            tcKupci.Controls.Add(tabPage1);
-            tcKupci.Controls.Add(tabPage2);
+            tcKupci.Controls.Add(tpFizickoLice);
+            tcKupci.Controls.Add(tpPravnoLice);
             tcKupci.Dock = DockStyle.Fill;
             tcKupci.Location = new Point(3, 23);
             tcKupci.Name = "tcKupci";
             tcKupci.SelectedIndex = 0;
             tcKupci.Size = new Size(647, 282);
             tcKupci.TabIndex = 8;
+            tcKupci.SelectedIndexChanged += tcKupci_SelectedIndexChanged;
             // 
-            // tabPage1
+            // tpFizickoLice
             // 
-            tabPage1.Controls.Add(lvFizickaLica);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(639, 254);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Fizičko lice";
-            tabPage1.UseVisualStyleBackColor = true;
+            tpFizickoLice.Controls.Add(lvFizickaLica);
+            tpFizickoLice.Location = new Point(4, 24);
+            tpFizickoLice.Name = "tpFizickoLice";
+            tpFizickoLice.Padding = new Padding(3);
+            tpFizickoLice.Size = new Size(639, 254);
+            tpFizickoLice.TabIndex = 0;
+            tpFizickoLice.Text = "Fizičko lice";
+            tpFizickoLice.UseVisualStyleBackColor = true;
             // 
             // lvFizickaLica
             // 
@@ -219,17 +233,18 @@
             lvFizickaLica.TabIndex = 0;
             lvFizickaLica.UseCompatibleStateImageBehavior = false;
             lvFizickaLica.View = View.Details;
+            lvFizickaLica.SelectedIndexChanged += lvFizickaLica_SelectedIndexChanged;
             // 
-            // tabPage2
+            // tpPravnoLice
             // 
-            tabPage2.Controls.Add(lvPravnaLica);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(639, 254);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Pravno lice";
-            tabPage2.UseVisualStyleBackColor = true;
+            tpPravnoLice.Controls.Add(lvPravnaLica);
+            tpPravnoLice.Location = new Point(4, 24);
+            tpPravnoLice.Name = "tpPravnoLice";
+            tpPravnoLice.Padding = new Padding(3);
+            tpPravnoLice.Size = new Size(639, 254);
+            tpPravnoLice.TabIndex = 1;
+            tpPravnoLice.Text = "Pravno lice";
+            tpPravnoLice.UseVisualStyleBackColor = true;
             // 
             // lvPravnaLica
             // 
@@ -242,6 +257,7 @@
             lvPravnaLica.TabIndex = 1;
             lvPravnaLica.UseCompatibleStateImageBehavior = false;
             lvPravnaLica.View = View.Details;
+            lvPravnaLica.SelectedIndexChanged += lvPravnaLica_SelectedIndexChanged;
             // 
             // btnDodajKupca
             // 
@@ -256,13 +272,98 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(nupKonacnaOcena);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(nupOcenaProdavca);
+            groupBox1.Controls.Add(cbNacinPlacanja);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(tbxDodatnaOprema);
+            groupBox1.Controls.Add(label3);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(683, 52);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(258, 697);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
-            groupBox1.Text = "# Podaci o vozilu";
+            groupBox1.Text = "Podaci o ugovoru";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(17, 344);
+            label7.Name = "label7";
+            label7.Size = new Size(122, 15);
+            label7.TabIndex = 7;
+            label7.Text = "Konačna ocena (1-10)";
+            // 
+            // nupKonacnaOcena
+            // 
+            nupKonacnaOcena.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            nupKonacnaOcena.Location = new Point(17, 362);
+            nupKonacnaOcena.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nupKonacnaOcena.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nupKonacnaOcena.Name = "nupKonacnaOcena";
+            nupKonacnaOcena.Size = new Size(219, 23);
+            nupKonacnaOcena.TabIndex = 6;
+            nupKonacnaOcena.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(17, 276);
+            label6.Name = "label6";
+            label6.Size = new Size(127, 15);
+            label6.TabIndex = 5;
+            label6.Text = "Ocena prodavca (1-10)";
+            // 
+            // nupOcenaProdavca
+            // 
+            nupOcenaProdavca.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            nupOcenaProdavca.Location = new Point(17, 294);
+            nupOcenaProdavca.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nupOcenaProdavca.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nupOcenaProdavca.Name = "nupOcenaProdavca";
+            nupOcenaProdavca.Size = new Size(219, 23);
+            nupOcenaProdavca.TabIndex = 4;
+            nupOcenaProdavca.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // cbNacinPlacanja
+            // 
+            cbNacinPlacanja.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbNacinPlacanja.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbNacinPlacanja.FormattingEnabled = true;
+            cbNacinPlacanja.Location = new Point(17, 53);
+            cbNacinPlacanja.Name = "cbNacinPlacanja";
+            cbNacinPlacanja.Size = new Size(219, 23);
+            cbNacinPlacanja.TabIndex = 3;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(17, 90);
+            label5.Name = "label5";
+            label5.Size = new Size(151, 15);
+            label5.TabIndex = 2;
+            label5.Text = "Dodatna oprema (opciono)";
+            // 
+            // tbxDodatnaOprema
+            // 
+            tbxDodatnaOprema.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbxDodatnaOprema.Location = new Point(17, 108);
+            tbxDodatnaOprema.Multiline = true;
+            tbxDodatnaOprema.Name = "tbxDodatnaOprema";
+            tbxDodatnaOprema.Size = new Size(219, 144);
+            tbxDodatnaOprema.TabIndex = 1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(17, 35);
+            label3.Name = "label3";
+            label3.Size = new Size(85, 15);
+            label3.TabIndex = 0;
+            label3.Text = "Način plaćanja";
             // 
             // SklapanjeUgovora
             // 
@@ -283,8 +384,12 @@
             tblKupci.ResumeLayout(false);
             tblKupci.PerformLayout();
             tcKupci.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage2.ResumeLayout(false);
+            tpFizickoLice.ResumeLayout(false);
+            tpPravnoLice.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nupKonacnaOcena).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nupOcenaProdavca).EndInit();
             ResumeLayout(false);
         }
 
@@ -303,9 +408,17 @@
         private Label label2;
         private Button btnDodajKupca;
         private TabControl tcKupci;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
+        private TabPage tpFizickoLice;
+        private TabPage tpPravnoLice;
         private ListView lvFizickaLica;
         private ListView lvPravnaLica;
+        private ComboBox cbNacinPlacanja;
+        private Label label5;
+        private TextBox tbxDodatnaOprema;
+        private Label label3;
+        private Label label6;
+        private NumericUpDown nupOcenaProdavca;
+        private Label label7;
+        private NumericUpDown nupKonacnaOcena;
     }
 }

@@ -9,5 +9,7 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<bool> Delete(int id);
 
         ServiceResult<UgovorDetailsDTO> GetDetails(int id);
+
+        ServiceResult<bool> Create(UgovorCreateDTO ugovorDto);
     }
 }

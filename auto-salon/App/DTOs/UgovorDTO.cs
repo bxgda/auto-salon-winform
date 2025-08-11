@@ -40,6 +40,25 @@ namespace auto_salon.App.DTOs
         public required string BrojSasije { get; set; }
     }
 
+    public class UgovorCreateDTO
+    {
+        public required NacinPlacanja NacinPlacanja { get; set; }
+        
+        public string? DodatnaOprema { get; set; }
+        
+        public decimal KonacnaOcena { get; set; }
+
+        public decimal OcenaProdavca { get; set; }
+
+        public required string BrojSasije { get; set; }
+
+        public required string JmbgProdavca { get; set; }
+
+        public string? JmbgFizickogKupca { get; set; }
+
+        public string? PIBPravnogKupca { get; set; }
+    }
+
     public class UgovorDetailsDTO
     {
         // Osnovni podaci o ugovoru

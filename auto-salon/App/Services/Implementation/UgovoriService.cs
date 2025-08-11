@@ -114,5 +114,64 @@ namespace auto_salon.App.Services.Implementation
             }
         }
 
+        public ServiceResult<bool> Create(UgovorCreateDTO ugovorDto)
+        {
+            using var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Nema konekcije sa bazom podataka.");
+                }
+
+                // Pribavi domenski entitet vozila
+                Vozilo vozilo = session.Load<Vozilo>(ugovorDto.BrojSasije);
+
+                // Pribavi prodavca
+                Zaposleni prodavac = session.Load<Zaposleni>(ugovorDto.JmbgProdavca);
+
+                // Pribavi kupca
+                Kupac kupac;
+                if (!string.IsNullOrEmpty(ugovorDto.JmbgFizickogKupca))
+                {
+                    kupac = session.Load<FizickoLice>(ugovorDto.JmbgFizickogKupca).Kupac!;
+                }
+                else if (!string.IsNullOrEmpty(ugovorDto.PIBPravnogKupca))
+                {
+                    kupac = session.Load<PravnoLice>(ugovorDto.PIBPravnogKupca).Kupac!;
+                }
+                else
+                {
+                    return ServiceResult<bool>.Failure("Kupac nije naveden.");
+                }
+
+                // Kreiraj novi ugovor
+                KupoprodajniUgovor noviUgovor = new KupoprodajniUgovor
+                {
+                    NacinPlacanja = ugovorDto.NacinPlacanja,
+                    DodatnaOprema = ugovorDto.DodatnaOprema,
+                    KonacnaOcena = ugovorDto.KonacnaOcena,
+                    OcenaProdavca = ugovorDto.OcenaProdavca,
+                    Vozilo = vozilo,
+                    Prodavac = prodavac,
+                    Kupac = kupac
+                };
+
+                // Sačuvaj novi ugovor u bazi
+                session.Save(noviUgovor);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri dohvatanju ugovora: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
     }
 }

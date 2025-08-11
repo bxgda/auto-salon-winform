@@ -33,6 +33,7 @@
             panel1 = new Panel();
             btnAdd = new Button();
             btnDelete = new Button();
+            btnProdaj = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -66,6 +67,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnProdaj);
             panel1.Controls.Add(btnAdd);
             panel1.Controls.Add(btnDelete);
             panel1.Dock = DockStyle.Fill;
@@ -98,6 +100,18 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
+            // btnProdaj
+            // 
+            btnProdaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnProdaj.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnProdaj.Location = new Point(703, 31);
+            btnProdaj.Name = "btnProdaj";
+            btnProdaj.Size = new Size(88, 37);
+            btnProdaj.TabIndex = 5;
+            btnProdaj.Text = "Prodaj";
+            btnProdaj.UseVisualStyleBackColor = true;
+            btnProdaj.Click += btnProdaj_Click;
+            // 
             // VozilaSalona
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -119,5 +133,6 @@
         private Panel panel1;
         private Button btnDelete;
         private Button btnAdd;
+        private Button btnProdaj;
     }
 }
