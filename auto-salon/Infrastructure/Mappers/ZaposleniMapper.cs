@@ -14,6 +14,7 @@ namespace auto_salon.Infrastructure.Mappers
 
             Map(x => x.Pozicija).Column("POZICIJA");
             Map(x => x.DatumZaposlenja).Column("DATUM_ZAPOSLENJA");
+            Map(x => x.StatusZaposlenja).Column("STATUS").CustomType<EnumStringType<StatusZaposlenja>>();
             Map(x => x.Uloga).Column("ULOGA").CustomType<EnumStringType<Uloga>>();
             Map(x => x.DatumPostavljenja).Column("DATUM_POSTAVLJANJA");
 

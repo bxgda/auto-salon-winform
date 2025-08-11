@@ -30,6 +30,7 @@ namespace auto_salon.Presentation.FZaposleni
             tbxKontaktTelefon.Text = _zaposleni.KontaktTelefon;
             tbxEmail.Text = _zaposleni.Email ?? string.Empty;
             tbxAdresa.Text = _zaposleni.Adresa ?? string.Empty;
+            cbxStatus.SelectedItem = cbxStatusEnumToItem(_zaposleni.StatusZaposlenja);
             cbxUloga.SelectedItem = cbxEnumToItem(_zaposleni.Uloga);
         }
 
@@ -96,9 +97,35 @@ namespace auto_salon.Presentation.FZaposleni
                 KontaktTelefon = kontaktTelefon,
                 Email = email,
                 Adresa = adresa,
+                StatusZaposlenja = cbxItemToStatusEnum(cbxStatus.SelectedItem?.ToString() ?? "Aktivan"),
             };
 
             return true;
+        }
+
+        private string cbxStatusEnumToItem(StatusZaposlenja status)
+        {
+            return status switch
+            {
+                StatusZaposlenja.AKTIVAN => "Aktivan",
+                StatusZaposlenja.NEAKTIVAN => "Neaktivan",
+                StatusZaposlenja.NA_ODMORU => "Na odmoru",
+                StatusZaposlenja.NA_BOLOVANJU => "Na bolovanju",
+                _ => throw new NotImplementedException(),
+            };
+        }
+
+
+        private StatusZaposlenja cbxItemToStatusEnum(string status)
+        {
+            return status switch
+            {
+                "Aktivan" => StatusZaposlenja.AKTIVAN,
+                "Neaktivan" => StatusZaposlenja.NEAKTIVAN,
+                "Na odmoru" => StatusZaposlenja.NA_ODMORU,
+                "Na bolovanju" => StatusZaposlenja.NA_BOLOVANJU,
+                _ => throw new NotImplementedException(),
+            };
         }
 
         private Uloga cbxItemToEnum(string uloga)

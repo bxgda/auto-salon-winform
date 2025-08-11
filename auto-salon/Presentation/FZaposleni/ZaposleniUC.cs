@@ -19,6 +19,7 @@ namespace auto_salon.Presentation.FZaposleni
 
             // Define columns for ListView
             lvZaposleni.Columns.Add("JMBG");
+            lvZaposleni.Columns.Add("Status");
             lvZaposleni.Columns.Add("Ime");
             lvZaposleni.Columns.Add("Prezime");
             lvZaposleni.Columns.Add("Uloga");
@@ -46,6 +47,7 @@ namespace auto_salon.Presentation.FZaposleni
                     ListViewItem item = new ListViewItem(new string[]
                     {
                         zaposleni.JMBG,
+                        zaposleni.StatusZaposlenja.ToString(),
                         zaposleni.Ime,
                         zaposleni.Prezime,
                         zaposleni.Uloga.ToString(),

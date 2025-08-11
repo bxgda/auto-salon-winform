@@ -56,10 +56,13 @@ namespace auto_salon.App.Services.Implementation
                 }
 
                 Zaposleni zaposleni = session.Load<Zaposleni>(jmbg);
-                zaposleni.Salon.BrojZaposlenih--;
+                Salon salon = zaposleni.Salon;
 
                 session.Delete(zaposleni);
                 session.Flush();
+
+                salon.BrojZaposlenih--;
+                session.SaveOrUpdate(salon);
 
                 return ServiceResult<bool>.Success(true);
             }
@@ -100,10 +103,12 @@ namespace auto_salon.App.Services.Implementation
                     zaposleniEntity.DatumPostavljenja = zaposleniEntity.DatumZaposlenja;
                 }
 
-                salon.BrojZaposlenih++;
 
                 session.SaveOrUpdate(zaposleniEntity);
                 session.Flush();
+
+                salon.BrojZaposlenih++;
+                session.SaveOrUpdate(salon);
 
                 return ServiceResult<bool>.Success(true);
             }
@@ -175,6 +180,7 @@ namespace auto_salon.App.Services.Implementation
                 zaposleni.DatumZaposlenja = zaposleniDto.DatumZaposlenja;
                 zaposleni.Pozicija = zaposleniDto.Pozicija;
                 zaposleni.Uloga = zaposleniDto.Uloga;
+                zaposleni.StatusZaposlenja = zaposleniDto.StatusZaposlenja;
 
                 // Ako je promenjena uloga na menadžera, postavi datum postavljenja
                 if (zaposleniDto.Uloga == Uloga.MENADZER)
@@ -216,7 +222,7 @@ namespace auto_salon.App.Services.Implementation
                 // Ovo bi trebalo da vrati prodavce koji rade u salonima koji imaju vozilo sa datim brojem šasije
                 // jer prodavac moze da proda samo vozilo iz salona u kojem radi
                 IEnumerable<Zaposleni> prodavci = session.Query<Zaposleni>()
-                    .Where(z => z.Uloga == Uloga.PRODAVAC)
+                    .Where(z => z.Uloga == Uloga.PRODAVAC && z.StatusZaposlenja == StatusZaposlenja.AKTIVAN)
                     .Where(z => z.Salon.Vozila.Any(v => v.BrojSasije == brojSasije));
 
                 foreach (var prodavac in prodavci)

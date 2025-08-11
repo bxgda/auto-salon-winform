@@ -19,6 +19,7 @@ namespace AutoSalonMac.App.Extensions
                 KontaktTelefon = zaposleni.KontaktTelefon,
                 Email = zaposleni.Email,
                 Adresa = zaposleni.Adresa,
+                StatusZaposlenja = zaposleni.StatusZaposlenja,
             };
         }
 
@@ -36,6 +37,7 @@ namespace AutoSalonMac.App.Extensions
                 KontaktTelefon = zaposleniDto.KontaktTelefon,
                 Email = zaposleniDto.Email,
                 Adresa = zaposleniDto.Adresa,
+                StatusZaposlenja = zaposleniDto.StatusZaposlenja,
                 Salon = salon,
                 Kupac = kupac
             };

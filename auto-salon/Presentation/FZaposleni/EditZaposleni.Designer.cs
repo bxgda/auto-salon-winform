@@ -49,6 +49,8 @@
             label2 = new Label();
             tbxIme = new TextBox();
             label1 = new Label();
+            cbxStatus = new ComboBox();
+            label10 = new Label();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -66,6 +68,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label10);
+            groupBox2.Controls.Add(cbxStatus);
             groupBox2.Controls.Add(label9);
             groupBox2.Controls.Add(cbxUloga);
             groupBox2.Controls.Add(label8);
@@ -82,7 +86,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(18, 32);
+            label9.Location = new Point(18, 83);
             label9.Name = "label9";
             label9.Size = new Size(46, 15);
             label9.TabIndex = 18;
@@ -93,7 +97,7 @@
             cbxUloga.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxUloga.FormattingEnabled = true;
             cbxUloga.Items.AddRange(new object[] { "Menadžer", "Finansijski savetnik", "Serviser", "Prodavac" });
-            cbxUloga.Location = new Point(18, 50);
+            cbxUloga.Location = new Point(18, 101);
             cbxUloga.Name = "cbxUloga";
             cbxUloga.Size = new Size(159, 23);
             cbxUloga.TabIndex = 17;
@@ -101,7 +105,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(18, 135);
+            label8.Location = new Point(18, 186);
             label8.Name = "label8";
             label8.Size = new Size(109, 15);
             label8.TabIndex = 15;
@@ -111,14 +115,14 @@
             // 
             dtpDatumZaposlenja.Enabled = false;
             dtpDatumZaposlenja.Format = DateTimePickerFormat.Short;
-            dtpDatumZaposlenja.Location = new Point(18, 153);
+            dtpDatumZaposlenja.Location = new Point(18, 204);
             dtpDatumZaposlenja.Name = "dtpDatumZaposlenja";
             dtpDatumZaposlenja.Size = new Size(159, 23);
             dtpDatumZaposlenja.TabIndex = 14;
             // 
             // tbxPozicija
             // 
-            tbxPozicija.Location = new Point(18, 100);
+            tbxPozicija.Location = new Point(18, 151);
             tbxPozicija.Name = "tbxPozicija";
             tbxPozicija.Size = new Size(159, 23);
             tbxPozicija.TabIndex = 13;
@@ -126,7 +130,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(18, 82);
+            label7.Location = new Point(18, 133);
             label7.Name = "label7";
             label7.Size = new Size(55, 15);
             label7.TabIndex = 12;
@@ -251,6 +255,25 @@
             label1.TabIndex = 0;
             label1.Text = "Ime *";
             // 
+            // cbxStatus
+            // 
+            cbxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxStatus.FormattingEnabled = true;
+            cbxStatus.Items.AddRange(new object[] { "Aktivan", "Neaktivan", "Na odmoru", "Na bolovanju" });
+            cbxStatus.Location = new Point(18, 50);
+            cbxStatus.Name = "cbxStatus";
+            cbxStatus.Size = new Size(159, 23);
+            cbxStatus.TabIndex = 19;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(18, 32);
+            label10.Name = "label10";
+            label10.Size = new Size(97, 15);
+            label10.TabIndex = 20;
+            label10.Text = "Status zaposlenja";
+            // 
             // EditZaposleni
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -298,5 +321,7 @@
         private Label label2;
         private TextBox tbxIme;
         private Label label1;
+        private ComboBox cbxStatus;
+        private Label label10;
     }
 }

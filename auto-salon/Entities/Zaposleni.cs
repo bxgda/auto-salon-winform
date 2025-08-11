@@ -6,6 +6,8 @@
 
         public virtual required DateTime DatumZaposlenja { get; set; } = DateTime.Now;
 
+        public virtual required StatusZaposlenja StatusZaposlenja { get; set; } = StatusZaposlenja.AKTIVAN;
+
         public virtual required Uloga Uloga { get; set; }
 
         public virtual DateTime DatumPostavljenja { get; set; }
@@ -30,5 +32,13 @@
         FINANSIJSKI_SAVETNIK,
         SERVISER,
         PRODAVAC
+    }
+
+    public enum StatusZaposlenja
+    {
+        AKTIVAN,
+        NEAKTIVAN,
+        NA_ODMORU,
+        NA_BOLOVANJU,
     }
 }
