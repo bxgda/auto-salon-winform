@@ -3,6 +3,7 @@ using auto_salon.Presentation.FZaposleni;
 using auto_salon.Presentation.FVozilo;
 using auto_salon.Presentation.FUgovori;
 using Microsoft.Extensions.DependencyInjection;
+using auto_salon.Presentation.FKupac;
 
 namespace auto_salon
 {
@@ -48,5 +49,10 @@ namespace auto_salon
             pnlContent.Controls.Add(control);
         }
 
+        private void btnKupci_Click(object sender, EventArgs e)
+        {
+            var control = _serviceProvider.GetRequiredService<KupacUC>();
+            LoadControl(control);
+        }
     }
 }

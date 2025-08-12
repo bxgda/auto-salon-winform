@@ -145,9 +145,13 @@ namespace auto_salon.Presentation.FZaposleni
 
             SalonDTO salonUKomeJeZaposlen = _zaposleni[selectedIndex].Salon!;
 
+            lblID.Text = salonUKomeJeZaposlen.ID.ToString();
             lblNaziv.Text = salonUKomeJeZaposlen.Naziv;
-            
-            // TODO: dovrsiti
+            lblDrzava.Text = salonUKomeJeZaposlen.Drzava;
+            lblGrad.Text = salonUKomeJeZaposlen.Grad;
+            lblRadnoVreme.Text = salonUKomeJeZaposlen.RadnoVreme;
+            lblKontaktTelefon.Text = salonUKomeJeZaposlen.KontaktTelefon;
+            lblBrZaposlenih.Text = salonUKomeJeZaposlen.BrojZaposlenih.ToString();
         }
     }
 }

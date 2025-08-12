@@ -88,18 +88,18 @@ namespace auto_salon.Presentation.FUgovori
             {
                 ListViewItem item = new ListViewItem(new string[]
                 {
-                        zaposleni.JMBG,
-                        zaposleni.Ime,
-                        zaposleni.Prezime,
-                        zaposleni.Uloga.ToString(),
-                        zaposleni.Pozicija,
-                        zaposleni.DatumZaposlenja.ToShortDateString(),
-                        zaposleni.KontaktTelefon,
-                        zaposleni.Email ?? "",
-                        zaposleni.Adresa ?? "",
-                        zaposleni.DatumPostavljenja == default
-                            ? ""
-                            : zaposleni.DatumPostavljenja.ToShortDateString()
+                    zaposleni.JMBG,
+                    zaposleni.Ime,
+                    zaposleni.Prezime,
+                    zaposleni.Uloga.ToString(),
+                    zaposleni.Pozicija,
+                    zaposleni.DatumZaposlenja.ToShortDateString(),
+                    zaposleni.KontaktTelefon,
+                    zaposleni.Email ?? "",
+                    zaposleni.Adresa ?? "",
+                    zaposleni.DatumPostavljenja == default
+                        ? ""
+                        : zaposleni.DatumPostavljenja.ToShortDateString()
                 });
                 lvProdavci.Items.Add(item);
             }

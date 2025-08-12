@@ -29,13 +29,26 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
-            lvZaposleni = new ListView();
             panel1 = new Panel();
             btnEdit = new Button();
             btnDelete = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
+            lvZaposleni = new ListView();
             groupBox1 = new GroupBox();
+            lblBrZaposlenih = new Label();
+            lblKontaktTelefon = new Label();
+            lblRadnoVreme = new Label();
+            lblGrad = new Label();
+            lblDrzava = new Label();
             lblNaziv = new Label();
+            lblID = new Label();
+            lbl8 = new Label();
+            lbl7 = new Label();
+            lbl6 = new Label();
+            lbl2 = new Label();
+            lbl5 = new Label();
+            lbl4 = new Label();
+            lbl1 = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -59,19 +72,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(1124, 775);
             tableLayoutPanel1.TabIndex = 3;
-            // 
-            // lvZaposleni
-            // 
-            lvZaposleni.Dock = DockStyle.Fill;
-            lvZaposleni.FullRowSelect = true;
-            lvZaposleni.GridLines = true;
-            lvZaposleni.Location = new Point(3, 3);
-            lvZaposleni.Name = "lvZaposleni";
-            lvZaposleni.Size = new Size(834, 690);
-            lvZaposleni.TabIndex = 3;
-            lvZaposleni.UseCompatibleStateImageBehavior = false;
-            lvZaposleni.View = View.Details;
-            lvZaposleni.SelectedIndexChanged += lvZaposleni_SelectedIndexChanged;
             // 
             // panel1
             // 
@@ -123,9 +123,35 @@
             tableLayoutPanel2.Size = new Size(1118, 696);
             tableLayoutPanel2.TabIndex = 5;
             // 
+            // lvZaposleni
+            // 
+            lvZaposleni.Dock = DockStyle.Fill;
+            lvZaposleni.FullRowSelect = true;
+            lvZaposleni.GridLines = true;
+            lvZaposleni.Location = new Point(3, 3);
+            lvZaposleni.Name = "lvZaposleni";
+            lvZaposleni.Size = new Size(834, 690);
+            lvZaposleni.TabIndex = 3;
+            lvZaposleni.UseCompatibleStateImageBehavior = false;
+            lvZaposleni.View = View.Details;
+            lvZaposleni.SelectedIndexChanged += lvZaposleni_SelectedIndexChanged;
+            // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(lblBrZaposlenih);
+            groupBox1.Controls.Add(lblKontaktTelefon);
+            groupBox1.Controls.Add(lblRadnoVreme);
+            groupBox1.Controls.Add(lblGrad);
+            groupBox1.Controls.Add(lblDrzava);
             groupBox1.Controls.Add(lblNaziv);
+            groupBox1.Controls.Add(lblID);
+            groupBox1.Controls.Add(lbl8);
+            groupBox1.Controls.Add(lbl7);
+            groupBox1.Controls.Add(lbl6);
+            groupBox1.Controls.Add(lbl2);
+            groupBox1.Controls.Add(lbl5);
+            groupBox1.Controls.Add(lbl4);
+            groupBox1.Controls.Add(lbl1);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(843, 3);
             groupBox1.Name = "groupBox1";
@@ -134,14 +160,131 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "# Podaci o salonu";
             // 
+            // lblBrZaposlenih
+            // 
+            lblBrZaposlenih.AutoSize = true;
+            lblBrZaposlenih.Location = new Point(108, 311);
+            lblBrZaposlenih.Name = "lblBrZaposlenih";
+            lblBrZaposlenih.Size = new Size(12, 15);
+            lblBrZaposlenih.TabIndex = 15;
+            lblBrZaposlenih.Text = "/";
+            // 
+            // lblKontaktTelefon
+            // 
+            lblKontaktTelefon.AutoSize = true;
+            lblKontaktTelefon.Location = new Point(108, 261);
+            lblKontaktTelefon.Name = "lblKontaktTelefon";
+            lblKontaktTelefon.Size = new Size(12, 15);
+            lblKontaktTelefon.TabIndex = 14;
+            lblKontaktTelefon.Text = "/";
+            // 
+            // lblRadnoVreme
+            // 
+            lblRadnoVreme.AutoSize = true;
+            lblRadnoVreme.Location = new Point(108, 213);
+            lblRadnoVreme.Name = "lblRadnoVreme";
+            lblRadnoVreme.Size = new Size(12, 15);
+            lblRadnoVreme.TabIndex = 13;
+            lblRadnoVreme.Text = "/";
+            // 
+            // lblGrad
+            // 
+            lblGrad.AutoSize = true;
+            lblGrad.Location = new Point(108, 167);
+            lblGrad.Name = "lblGrad";
+            lblGrad.Size = new Size(12, 15);
+            lblGrad.TabIndex = 12;
+            lblGrad.Text = "/";
+            // 
+            // lblDrzava
+            // 
+            lblDrzava.AutoSize = true;
+            lblDrzava.Location = new Point(108, 124);
+            lblDrzava.Name = "lblDrzava";
+            lblDrzava.Size = new Size(12, 15);
+            lblDrzava.TabIndex = 11;
+            lblDrzava.Text = "/";
+            // 
             // lblNaziv
             // 
             lblNaziv.AutoSize = true;
-            lblNaziv.Location = new Point(18, 62);
+            lblNaziv.Location = new Point(108, 81);
             lblNaziv.Name = "lblNaziv";
-            lblNaziv.Size = new Size(38, 15);
-            lblNaziv.TabIndex = 0;
-            lblNaziv.Text = "label1";
+            lblNaziv.Size = new Size(12, 15);
+            lblNaziv.TabIndex = 9;
+            lblNaziv.Text = "/";
+            // 
+            // lblID
+            // 
+            lblID.AutoSize = true;
+            lblID.Location = new Point(108, 43);
+            lblID.Name = "lblID";
+            lblID.Size = new Size(12, 15);
+            lblID.TabIndex = 8;
+            lblID.Text = "/";
+            // 
+            // lbl8
+            // 
+            lbl8.AutoSize = true;
+            lbl8.Location = new Point(6, 311);
+            lbl8.Name = "lbl8";
+            lbl8.Size = new Size(90, 15);
+            lbl8.TabIndex = 7;
+            lbl8.Text = "Broj zaposlenih:";
+            // 
+            // lbl7
+            // 
+            lbl7.AutoSize = true;
+            lbl7.Location = new Point(6, 261);
+            lbl7.Name = "lbl7";
+            lbl7.Size = new Size(91, 15);
+            lbl7.TabIndex = 6;
+            lbl7.Text = "Kontakt telefon:";
+            // 
+            // lbl6
+            // 
+            lbl6.AutoSize = true;
+            lbl6.Location = new Point(6, 213);
+            lbl6.Name = "lbl6";
+            lbl6.Size = new Size(80, 15);
+            lbl6.TabIndex = 5;
+            lbl6.Text = "Radno vreme:";
+            // 
+            // lbl2
+            // 
+            lbl2.AutoSize = true;
+            lbl2.Location = new Point(6, 81);
+            lbl2.Name = "lbl2";
+            lbl2.Size = new Size(39, 15);
+            lbl2.TabIndex = 4;
+            lbl2.Text = "Naziv:";
+            // 
+            // lbl5
+            // 
+            lbl5.AutoSize = true;
+            lbl5.Location = new Point(6, 167);
+            lbl5.Name = "lbl5";
+            lbl5.Size = new Size(35, 15);
+            lbl5.TabIndex = 3;
+            lbl5.Text = "Grad:";
+            // 
+            // lbl4
+            // 
+            lbl4.AutoSize = true;
+            lbl4.Location = new Point(6, 124);
+            lbl4.Name = "lbl4";
+            lbl4.Size = new Size(45, 15);
+            lbl4.TabIndex = 2;
+            lbl4.Text = "Drzava:";
+            // 
+            // lbl1
+            // 
+            lbl1.AutoSize = true;
+            lbl1.Location = new Point(6, 43);
+            lbl1.Name = "lbl1";
+            lbl1.Size = new Size(21, 15);
+            lbl1.TabIndex = 0;
+            lbl1.Text = "ID:";
             // 
             // ZaposleniUC
             // 
@@ -166,6 +309,19 @@
         private Button btnDelete;
         private TableLayoutPanel tableLayoutPanel2;
         private GroupBox groupBox1;
+        private Label lbl1;
+        private Label lbl8;
+        private Label lbl7;
+        private Label lbl6;
+        private Label lbl2;
+        private Label lbl5;
+        private Label lbl4;
+        private Label lblID;
+        private Label lblBrZaposlenih;
+        private Label lblKontaktTelefon;
+        private Label lblRadnoVreme;
+        private Label lblGrad;
+        private Label lblDrzava;
         private Label lblNaziv;
     }
 }

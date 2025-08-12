@@ -36,6 +36,7 @@
             btnSaloni = new Button();
             lblTitle = new Label();
             pnlContent = new Panel();
+            btnKupci = new Button();
             tblMainLayout.SuspendLayout();
             pnlDashboard.SuspendLayout();
             SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             // pnlDashboard
             // 
+            pnlDashboard.Controls.Add(btnKupci);
             pnlDashboard.Controls.Add(btnUgovori);
             pnlDashboard.Controls.Add(btnVozila);
             pnlDashboard.Controls.Add(btnZaposleni);
@@ -137,6 +139,18 @@
             pnlContent.Size = new Size(1019, 853);
             pnlContent.TabIndex = 1;
             // 
+            // btnKupci
+            // 
+            btnKupci.AutoSize = true;
+            btnKupci.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnKupci.Location = new Point(3, 239);
+            btnKupci.Name = "btnKupci";
+            btnKupci.Size = new Size(243, 39);
+            btnKupci.TabIndex = 6;
+            btnKupci.Text = "Kupci";
+            btnKupci.UseVisualStyleBackColor = true;
+            btnKupci.Click += btnKupci_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -164,5 +178,6 @@
         private Button btnZaposleni;
         private Button btnVozila;
         private Button btnUgovori;
+        private Button btnKupci;
     }
 }
