@@ -1,6 +1,7 @@
 using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
+using auto_salon.Presentation.FKupac;
 using auto_salon.Presentation.FSalon;
 using auto_salon.Presentation.FServisnaStavka;
 using auto_salon.Presentation.FUgovori;
@@ -55,6 +56,8 @@ namespace auto_salon
             services.AddTransient<ServisnaIstorijaVozila>();
 
             services.AddTransient<SklapanjeUgovora>();
+
+            services.AddTransient<AddKupac>();
 
             // Kreiranje ServiceProvider-a
             ServiceProvider = services.BuildServiceProvider();

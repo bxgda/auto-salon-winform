@@ -269,6 +269,7 @@
             btnDodajKupca.TabIndex = 6;
             btnDodajKupca.Text = "Dodaj kupca";
             btnDodajKupca.UseVisualStyleBackColor = true;
+            btnDodajKupca.Click += btnDodajKupca_Click;
             // 
             // groupBox1
             // 

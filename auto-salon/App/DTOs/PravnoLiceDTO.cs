@@ -11,5 +11,7 @@
         public required string Telefon { get; set; }
 
         public required string Sediste { get; set; }
+
+        public string? KontaktOsoba { get; set; }
     }
 }

@@ -25,6 +25,7 @@ namespace auto_salon.App.Extensions
                 NazivFirme = pravnoLiceDto.NazivFirme,
                 Sediste = pravnoLiceDto.Sediste,
                 Telefon = pravnoLiceDto.Telefon,
+                KontaktOsoba = pravnoLiceDto.KontaktOsoba,
                 Kupac = kupac
             };
         }

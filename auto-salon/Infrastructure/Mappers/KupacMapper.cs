@@ -9,7 +9,7 @@ namespace auto_salon.Infrastructure.Mappers
         {
             Table("KUPAC");
 
-            Id(x => x.ID).Column("ID").GeneratedBy.TriggerIdentity();
+            Id(x => x.ID).Column("ID").GeneratedBy.SequenceIdentity("KUPAC_ID_SEQ");
 
             HasOne(x => x.FizickoLice).PropertyRef(x => x.Kupac).Cascade.All();
 

@@ -17,7 +17,7 @@ namespace auto_salon.App.Extensions
                 Adresa = fizickoLice.Adresa,
             };
         }
-        public static FizickoLice ToEntity(this FizickoLiceDTO fizickoLiceDto)
+        public static FizickoLice CreateNewEntity(this FizickoLiceDTO fizickoLiceDto)
         {
             return new FizickoLice
             {

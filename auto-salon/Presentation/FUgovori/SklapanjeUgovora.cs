@@ -2,11 +2,15 @@
 using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Entities;
+using auto_salon.Presentation.FKupac;
+using auto_salon.Presentation.FSalon;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FUgovori
 {
     public partial class SklapanjeUgovora : Form
     {
+        private readonly IServiceProvider _serviceProvider;
         private readonly IUgovoriService _ugovoriService;
         private readonly IZaposleniService _zaposleniService;
         private readonly IKupacService _kupacService;
@@ -18,12 +22,13 @@ namespace auto_salon.Presentation.FUgovori
         private FizickoLiceDTO? _selectedFizickoLice = null;
         private PravnoLiceDTO? _selectedPravnoLice = null;
 
-        public SklapanjeUgovora(VoziloTableDTO _vozilo, IUgovoriService ugovoriService, IZaposleniService zaposleniService, IKupacService kupacService)
+        public SklapanjeUgovora(VoziloTableDTO _vozilo, IServiceProvider serviceProvider, IUgovoriService ugovoriService, IZaposleniService zaposleniService, IKupacService kupacService)
         {
             InitializeComponent();
             this.Text = $"Prodaja vozila: {_vozilo.NazivProizvodjaca} {_vozilo.Model}";
 
             this._vozilo = _vozilo;
+            _serviceProvider = serviceProvider;
             _ugovoriService = ugovoriService;
             _zaposleniService = zaposleniService;
             _kupacService = kupacService;
@@ -292,6 +297,17 @@ namespace auto_salon.Presentation.FUgovori
             else
             {
                 _selectedPravnoLice = null;
+            }
+        }
+
+        private void btnDodajKupca_Click(object sender, EventArgs e)
+        {
+            var form = _serviceProvider.GetRequiredService<AddKupac>();
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadKupci();
             }
         }
 
