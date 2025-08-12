@@ -4,13 +4,15 @@ using auto_salon.Presentation.FVozilo;
 using auto_salon.Presentation.FUgovori;
 using Microsoft.Extensions.DependencyInjection;
 using auto_salon.Presentation.FKupac;
+using auto_salon.Entities;
+using auto_salon.Presentation.FPromotivnePonude;
 
 namespace auto_salon
 {
     public partial class MainForm : Form
     {
         private readonly IServiceProvider _serviceProvider;
-        
+
         private Button? _activeButton;
         private readonly Color _activeColor = Color.LightBlue;
         private readonly Color _defaultColor = SystemColors.Control;
@@ -70,6 +72,13 @@ namespace auto_salon
         {
             SetActiveButton((Button)sender);
             var control = _serviceProvider.GetRequiredService<KupacUC>();
+            LoadControl(control);
+        }
+
+        private void btnPromotivnePonude_Click(object sender, EventArgs e)
+        {
+            SetActiveButton((Button)sender);
+            var control = _serviceProvider.GetRequiredService<PromotivnaPonudaUC>();
             LoadControl(control);
         }
     }

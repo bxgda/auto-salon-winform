@@ -1,6 +1,5 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.Entities;
-using NHibernate.Stat;
 
 namespace auto_salon.App.Extensions
 {

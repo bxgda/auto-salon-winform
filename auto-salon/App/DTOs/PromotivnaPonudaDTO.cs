@@ -5,7 +5,7 @@ namespace auto_salon.App.DTOs
 {
     public class PromotivnaPonudaDTO
     {
-        public int ID { get; protected set; }
+        public int ID { get; set; }
 
         [DisplayName("Naziv promocije")]
         public required string NazivPromocije { get; set; }

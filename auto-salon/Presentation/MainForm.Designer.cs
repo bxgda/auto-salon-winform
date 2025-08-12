@@ -30,6 +30,7 @@
         {
             tblMainLayout = new TableLayoutPanel();
             pnlDashboard = new Panel();
+            btnPromotivnePonude = new Button();
             btnKupci = new Button();
             btnUgovori = new Button();
             btnVozila = new Button();
@@ -61,6 +62,7 @@
             // 
             // pnlDashboard
             // 
+            pnlDashboard.Controls.Add(btnPromotivnePonude);
             pnlDashboard.Controls.Add(btnKupci);
             pnlDashboard.Controls.Add(btnUgovori);
             pnlDashboard.Controls.Add(btnVozila);
@@ -72,6 +74,22 @@
             pnlDashboard.Name = "pnlDashboard";
             pnlDashboard.Size = new Size(250, 853);
             pnlDashboard.TabIndex = 0;
+            // 
+            // btnPromotivnePonude
+            // 
+            btnPromotivnePonude.AutoSize = true;
+            btnPromotivnePonude.BackColor = SystemColors.Control;
+            btnPromotivnePonude.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPromotivnePonude.Image = Properties.Resources.user_bag;
+            btnPromotivnePonude.ImageAlign = ContentAlignment.MiddleRight;
+            btnPromotivnePonude.Location = new Point(3, 284);
+            btnPromotivnePonude.Name = "btnPromotivnePonude";
+            btnPromotivnePonude.Size = new Size(243, 39);
+            btnPromotivnePonude.TabIndex = 7;
+            btnPromotivnePonude.Text = "Promotivne ponude";
+            btnPromotivnePonude.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnPromotivnePonude.UseVisualStyleBackColor = false;
+            btnPromotivnePonude.Click += btnPromotivnePonude_Click;
             // 
             // btnKupci
             // 
@@ -156,10 +174,10 @@
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Honey Bear", 15.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblTitle.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
             lblTitle.Location = new Point(23, 5);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(198, 50);
+            lblTitle.Size = new Size(117, 25);
             lblTitle.TabIndex = 1;
             lblTitle.Text = "Auto Salon";
             // 
@@ -199,5 +217,6 @@
         private Button btnVozila;
         private Button btnUgovori;
         private Button btnKupci;
+        private Button btnPromotivnePonude;
     }
 }

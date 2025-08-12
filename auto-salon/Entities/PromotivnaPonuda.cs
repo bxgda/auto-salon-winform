@@ -2,7 +2,7 @@
 {
     public class PromotivnaPonuda
     {
-        public virtual int ID { get; protected set; }
+        public virtual int ID { get; set; }
 
         public virtual DateTime DatumOd { get; set; }
 
