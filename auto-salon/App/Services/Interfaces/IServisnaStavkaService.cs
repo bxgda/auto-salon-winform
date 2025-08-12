@@ -7,5 +7,9 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<IList<ServisnaStavkaDTO>> GetAllByBrojSasije(string brojSasije);
 
         ServiceResult<bool> AddServisnaStavkaToVozilo(ServisnaStavkaDTO servisnaStavka, string brojSasije);
+
+        ServiceResult<bool> Update(ServisnaStavkaDTO servisnaStavkaDTO);
+
+        ServiceResult<bool> Delete(int id);
     }
 }

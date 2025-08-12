@@ -60,7 +60,6 @@ namespace auto_salon
 
             services.AddTransient<AddKupac>();
             services.AddTransient<KupacUC>();
-            services.AddTransient<EditKupac>();
 
             // Kreiranje ServiceProvider-a
             ServiceProvider = services.BuildServiceProvider();

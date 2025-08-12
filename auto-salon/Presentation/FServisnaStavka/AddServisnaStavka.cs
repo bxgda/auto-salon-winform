@@ -18,7 +18,10 @@ namespace auto_salon.Presentation.FServisnaStavka
         private void cbxUserCurrentDate_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxUserCurrentDate.Checked == true)
+            {
                 dtpDatum.Enabled = false;
+                dtpDatum.Value = DateTime.Now;
+            }
             else
                 dtpDatum.Enabled = true;
         }

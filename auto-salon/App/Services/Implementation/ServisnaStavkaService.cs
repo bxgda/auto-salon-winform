@@ -51,6 +51,34 @@ namespace auto_salon.App.Services.Implementation
             }
         }
 
+        public ServiceResult<bool> Delete(int id)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+                }
+
+                ServisnaStavka servisnaStavka= session.Load<ServisnaStavka>(id);
+
+                session.Delete(servisnaStavka);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri brisanju servisne stavke: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
         public ServiceResult<IList<ServisnaStavkaDTO>> GetAllByBrojSasije(string brojSasije)
         {
             var session = _dataLayer.OpenSession();
@@ -80,6 +108,49 @@ namespace auto_salon.App.Services.Implementation
             catch (Exception ex)
             {
                 return ServiceResult<IList<ServisnaStavkaDTO>>.Failure($"Greška pri pribavljanju servisne istorije: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<bool> Update(ServisnaStavkaDTO servisnaStavkaDTO)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+                }
+
+                if (servisnaStavkaDTO == null)
+                {
+                    return ServiceResult<bool>.Failure("Servisna stavka ne može biti null.");
+                }
+
+                // Pribavi domenski entitet
+                ServisnaStavka oldServisnaStavka = session.Load<ServisnaStavka>(servisnaStavkaDTO.ID);
+
+                if (oldServisnaStavka == null)
+                {
+                    return ServiceResult<bool>.Failure("Servisna stavka sa datim ID-jem ne postoji.");
+                }
+
+                // Azuriraj property-e
+                oldServisnaStavka.Opis = servisnaStavkaDTO.Opis;
+                oldServisnaStavka.Datum = servisnaStavkaDTO.Datum;
+
+                session.Update(oldServisnaStavka);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri izmeni servisne stavke: {ex.Message}");
             }
             finally
             {

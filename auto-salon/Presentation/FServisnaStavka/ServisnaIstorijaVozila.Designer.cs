@@ -31,7 +31,9 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             lvServisneStavke = new ListView();
             panel1 = new Panel();
+            btnEdit = new Button();
             btnAdd = new Button();
+            btnDelete = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -65,6 +67,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnDelete);
+            panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnAdd);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 442);
@@ -72,17 +76,50 @@
             panel1.Size = new Size(682, 66);
             panel1.TabIndex = 1;
             // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.Image = Properties.Resources.pencil;
+            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEdit.Location = new Point(109, 26);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Padding = new Padding(5);
+            btnEdit.Size = new Size(102, 37);
+            btnEdit.TabIndex = 4;
+            btnEdit.Text = "Izmeni";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
+            // 
             // btnAdd
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdd.Image = Properties.Resources.plus;
+            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
             btnAdd.Location = new Point(3, 26);
             btnAdd.Name = "btnAdd";
+            btnAdd.Padding = new Padding(5);
             btnAdd.Size = new Size(100, 37);
             btnAdd.TabIndex = 3;
             btnAdd.Text = "Dodaj";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.Image = Properties.Resources.trash;
+            btnDelete.ImageAlign = ContentAlignment.MiddleRight;
+            btnDelete.Location = new Point(217, 26);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(102, 37);
+            btnDelete.TabIndex = 5;
+            btnDelete.Text = "Obriši";
+            btnDelete.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // ServisnaIstorijaVozila
             // 
@@ -106,5 +143,7 @@
         private ListView lvServisneStavke;
         private Panel panel1;
         private Button btnAdd;
+        private Button btnEdit;
+        private Button btnDelete;
     }
 }

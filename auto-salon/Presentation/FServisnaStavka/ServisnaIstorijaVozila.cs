@@ -1,6 +1,5 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Interfaces;
-using auto_salon.Presentation.FSalon;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FServisnaStavka
@@ -80,6 +79,54 @@ namespace auto_salon.Presentation.FServisnaStavka
             }
         }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (lvServisneStavke.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite servisnu stavku koju želite da izmenite.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedRowIndex = lvServisneStavke.SelectedItems[0].Index;
+
+            var servisnaStavkaService = _serviceProvider.GetRequiredService<IServisnaStavkaService>();
+
+            var form = new EditServisnaStavka(servisnaStavkaService, _servisneStavke[selectedRowIndex], _vozilo);
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
+            }
+        }
+
         #endregion
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (lvServisneStavke.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite servisnu stavku koju želite da obrišete.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedRowIndex = lvServisneStavke.SelectedItems[0].Index;
+            int servisnaStavkaId = _servisneStavke[selectedRowIndex].ID;
+            var result = _servisnaStavkaService.Delete(servisnaStavkaId);
+
+            if (result.IsSuccess)
+            {
+                LoadData();
+                MessageBox.Show("Servisna stavka je uspešno obrisana.",
+                    "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(result.ErrorMessage,
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
