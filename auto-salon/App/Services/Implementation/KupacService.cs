@@ -98,7 +98,7 @@ namespace auto_salon.App.Services.Implementation
             }
         }
 
-        public ServiceResult<bool> UpdateKupac(KupacDTO kupacDto)
+        public ServiceResult<bool> UpdateFizickoLice(FizickoLiceDTO fizickoLiceDto)
         {
             var session = _dataLayer.OpenSession();
 
@@ -109,56 +109,61 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
 
-                if (kupacDto == null)
+                // Pribavi domenski entitet
+                FizickoLice fizickoLice = session.Get<FizickoLice>(fizickoLiceDto.JMBG);
+                if (fizickoLice == null)
                 {
-                    return ServiceResult<bool>.Failure("Kupac ne može biti null.");
+                    return ServiceResult<bool>.Failure("Fizičko lice sa datim JMBG-om ne postoji.");
+                }
+
+                // Ažuriraj svojstva
+                fizickoLice.Ime = fizickoLiceDto.Ime;
+                fizickoLice.Prezime = fizickoLiceDto.Prezime;
+                fizickoLice.Email = fizickoLiceDto.Email;
+                fizickoLice.KontaktTelefon = fizickoLiceDto.KontaktTelefon;
+                fizickoLice.Adresa = fizickoLiceDto.Adresa;
+
+                session.SaveOrUpdate(fizickoLice);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri izmeni kupca: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<bool> UpdatePravnoLice(PravnoLiceDTO pravnoLiceDto)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
                 }
 
                 // Pribavi domenski entitet
-                Kupac oldKupac = session.Get<Kupac>(kupacDto.ID);
-
-                if (oldKupac == null)
+                PravnoLice pravnoLice = session.Get<PravnoLice>(pravnoLiceDto.PIB);
+                if (pravnoLice == null)
                 {
-                    return ServiceResult<bool>.Failure("Ovaj kupac u bazi ne postoji.");
+                    return ServiceResult<bool>.Failure("Pravno lice sa datim PIB-om ne postoji.");
                 }
 
-                // Azuriraj property-e u zavisnosti od tipa kupca
-                if (kupacDto.FizickoLice != null)
-                {
-                    // Azuriraj fizicko lice
-                    if (oldKupac.FizickoLice == null)
-                    {
-                        return ServiceResult<bool>.Failure("Ovaj kupac nije fizicko lice.");
-                    }
-
-                    oldKupac.FizickoLice.JMBG = kupacDto.FizickoLice.JMBG;
-                    oldKupac.FizickoLice.Ime = kupacDto.FizickoLice.Ime;
-                    oldKupac.FizickoLice.Prezime = kupacDto.FizickoLice.Prezime;
-                    oldKupac.FizickoLice.Email = kupacDto.FizickoLice.Email;
-                    oldKupac.FizickoLice.KontaktTelefon = kupacDto.FizickoLice.KontaktTelefon;
-                    oldKupac.FizickoLice.Adresa = kupacDto.FizickoLice.Adresa;
-                }
-                else if (kupacDto.PravnoLice != null)
-                {
-                    // Azuriraj pravno lice
-                    if (oldKupac.PravnoLice == null)
-                    {
-                        return ServiceResult<bool>.Failure("Ovaj kupac nije pravno lice.");
-                    }
-                    
-                    oldKupac.PravnoLice.PIB = kupacDto.PravnoLice.PIB;
-                    oldKupac.PravnoLice.NazivFirme = kupacDto.PravnoLice.NazivFirme;
-                    oldKupac.PravnoLice.Email = kupacDto.PravnoLice.Email;
-                    oldKupac.PravnoLice.Telefon = kupacDto.PravnoLice.Telefon;
-                    oldKupac.PravnoLice.Sediste = kupacDto.PravnoLice.Sediste;
-                    oldKupac.PravnoLice.KontaktOsoba = kupacDto.PravnoLice.KontaktOsoba;
-                }
-                else
-                {
-                    return ServiceResult<bool>.Failure("Nije moguće izmeniti ovog kupca.");
-                }
-
-                session.SaveOrUpdate(oldKupac);
+                // Azuriraj svojstva
+                pravnoLice.NazivFirme = pravnoLiceDto.NazivFirme;
+                pravnoLice.Email = pravnoLiceDto.Email;
+                pravnoLice.Telefon = pravnoLiceDto.Telefon;
+                pravnoLice.Sediste = pravnoLiceDto.Sediste;
+                pravnoLice.KontaktOsoba = pravnoLiceDto.KontaktOsoba;
+                
+                session.SaveOrUpdate(pravnoLice);
                 session.Flush();
 
                 return ServiceResult<bool>.Success(true);

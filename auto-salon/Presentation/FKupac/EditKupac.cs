@@ -1,4 +1,5 @@
 ﻿using auto_salon.App.DTOs;
+using auto_salon.App.Services;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Entities;
 
@@ -71,7 +72,7 @@ namespace auto_salon.Presentation.FKupac
                 return;
             }
 
-            KupacDTO kupacDTO = new KupacDTO();
+            ServiceResult<bool> result;
 
             if (_fizickoLiceDTO != null)
             {
@@ -85,7 +86,7 @@ namespace auto_salon.Presentation.FKupac
                     return;
                 }
 
-                kupacDTO.FizickoLice = new FizickoLiceDTO
+                FizickoLiceDTO fizickoLiceDto = new FizickoLiceDTO
                 {
                     JMBG = tbx1Kupac.Text,
                     Ime = tbx2Kupac.Text,
@@ -94,6 +95,8 @@ namespace auto_salon.Presentation.FKupac
                     KontaktTelefon = tbx5Kupac.Text,
                     Adresa = tbx6Kupac.Text
                 };
+
+                result = _kupacService.UpdateFizickoLice(fizickoLiceDto);
             }
             else
             {
@@ -109,7 +112,7 @@ namespace auto_salon.Presentation.FKupac
                     return;
                 }
 
-                kupacDTO.PravnoLice = new PravnoLiceDTO
+                PravnoLiceDTO pravnoLice = new PravnoLiceDTO
                 {
                     PIB = tbx1Kupac.Text,
                     NazivFirme = tbx2Kupac.Text,
@@ -118,9 +121,9 @@ namespace auto_salon.Presentation.FKupac
                     Sediste = tbx5Kupac.Text,
                     KontaktOsoba = tbx6Kupac.Text
                 };
-            }
 
-            var result = _kupacService.AddKupac(kupacDTO);
+                result = _kupacService.UpdatePravnoLice(pravnoLice);
+            }
 
             if (result.IsSuccess)
             {

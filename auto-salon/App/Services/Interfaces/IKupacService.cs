@@ -7,7 +7,9 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<IList<KupacDTO>> GetAll();
 
         ServiceResult<bool> AddKupac(KupacDTO kupacDto);
+            
+        ServiceResult<bool> UpdateFizickoLice(FizickoLiceDTO fizickoLiceDto);
 
-        ServiceResult<bool> UpdateKupac(KupacDTO kupacDto);
+        ServiceResult<bool> UpdatePravnoLice(PravnoLiceDTO pravnoLiceDto);
     }
 }

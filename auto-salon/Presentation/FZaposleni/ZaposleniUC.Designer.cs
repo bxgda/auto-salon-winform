@@ -87,11 +87,14 @@
             // 
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.Image = Properties.Resources.pencil;
+            btnEdit.ImageAlign = ContentAlignment.MiddleRight;
             btnEdit.Location = new Point(3, 27);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(88, 37);
+            btnEdit.Size = new Size(105, 37);
             btnEdit.TabIndex = 7;
             btnEdit.Text = "Izmeni";
+            btnEdit.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
             // 
@@ -100,11 +103,14 @@
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.Enabled = false;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(97, 27);
+            btnDelete.Image = Properties.Resources.trash;
+            btnDelete.ImageAlign = ContentAlignment.MiddleRight;
+            btnDelete.Location = new Point(114, 27);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(88, 37);
+            btnDelete.Size = new Size(105, 37);
             btnDelete.TabIndex = 5;
             btnDelete.Text = "Obriši";
+            btnDelete.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
@@ -158,7 +164,7 @@
             groupBox1.Size = new Size(272, 690);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
-            groupBox1.Text = "# Podaci o salonu";
+            groupBox1.Text = "# Salon u kome radi";
             // 
             // lblBrZaposlenih
             // 

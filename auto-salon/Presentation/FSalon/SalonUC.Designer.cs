@@ -44,11 +44,14 @@
             // 
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(215, 32);
+            btnDelete.Image = Properties.Resources.trash;
+            btnDelete.ImageAlign = ContentAlignment.MiddleRight;
+            btnDelete.Location = new Point(219, 48);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(88, 37);
+            btnDelete.Size = new Size(102, 37);
             btnDelete.TabIndex = 1;
             btnDelete.Text = "Obriši";
+            btnDelete.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
@@ -56,11 +59,14 @@
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(3, 32);
+            btnAdd.Image = Properties.Resources.plus;
+            btnAdd.ImageAlign = ContentAlignment.MiddleRight;
+            btnAdd.Location = new Point(3, 48);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(100, 37);
+            btnAdd.Size = new Size(102, 37);
             btnAdd.TabIndex = 2;
             btnAdd.Text = "Dodaj";
+            btnAdd.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
@@ -68,11 +74,14 @@
             // 
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(109, 32);
+            btnEdit.Image = Properties.Resources.pencil;
+            btnEdit.ImageAlign = ContentAlignment.MiddleRight;
+            btnEdit.Location = new Point(111, 48);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(100, 37);
+            btnEdit.Size = new Size(102, 37);
             btnEdit.TabIndex = 3;
             btnEdit.Text = "Izmeni";
+            btnEdit.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
             // 
@@ -89,7 +98,7 @@
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 83.2F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.8F));
-            tableLayoutPanel1.Size = new Size(719, 500);
+            tableLayoutPanel1.Size = new Size(843, 592);
             tableLayoutPanel1.TabIndex = 5;
             // 
             // panel1
@@ -100,20 +109,23 @@
             panel1.Controls.Add(btnDelete);
             panel1.Controls.Add(btnZaposleni);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 419);
+            panel1.Location = new Point(3, 495);
             panel1.Name = "panel1";
-            panel1.Size = new Size(713, 78);
+            panel1.Size = new Size(837, 94);
             panel1.TabIndex = 5;
             // 
             // btnVozila
             // 
             btnVozila.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnVozila.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVozila.Location = new Point(399, 32);
+            btnVozila.Image = Properties.Resources.cars;
+            btnVozila.ImageAlign = ContentAlignment.MiddleRight;
+            btnVozila.Location = new Point(504, 48);
             btnVozila.Name = "btnVozila";
             btnVozila.Size = new Size(148, 37);
             btnVozila.TabIndex = 5;
             btnVozila.Text = "Pregled vozila";
+            btnVozila.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnVozila.UseVisualStyleBackColor = true;
             btnVozila.Click += btnVozila_Click;
             // 
@@ -121,11 +133,14 @@
             // 
             btnZaposleni.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnZaposleni.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnZaposleni.Location = new Point(553, 32);
+            btnZaposleni.Image = Properties.Resources.users;
+            btnZaposleni.ImageAlign = ContentAlignment.MiddleRight;
+            btnZaposleni.Location = new Point(658, 48);
             btnZaposleni.Name = "btnZaposleni";
-            btnZaposleni.Size = new Size(148, 37);
+            btnZaposleni.Size = new Size(167, 37);
             btnZaposleni.TabIndex = 2;
             btnZaposleni.Text = "Pregled zaposlenih";
+            btnZaposleni.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnZaposleni.UseVisualStyleBackColor = true;
             btnZaposleni.Click += btnZaposleni_Click;
             // 
@@ -136,7 +151,7 @@
             lvSaloni.GridLines = true;
             lvSaloni.Location = new Point(3, 3);
             lvSaloni.Name = "lvSaloni";
-            lvSaloni.Size = new Size(713, 410);
+            lvSaloni.Size = new Size(837, 486);
             lvSaloni.TabIndex = 6;
             lvSaloni.UseCompatibleStateImageBehavior = false;
             lvSaloni.View = View.Details;
@@ -148,7 +163,7 @@
             AutoSize = true;
             Controls.Add(tableLayoutPanel1);
             Name = "SalonUC";
-            Size = new Size(719, 500);
+            Size = new Size(843, 592);
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ResumeLayout(false);

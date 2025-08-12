@@ -10,6 +10,10 @@ namespace auto_salon
     public partial class MainForm : Form
     {
         private readonly IServiceProvider _serviceProvider;
+        
+        private Button? _activeButton;
+        private readonly Color _activeColor = Color.LightBlue;
+        private readonly Color _defaultColor = SystemColors.Control;
 
         public MainForm(IServiceProvider serviceProvider)
         {
@@ -19,38 +23,52 @@ namespace auto_salon
             // Postavi neki naslov ili sliku ili oba u pnlContent
         }
 
-        private void btnSaloni_Click(object sender, EventArgs e)
-        {
-            var control = _serviceProvider.GetRequiredService<SalonUC>();
-            LoadControl(control);
-        }
-
-        private void btnZaposleni_Click(object sender, EventArgs e)
-        {
-            var control = _serviceProvider.GetRequiredService<ZaposleniUC>();
-            LoadControl(control);
-        }
-
-        private void btnVozila_Click(object sender, EventArgs e)
-        {
-            var control = _serviceProvider.GetRequiredService<VoziloUC>();
-            LoadControl(control);
-        }
-
-        private void btnUgovori_Click(object sender, EventArgs e)
-        {
-            var control = _serviceProvider.GetRequiredService<UgovoriUC>();
-            LoadControl(control);
-        }
-
         private void LoadControl(UserControl control)
         {
             pnlContent.Controls.Clear();
             pnlContent.Controls.Add(control);
         }
 
+        private void SetActiveButton(Button clickedButton)
+        {
+            if (_activeButton != null)
+                _activeButton.BackColor = _defaultColor;
+
+            _activeButton = clickedButton;
+            _activeButton.BackColor = _activeColor;
+        }
+
+        private void btnSaloni_Click(object sender, EventArgs e)
+        {
+            SetActiveButton((Button)sender);
+            var control = _serviceProvider.GetRequiredService<SalonUC>();
+            LoadControl(control);
+        }
+
+        private void btnZaposleni_Click(object sender, EventArgs e)
+        {
+            SetActiveButton((Button)sender);
+            var control = _serviceProvider.GetRequiredService<ZaposleniUC>();
+            LoadControl(control);
+        }
+
+        private void btnVozila_Click(object sender, EventArgs e)
+        {
+            SetActiveButton((Button)sender);
+            var control = _serviceProvider.GetRequiredService<VoziloUC>();
+            LoadControl(control);
+        }
+
+        private void btnUgovori_Click(object sender, EventArgs e)
+        {
+            SetActiveButton((Button)sender);
+            var control = _serviceProvider.GetRequiredService<UgovoriUC>();
+            LoadControl(control);
+        }
+
         private void btnKupci_Click(object sender, EventArgs e)
         {
+            SetActiveButton((Button)sender);
             var control = _serviceProvider.GetRequiredService<KupacUC>();
             LoadControl(control);
         }

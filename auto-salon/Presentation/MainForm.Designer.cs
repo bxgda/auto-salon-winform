@@ -30,13 +30,13 @@
         {
             tblMainLayout = new TableLayoutPanel();
             pnlDashboard = new Panel();
+            btnKupci = new Button();
             btnUgovori = new Button();
             btnVozila = new Button();
             btnZaposleni = new Button();
             btnSaloni = new Button();
             lblTitle = new Label();
             pnlContent = new Panel();
-            btnKupci = new Button();
             tblMainLayout.SuspendLayout();
             pnlDashboard.SuspendLayout();
             SuspendLayout();
@@ -73,61 +73,93 @@
             pnlDashboard.Size = new Size(250, 853);
             pnlDashboard.TabIndex = 0;
             // 
+            // btnKupci
+            // 
+            btnKupci.AutoSize = true;
+            btnKupci.BackColor = SystemColors.Control;
+            btnKupci.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnKupci.Image = Properties.Resources.user_bag;
+            btnKupci.ImageAlign = ContentAlignment.MiddleRight;
+            btnKupci.Location = new Point(3, 239);
+            btnKupci.Name = "btnKupci";
+            btnKupci.Size = new Size(243, 39);
+            btnKupci.TabIndex = 6;
+            btnKupci.Text = "Kupci";
+            btnKupci.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnKupci.UseVisualStyleBackColor = false;
+            btnKupci.Click += btnKupci_Click;
+            // 
             // btnUgovori
             // 
             btnUgovori.AutoSize = true;
+            btnUgovori.BackColor = SystemColors.Control;
             btnUgovori.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUgovori.Image = Properties.Resources.contract;
+            btnUgovori.ImageAlign = ContentAlignment.MiddleRight;
             btnUgovori.Location = new Point(3, 194);
             btnUgovori.Name = "btnUgovori";
             btnUgovori.Size = new Size(243, 39);
             btnUgovori.TabIndex = 5;
             btnUgovori.Text = "Ugovori";
-            btnUgovori.UseVisualStyleBackColor = true;
+            btnUgovori.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnUgovori.UseVisualStyleBackColor = false;
             btnUgovori.Click += btnUgovori_Click;
             // 
             // btnVozila
             // 
             btnVozila.AutoSize = true;
+            btnVozila.BackColor = SystemColors.Control;
             btnVozila.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVozila.Image = Properties.Resources.cars;
+            btnVozila.ImageAlign = ContentAlignment.MiddleRight;
             btnVozila.Location = new Point(3, 149);
             btnVozila.Name = "btnVozila";
             btnVozila.Size = new Size(243, 39);
             btnVozila.TabIndex = 4;
             btnVozila.Text = "Vozila";
-            btnVozila.UseVisualStyleBackColor = true;
+            btnVozila.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnVozila.UseVisualStyleBackColor = false;
             btnVozila.Click += btnVozila_Click;
             // 
             // btnZaposleni
             // 
             btnZaposleni.AutoSize = true;
+            btnZaposleni.BackColor = SystemColors.Control;
             btnZaposleni.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnZaposleni.Image = Properties.Resources.users;
+            btnZaposleni.ImageAlign = ContentAlignment.MiddleRight;
             btnZaposleni.Location = new Point(3, 104);
             btnZaposleni.Name = "btnZaposleni";
             btnZaposleni.Size = new Size(243, 39);
             btnZaposleni.TabIndex = 3;
             btnZaposleni.Text = "Zaposleni";
-            btnZaposleni.UseVisualStyleBackColor = true;
+            btnZaposleni.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnZaposleni.UseVisualStyleBackColor = false;
             btnZaposleni.Click += btnZaposleni_Click;
             // 
             // btnSaloni
             // 
             btnSaloni.AutoSize = true;
+            btnSaloni.BackColor = SystemColors.Control;
             btnSaloni.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSaloni.Image = Properties.Resources.garage_car;
+            btnSaloni.ImageAlign = ContentAlignment.MiddleRight;
             btnSaloni.Location = new Point(3, 59);
             btnSaloni.Name = "btnSaloni";
             btnSaloni.Size = new Size(243, 39);
             btnSaloni.TabIndex = 2;
             btnSaloni.Text = "Saloni";
-            btnSaloni.UseVisualStyleBackColor = true;
+            btnSaloni.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSaloni.UseVisualStyleBackColor = false;
             btnSaloni.Click += btnSaloni_Click;
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitle.Location = new Point(9, 5);
+            lblTitle.Font = new Font("Honey Bear", 15.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblTitle.Location = new Point(23, 5);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(115, 30);
+            lblTitle.Size = new Size(198, 50);
             lblTitle.TabIndex = 1;
             lblTitle.Text = "Auto Salon";
             // 
@@ -138,18 +170,6 @@
             pnlContent.Name = "pnlContent";
             pnlContent.Size = new Size(1019, 853);
             pnlContent.TabIndex = 1;
-            // 
-            // btnKupci
-            // 
-            btnKupci.AutoSize = true;
-            btnKupci.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnKupci.Location = new Point(3, 239);
-            btnKupci.Name = "btnKupci";
-            btnKupci.Size = new Size(243, 39);
-            btnKupci.TabIndex = 6;
-            btnKupci.Text = "Kupci";
-            btnKupci.UseVisualStyleBackColor = true;
-            btnKupci.Click += btnKupci_Click;
             // 
             // MainForm
             // 
