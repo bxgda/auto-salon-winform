@@ -11,5 +11,8 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<bool> Add(SalonDTO salon);
 
         ServiceResult<bool> Update(SalonDTO salon);
+
+        // Vraca sve salone gde vozilo sa odredjenim stanjem moze da se premesti
+        ServiceResult<IList<SalonComboboxDTO>> GetAllByStanjeVozila(string stanje);
     }
 }

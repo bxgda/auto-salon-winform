@@ -1,5 +1,6 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Entities;
 using auto_salon.Presentation.FServisnaStavka;
 using auto_salon.Presentation.FUgovori;
 using Microsoft.Extensions.DependencyInjection;
@@ -205,6 +206,46 @@ namespace auto_salon.Presentation.FVozilo
             form.ShowDialog();
 
             LoadData();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (lvVozila.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite vozilo koje želite da izmenite.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Ovo mora ovako jer zbog filtera se ne zna koji je indeks
+
+            // Broj sasije je u trecoj koloni (indeks 2)
+            string brojSasije = lvVozila.SelectedItems[0].SubItems[2].Text;
+
+            // Pronadji vozilo u _vozila po BrojSasije
+            var vozilo = _vozila.FirstOrDefault(v => v.BrojSasije == brojSasije);
+            if (vozilo == null)
+            {
+                MessageBox.Show(
+                    "Došlo je do greške pri pronalaženju vozila.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (vozilo.JeProdato)
+            {
+                MessageBox.Show("Vozilo je već prodato i ne može se menjati.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Prosleđivanje DTO-a se i dalje može raditi ručno
+            var form = ActivatorUtilities.CreateInstance<EditVozilo>(_serviceProvider, vozilo);
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
+            }
         }
 
         #endregion

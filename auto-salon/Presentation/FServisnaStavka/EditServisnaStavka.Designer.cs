@@ -45,7 +45,7 @@
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
             btnSubmit.Location = new Point(188, 328);
             btnSubmit.Name = "btnSubmit";
-            btnSubmit.Padding = new Padding(5);
+            btnSubmit.Padding = new Padding(10, 0, 0, 0);
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 5;
             btnSubmit.Text = "Izmeni";
@@ -121,10 +121,13 @@
             ClientSize = new Size(352, 383);
             Controls.Add(btnSubmit);
             Controls.Add(groupBox1);
+            MaximizeBox = false;
             MaximumSize = new Size(368, 422);
+            MinimizeBox = false;
             MinimumSize = new Size(368, 422);
             Name = "EditServisnaStavka";
             ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Uređivanje servisne stavke";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

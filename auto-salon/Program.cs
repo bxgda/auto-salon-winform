@@ -46,6 +46,7 @@ namespace auto_salon
 
             services.AddTransient<VoziloUC>();
             services.AddTransient<AddVozilo>();
+            services.AddTransient<EditVozilo>();
             services.AddTransient<VozilaSalona>();
 
             services.AddTransient<ZaposleniUC>();

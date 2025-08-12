@@ -68,5 +68,14 @@ namespace auto_salon.App.Extensions
 
             }
         }
+
+        public static SalonComboboxDTO ToSalonComboboxDTO(this Salon salon)
+        {
+            return new SalonComboboxDTO
+            {
+                ID = salon.ID,
+                Naziv = salon.Naziv
+            };
+        }
     }
 }

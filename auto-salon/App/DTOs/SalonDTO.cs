@@ -20,4 +20,11 @@
 
         public int BrojZaposlenih { get; set; }
     }
+
+    public class SalonComboboxDTO
+    {
+        public int ID { get; set; }
+        
+        public required string Naziv { get; set; }
+    }
 }

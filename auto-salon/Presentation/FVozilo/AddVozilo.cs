@@ -82,7 +82,7 @@ namespace auto_salon.Presentation.FVozilo
             cbMarka.Items.Clear();
 
             List<MarkaItem> markaItems = new List<MarkaItem>();
-    
+
             foreach (var p in proizvodjaci)
             {
                 markaItems.Add(new MarkaItem(p.Naziv, p.ID));
@@ -157,7 +157,7 @@ namespace auto_salon.Presentation.FVozilo
                 datumRegistracije = dtpDatumRegistracije.Value;
                 brojVlasnika = (int)numBrojVlasnika.Value;
             }
-            
+
             VoziloTableDTO newVozilo = new VoziloTableDTO
             {
                 Stanje = rbNovo.Checked ? "Novo" : "Polovno",

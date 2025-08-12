@@ -14,6 +14,7 @@ namespace AutoSalonMac.App.Extensions
                     BrojSasije = vozilo.BrojSasije,
                     Model = vozilo.Model,
                     NazivProizvodjaca = vozilo.Proizvodjac.Naziv,
+                    NazivSalona = vozilo.Salon.Naziv,
                     Boja = vozilo.Boja,
                     BrojVrata = vozilo.BrojVrata,
                     TipGoriva = vozilo.TipGoriva,
@@ -29,6 +30,7 @@ namespace AutoSalonMac.App.Extensions
                     BrojSasije = vozilo.BrojSasije,
                     Model = vozilo.Model,
                     NazivProizvodjaca = vozilo.Proizvodjac.Naziv,
+                    NazivSalona = vozilo.Salon.Naziv,
                     Boja = vozilo.Boja,
                     BrojVrata = vozilo.BrojVrata,
                     TipGoriva = vozilo.TipGoriva,
@@ -72,7 +74,7 @@ namespace AutoSalonMac.App.Extensions
                     Salon = salon,
                     Proizvodjac = proizvodjac,
                     BrojVlasnika = vozilo.BrojVlasnika,
-                    DatumRegistracije = vozilo.DatumRegistracije
+                    DatumRegistracije = vozilo.DatumRegistracije ?? DateTime.Now
                 };
         }
     }

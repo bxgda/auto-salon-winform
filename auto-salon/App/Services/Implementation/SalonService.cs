@@ -107,6 +107,58 @@ namespace auto_salon.App.Services.Implementation
             }
         }
 
+        public ServiceResult<IList<SalonComboboxDTO>> GetAllByStanjeVozila(string stanje)
+        {
+            var session = _dataLayer.OpenSession();
+
+            IList<SalonComboboxDTO> result = new List<SalonComboboxDTO>();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<IList<SalonComboboxDTO>>.Failure("Nema konekcije sa bazom podataka.");
+                }
+
+                IEnumerable<Salon> sviSaloni = session.Query<Salon>();
+
+                if (stanje == "Novo")
+                {
+                    // Izdvoj samo salone koji su tipa SalonNova ili SalonKombinovan
+                    result = sviSaloni
+                        .Where(s => s is SalonNova || s is SalonKombinovan)
+                        .Select(s => new SalonComboboxDTO
+                        {
+                            ID = s.ID,
+                            Naziv = s.Naziv
+                        })
+                        .ToList();
+                }
+                else if (stanje == "Polovno")
+                {
+                    // Izdvoj samo salone koji su tipa SalonPolovna ili SalonKombinovan
+                    result = sviSaloni
+                        .Where(s => s is SalonPolovna || s is SalonKombinovan)
+                        .Select(s => new SalonComboboxDTO
+                        {
+                            ID = s.ID,
+                            Naziv = s.Naziv
+                        })
+                        .ToList();
+                }
+
+                return ServiceResult<IList<SalonComboboxDTO>>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<IList<SalonComboboxDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
         public ServiceResult<bool> Update(SalonDTO salonDto)
         {
             var session = _dataLayer.OpenSession();

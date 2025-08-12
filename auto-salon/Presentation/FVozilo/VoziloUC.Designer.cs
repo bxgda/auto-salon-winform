@@ -30,13 +30,14 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
+            btnEdit = new Button();
+            btnProdaj = new Button();
             btnServisnaIstorija = new Button();
             btnDelete = new Button();
             lvVozila = new ListView();
             panel2 = new Panel();
             label1 = new Label();
             cbFilter = new ComboBox();
-            btnProdaj = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -54,27 +55,58 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 400F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
-            tableLayoutPanel1.Size = new Size(719, 500);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 657F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.Size = new Size(1031, 783);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnProdaj);
             panel1.Controls.Add(btnServisnaIstorija);
             panel1.Controls.Add(btnDelete);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 437);
+            panel1.Location = new Point(3, 694);
             panel1.Name = "panel1";
-            panel1.Size = new Size(713, 60);
+            panel1.Size = new Size(1025, 86);
             panel1.TabIndex = 1;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.Image = Properties.Resources.pencil;
+            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEdit.Location = new Point(124, 46);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Padding = new Padding(10, 0, 0, 0);
+            btnEdit.Size = new Size(115, 37);
+            btnEdit.TabIndex = 6;
+            btnEdit.Text = "Izmeni";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
+            // 
+            // btnProdaj
+            // 
+            btnProdaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnProdaj.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnProdaj.Image = Properties.Resources.shopping_cart;
+            btnProdaj.ImageAlign = ContentAlignment.MiddleLeft;
+            btnProdaj.Location = new Point(866, 46);
+            btnProdaj.Name = "btnProdaj";
+            btnProdaj.Padding = new Padding(10, 0, 0, 0);
+            btnProdaj.Size = new Size(156, 37);
+            btnProdaj.TabIndex = 5;
+            btnProdaj.Text = "Prodaj";
+            btnProdaj.UseVisualStyleBackColor = true;
+            btnProdaj.Click += btnProdaj_Click;
             // 
             // btnServisnaIstorija
             // 
             btnServisnaIstorija.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnServisnaIstorija.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnServisnaIstorija.Location = new Point(97, 20);
+            btnServisnaIstorija.Location = new Point(245, 46);
             btnServisnaIstorija.Name = "btnServisnaIstorija";
             btnServisnaIstorija.Size = new Size(156, 37);
             btnServisnaIstorija.TabIndex = 4;
@@ -86,9 +118,12 @@
             // 
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(3, 20);
+            btnDelete.Image = Properties.Resources.trash;
+            btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDelete.Location = new Point(3, 46);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(88, 37);
+            btnDelete.Padding = new Padding(10, 0, 0, 0);
+            btnDelete.Size = new Size(115, 37);
             btnDelete.TabIndex = 3;
             btnDelete.Text = "Obriši";
             btnDelete.UseVisualStyleBackColor = true;
@@ -101,7 +136,7 @@
             lvVozila.GridLines = true;
             lvVozila.Location = new Point(3, 37);
             lvVozila.Name = "lvVozila";
-            lvVozila.Size = new Size(713, 394);
+            lvVozila.Size = new Size(1025, 651);
             lvVozila.TabIndex = 2;
             lvVozila.UseCompatibleStateImageBehavior = false;
             lvVozila.View = View.Details;
@@ -113,7 +148,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(713, 28);
+            panel2.Size = new Size(1025, 28);
             panel2.TabIndex = 3;
             // 
             // label1
@@ -136,25 +171,13 @@
             cbFilter.TabIndex = 0;
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
             // 
-            // btnProdaj
-            // 
-            btnProdaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnProdaj.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnProdaj.Location = new Point(554, 20);
-            btnProdaj.Name = "btnProdaj";
-            btnProdaj.Size = new Size(156, 37);
-            btnProdaj.TabIndex = 5;
-            btnProdaj.Text = "Prodaj";
-            btnProdaj.UseVisualStyleBackColor = true;
-            btnProdaj.Click += btnProdaj_Click;
-            // 
             // VoziloUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel1);
             Name = "VoziloUC";
-            Size = new Size(719, 500);
+            Size = new Size(1031, 783);
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -173,5 +196,6 @@
         private Label label1;
         private ComboBox cbFilter;
         private Button btnProdaj;
+        private Button btnEdit;
     }
 }

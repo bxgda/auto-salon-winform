@@ -142,5 +142,33 @@ namespace auto_salon.App.Services.Implementation
                 session?.Close();
             }
         }
+
+        public ServiceResult<bool> Update(VoziloTableDTO vozilo, int newSalonId)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+                }
+
+                // Pribavi domenski entitet
+                Vozilo oldVozilo = session.Load<Vozilo>(vozilo.BrojSasije);
+
+                // TODO: Odraditi izmenu podataka i premestaj vozila u novi salon ako je to potrebno
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri izmeni vozila: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
     }
 }

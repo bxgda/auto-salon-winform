@@ -62,6 +62,7 @@
             // 
             // pnlDashboard
             // 
+            pnlDashboard.BackColor = SystemColors.InactiveCaption;
             pnlDashboard.Controls.Add(btnPromotivnePonude);
             pnlDashboard.Controls.Add(btnKupci);
             pnlDashboard.Controls.Add(btnUgovori);
@@ -70,9 +71,10 @@
             pnlDashboard.Controls.Add(btnSaloni);
             pnlDashboard.Controls.Add(lblTitle);
             pnlDashboard.Dock = DockStyle.Fill;
-            pnlDashboard.Location = new Point(4, 4);
+            pnlDashboard.Location = new Point(1, 1);
+            pnlDashboard.Margin = new Padding(0);
             pnlDashboard.Name = "pnlDashboard";
-            pnlDashboard.Size = new Size(250, 853);
+            pnlDashboard.Size = new Size(250, 859);
             pnlDashboard.TabIndex = 0;
             // 
             // btnPromotivnePonude
@@ -81,13 +83,13 @@
             btnPromotivnePonude.BackColor = SystemColors.Control;
             btnPromotivnePonude.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPromotivnePonude.Image = Properties.Resources.user_bag;
-            btnPromotivnePonude.ImageAlign = ContentAlignment.MiddleRight;
+            btnPromotivnePonude.ImageAlign = ContentAlignment.MiddleLeft;
             btnPromotivnePonude.Location = new Point(3, 284);
             btnPromotivnePonude.Name = "btnPromotivnePonude";
+            btnPromotivnePonude.Padding = new Padding(10, 0, 0, 0);
             btnPromotivnePonude.Size = new Size(243, 39);
             btnPromotivnePonude.TabIndex = 7;
             btnPromotivnePonude.Text = "Promotivne ponude";
-            btnPromotivnePonude.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnPromotivnePonude.UseVisualStyleBackColor = false;
             btnPromotivnePonude.Click += btnPromotivnePonude_Click;
             // 
@@ -97,13 +99,13 @@
             btnKupci.BackColor = SystemColors.Control;
             btnKupci.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnKupci.Image = Properties.Resources.user_bag;
-            btnKupci.ImageAlign = ContentAlignment.MiddleRight;
+            btnKupci.ImageAlign = ContentAlignment.MiddleLeft;
             btnKupci.Location = new Point(3, 239);
             btnKupci.Name = "btnKupci";
+            btnKupci.Padding = new Padding(10, 0, 0, 0);
             btnKupci.Size = new Size(243, 39);
             btnKupci.TabIndex = 6;
             btnKupci.Text = "Kupci";
-            btnKupci.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnKupci.UseVisualStyleBackColor = false;
             btnKupci.Click += btnKupci_Click;
             // 
@@ -113,13 +115,13 @@
             btnUgovori.BackColor = SystemColors.Control;
             btnUgovori.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnUgovori.Image = Properties.Resources.contract;
-            btnUgovori.ImageAlign = ContentAlignment.MiddleRight;
+            btnUgovori.ImageAlign = ContentAlignment.MiddleLeft;
             btnUgovori.Location = new Point(3, 194);
             btnUgovori.Name = "btnUgovori";
+            btnUgovori.Padding = new Padding(10, 0, 0, 0);
             btnUgovori.Size = new Size(243, 39);
             btnUgovori.TabIndex = 5;
             btnUgovori.Text = "Ugovori";
-            btnUgovori.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnUgovori.UseVisualStyleBackColor = false;
             btnUgovori.Click += btnUgovori_Click;
             // 
@@ -129,13 +131,13 @@
             btnVozila.BackColor = SystemColors.Control;
             btnVozila.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnVozila.Image = Properties.Resources.cars;
-            btnVozila.ImageAlign = ContentAlignment.MiddleRight;
+            btnVozila.ImageAlign = ContentAlignment.MiddleLeft;
             btnVozila.Location = new Point(3, 149);
             btnVozila.Name = "btnVozila";
+            btnVozila.Padding = new Padding(10, 0, 0, 0);
             btnVozila.Size = new Size(243, 39);
             btnVozila.TabIndex = 4;
             btnVozila.Text = "Vozila";
-            btnVozila.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnVozila.UseVisualStyleBackColor = false;
             btnVozila.Click += btnVozila_Click;
             // 
@@ -145,13 +147,13 @@
             btnZaposleni.BackColor = SystemColors.Control;
             btnZaposleni.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnZaposleni.Image = Properties.Resources.users;
-            btnZaposleni.ImageAlign = ContentAlignment.MiddleRight;
+            btnZaposleni.ImageAlign = ContentAlignment.MiddleLeft;
             btnZaposleni.Location = new Point(3, 104);
             btnZaposleni.Name = "btnZaposleni";
+            btnZaposleni.Padding = new Padding(10, 0, 0, 0);
             btnZaposleni.Size = new Size(243, 39);
             btnZaposleni.TabIndex = 3;
             btnZaposleni.Text = "Zaposleni";
-            btnZaposleni.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnZaposleni.UseVisualStyleBackColor = false;
             btnZaposleni.Click += btnZaposleni_Click;
             // 
@@ -161,32 +163,32 @@
             btnSaloni.BackColor = SystemColors.Control;
             btnSaloni.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSaloni.Image = Properties.Resources.garage_car;
-            btnSaloni.ImageAlign = ContentAlignment.MiddleRight;
+            btnSaloni.ImageAlign = ContentAlignment.MiddleLeft;
             btnSaloni.Location = new Point(3, 59);
             btnSaloni.Name = "btnSaloni";
-            btnSaloni.Size = new Size(243, 39);
+            btnSaloni.Padding = new Padding(10, 0, 0, 0);
+            btnSaloni.Size = new Size(243, 41);
             btnSaloni.TabIndex = 2;
             btnSaloni.Text = "Saloni";
-            btnSaloni.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSaloni.UseVisualStyleBackColor = false;
             btnSaloni.Click += btnSaloni_Click;
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblTitle.Location = new Point(23, 5);
+            lblTitle.Font = new Font("Segoe UI Black", 20F, FontStyle.Bold);
+            lblTitle.Location = new Point(43, 10);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(117, 25);
+            lblTitle.Size = new Size(162, 37);
             lblTitle.TabIndex = 1;
             lblTitle.Text = "Auto Salon";
             // 
             // pnlContent
             // 
             pnlContent.Dock = DockStyle.Fill;
-            pnlContent.Location = new Point(261, 4);
+            pnlContent.Location = new Point(255, 4);
             pnlContent.Name = "pnlContent";
-            pnlContent.Size = new Size(1019, 853);
+            pnlContent.Size = new Size(1025, 853);
             pnlContent.TabIndex = 1;
             // 
             // MainForm
