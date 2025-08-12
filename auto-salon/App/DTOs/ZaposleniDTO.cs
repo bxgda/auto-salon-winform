@@ -13,5 +13,7 @@ namespace auto_salon.App.DTOs
         public required DateTime DatumZaposlenja { get; set; }
 
         public DateTime DatumPostavljenja { get; set; }
+
+        public SalonDTO? Salon { get; set; }
     }
 }

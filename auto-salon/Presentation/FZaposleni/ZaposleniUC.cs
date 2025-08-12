@@ -136,5 +136,18 @@ namespace auto_salon.Presentation.FZaposleni
                 LoadData();
             }
         }
+
+        private void lvZaposleni_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = lvZaposleni.SelectedIndices.Count > 0 ? lvZaposleni.SelectedIndices[0] : -1;
+            if (selectedIndex == -1)
+                return;
+
+            SalonDTO salonUKomeJeZaposlen = _zaposleni[selectedIndex].Salon!;
+
+            lblNaziv.Text = salonUKomeJeZaposlen.Naziv;
+            
+            // TODO: dovrsiti
+        }
     }
 }

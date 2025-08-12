@@ -1,4 +1,5 @@
 using auto_salon.App.DTOs;
+using auto_salon.App.Extensions;
 using auto_salon.Entities;
 
 namespace AutoSalonMac.App.Extensions
@@ -20,6 +21,7 @@ namespace AutoSalonMac.App.Extensions
                 Email = zaposleni.Email,
                 Adresa = zaposleni.Adresa,
                 StatusZaposlenja = zaposleni.StatusZaposlenja,
+                Salon = zaposleni.Salon.ToSalonDTO(),
             };
         }
 
