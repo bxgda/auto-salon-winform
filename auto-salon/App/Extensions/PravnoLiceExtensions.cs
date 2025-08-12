@@ -14,6 +14,7 @@ namespace auto_salon.App.Extensions
                 NazivFirme = pravnoLice.NazivFirme,
                 Sediste = pravnoLice.Sediste,
                 Telefon = pravnoLice.Telefon,
+                KontaktOsoba = pravnoLice.KontaktOsoba
             };
         }
         public static PravnoLice CreateNewEntity(this PravnoLiceDTO pravnoLiceDto, Kupac kupac)

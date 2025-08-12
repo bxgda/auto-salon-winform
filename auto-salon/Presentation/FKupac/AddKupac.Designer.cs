@@ -221,7 +221,9 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             MaximizeBox = false;
+            MaximumSize = new Size(510, 392);
             MinimizeBox = false;
+            MinimumSize = new Size(510, 392);
             Name = "AddKupac";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;

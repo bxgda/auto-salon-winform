@@ -3,7 +3,6 @@ using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Entities;
 using auto_salon.Presentation.FKupac;
-using auto_salon.Presentation.FSalon;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FUgovori
@@ -68,6 +67,7 @@ namespace auto_salon.Presentation.FUgovori
             lvPravnaLica.Columns.Add("Email");
             lvPravnaLica.Columns.Add("Telefon");
             lvPravnaLica.Columns.Add("Sediste");
+            lvPravnaLica.Columns.Add("Kontakt osoba");
         }
 
         private void LoadProdavci()
@@ -82,35 +82,7 @@ namespace auto_salon.Presentation.FUgovori
 
             _prodavci = result.Data!;
 
-            lvProdavci.Items.Clear();
-
-            foreach (var zaposleni in result.Data!)
-            {
-                ListViewItem item = new ListViewItem(new string[]
-                {
-                    zaposleni.JMBG,
-                    zaposleni.Ime,
-                    zaposleni.Prezime,
-                    zaposleni.Uloga.ToString(),
-                    zaposleni.Pozicija,
-                    zaposleni.DatumZaposlenja.ToShortDateString(),
-                    zaposleni.KontaktTelefon,
-                    zaposleni.Email ?? "",
-                    zaposleni.Adresa ?? "",
-                    zaposleni.DatumPostavljenja == default
-                        ? ""
-                        : zaposleni.DatumPostavljenja.ToShortDateString()
-                });
-                lvProdavci.Items.Add(item);
-            }
-
-            // Automatically resize columns based on content
-            foreach (ColumnHeader column in lvProdavci.Columns)
-            {
-                column.Width = -2; // -2 means auto-size to content
-            }
-
-            lvProdavci.Refresh();
+            PopulateListViewProdavci(_prodavci);
         }
 
         private void LoadKupci()
@@ -123,55 +95,103 @@ namespace auto_salon.Presentation.FUgovori
                 return;
             }
 
-            _fizickaLica = result.Data!.Where(k => k.FizickoLice != null).Select(k => k.FizickoLice!).ToList();
-            _pravnaLica = result.Data!.Where(k => k.PravnoLice != null).Select(k => k.PravnoLice!).ToList();
+            _fizickaLica = result.Data!
+                .Where(k => k.FizickoLice != null)
+                .Select(k => k.FizickoLice!)
+                .ToList();
 
+            _pravnaLica = result.Data!
+                .Where(k => k.PravnoLice != null)
+                .Select(k => k.PravnoLice!)
+                .ToList();
+
+            PopulateListViewFizickaLica(_fizickaLica);
+            PopulateListViewPravnaLica(_pravnaLica);
+        }
+
+        private void AutoResizeColumns(ListView listView)
+        {
+            foreach (ColumnHeader column in listView.Columns)
+            {
+                column.Width = -2; // Auto-size
+            }
+        }
+
+        private void PopulateListViewFizickaLica(IEnumerable<FizickoLiceDTO> fizickaLica)
+        {
+            lvFizickaLica.BeginUpdate();
             lvFizickaLica.Items.Clear();
+
+            foreach (var f in fizickaLica)
+            {
+                var item = new ListViewItem(new[]
+                {
+                    f.JMBG,
+                    f.Ime,
+                    f.Prezime,
+                    f.Email ?? "",
+                    f.KontaktTelefon ?? "",
+                    f.Adresa ?? ""
+                });
+
+                lvFizickaLica.Items.Add(item);
+            }
+
+            AutoResizeColumns(lvFizickaLica);
+            lvFizickaLica.EndUpdate();
+        }
+
+        private void PopulateListViewPravnaLica(IEnumerable<PravnoLiceDTO> pravnaLica)
+        {
+            lvPravnaLica.BeginUpdate();
             lvPravnaLica.Items.Clear();
 
-            foreach (var kupac in result.Data!)
+            foreach (var p in pravnaLica)
             {
-                if (kupac.FizickoLice != null)
+                var item = new ListViewItem(new[]
                 {
-                    ListViewItem item = new ListViewItem(new string[]
-                    {
-                        kupac.FizickoLice.JMBG,
-                        kupac.FizickoLice.Ime,
-                        kupac.FizickoLice.Prezime,
-                        kupac.FizickoLice.Email ?? "",
-                        kupac.FizickoLice.KontaktTelefon ?? "",
-                        kupac.FizickoLice.Adresa ?? ""
-                    });
-                    lvFizickaLica.Items.Add(item);
-                }
-                else if (kupac.PravnoLice != null)
+                    p.PIB,
+                    p.NazivFirme,
+                    p.Email ?? "",
+                    p.Telefon ?? "",
+                    p.Sediste ?? "",
+                    p.KontaktOsoba ?? ""
+                });
+
+                lvPravnaLica.Items.Add(item);
+            }
+
+            AutoResizeColumns(lvPravnaLica);
+            lvPravnaLica.EndUpdate();
+        }
+
+        private void PopulateListViewProdavci(IEnumerable<ZaposleniDTO> prodavci)
+        {
+            lvProdavci.BeginUpdate();
+            lvProdavci.Items.Clear();
+
+            foreach (var p in prodavci)
+            {
+                var item = new ListViewItem(new[]
                 {
-                    ListViewItem item = new ListViewItem(new string[]
-                    {
-                        kupac.PravnoLice.PIB,
-                        kupac.PravnoLice.NazivFirme,
-                        kupac.PravnoLice.Email ?? "",
-                        kupac.PravnoLice.Telefon ?? "",
-                        kupac.PravnoLice.Sediste ?? ""
-                    });
-
-                    lvPravnaLica.Items.Add(item);
-                }
+                    p.JMBG,
+                    p.Ime,
+                    p.Prezime,
+                    p.Uloga.ToString(),
+                    p.Pozicija,
+                    p.DatumZaposlenja.ToShortDateString(),
+                    p.KontaktTelefon ?? "",
+                    p.Email ?? "",
+                    p.Adresa ?? "",
+                    p.DatumPostavljenja == default
+                        ? ""
+                        : p.DatumPostavljenja.ToShortDateString()
+                });
+                lvProdavci.Items.Add(item);
             }
 
-            // Automatically resize columns based on content
-            foreach (ColumnHeader column in lvFizickaLica.Columns)
-            {
-                column.Width = -2; // -2 means auto-size to content
-            }
-
-            foreach (ColumnHeader column in lvPravnaLica.Columns)
-            {
-                column.Width = -2; // -2 means auto-size to content
-            }
-
-            lvFizickaLica.Refresh();
-            lvPravnaLica.Refresh();
+            AutoResizeColumns(lvProdavci);
+            lvProdavci.EndUpdate();
         }
 
         private void InsertIntoNacinPlacanjaComboBox()

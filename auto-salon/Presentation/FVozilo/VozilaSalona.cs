@@ -1,6 +1,7 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Presentation.FServisnaStavka;
 using auto_salon.Presentation.FUgovori;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -154,6 +155,28 @@ namespace auto_salon.Presentation.FVozilo
             form.ShowDialog();
 
             LoadData();
+        }
+
+        private void btnServisnaIstorija_Click(object sender, EventArgs e)
+        {
+            if (lvVozila.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite vozilo za koje želite da vidi servisnu istoriju",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedRowIndex = lvVozila.SelectedItems[0].Index;
+
+            if (_vozila[selectedRowIndex].Stanje == "Novo")
+            {
+                MessageBox.Show("Vozilo je novo i nema servisnu istoriju.",
+                    "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var form = ActivatorUtilities.CreateInstance<ServisnaIstorijaVozila>(_serviceProvider, _vozila[selectedRowIndex]);
+            form.ShowDialog();
         }
     }
 }

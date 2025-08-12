@@ -6,6 +6,8 @@ namespace auto_salon.App.Services.Interfaces
     {
         ServiceResult<IList<KupacDTO>> GetAll();
 
-        ServiceResult<bool> AddKupac(KupacDTO kupac);
+        ServiceResult<bool> AddKupac(KupacDTO kupacDto);
+
+        ServiceResult<bool> UpdateKupac(KupacDTO kupacDto);
     }
 }

@@ -1,22 +1,24 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Interfaces;
-using auto_salon.Presentation.FSalon;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FKupac
 {
     public partial class KupacUC : UserControl
     {
-        private FizickoLiceDTO? _selectedFizickoLice = null;
-        private PravnoLiceDTO? _selectedPravnoLice = null;
         private readonly IServiceProvider _serviceProvider;
         private readonly IKupacService _kupacService;
+
+        private FizickoLiceDTO? _selectedFizickoLice = null;
+        private PravnoLiceDTO? _selectedPravnoLice = null;
+
         private IList<FizickoLiceDTO> _fizickaLica = [];
         private IList<PravnoLiceDTO> _pravnaLica = [];
 
-        public KupacUC(IKupacService kupacService, IServiceProvider serviceProvider)
+        public KupacUC(IServiceProvider serviceProvider, IKupacService kupacService)
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
             _kupacService = kupacService;
             _serviceProvider = serviceProvider;
 
@@ -40,6 +42,7 @@ namespace auto_salon.Presentation.FKupac
             lvPravnaLica.Columns.Add("Email");
             lvPravnaLica.Columns.Add("Telefon");
             lvPravnaLica.Columns.Add("Sediste");
+            lvPravnaLica.Columns.Add("Kontakt osoba");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -63,54 +66,18 @@ namespace auto_salon.Presentation.FKupac
                 return;
             }
 
-            _fizickaLica = result.Data!.Where(k => k.FizickoLice != null).Select(k => k.FizickoLice!).ToList();
-            _pravnaLica = result.Data!.Where(k => k.PravnoLice != null).Select(k => k.PravnoLice!).ToList();
+            _fizickaLica = result.Data!
+                .Where(k => k.FizickoLice != null)
+                .Select(k => k.FizickoLice!)
+                .ToList();
 
-            lvFizickaLica.Items.Clear();
-            lvPravnaLica.Items.Clear();
+            _pravnaLica = result.Data!
+                .Where(k => k.PravnoLice != null)
+                .Select(k => k.PravnoLice!)
+                .ToList();
 
-            foreach (var kupac in result.Data!)
-            {
-                if (kupac.FizickoLice != null)
-                {
-                    ListViewItem item = new ListViewItem(new string[]
-                    {
-                        kupac.FizickoLice.JMBG,
-                        kupac.FizickoLice.Ime,
-                        kupac.FizickoLice.Prezime,
-                        kupac.FizickoLice.Email ?? "",
-                        kupac.FizickoLice.KontaktTelefon ?? "",
-                        kupac.FizickoLice.Adresa ?? ""
-                    });
-                    lvFizickaLica.Items.Add(item);
-                }
-                else if (kupac.PravnoLice != null)
-                {
-                    ListViewItem item = new ListViewItem(new string[]
-                    {
-                        kupac.PravnoLice.PIB,
-                        kupac.PravnoLice.NazivFirme,
-                        kupac.PravnoLice.Email ?? "",
-                        kupac.PravnoLice.Telefon ?? "",
-                        kupac.PravnoLice.Sediste ?? ""
-                    });
-
-                    lvPravnaLica.Items.Add(item);
-                }
-            }
-
-            foreach (ColumnHeader column in lvFizickaLica.Columns)
-            {
-                column.Width = -2; // -2 means auto-size to content
-            }
-
-            foreach (ColumnHeader column in lvPravnaLica.Columns)
-            {
-                column.Width = -2; // -2 means auto-size to content
-            }
-
-            lvFizickaLica.Refresh();
-            lvPravnaLica.Refresh();
+            PopulateListViewFizickaLica(_fizickaLica);
+            PopulateListViewPravnaLica(_pravnaLica);
         }
 
         private void tcKupci_SelectedIndexChanged(object sender, EventArgs e)
@@ -137,7 +104,9 @@ namespace auto_salon.Presentation.FKupac
                 return;
             }
 
-            var form = ActivatorUtilities.CreateInstance<EditKupac>(_serviceProvider, _selectedFizickoLice!, _selectedPravnoLice!);
+            var kupacService = _serviceProvider.GetRequiredService<IKupacService>();
+
+            var form = new EditKupac(_selectedFizickoLice, _selectedPravnoLice, kupacService);
             DialogResult dialogResult = form.ShowDialog();
 
             if (dialogResult == DialogResult.OK)
@@ -173,5 +142,109 @@ namespace auto_salon.Presentation.FKupac
                 _selectedPravnoLice = null;
             }
         }
+
+        private void tbxSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = tbxSearch.Text.Trim().ToLower();
+
+            bool showAll = string.IsNullOrWhiteSpace(searchText) || searchText == "pretraga...";
+
+            if (showAll)
+            {
+                PopulateListViewFizickaLica(_fizickaLica);
+                PopulateListViewPravnaLica(_pravnaLica);
+                return;
+            }
+
+            var filteredFizicka = _fizickaLica.Where(f =>
+                f.JMBG.ToLower().Contains(searchText) ||
+                f.Ime.ToLower().Contains(searchText) ||
+                f.Prezime.ToLower().Contains(searchText) ||
+                (f.Email?.ToLower().Contains(searchText) ?? false) ||
+                (f.KontaktTelefon?.ToLower().Contains(searchText) ?? false) ||
+                (f.Adresa?.ToLower().Contains(searchText) ?? false)).ToList();
+
+            var filteredPravna = _pravnaLica.Where(p =>
+                p.PIB.ToLower().Contains(searchText) ||
+                p.NazivFirme.ToLower().Contains(searchText) ||
+                (p.Email?.ToLower().Contains(searchText) ?? false) ||
+                (p.Telefon?.ToLower().Contains(searchText) ?? false) ||
+                (p.Sediste?.ToLower().Contains(searchText) ?? false) ||
+                (p.KontaktOsoba?.ToLower().Contains(searchText) ?? false)).ToList();
+
+            PopulateListViewFizickaLica(filteredFizicka);
+            PopulateListViewPravnaLica(filteredPravna);
+        }
+
+        public void RemoveText(object sender, EventArgs e)
+        {
+            if (tbxSearch.Text == "Pretraga...")
+            {
+                tbxSearch.Text = "";
+            }
+        }
+
+        public void AddText(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbxSearch.Text))
+                tbxSearch.Text = "Pretraga...";
+        }
+
+        private void AutoResizeColumns(ListView listView)
+        {
+            foreach (ColumnHeader column in listView.Columns)
+            {
+                column.Width = -2; // Auto-size
+            }
+        }
+
+        private void PopulateListViewFizickaLica(IEnumerable<FizickoLiceDTO> fizickaLica)
+        {
+            lvFizickaLica.BeginUpdate();
+            lvFizickaLica.Items.Clear();
+
+            foreach (var f in fizickaLica)
+            {
+                var item = new ListViewItem(new[]
+                {
+                    f.JMBG,
+                    f.Ime,
+                    f.Prezime,
+                    f.Email ?? "",
+                    f.KontaktTelefon ?? "",
+                    f.Adresa ?? ""
+                });
+
+                lvFizickaLica.Items.Add(item);
+            }
+
+            AutoResizeColumns(lvFizickaLica);
+            lvFizickaLica.EndUpdate();
+        }
+
+        private void PopulateListViewPravnaLica(IEnumerable<PravnoLiceDTO> pravnaLica)
+        {
+            lvPravnaLica.BeginUpdate();
+            lvPravnaLica.Items.Clear();
+
+            foreach (var p in pravnaLica)
+            {
+                var item = new ListViewItem(new[]
+                {
+                    p.PIB,
+                    p.NazivFirme,
+                    p.Email ?? "",
+                    p.Telefon ?? "",
+                    p.Sediste ?? "",
+                    p.KontaktOsoba ?? ""
+                });
+
+                lvPravnaLica.Items.Add(item);
+            }
+
+            AutoResizeColumns(lvPravnaLica);
+            lvPravnaLica.EndUpdate();
+        }
+
     }
 }

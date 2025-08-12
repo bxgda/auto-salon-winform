@@ -54,6 +54,7 @@ namespace auto_salon
             services.AddTransient<UgovoriUC>();
 
             services.AddTransient<ServisnaIstorijaVozila>();
+            services.AddTransient<AddServisnaStavka>();
 
             services.AddTransient<SklapanjeUgovora>();
 

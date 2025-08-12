@@ -29,95 +29,40 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            panel1 = new Panel();
+            btnEdit = new Button();
+            btnAdd = new Button();
             tcKupci = new TabControl();
             tpFizickoLice = new TabPage();
             lvFizickaLica = new ListView();
             tpPravnoLice = new TabPage();
             lvPravnaLica = new ListView();
-            panel1 = new Panel();
-            btnEdit = new Button();
-            btnAdd = new Button();
+            panel2 = new Panel();
+            tbxSearch = new TextBox();
             tableLayoutPanel1.SuspendLayout();
+            panel1.SuspendLayout();
             tcKupci.SuspendLayout();
             tpFizickoLice.SuspendLayout();
             tpPravnoLice.SuspendLayout();
-            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(tcKupci, 0, 0);
-            tableLayoutPanel1.Controls.Add(panel1, 0, 1);
+            tableLayoutPanel1.Controls.Add(panel1, 0, 2);
+            tableLayoutPanel1.Controls.Add(tcKupci, 0, 1);
+            tableLayoutPanel1.Controls.Add(panel2, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 637F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 88F));
             tableLayoutPanel1.Size = new Size(968, 775);
             tableLayoutPanel1.TabIndex = 0;
-            // 
-            // tcKupci
-            // 
-            tcKupci.Controls.Add(tpFizickoLice);
-            tcKupci.Controls.Add(tpPravnoLice);
-            tcKupci.Dock = DockStyle.Fill;
-            tcKupci.Location = new Point(3, 3);
-            tcKupci.Name = "tcKupci";
-            tcKupci.SelectedIndex = 0;
-            tcKupci.Size = new Size(962, 681);
-            tcKupci.TabIndex = 9;
-            tcKupci.SelectedIndexChanged += tcKupci_SelectedIndexChanged;
-            // 
-            // tpFizickoLice
-            // 
-            tpFizickoLice.Controls.Add(lvFizickaLica);
-            tpFizickoLice.Location = new Point(4, 24);
-            tpFizickoLice.Name = "tpFizickoLice";
-            tpFizickoLice.Padding = new Padding(3);
-            tpFizickoLice.Size = new Size(954, 653);
-            tpFizickoLice.TabIndex = 0;
-            tpFizickoLice.Text = "Fizičko lice";
-            tpFizickoLice.UseVisualStyleBackColor = true;
-            // 
-            // lvFizickaLica
-            // 
-            lvFizickaLica.Dock = DockStyle.Fill;
-            lvFizickaLica.FullRowSelect = true;
-            lvFizickaLica.GridLines = true;
-            lvFizickaLica.Location = new Point(3, 3);
-            lvFizickaLica.Name = "lvFizickaLica";
-            lvFizickaLica.Size = new Size(948, 647);
-            lvFizickaLica.TabIndex = 0;
-            lvFizickaLica.UseCompatibleStateImageBehavior = false;
-            lvFizickaLica.View = View.Details;
-            lvFizickaLica.SelectedIndexChanged += lvFizickaLica_SelectedIndexChanged;
-            // 
-            // tpPravnoLice
-            // 
-            tpPravnoLice.Controls.Add(lvPravnaLica);
-            tpPravnoLice.Location = new Point(4, 24);
-            tpPravnoLice.Name = "tpPravnoLice";
-            tpPravnoLice.Padding = new Padding(3);
-            tpPravnoLice.Size = new Size(954, 653);
-            tpPravnoLice.TabIndex = 1;
-            tpPravnoLice.Text = "Pravno lice";
-            tpPravnoLice.UseVisualStyleBackColor = true;
-            // 
-            // lvPravnaLica
-            // 
-            lvPravnaLica.Dock = DockStyle.Fill;
-            lvPravnaLica.FullRowSelect = true;
-            lvPravnaLica.GridLines = true;
-            lvPravnaLica.Location = new Point(3, 3);
-            lvPravnaLica.Name = "lvPravnaLica";
-            lvPravnaLica.Size = new Size(948, 647);
-            lvPravnaLica.TabIndex = 1;
-            lvPravnaLica.UseCompatibleStateImageBehavior = false;
-            lvPravnaLica.View = View.Details;
-            lvPravnaLica.SelectedIndexChanged += lvPravnaLica_SelectedIndexChanged;
             // 
             // panel1
             // 
@@ -153,6 +98,87 @@
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
+            // tcKupci
+            // 
+            tcKupci.Controls.Add(tpFizickoLice);
+            tcKupci.Controls.Add(tpPravnoLice);
+            tcKupci.Dock = DockStyle.Fill;
+            tcKupci.Location = new Point(3, 53);
+            tcKupci.Name = "tcKupci";
+            tcKupci.SelectedIndex = 0;
+            tcKupci.Size = new Size(962, 631);
+            tcKupci.TabIndex = 9;
+            tcKupci.SelectedIndexChanged += tcKupci_SelectedIndexChanged;
+            // 
+            // tpFizickoLice
+            // 
+            tpFizickoLice.Controls.Add(lvFizickaLica);
+            tpFizickoLice.Location = new Point(4, 24);
+            tpFizickoLice.Name = "tpFizickoLice";
+            tpFizickoLice.Padding = new Padding(3);
+            tpFizickoLice.Size = new Size(954, 603);
+            tpFizickoLice.TabIndex = 0;
+            tpFizickoLice.Text = "Fizičko lice";
+            tpFizickoLice.UseVisualStyleBackColor = true;
+            // 
+            // lvFizickaLica
+            // 
+            lvFizickaLica.Dock = DockStyle.Fill;
+            lvFizickaLica.FullRowSelect = true;
+            lvFizickaLica.GridLines = true;
+            lvFizickaLica.Location = new Point(3, 3);
+            lvFizickaLica.Name = "lvFizickaLica";
+            lvFizickaLica.Size = new Size(948, 597);
+            lvFizickaLica.TabIndex = 0;
+            lvFizickaLica.UseCompatibleStateImageBehavior = false;
+            lvFizickaLica.View = View.Details;
+            lvFizickaLica.SelectedIndexChanged += lvFizickaLica_SelectedIndexChanged;
+            // 
+            // tpPravnoLice
+            // 
+            tpPravnoLice.Controls.Add(lvPravnaLica);
+            tpPravnoLice.Location = new Point(4, 24);
+            tpPravnoLice.Name = "tpPravnoLice";
+            tpPravnoLice.Padding = new Padding(3);
+            tpPravnoLice.Size = new Size(954, 603);
+            tpPravnoLice.TabIndex = 1;
+            tpPravnoLice.Text = "Pravno lice";
+            tpPravnoLice.UseVisualStyleBackColor = true;
+            // 
+            // lvPravnaLica
+            // 
+            lvPravnaLica.Dock = DockStyle.Fill;
+            lvPravnaLica.FullRowSelect = true;
+            lvPravnaLica.GridLines = true;
+            lvPravnaLica.Location = new Point(3, 3);
+            lvPravnaLica.Name = "lvPravnaLica";
+            lvPravnaLica.Size = new Size(948, 597);
+            lvPravnaLica.TabIndex = 1;
+            lvPravnaLica.UseCompatibleStateImageBehavior = false;
+            lvPravnaLica.View = View.Details;
+            lvPravnaLica.SelectedIndexChanged += lvPravnaLica_SelectedIndexChanged;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(tbxSearch);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(3, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(962, 44);
+            panel2.TabIndex = 10;
+            // 
+            // tbxSearch
+            // 
+            tbxSearch.ForeColor = SystemColors.WindowText;
+            tbxSearch.Location = new Point(7, 10);
+            tbxSearch.Name = "tbxSearch";
+            tbxSearch.Size = new Size(198, 23);
+            tbxSearch.TabIndex = 0;
+            tbxSearch.Text = "Pretraga...";
+            tbxSearch.TextChanged += tbxSearch_TextChanged;
+            tbxSearch.Enter += RemoveText;
+            tbxSearch.Leave += AddText;
+            // 
             // KupacUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -161,10 +187,12 @@
             Name = "KupacUC";
             Size = new Size(968, 775);
             tableLayoutPanel1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             tcKupci.ResumeLayout(false);
             tpFizickoLice.ResumeLayout(false);
             tpPravnoLice.ResumeLayout(false);
-            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -179,5 +207,7 @@
         private TabPage tpPravnoLice;
         private ListView lvPravnaLica;
         private Button btnEdit;
+        private Panel panel2;
+        private TextBox tbxSearch;
     }
 }

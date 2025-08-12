@@ -183,9 +183,13 @@
             ClientSize = new Size(494, 274);
             Controls.Add(btnSubmit);
             Controls.Add(groupBox2);
+            MaximizeBox = false;
             MaximumSize = new Size(510, 313);
+            MinimizeBox = false;
             MinimumSize = new Size(510, 313);
             Name = "EditKupac";
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Izmena kupca";
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();

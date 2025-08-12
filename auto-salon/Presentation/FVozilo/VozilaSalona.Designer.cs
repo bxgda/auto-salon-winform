@@ -31,9 +31,10 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             lvVozila = new ListView();
             panel1 = new Panel();
+            btnProdaj = new Button();
             btnAdd = new Button();
             btnDelete = new Button();
-            btnProdaj = new Button();
+            btnServisnaIstorija = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnServisnaIstorija);
             panel1.Controls.Add(btnProdaj);
             panel1.Controls.Add(btnAdd);
             panel1.Controls.Add(btnDelete);
@@ -75,6 +77,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(794, 71);
             panel1.TabIndex = 3;
+            // 
+            // btnProdaj
+            // 
+            btnProdaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnProdaj.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnProdaj.Location = new Point(703, 31);
+            btnProdaj.Name = "btnProdaj";
+            btnProdaj.Size = new Size(88, 37);
+            btnProdaj.TabIndex = 5;
+            btnProdaj.Text = "Prodaj";
+            btnProdaj.UseVisualStyleBackColor = true;
+            btnProdaj.Click += btnProdaj_Click;
             // 
             // btnAdd
             // 
@@ -100,17 +114,17 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // btnProdaj
+            // btnServisnaIstorija
             // 
-            btnProdaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnProdaj.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnProdaj.Location = new Point(703, 31);
-            btnProdaj.Name = "btnProdaj";
-            btnProdaj.Size = new Size(88, 37);
-            btnProdaj.TabIndex = 5;
-            btnProdaj.Text = "Prodaj";
-            btnProdaj.UseVisualStyleBackColor = true;
-            btnProdaj.Click += btnProdaj_Click;
+            btnServisnaIstorija.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnServisnaIstorija.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnServisnaIstorija.Location = new Point(191, 31);
+            btnServisnaIstorija.Name = "btnServisnaIstorija";
+            btnServisnaIstorija.Size = new Size(145, 37);
+            btnServisnaIstorija.TabIndex = 6;
+            btnServisnaIstorija.Text = "Vidi servisnu istoriju";
+            btnServisnaIstorija.UseVisualStyleBackColor = true;
+            btnServisnaIstorija.Click += btnServisnaIstorija_Click;
             // 
             // VozilaSalona
             // 
@@ -134,5 +148,6 @@
         private Button btnDelete;
         private Button btnAdd;
         private Button btnProdaj;
+        private Button btnServisnaIstorija;
     }
 }
