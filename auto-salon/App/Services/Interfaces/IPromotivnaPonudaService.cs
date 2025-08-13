@@ -5,5 +5,9 @@ namespace auto_salon.App.Services.Interfaces
     public interface IPromotivnaPonudaService
     {
         ServiceResult<IList<PromotivnaPonudaDTO>> GetAll();
+
+        ServiceResult<IList<VoziloTableDTO>> GetVozilaPromotivnePonude(int idPonude);
+
+        ServiceResult<bool> Delete(int id);
     }
 }

@@ -31,11 +31,11 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             lvVozila = new ListView();
             panel1 = new Panel();
+            btnEdit = new Button();
             btnServisnaIstorija = new Button();
             btnProdaj = new Button();
             btnAdd = new Button();
             btnDelete = new Button();
-            btnEdit = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -79,6 +79,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(794, 71);
             panel1.TabIndex = 3;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.Image = Properties.Resources.pencil;
+            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEdit.Location = new Point(113, 31);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Padding = new Padding(10, 0, 0, 0);
+            btnEdit.Size = new Size(115, 37);
+            btnEdit.TabIndex = 7;
+            btnEdit.Text = "Izmeni";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnServisnaIstorija
             // 
@@ -137,27 +152,13 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // btnEdit
-            // 
-            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEdit.Image = Properties.Resources.pencil;
-            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEdit.Location = new Point(113, 31);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Padding = new Padding(10, 0, 0, 0);
-            btnEdit.Size = new Size(115, 37);
-            btnEdit.TabIndex = 7;
-            btnEdit.Text = "Izmeni";
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
-            // 
             // VozilaSalona
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
+            MinimumSize = new Size(816, 489);
             Name = "VozilaSalona";
             StartPosition = FormStartPosition.CenterParent;
             Text = "VozilaSalona";
