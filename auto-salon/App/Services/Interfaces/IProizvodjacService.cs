@@ -1,11 +1,12 @@
-﻿using auto_salon.Entities;
+﻿using auto_salon.App.DTOs;
+using auto_salon.Entities;
 
 namespace auto_salon.App.Services.Interfaces
 {
     public interface IProizvodjacService
     {
-        ServiceResult<IList<Proizvodjac>> GetProizvodjaciZaSalonNova(int salonId);
+        ServiceResult<IList<ProizvodjacDTO>> GetProizvodjaciZaSalonNova(int salonId);
 
-        ServiceResult<IList<Proizvodjac>> GetSviProizvodjaci();
+        ServiceResult<IList<ProizvodjacDTO>> GetSviProizvodjaci();
     }
 }

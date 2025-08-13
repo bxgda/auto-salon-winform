@@ -155,9 +155,61 @@ namespace auto_salon.App.Services.Implementation
                 }
 
                 // Pribavi domenski entitet
-                Vozilo oldVozilo = session.Load<Vozilo>(vozilo.BrojSasije);
+                Vozilo oldVozilo;
 
-                // TODO: Odraditi izmenu podataka i premestaj vozila u novi salon ako je to potrebno
+                if (vozilo.Stanje == "Novo")
+                {
+                    oldVozilo = session.Load<NovoVozilo>(vozilo.BrojSasije);
+                }
+                else
+                {
+                    oldVozilo = session.Load<PolovnoVozilo>(vozilo.BrojSasije);
+                }
+
+                if (oldVozilo == null)
+                {
+                    return ServiceResult<bool>.Failure("Vozilo ne postoji.");
+                }
+
+                // Azuriraj basic property-e
+                oldVozilo.BrojVrata = vozilo.BrojVrata;
+                oldVozilo.Boja = vozilo.Boja;
+                oldVozilo.GodinaProizvodnje = vozilo.GodinaProizvodnje;
+                oldVozilo.Kilometraza = vozilo.Kilometraza;
+                oldVozilo.Model = vozilo.Model;
+                oldVozilo.SnagaMotora = vozilo.SnagaMotora;
+                oldVozilo.TipGoriva = vozilo.TipGoriva;
+                
+                if (oldVozilo is PolovnoVozilo polovnoVozilo)
+                {
+                    polovnoVozilo.BrojVlasnika = vozilo.BrojVlasnika;
+                    polovnoVozilo.DatumRegistracije = vozilo.DatumRegistracije ?? DateTime.Now;
+                }
+
+                // Proveri da li je salon promenjen
+                if (oldVozilo.Salon.ID != newSalonId)
+                {
+                    Salon newSalon = session.Load<Salon>(newSalonId);
+                    if (newSalon == null)
+                    {
+                        return ServiceResult<bool>.Failure("Salon u koji želite da prebacite vozilo ne postoji.");
+                    }
+
+                    // Ako se prebacuje u novi salon pitaj da li taj salon nudi vozila tog proizvodjaca
+                    if (newSalon is SalonNova newNoviSalon)
+                    {
+                        if (newNoviSalon.Proizvodjaci.All(p => p.ID != oldVozilo.Proizvodjac.ID))
+                        {
+                            return ServiceResult<bool>.Failure("Novi salon ne nudi vozila ovog proizvodjaca.");
+                        }
+                    }
+
+                    // Zakaci novi salon za domenski entitet (Inverse je u vozilu znaci on mora da vodi racuna o vezi)
+                    oldVozilo.Salon = newSalon;
+                }
+
+                session.SaveOrUpdate(oldVozilo);
+                session.Flush();
 
                 return ServiceResult<bool>.Success(true);
             }

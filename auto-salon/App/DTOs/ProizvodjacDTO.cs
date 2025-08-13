@@ -2,7 +2,7 @@
 {
     public class ProizvodjacDTO
     {
-        public int ID { get; protected set; }
+        public int ID { get; set; }
 
         public required string Naziv { get; set; }
     }

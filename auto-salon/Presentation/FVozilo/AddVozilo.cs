@@ -1,29 +1,29 @@
 ﻿using auto_salon.App.DTOs;
+using auto_salon.App.Services;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Entities;
 
 namespace auto_salon.Presentation.FVozilo
 {
-
     public partial class AddVozilo : Form
     {
-        private readonly ISalonService _salonService;
         private readonly IVoziloService _voziloService;
         private readonly IProizvodjacService _proizvodjacService;
         private readonly SalonDTO _salon;
 
-        public AddVozilo(SalonDTO salon, IVoziloService voziloService, ISalonService salonService, IProizvodjacService proizvodjacService)
+        public AddVozilo(SalonDTO salon, IVoziloService voziloService, IProizvodjacService proizvodjacService)
         {
             InitializeComponent();
             _salon = salon;
             _voziloService = voziloService;
-            _salonService = salonService;
             _proizvodjacService = proizvodjacService;
+        }
 
+        private void AddVozilo_Load(object sender, EventArgs e)
+        {
+            cbMarka.SelectedIndex = -1;
             PostaviRadioButtonTip();
             PopuniProizvodjace();
-
-            cbMarka.SelectedIndex = -1;
         }
 
         private void PostaviRadioButtonTip()
@@ -40,44 +40,23 @@ namespace auto_salon.Presentation.FVozilo
             }
         }
 
-        private class MarkaItem
-        {
-            public string Naziv { get; set; }
-            public int ID { get; set; }
-            public MarkaItem(string naziv, int id)
-            {
-                Naziv = naziv;
-                ID = id;
-            }
-            public override string ToString()
-            {
-                return Naziv;
-            }
-        }
-
         private void PopuniProizvodjace()
         {
-            IList<Proizvodjac> proizvodjaci;
+            ServiceResult<IList<ProizvodjacDTO>> result;
+
             if (_salon.Tip == "Nova")
-            {
-                var result = _proizvodjacService.GetProizvodjaciZaSalonNova(_salon.ID);
-                if (!result.IsSuccess)
-                {
-                    MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                proizvodjaci = result.Data!;
-            }
+                result = _proizvodjacService.GetProizvodjaciZaSalonNova(_salon.ID);
             else
+                result = _proizvodjacService.GetSviProizvodjaci();
+
+            if (!result.IsSuccess)
             {
-                var result = _proizvodjacService.GetSviProizvodjaci();
-                if (!result.IsSuccess)
-                {
-                    MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                proizvodjaci = result.Data!;
+                MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
             }
+
+            IList<ProizvodjacDTO> proizvodjaci = result.Data ?? [];
 
             cbMarka.Items.Clear();
 
@@ -87,25 +66,13 @@ namespace auto_salon.Presentation.FVozilo
             {
                 markaItems.Add(new MarkaItem(p.Naziv, p.ID));
             }
+
             cbMarka.DataSource = markaItems;
             cbMarka.DisplayMember = "Naziv";
             cbMarka.ValueMember = "ID";
         }
 
-        private TipGoriva cbxItemToEnum(string tipGoriva)
-        {
-            return tipGoriva switch
-            {
-                "Dizel" => TipGoriva.DIZEL,
-                "Benzin" => TipGoriva.BENZIN,
-                "Struja" => TipGoriva.ELEKTRICNI,
-                "Hidrogen" => TipGoriva.HIDROGEN,
-                "Plin" => TipGoriva.PLIN,
-                "Metan" => TipGoriva.METAN,
-                "Hibrid" => TipGoriva.HIBRID,
-                _ => throw new NotImplementedException(),
-            };
-        }
+        #region Event Handlers
 
         private void rbNovo_CheckedChanged(object sender, EventArgs e)
         {
@@ -183,6 +150,41 @@ namespace auto_salon.Presentation.FVozilo
             {
                 MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        #endregion
+
+        #region Helper Methods
+        private TipGoriva cbxItemToEnum(string tipGoriva)
+        {
+            return tipGoriva switch
+            {
+                "Dizel" => TipGoriva.DIZEL,
+                "Benzin" => TipGoriva.BENZIN,
+                "Struja" => TipGoriva.ELEKTRICNI,
+                "Hidrogen" => TipGoriva.HIDROGEN,
+                "Plin" => TipGoriva.PLIN,
+                "Metan" => TipGoriva.METAN,
+                "Hibrid" => TipGoriva.HIBRID,
+                _ => throw new NotImplementedException(),
+            };
+        }
+
+        #endregion
+    }
+
+    class MarkaItem
+    {
+        public string Naziv { get; set; }
+        public int ID { get; set; }
+        public MarkaItem(string naziv, int id)
+        {
+            Naziv = naziv;
+            ID = id;
+        }
+        public override string ToString()
+        {
+            return Naziv;
         }
     }
 }

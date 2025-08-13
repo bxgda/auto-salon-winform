@@ -78,9 +78,12 @@
             // 
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(109, 42);
+            btnEdit.Image = Properties.Resources.pencil;
+            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEdit.Location = new Point(112, 42);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(88, 37);
+            btnEdit.Padding = new Padding(10, 0, 0, 0);
+            btnEdit.Size = new Size(108, 37);
             btnEdit.TabIndex = 8;
             btnEdit.Text = "Izmeni";
             btnEdit.UseVisualStyleBackColor = true;
@@ -90,9 +93,12 @@
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdd.Image = Properties.Resources.plus;
+            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
             btnAdd.Location = new Point(3, 42);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(100, 37);
+            btnAdd.Padding = new Padding(10, 0, 0, 0);
+            btnAdd.Size = new Size(103, 37);
             btnAdd.TabIndex = 3;
             btnAdd.Text = "Dodaj";
             btnAdd.UseVisualStyleBackColor = true;

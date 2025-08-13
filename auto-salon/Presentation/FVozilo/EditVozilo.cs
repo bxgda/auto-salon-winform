@@ -61,6 +61,7 @@ namespace auto_salon.Presentation.FVozilo
             tbxMarka.Text = _vozilo.NazivProizvodjaca;
             tbxModel.Text = _vozilo.Model;
             numKilometraza.Value = _vozilo.Kilometraza;
+            numSnagaMotora.Value = _vozilo.SnagaMotora;
             numGodinaProizvodnje.Value = _vozilo.GodinaProizvodnje;
             cbTipGoriva.SelectedItem = cbxEnumToItem(_vozilo.TipGoriva);
             tbxBoja.Text = _vozilo.Boja;

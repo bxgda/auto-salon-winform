@@ -45,13 +45,13 @@
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.Image = Properties.Resources.trash;
-            btnDelete.ImageAlign = ContentAlignment.MiddleRight;
+            btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
             btnDelete.Location = new Point(219, 48);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(102, 37);
+            btnDelete.Padding = new Padding(10, 0, 0, 0);
+            btnDelete.Size = new Size(108, 37);
             btnDelete.TabIndex = 1;
             btnDelete.Text = "Obriši";
-            btnDelete.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
@@ -60,13 +60,13 @@
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAdd.Image = Properties.Resources.plus;
-            btnAdd.ImageAlign = ContentAlignment.MiddleRight;
+            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
             btnAdd.Location = new Point(3, 48);
             btnAdd.Name = "btnAdd";
+            btnAdd.Padding = new Padding(10, 0, 0, 0);
             btnAdd.Size = new Size(102, 37);
             btnAdd.TabIndex = 2;
             btnAdd.Text = "Dodaj";
-            btnAdd.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
@@ -75,13 +75,13 @@
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
-            btnEdit.ImageAlign = ContentAlignment.MiddleRight;
+            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
             btnEdit.Location = new Point(111, 48);
             btnEdit.Name = "btnEdit";
+            btnEdit.Padding = new Padding(10, 0, 0, 0);
             btnEdit.Size = new Size(102, 37);
             btnEdit.TabIndex = 3;
             btnEdit.Text = "Izmeni";
-            btnEdit.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
             // 
@@ -119,13 +119,13 @@
             btnVozila.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnVozila.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnVozila.Image = Properties.Resources.cars;
-            btnVozila.ImageAlign = ContentAlignment.MiddleRight;
-            btnVozila.Location = new Point(504, 48);
+            btnVozila.ImageAlign = ContentAlignment.MiddleLeft;
+            btnVozila.Location = new Point(463, 48);
             btnVozila.Name = "btnVozila";
-            btnVozila.Size = new Size(148, 37);
+            btnVozila.Padding = new Padding(10, 0, 0, 0);
+            btnVozila.Size = new Size(166, 37);
             btnVozila.TabIndex = 5;
             btnVozila.Text = "Pregled vozila";
-            btnVozila.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnVozila.UseVisualStyleBackColor = true;
             btnVozila.Click += btnVozila_Click;
             // 
@@ -134,13 +134,13 @@
             btnZaposleni.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnZaposleni.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnZaposleni.Image = Properties.Resources.users;
-            btnZaposleni.ImageAlign = ContentAlignment.MiddleRight;
-            btnZaposleni.Location = new Point(658, 48);
+            btnZaposleni.ImageAlign = ContentAlignment.MiddleLeft;
+            btnZaposleni.Location = new Point(635, 48);
             btnZaposleni.Name = "btnZaposleni";
-            btnZaposleni.Size = new Size(167, 37);
+            btnZaposleni.Padding = new Padding(10, 0, 0, 0);
+            btnZaposleni.Size = new Size(190, 37);
             btnZaposleni.TabIndex = 2;
             btnZaposleni.Text = "Pregled zaposlenih";
-            btnZaposleni.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnZaposleni.UseVisualStyleBackColor = true;
             btnZaposleni.Click += btnZaposleni_Click;
             // 

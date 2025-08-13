@@ -1,4 +1,6 @@
-﻿using auto_salon.App.Services.Interfaces;
+﻿using auto_salon.App.DTOs;
+using auto_salon.App.Extensions;
+using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Entities;
 
@@ -13,26 +15,34 @@ namespace auto_salon.App.Services.Implementation
             _dataLayer = dataLayer;
         }
 
-        public ServiceResult<IList<Proizvodjac>> GetProizvodjaciZaSalonNova(int salonId)
+        public ServiceResult<IList<ProizvodjacDTO>> GetProizvodjaciZaSalonNova(int salonId)
         {
             var session = _dataLayer.OpenSession();
             
+            IList<ProizvodjacDTO> result = new List<ProizvodjacDTO>();
+
             try
             {
                 if (session == null)
-                    return ServiceResult<IList<Proizvodjac>>.Failure("Nema konekcije sa bazom.");
+                    return ServiceResult<IList<ProizvodjacDTO>>.Failure("Nema konekcije sa bazom.");
 
-                // Povuci samo proizvođače vezane za salon novih vozila
-                var salonNova = session.Query<SalonNova>().FirstOrDefault(s => s.ID == salonId);
-                if (salonNova == null)
-                    return ServiceResult<IList<Proizvodjac>>.Failure("Salon nije pronađen ili nije tip NOVA.");
+                // Povuci samo proizvodjace koji nude u salon sa ID salonId
+                IEnumerable<Proizvodjac> proizvodjaci = session.Query<Proizvodjac>()
+                    .Where(p => p.Saloni.Any(s => s.ID == salonId));
 
-                var proizvodjaci = salonNova.Proizvodjaci.ToList();
-                return ServiceResult<IList<Proizvodjac>>.Success(proizvodjaci);
+                foreach (var proizvodjac in proizvodjaci)
+                {
+                    result.Add(proizvodjac.ToProizvodjacDTO());
+                }
+
+                if (result.Count == 0)
+                    return ServiceResult<IList<ProizvodjacDTO>>.Failure("Nema pronađenih proizvodjača za dati salon.");
+
+                return ServiceResult<IList<ProizvodjacDTO>>.Success(result);
             }
             catch (Exception ex)
             {
-                return ServiceResult<IList<Proizvodjac>>.Failure($"Greška: {ex.Message}");
+                return ServiceResult<IList<ProizvodjacDTO>>.Failure($"Greška: {ex.Message}");
             }
             finally
             {
@@ -40,21 +50,29 @@ namespace auto_salon.App.Services.Implementation
             }
         }
 
-        public ServiceResult<IList<Proizvodjac>> GetSviProizvodjaci()
+        public ServiceResult<IList<ProizvodjacDTO>> GetSviProizvodjaci()
         {
             var session = _dataLayer.OpenSession();
+
+            IList<ProizvodjacDTO> result = new List<ProizvodjacDTO>();
 
             try
             {
                 if (session == null)
-                    return ServiceResult<IList<Proizvodjac>>.Failure("Nema konekcije sa bazom.");
+                    return ServiceResult<IList<ProizvodjacDTO>>.Failure("Nema konekcije sa bazom.");
 
-                var proizvodjaci = session.Query<Proizvodjac>().ToList();
-                return ServiceResult<IList<Proizvodjac>>.Success(proizvodjaci);
+                IEnumerable<Proizvodjac> sviProizvodjaci = session.Query<Proizvodjac>();
+                foreach (var proizvodjac in sviProizvodjaci)
+                {
+                    result.Add(proizvodjac.ToProizvodjacDTO());
+                }
+
+                return ServiceResult<IList<ProizvodjacDTO>>.Success(result);
+
             }
             catch (Exception ex)
             {
-                return ServiceResult<IList<Proizvodjac>>.Failure($"Greška: {ex.Message}");
+                return ServiceResult<IList<ProizvodjacDTO>>.Failure($"Greška: {ex.Message}");
             }
             finally
             {

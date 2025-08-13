@@ -86,6 +86,7 @@
             // 
             // cbxTip
             // 
+            cbxTip.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxTip.FormattingEnabled = true;
             cbxTip.Items.AddRange(new object[] { "Nova", "Polovna", "Kombinovan" });
             cbxTip.Location = new Point(212, 147);

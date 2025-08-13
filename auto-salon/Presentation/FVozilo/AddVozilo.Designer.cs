@@ -115,6 +115,7 @@
             // 
             // cbMarka
             // 
+            cbMarka.DropDownStyle = ComboBoxStyle.DropDownList;
             cbMarka.FormattingEnabled = true;
             cbMarka.Location = new Point(17, 105);
             cbMarka.Name = "cbMarka";
@@ -345,6 +346,7 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Dodavanje vozila";
+            Load += AddVozilo_Load;
             ((System.ComponentModel.ISupportInitialize)numKilometraza).EndInit();
             ((System.ComponentModel.ISupportInitialize)numSnagaMotora).EndInit();
             ((System.ComponentModel.ISupportInitialize)numGodinaProizvodnje).EndInit();

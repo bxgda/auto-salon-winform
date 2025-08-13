@@ -178,5 +178,33 @@ namespace auto_salon.Presentation.FVozilo
             var form = ActivatorUtilities.CreateInstance<ServisnaIstorijaVozila>(_serviceProvider, _vozila[selectedRowIndex]);
             form.ShowDialog();
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (lvVozila.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite vozilo koje želite da izmenite",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedRowIndex = lvVozila.SelectedItems[0].Index;
+            VoziloTableDTO vozilo = _vozila[selectedRowIndex];
+
+            if (vozilo.JeProdato)
+            {
+                MessageBox.Show("Vozilo je već prodato i ne može se menjati.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Prosleđivanje DTO-a se i dalje može raditi ručno
+            var form = ActivatorUtilities.CreateInstance<EditVozilo>(_serviceProvider, vozilo);
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
+            }
+        }
     }
 }
