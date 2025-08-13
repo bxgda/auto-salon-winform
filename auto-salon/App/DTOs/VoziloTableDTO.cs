@@ -8,6 +8,8 @@ namespace auto_salon.App.DTOs
 
         public required string BrojSasije { get; set; }
 
+        public required float Cena { get; set; }
+
         public required string Model { get; set; }
         
         public string? NazivProizvodjaca { get; set; }

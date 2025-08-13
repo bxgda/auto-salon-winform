@@ -58,6 +58,7 @@ namespace auto_salon.Presentation.FVozilo
         private void LoadVoziloData()
         {
             tbxBrSasije.Text = _vozilo.BrojSasije;
+            nupCena.Value = (decimal)_vozilo.Cena;
             tbxMarka.Text = _vozilo.NazivProizvodjaca;
             tbxModel.Text = _vozilo.Model;
             numKilometraza.Value = _vozilo.Kilometraza;
@@ -74,6 +75,7 @@ namespace auto_salon.Presentation.FVozilo
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            float cena = (float)nupCena.Value;
             string model = tbxModel.Text.Trim();
             int kilometraza = (int)numKilometraza.Value;
             int snagaMotora = (int)numSnagaMotora.Value;
@@ -106,6 +108,7 @@ namespace auto_salon.Presentation.FVozilo
                 BrojSasije = _vozilo.BrojSasije, // Broj sasije se ne menja
                 Model = _vozilo.Model, // Naziv modela ostaje isti
                 Stanje = _vozilo.Stanje, // Stanje vozila ostaje isto
+                Cena = cena,
                 Kilometraza = kilometraza,
                 SnagaMotora = snagaMotora,
                 GodinaProizvodnje = godinaProizvodnje,

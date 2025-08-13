@@ -14,6 +14,7 @@ namespace auto_salon.Infrastructure.Mappers
 
             DiscriminateSubClassesOnColumn("STANJE");
 
+            Map(x => x.Cena).Column("CENA");
             Map(x => x.Model).Column("MODEL");
             Map(x => x.TipGoriva).Column("TIP_GORIVA").CustomType<EnumStringType<TipGoriva>>();
             Map(x => x.Kilometraza).Column("KILOMETRAZA");
@@ -29,7 +30,12 @@ namespace auto_salon.Infrastructure.Mappers
                 .PropertyRef(x => x.Vozilo)
                 .Cascade.All(); // Kad se vozilo brise, brisi i ugovore vezane za njega
 
-            HasMany(x => x.PromotivnePonude).KeyColumn("BROJ_SASIJE").LazyLoad().Cascade.All().Inverse();
+            // Vozilo moze da bude deo vise promotivnih ponuda, a promotivna ponuda moze da sadrzi vise vozila (N:M)
+            HasManyToMany(x => x.PromotivnePonude)
+                .Table("JE_DEO")
+                .ParentKeyColumn("BROJ_SASIJE")
+                .ChildKeyColumn("ID_PROMOTIVNE_PONUDE");
+ 
             HasMany(x => x.TestVoznje).KeyColumn("BROJ_SASIJE").LazyLoad().Cascade.All().Inverse();
         }
     }

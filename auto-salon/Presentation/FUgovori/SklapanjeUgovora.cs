@@ -32,6 +32,8 @@ namespace auto_salon.Presentation.FUgovori
             _zaposleniService = zaposleniService;
             _kupacService = kupacService;
 
+            lblCena.Text = _vozilo.Cena.ToString("C2");
+
             DefineColumnNamesForLists();
 
             LoadProdavci();

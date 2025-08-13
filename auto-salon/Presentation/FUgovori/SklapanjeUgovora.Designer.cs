@@ -53,6 +53,9 @@
             label5 = new Label();
             tbxDodatnaOprema = new TextBox();
             label3 = new Label();
+            panel1 = new Panel();
+            lblCena = new Label();
+            label8 = new Label();
             tblMain.SuspendLayout();
             tblLeft.SuspendLayout();
             panel2.SuspendLayout();
@@ -64,6 +67,7 @@
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nupKonacnaOcena).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupOcenaProdavca).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // lvProdavci
@@ -120,6 +124,7 @@
             tblMain.Controls.Add(btnSubmit, 1, 2);
             tblMain.Controls.Add(groupBox1, 1, 1);
             tblMain.Controls.Add(label4, 0, 0);
+            tblMain.Controls.Add(panel1, 0, 2);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
             tblMain.Name = "tblMain";
@@ -366,6 +371,36 @@
             label3.TabIndex = 0;
             label3.Text = "Način plaćanja";
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(lblCena);
+            panel1.Controls.Add(label8);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(18, 755);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(659, 78);
+            panel1.TabIndex = 10;
+            // 
+            // lblCena
+            // 
+            lblCena.AutoSize = true;
+            lblCena.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCena.Location = new Point(71, 10);
+            lblCena.Name = "lblCena";
+            lblCena.Size = new Size(19, 25);
+            lblCena.TabIndex = 1;
+            lblCena.Text = "/";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(6, 10);
+            label8.Name = "label8";
+            label8.Size = new Size(59, 25);
+            label8.TabIndex = 0;
+            label8.Text = "Cena:";
+            // 
             // SklapanjeUgovora
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -391,6 +426,8 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nupKonacnaOcena).EndInit();
             ((System.ComponentModel.ISupportInitialize)nupOcenaProdavca).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -421,5 +458,8 @@
         private NumericUpDown nupOcenaProdavca;
         private Label label7;
         private NumericUpDown nupKonacnaOcena;
+        private Panel panel1;
+        private Label lblCena;
+        private Label label8;
     }
 }

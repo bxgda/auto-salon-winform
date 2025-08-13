@@ -4,6 +4,8 @@
     {
         public virtual required string BrojSasije { get; set; }
 
+        public virtual float Cena { get; set; }
+
         public virtual required string Model { get; set; } 
 
         public virtual required TipGoriva TipGoriva { get; set; }

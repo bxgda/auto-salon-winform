@@ -88,6 +88,7 @@ namespace auto_salon.Presentation.FVozilo
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            float cena = (float)nupCena.Value;
             string brojSasije = tbxBrSasije.Text.Trim();
             int proizvodjacId;
             string model = tbxModel.Text.Trim();
@@ -129,6 +130,7 @@ namespace auto_salon.Presentation.FVozilo
             {
                 Stanje = rbNovo.Checked ? "Novo" : "Polovno",
                 BrojSasije = brojSasije,
+                Cena = cena,
                 Model = model,
                 Kilometraza = kilometraza,
                 SnagaMotora = snagaMotora,

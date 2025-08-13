@@ -172,6 +172,7 @@ namespace auto_salon.App.Services.Implementation
                 }
 
                 // Azuriraj basic property-e
+                oldVozilo.Cena = vozilo.Cena;
                 oldVozilo.BrojVrata = vozilo.BrojVrata;
                 oldVozilo.Boja = vozilo.Boja;
                 oldVozilo.GodinaProizvodnje = vozilo.GodinaProizvodnje;

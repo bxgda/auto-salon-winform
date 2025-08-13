@@ -12,6 +12,7 @@ namespace AutoSalonMac.App.Extensions
                 {
                     Stanje = "Novo",
                     BrojSasije = vozilo.BrojSasije,
+                    Cena = vozilo.Cena,
                     Model = vozilo.Model,
                     NazivProizvodjaca = vozilo.Proizvodjac.Naziv,
                     NazivSalona = vozilo.Salon.Naziv,
@@ -28,6 +29,7 @@ namespace AutoSalonMac.App.Extensions
                 {
                     Stanje = "Polovno",
                     BrojSasije = vozilo.BrojSasije,
+                    Cena = vozilo.Cena,
                     Model = vozilo.Model,
                     NazivProizvodjaca = vozilo.Proizvodjac.Naziv,
                     NazivSalona = vozilo.Salon.Naziv,
@@ -50,6 +52,7 @@ namespace AutoSalonMac.App.Extensions
                 return new NovoVozilo
                 {
                     BrojSasije = vozilo.BrojSasije,
+                    Cena = vozilo.Cena,
                     Model = vozilo.Model,
                     Boja = vozilo.Boja,
                     BrojVrata = vozilo.BrojVrata,
@@ -64,6 +67,7 @@ namespace AutoSalonMac.App.Extensions
                 return new PolovnoVozilo
                 {
                     BrojSasije = vozilo.BrojSasije,
+                    Cena = vozilo.Cena,
                     Model = vozilo.Model,
                     Boja = vozilo.Boja,
                     BrojVrata = vozilo.BrojVrata,

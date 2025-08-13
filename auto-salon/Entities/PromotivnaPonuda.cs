@@ -14,6 +14,11 @@
 
         public virtual required string Uslovi { get; set; }
 
-        public virtual required Vozilo Vozilo { get; set; }
+        public virtual IList<Vozilo> Vozila { get; set; }
+
+        public PromotivnaPonuda()
+        {
+            Vozila = new List<Vozilo>();
+        }
     }
 }

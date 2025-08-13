@@ -31,6 +31,8 @@
             groupBox1 = new GroupBox();
             cbSaloni = new ComboBox();
             label12 = new Label();
+            nupCena = new NumericUpDown();
+            label8 = new Label();
             tbxMarka = new TextBox();
             cbTipGoriva = new ComboBox();
             cbBrojVrata = new ComboBox();
@@ -55,6 +57,7 @@
             label6 = new Label();
             btnSubmit = new Button();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nupCena).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numKilometraza).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numBrojVlasnika).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numSnagaMotora).BeginInit();
@@ -65,6 +68,8 @@
             // 
             groupBox1.Controls.Add(cbSaloni);
             groupBox1.Controls.Add(label12);
+            groupBox1.Controls.Add(nupCena);
+            groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(tbxMarka);
             groupBox1.Controls.Add(cbTipGoriva);
             groupBox1.Controls.Add(cbBrojVrata);
@@ -89,8 +94,8 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(390, 398);
-            groupBox1.TabIndex = 4;
+            groupBox1.Size = new Size(390, 447);
+            groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Podaci o vozilu";
             // 
@@ -99,19 +104,37 @@
             cbSaloni.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSaloni.FormattingEnabled = true;
             cbSaloni.Items.AddRange(new object[] { "2", "3", "4", "5" });
-            cbSaloni.Location = new Point(214, 338);
+            cbSaloni.Location = new Point(214, 403);
             cbSaloni.Name = "cbSaloni";
             cbSaloni.Size = new Size(159, 23);
-            cbSaloni.TabIndex = 29;
+            cbSaloni.TabIndex = 12;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(214, 320);
+            label12.Location = new Point(214, 385);
             label12.Name = "label12";
             label12.Size = new Size(126, 15);
             label12.TabIndex = 30;
             label12.Text = "Salon u kome se nalazi";
+            // 
+            // nupCena
+            // 
+            nupCena.Increment = new decimal(new int[] { 100, 0, 0, 0 });
+            nupCena.Location = new Point(214, 338);
+            nupCena.Maximum = new decimal(new int[] { 99999999, 0, 0, 0 });
+            nupCena.Name = "nupCena";
+            nupCena.Size = new Size(159, 23);
+            nupCena.TabIndex = 11;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(214, 320);
+            label8.Name = "label8";
+            label8.Size = new Size(42, 15);
+            label8.TabIndex = 31;
+            label8.Text = "Cena *";
             // 
             // tbxMarka
             // 
@@ -120,7 +143,7 @@
             tbxMarka.MaxLength = 17;
             tbxMarka.Name = "tbxMarka";
             tbxMarka.Size = new Size(159, 23);
-            tbxMarka.TabIndex = 28;
+            tbxMarka.TabIndex = 1;
             // 
             // cbTipGoriva
             // 
@@ -311,11 +334,11 @@
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.pencil;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSubmit.Location = new Point(257, 443);
+            btnSubmit.Location = new Point(257, 491);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Padding = new Padding(10, 0, 0, 0);
             btnSubmit.Size = new Size(145, 39);
-            btnSubmit.TabIndex = 5;
+            btnSubmit.TabIndex = 1;
             btnSubmit.Text = "Izmeni";
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
@@ -324,19 +347,20 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(419, 497);
+            ClientSize = new Size(419, 539);
             Controls.Add(groupBox1);
             Controls.Add(btnSubmit);
             MaximizeBox = false;
-            MaximumSize = new Size(435, 536);
+            MaximumSize = new Size(435, 578);
             MinimizeBox = false;
-            MinimumSize = new Size(435, 536);
+            MinimumSize = new Size(435, 578);
             Name = "EditVozilo";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "EditVozilo";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nupCena).EndInit();
             ((System.ComponentModel.ISupportInitialize)numKilometraza).EndInit();
             ((System.ComponentModel.ISupportInitialize)numBrojVlasnika).EndInit();
             ((System.ComponentModel.ISupportInitialize)numSnagaMotora).EndInit();
@@ -372,5 +396,7 @@
         private TextBox tbxMarka;
         private ComboBox cbSaloni;
         private Label label12;
+        private NumericUpDown nupCena;
+        private Label label8;
     }
 }

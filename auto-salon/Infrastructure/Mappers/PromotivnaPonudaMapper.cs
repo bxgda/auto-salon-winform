@@ -17,7 +17,10 @@ namespace auto_salon.Infrastructure.Mappers
             Map(x => x.PopustUProcentima).Column("POPUST_PROCENAT");
             Map(x => x.Uslovi).Column("USLOVI");
 
-            References(x => x.Vozilo).Column("BROJ_SASIJE").LazyLoad();
+            HasManyToMany(x => x.Vozila)
+                .Table("JE_DEO")
+                .ParentKeyColumn("ID_PROMOTIVNE_PONUDE")
+                .ChildKeyColumn("BROJ_SASIJE");
         }
     }
 }

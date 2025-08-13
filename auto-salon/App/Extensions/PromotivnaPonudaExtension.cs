@@ -1,7 +1,7 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.Entities;
-
-
+using AutoSalonMac.App.Extensions;
+ 
 namespace auto_salon.App.Extensions
 {
     public static class PromotivnaPonudaExtension
@@ -15,7 +15,7 @@ namespace auto_salon.App.Extensions
                 PopustUProcentima = promotivnaPonuda.PopustUProcentima,
                 DatumOd = promotivnaPonuda.DatumOd,
                 DatumDo = promotivnaPonuda.DatumDo,
-                Vozilo = promotivnaPonuda.Vozilo,
+                Vozila = promotivnaPonuda.Vozila.Select(v => v.ToVoziloTableDTO()).ToList(),
                 Uslovi = promotivnaPonuda.Uslovi
             };
         }

@@ -27,6 +27,7 @@ namespace auto_salon.Presentation.FVozilo
             lvVozila.Columns.Add("Status");
             lvVozila.Columns.Add("Stanje");
             lvVozila.Columns.Add("Broj šasije");
+            lvVozila.Columns.Add("Cena");
             lvVozila.Columns.Add("Proizvođač");
             lvVozila.Columns.Add("Model");
             lvVozila.Columns.Add("Boja");
@@ -72,6 +73,7 @@ namespace auto_salon.Presentation.FVozilo
                     vozilo.JeProdato ? "Prodato" : "Dostupno",
                     vozilo.Stanje,
                     vozilo.BrojSasije,
+                    vozilo.Cena.ToString("C2"),
                     vozilo.NazivProizvodjaca ?? "N/A",
                     vozilo.Model,
                     vozilo.Boja,

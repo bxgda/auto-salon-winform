@@ -55,12 +55,15 @@
             label11 = new Label();
             cbBrojVrata = new ComboBox();
             groupBox1 = new GroupBox();
+            nupCena = new NumericUpDown();
+            label12 = new Label();
             ((System.ComponentModel.ISupportInitialize)numKilometraza).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numSnagaMotora).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numGodinaProizvodnje).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numBrojVlasnika).BeginInit();
             gbStanje.SuspendLayout();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nupCena).BeginInit();
             SuspendLayout();
             // 
             // tbxBrSasije
@@ -301,6 +304,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(nupCena);
+            groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(cbTipGoriva);
             groupBox1.Controls.Add(cbBrojVrata);
             groupBox1.Controls.Add(tbxBrSasije);
@@ -330,6 +335,24 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Podaci o vozilu";
             // 
+            // nupCena
+            // 
+            nupCena.Increment = new decimal(new int[] { 100, 0, 0, 0 });
+            nupCena.Location = new Point(214, 338);
+            nupCena.Maximum = new decimal(new int[] { 99999999, 0, 0, 0 });
+            nupCena.Name = "nupCena";
+            nupCena.Size = new Size(159, 23);
+            nupCena.TabIndex = 28;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(214, 320);
+            label12.Name = "label12";
+            label12.Size = new Size(42, 15);
+            label12.TabIndex = 29;
+            label12.Text = "Cena *";
+            // 
             // AddVozilo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -355,6 +378,7 @@
             gbStanje.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nupCena).EndInit();
             ResumeLayout(false);
         }
 
@@ -387,5 +411,7 @@
         private Label label11;
         private ComboBox cbBrojVrata;
         private GroupBox groupBox1;
+        private NumericUpDown nupCena;
+        private Label label12;
     }
 }
