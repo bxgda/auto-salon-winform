@@ -82,6 +82,11 @@ namespace auto_salon.Presentation.FPromotivnePonude
 
         private void lvPromotivnePonude_SelectedIndexChanged(object sender, EventArgs e)
         {
+            LoadVozila();
+        }
+
+        private void LoadVozila()
+        {
             int selectedIndex = lvPromotivnePonude.SelectedItems.Count > 0 ? lvPromotivnePonude.SelectedItems[0].Index : -1;
             if (selectedIndex == -1)
                 return;
@@ -182,6 +187,28 @@ namespace auto_salon.Presentation.FPromotivnePonude
             if (dialogResult == DialogResult.OK)
             {
                 LoadData();
+            }
+        }
+
+        private void btnDodajVoziloUPonudu_Click(object sender, EventArgs e)
+        {
+            if (lvPromotivnePonude.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite ponudu kojoj želite da dodate vozilo.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedRowIndex = lvPromotivnePonude.SelectedItems[0].Index;
+
+            // Prosleđivanje DTO-a se i dalje može raditi ručno
+            var form = ActivatorUtilities.CreateInstance<AddVoziloToPromotivnaPonuda>(_serviceProvider, _promotivnePonude[selectedRowIndex]);
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                // Osvezi listu vozila u promotivnoj ponudi
+                LoadVozila();
             }
         }
     }

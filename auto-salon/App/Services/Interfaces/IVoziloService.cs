@@ -15,5 +15,10 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<Boolean> Update(VoziloTableDTO vozilo, int newSalonId);
 
         ServiceResult<IList<PromotivnaPonudaDTO>> GetPonude(string brSasije);
+
+        // Vraca sva vozila koja nisu u promotivnoj ponudi (za dodavanje u promotivnu ponudu, kako ne bi dodali isto vozilo)
+        ServiceResult<IList<VoziloTableDTO>> GetVozilaNotInPonuda(int promotivnaPonudaId);
+
+        ServiceResult<bool> AddVozilaToPonuda(int promotivnaPonudaId, List<string> brojeviSasija);
     }
 }

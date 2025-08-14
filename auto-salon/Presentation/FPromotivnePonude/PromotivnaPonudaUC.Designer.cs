@@ -34,9 +34,10 @@
             label2 = new Label();
             lvVozila = new ListView();
             panel1 = new Panel();
+            btnDodajVoziloUPonudu = new Button();
+            btnEdit = new Button();
             btnAdd = new Button();
             btnDelete = new Button();
-            btnEdit = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -107,6 +108,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnDodajVoziloUPonudu);
             panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnAdd);
             panel1.Controls.Add(btnDelete);
@@ -115,6 +117,36 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(984, 71);
             panel1.TabIndex = 4;
+            // 
+            // btnDodajVoziloUPonudu
+            // 
+            btnDodajVoziloUPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnDodajVoziloUPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDodajVoziloUPonudu.Image = Properties.Resources.car_side;
+            btnDodajVoziloUPonudu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDodajVoziloUPonudu.Location = new Point(766, 31);
+            btnDodajVoziloUPonudu.Name = "btnDodajVoziloUPonudu";
+            btnDodajVoziloUPonudu.Padding = new Padding(10, 0, 0, 0);
+            btnDodajVoziloUPonudu.Size = new Size(215, 37);
+            btnDodajVoziloUPonudu.TabIndex = 9;
+            btnDodajVoziloUPonudu.Text = "Dodaj vozilo u ponudu";
+            btnDodajVoziloUPonudu.UseVisualStyleBackColor = true;
+            btnDodajVoziloUPonudu.Click += btnDodajVoziloUPonudu_Click;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.Image = Properties.Resources.pencil;
+            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEdit.Location = new Point(227, 31);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Padding = new Padding(10, 0, 0, 0);
+            btnEdit.Size = new Size(102, 37);
+            btnEdit.TabIndex = 8;
+            btnEdit.Text = "Izmeni";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnAdd
             // 
@@ -146,21 +178,6 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // btnEdit
-            // 
-            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEdit.Image = Properties.Resources.pencil;
-            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEdit.Location = new Point(227, 31);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Padding = new Padding(10, 0, 0, 0);
-            btnEdit.Size = new Size(102, 37);
-            btnEdit.TabIndex = 8;
-            btnEdit.Text = "Izmeni";
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
-            // 
             // PromotivnaPonudaUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -185,5 +202,6 @@
         private Button btnDelete;
         private Button btnAdd;
         private Button btnEdit;
+        private Button btnDodajVoziloUPonudu;
     }
 }

@@ -3,6 +3,7 @@ using auto_salon.App.Extensions;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Entities;
+using auto_salon.Presentation.FSalon;
 using AutoSalonMac.App.Extensions;
 using System.Windows.Forms.Design.Behavior;
 
@@ -50,6 +51,57 @@ namespace auto_salon.App.Services.Implementation
             catch (Exception ex)
             {
                 return ServiceResult<bool>.Failure($"Greška pri kreiranju vozila: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<bool> AddVozilaToPonuda(int promotivnaPonudaId, List<string> brojeviSasija)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+                }
+
+                PromotivnaPonuda promotivnaPonuda = session.Load<PromotivnaPonuda>(promotivnaPonudaId);
+                if (promotivnaPonuda == null)
+                {
+                    return ServiceResult<bool>.Failure("Promotivna ponuda sa datim ID ne postoji.");
+                }
+
+                // Dodaj vozila u promotivnu ponudu
+                foreach (var brSasije in brojeviSasija)
+                {
+                    Vozilo vozilo = session.Load<Vozilo>(brSasije);
+                    if (vozilo == null)
+                    {
+                        return ServiceResult<bool>.Failure($"Vozilo sa brojem šasije {brSasije} ne postoji.");
+                    }
+                 
+                    // Proveri da li vozilo već postoji u promotivnoj ponudi
+                    if (vozilo.PromotivnePonude.Any(pp => pp.ID == promotivnaPonudaId))
+                    {
+                        continue; // Vozilo je već dodato u ovu promotivnu ponudu
+                    }
+                    
+                    // Dodaj vozilo u promotivnu ponudu
+                    promotivnaPonuda.Vozila.Add(vozilo);
+                }
+
+                session.SaveOrUpdate(promotivnaPonuda);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri brisanju vozila: {ex.Message}");
             }
             finally
             {
@@ -181,6 +233,45 @@ namespace auto_salon.App.Services.Implementation
             catch (Exception ex)
             {
                 return ServiceResult<IList<PromotivnaPonudaDTO>>.Failure($"Greška pri dohvatanju ponuda vozila: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<IList<VoziloTableDTO>> GetVozilaNotInPonuda(int promotivnaPonudaId)
+        {
+            var session = _dataLayer.OpenSession();
+            IList<VoziloTableDTO> result = new List<VoziloTableDTO>();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<IList<VoziloTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
+                }
+
+                PromotivnaPonuda promotivnaPonuda = session.Load<PromotivnaPonuda>(promotivnaPonudaId);
+                if (promotivnaPonuda == null)
+                {
+                    return ServiceResult<IList<VoziloTableDTO>>.Failure("Promotivna ponuda sa datim ID ne postoji.");
+                }
+
+                // Pribavi sva vozila koja nisu u ovoj promotivnoj ponudi
+                IEnumerable<Vozilo> svaVozila = session.Query<Vozilo>()
+                    .Where(v => !v.PromotivnePonude.Any(pp => pp.ID == promotivnaPonudaId));
+
+                foreach (var vozilo in svaVozila)
+                {
+                    result.Add(vozilo.ToVoziloTableDTO());
+                }
+
+                return ServiceResult<IList<VoziloTableDTO>>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<IList<VoziloTableDTO>>.Failure($"Greška pri pribavljanju vozila: {ex.Message}");
             }
             finally
             {
