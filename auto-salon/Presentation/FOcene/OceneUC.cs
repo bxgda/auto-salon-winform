@@ -1,20 +1,26 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Entities;
+using auto_salon.Presentation.FKupac;
+using auto_salon.Presentation.FVozilo;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FOcene
 {
     public partial class OceneUC : UserControl
     {
+        private readonly IServiceProvider _serviceProvider;
         public readonly IJeOcenioService _jeOcenioService;
         private IList<JeOcenioDTO> _ocene = [];
-        private JeOcenioDTO _selectedOcena = new();
+        private JeOcenioDTO? _selectedOcena = null;
 
-        public OceneUC(IJeOcenioService jeOcenioService)
+        public OceneUC(IServiceProvider serviceProvider, IJeOcenioService jeOcenioService)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
 
+            _serviceProvider = serviceProvider;
             _jeOcenioService = jeOcenioService;
 
             DefineColumnNamesForList();
@@ -176,6 +182,39 @@ namespace auto_salon.Presentation.FOcene
             else
             {
                 MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (_selectedOcena == null)
+            {
+                MessageBox.Show("Molimo izaberite ocenu koju želite da izmenite.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var form = ActivatorUtilities.CreateInstance<EditOcena>(_serviceProvider, _selectedOcena);
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadOcene();
+
+                // Prodavac
+                lblImeProdavca.Text = "/";
+                lblPrezimeProdavca.Text = "/";
+                lblPozicijaProdavca.Text = "/";
+                lblTelefonProdavca.Text = "/";
+
+                lblOcena.Text = "";
+
+                // Kupac
+                lblKupacJe.Text = "/";
+                lblImeKupca.Text = "/";
+                lblPrezimeKupca.Text = "/";
+                lblEmailKupca.Text = "/";
+                lblTelefonKupca.Text = "/";
+                lblPrezimeKupca.Text = "/";
             }
         }
     }

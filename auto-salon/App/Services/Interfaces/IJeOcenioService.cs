@@ -7,5 +7,7 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<IList<JeOcenioDTO>> GetAll();
 
         ServiceResult<bool> Delete(int id);
+
+        ServiceResult<bool> Update(int idOcene, decimal newOcena);
     }
 }

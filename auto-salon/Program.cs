@@ -73,6 +73,7 @@ namespace auto_salon
             services.AddTransient<AddVoziloToPromotivnaPonuda>();
 
             services.AddTransient<OceneUC>();
+            services.AddTransient<EditOcena>();
 
             services.AddTransient<ProizvodjacNudiUC>();
             services.AddTransient<AddProizvodjac>();

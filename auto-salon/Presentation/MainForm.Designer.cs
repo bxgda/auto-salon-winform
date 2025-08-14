@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             tblMainLayout = new TableLayoutPanel();
             pnlDashboard = new Panel();
+            btnProizvodjacNudi = new Button();
             btnOcene = new Button();
             label2 = new Label();
             pictureBox2 = new PictureBox();
@@ -44,7 +45,6 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
-            btnProizvodjacNudi = new Button();
             tblMainLayout.SuspendLayout();
             pnlDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -89,6 +89,22 @@
             pnlDashboard.Name = "pnlDashboard";
             pnlDashboard.Size = new Size(250, 839);
             pnlDashboard.TabIndex = 0;
+            // 
+            // btnProizvodjacNudi
+            // 
+            btnProizvodjacNudi.AutoSize = true;
+            btnProizvodjacNudi.BackColor = SystemColors.Control;
+            btnProizvodjacNudi.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnProizvodjacNudi.Image = Properties.Resources.hand_shake;
+            btnProizvodjacNudi.ImageAlign = ContentAlignment.MiddleLeft;
+            btnProizvodjacNudi.Location = new Point(4, 400);
+            btnProizvodjacNudi.Name = "btnProizvodjacNudi";
+            btnProizvodjacNudi.Padding = new Padding(10, 0, 0, 0);
+            btnProizvodjacNudi.Size = new Size(243, 39);
+            btnProizvodjacNudi.TabIndex = 11;
+            btnProizvodjacNudi.Text = "Ponude proizvođača";
+            btnProizvodjacNudi.UseVisualStyleBackColor = false;
+            btnProizvodjacNudi.Click += btnProizvodjacNudi_Click;
             // 
             // btnOcene
             // 
@@ -260,22 +276,6 @@
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             toolStripStatusLabel1.Size = new Size(251, 17);
             toolStripStatusLabel1.Text = "Sistemi baza podataka © 2025 - Drugi projekat";
-            // 
-            // btnProizvodjacNudi
-            // 
-            btnProizvodjacNudi.AutoSize = true;
-            btnProizvodjacNudi.BackColor = SystemColors.Control;
-            btnProizvodjacNudi.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnProizvodjacNudi.Image = Properties.Resources.hand_shake;
-            btnProizvodjacNudi.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProizvodjacNudi.Location = new Point(4, 400);
-            btnProizvodjacNudi.Name = "btnProizvodjacNudi";
-            btnProizvodjacNudi.Padding = new Padding(10, 0, 0, 0);
-            btnProizvodjacNudi.Size = new Size(243, 39);
-            btnProizvodjacNudi.TabIndex = 11;
-            btnProizvodjacNudi.Text = "Ponude proivođača";
-            btnProizvodjacNudi.UseVisualStyleBackColor = false;
-            btnProizvodjacNudi.Click += btnProizvodjacNudi_Click;
             // 
             // MainForm
             // 

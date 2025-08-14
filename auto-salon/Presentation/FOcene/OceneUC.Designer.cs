@@ -61,6 +61,7 @@
             lbl2Kupac = new Label();
             lbl1Kupac = new Label();
             panel2 = new Panel();
+            btnEdit = new Button();
             btnDelete = new Button();
             tableLayoutPanel1.SuspendLayout();
             tcKupci.SuspendLayout();
@@ -415,6 +416,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(btnEdit);
             panel2.Controls.Add(btnDelete);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 643);
@@ -422,13 +424,28 @@
             panel2.Size = new Size(618, 86);
             panel2.TabIndex = 12;
             // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.Image = Properties.Resources.pencil;
+            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEdit.Location = new Point(118, 46);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Padding = new Padding(10, 0, 0, 0);
+            btnEdit.Size = new Size(105, 37);
+            btnEdit.TabIndex = 12;
+            btnEdit.Text = "Izmeni";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
+            // 
             // btnDelete
             // 
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.Image = Properties.Resources.trash;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(4, 46);
+            btnDelete.Location = new Point(7, 46);
             btnDelete.Name = "btnDelete";
             btnDelete.Padding = new Padding(10, 0, 0, 0);
             btnDelete.Size = new Size(105, 37);
@@ -494,5 +511,6 @@
         private Label lblOcena;
         private Panel panel2;
         private Button btnDelete;
+        private Button btnEdit;
     }
 }
