@@ -146,5 +146,51 @@ namespace auto_salon.App.Services.Implementation
                 session?.Close();
             }
         }
+
+        public ServiceResult<bool> Update(PromotivnaPonudaDTO promotivnaPonudaDTO)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+                }
+
+                if (promotivnaPonudaDTO == null)
+                {
+                    return ServiceResult<bool>.Failure("Salon ne može biti null.");
+                }
+
+                // Pribavi domenski entitet
+                PromotivnaPonuda oldPonuda = session.Load<PromotivnaPonuda>(promotivnaPonudaDTO.ID);
+
+                if (oldPonuda == null)
+                {
+                    return ServiceResult<bool>.Failure("Promotivna ponuda sa datim ID-jem ne postoji.");
+                }
+
+                // Azuriraj property-e
+                oldPonuda.NazivPromocije = promotivnaPonudaDTO.NazivPromocije;
+                oldPonuda.DatumOd = promotivnaPonudaDTO.DatumOd;
+                oldPonuda.DatumDo = promotivnaPonudaDTO.DatumDo;
+                oldPonuda.PopustUProcentima = promotivnaPonudaDTO.PopustUProcentima;
+                oldPonuda.Uslovi = promotivnaPonudaDTO.Uslovi;
+
+                session.Update(oldPonuda);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri izmeni promotivnih ponuda: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
     }
 }

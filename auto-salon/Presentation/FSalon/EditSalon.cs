@@ -52,6 +52,28 @@ namespace auto_salon.Presentation.FSalon
         {
             try
             {
+                string naziv = txtNaziv.Text.Trim();
+                string adresa = txtAdresa.Text.Trim();
+                string telefon = txtKontaktTelefon.Text.Trim();
+                string drzava = txtDrzava.Text.Trim();
+                string grad = txtGrad.Text.Trim();
+                string radnoVremeOd = timePickerOd.Value.ToString("HH:mm");
+                string radnoVremeDo = timePickerDo.Value.ToString("HH:mm");
+                string tip = cbxTip.SelectedItem?.ToString() ?? string.Empty;
+
+                if (string.IsNullOrWhiteSpace(naziv) ||
+                    string.IsNullOrWhiteSpace(adresa) ||
+                    string.IsNullOrWhiteSpace(telefon) ||
+                    string.IsNullOrWhiteSpace(drzava) ||
+                    string.IsNullOrWhiteSpace(grad) ||
+                    string.IsNullOrWhiteSpace(radnoVremeOd) ||
+                    string.IsNullOrWhiteSpace(radnoVremeDo) ||
+                    string.IsNullOrWhiteSpace(tip))
+                {
+                    MessageBox.Show("Molimo popunite sva polja.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 _salon.Naziv = txtNaziv.Text.Trim();
                 _salon.Adresa = txtAdresa.Text.Trim();
                 _salon.KontaktTelefon = txtKontaktTelefon.Text.Trim();

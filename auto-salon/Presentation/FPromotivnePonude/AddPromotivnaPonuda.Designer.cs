@@ -48,7 +48,7 @@
             rtbUslovi.Location = new Point(23, 149);
             rtbUslovi.Name = "rtbUslovi";
             rtbUslovi.Size = new Size(376, 96);
-            rtbUslovi.TabIndex = 0;
+            rtbUslovi.TabIndex = 4;
             rtbUslovi.Text = "";
             // 
             // label1
@@ -65,7 +65,7 @@
             tbxNazivPromocije.Location = new Point(23, 37);
             tbxNazivPromocije.Name = "tbxNazivPromocije";
             tbxNazivPromocije.Size = new Size(167, 23);
-            tbxNazivPromocije.TabIndex = 2;
+            tbxNazivPromocije.TabIndex = 0;
             // 
             // label2
             // 
@@ -79,9 +79,11 @@
             // nudPopust
             // 
             nudPopust.Location = new Point(23, 95);
+            nudPopust.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nudPopust.Name = "nudPopust";
             nudPopust.Size = new Size(167, 23);
-            nudPopust.TabIndex = 4;
+            nudPopust.TabIndex = 1;
+            nudPopust.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label3
             // 
@@ -98,7 +100,7 @@
             dtpOd.Location = new Point(232, 37);
             dtpOd.Name = "dtpOd";
             dtpOd.Size = new Size(167, 23);
-            dtpOd.TabIndex = 6;
+            dtpOd.TabIndex = 2;
             // 
             // dtpDo
             // 
@@ -106,7 +108,7 @@
             dtpDo.Location = new Point(232, 95);
             dtpDo.Name = "dtpDo";
             dtpDo.Size = new Size(167, 23);
-            dtpDo.TabIndex = 8;
+            dtpDo.TabIndex = 3;
             // 
             // label4
             // 
@@ -134,7 +136,7 @@
             btnSubmit.MinimumSize = new Size(145, 39);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(145, 39);
-            btnSubmit.TabIndex = 10;
+            btnSubmit.TabIndex = 5;
             btnSubmit.Text = "Dodaj";
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
