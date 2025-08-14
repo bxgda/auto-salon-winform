@@ -106,11 +106,14 @@
             // 
             btnServisnaIstorija.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnServisnaIstorija.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnServisnaIstorija.Image = Properties.Resources.service;
+            btnServisnaIstorija.ImageAlign = ContentAlignment.MiddleLeft;
             btnServisnaIstorija.Location = new Point(245, 46);
             btnServisnaIstorija.Name = "btnServisnaIstorija";
-            btnServisnaIstorija.Size = new Size(156, 37);
+            btnServisnaIstorija.Padding = new Padding(10, 0, 0, 0);
+            btnServisnaIstorija.Size = new Size(165, 37);
             btnServisnaIstorija.TabIndex = 4;
-            btnServisnaIstorija.Text = "Vidi servisnu istoriju";
+            btnServisnaIstorija.Text = "Servisna istorija";
             btnServisnaIstorija.UseVisualStyleBackColor = true;
             btnServisnaIstorija.Click += btnServisnaIstorija_Click;
             // 

@@ -43,6 +43,7 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            btnOcene = new Button();
             tblMainLayout.SuspendLayout();
             pnlDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -71,6 +72,7 @@
             // pnlDashboard
             // 
             pnlDashboard.BackColor = SystemColors.InactiveCaption;
+            pnlDashboard.Controls.Add(btnOcene);
             pnlDashboard.Controls.Add(label2);
             pnlDashboard.Controls.Add(pictureBox2);
             pnlDashboard.Controls.Add(btnPromotivnePonude);
@@ -241,6 +243,22 @@
             toolStripStatusLabel1.Size = new Size(251, 17);
             toolStripStatusLabel1.Text = "Sistemi baza podataka © 2025 - Drugi projekat";
             // 
+            // btnOcene
+            // 
+            btnOcene.AutoSize = true;
+            btnOcene.BackColor = SystemColors.Control;
+            btnOcene.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnOcene.Image = Properties.Resources.feedback_review;
+            btnOcene.ImageAlign = ContentAlignment.MiddleLeft;
+            btnOcene.Location = new Point(4, 355);
+            btnOcene.Name = "btnOcene";
+            btnOcene.Padding = new Padding(10, 0, 0, 0);
+            btnOcene.Size = new Size(243, 39);
+            btnOcene.TabIndex = 10;
+            btnOcene.Text = "Ocene";
+            btnOcene.UseVisualStyleBackColor = false;
+            btnOcene.Click += btnOcene_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -280,5 +298,6 @@
         private ToolStripStatusLabel toolStripStatusLabel1;
         private PictureBox pictureBox2;
         private Label label2;
+        private Button btnOcene;
     }
 }

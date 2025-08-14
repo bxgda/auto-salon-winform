@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using auto_salon.Presentation.FKupac;
 using auto_salon.Entities;
 using auto_salon.Presentation.FPromotivnePonude;
+using auto_salon.Presentation.FOcene;
 
 namespace auto_salon
 {
@@ -79,6 +80,13 @@ namespace auto_salon
         {
             SetActiveButton((Button)sender);
             var control = _serviceProvider.GetRequiredService<PromotivnaPonudaUC>();
+            LoadControl(control);
+        }
+
+        private void btnOcene_Click(object sender, EventArgs e)
+        {
+            SetActiveButton((Button)sender);
+            var control = _serviceProvider.GetRequiredService<OceneUC>();
             LoadControl(control);
         }
     }

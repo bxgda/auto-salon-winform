@@ -2,6 +2,7 @@ using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Presentation.FKupac;
+using auto_salon.Presentation.FOcene;
 using auto_salon.Presentation.FPromotivnePonude;
 using auto_salon.Presentation.FSalon;
 using auto_salon.Presentation.FServisnaStavka;
@@ -36,6 +37,7 @@ namespace auto_salon
             services.AddTransient<IServisnaStavkaService, ServisnaStavkaService>();
             services.AddTransient<IKupacService, KupacService>();
             services.AddTransient<IPromotivnaPonudaService, PromotivnaPonudaService>();
+            services.AddTransient<IJeOcenioService, JeOcenioService>();
 
             // Forme i UserControl-i
             services.AddTransient<MainForm>();
@@ -68,6 +70,8 @@ namespace auto_salon
             services.AddTransient<AddPromotivnaPonuda>();
             services.AddTransient<EditPromotivnaPonuda>();
             services.AddTransient<AddVoziloToPromotivnaPonuda>();
+
+            services.AddTransient<OceneUC>();
 
             // Kreiranje ServiceProvider-a
             ServiceProvider = services.BuildServiceProvider();
