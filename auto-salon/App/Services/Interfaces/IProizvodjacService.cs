@@ -15,5 +15,7 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<bool> Delete(int proizvodjacId);
 
         ServiceResult<bool> Update(ProizvodjacDTO proizvodjacDTO);
+
+        ServiceResult<bool> DeleteSalonFromProizvodjac(int proizvodjacId, int salonId);
     }
 }

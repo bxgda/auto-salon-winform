@@ -165,5 +165,59 @@ namespace auto_salon.Presentation.FProizvodjacNudi
                 LoadData();
             }
         }
+
+        private void btnDodajSalonUPonudu_Click(object sender, EventArgs e)
+        {
+            if (lvProizvodjaci.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite ponudu kojoj želite da dodate vozilo.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedRowIndex = lvProizvodjaci.SelectedItems[0].Index;
+
+            // Prosleđivanje DTO-a se i dalje može raditi ručno
+            var form = ActivatorUtilities.CreateInstance<AddSalonToNudi>(_serviceProvider, _proizvodjaci[selectedRowIndex]);
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                // Osvezi listu vozila u promotivnoj ponudi
+                LoadSaloni();
+            }
+        }
+
+        private void btnIzbaciSalonIzPonudu_Click(object sender, EventArgs e)
+        {
+            if (lvSaloni.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite promotivnu ponudu.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (lvProizvodjaci.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite vozilo koje želite da izbacite iz ponude.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedProizvodjacIndex = lvProizvodjaci.SelectedItems[0].Index;
+            int proizvodjacId = _proizvodjaci[selectedProizvodjacIndex].ID;
+
+            int salonId = int.Parse(lvSaloni.SelectedItems[0].SubItems[0].Text);
+
+            var result = _proizvodjacService.DeleteSalonFromProizvodjac(proizvodjacId, salonId);
+
+            if (result.IsSuccess)
+            {
+                MessageBox.Show("Salon uspešno izbačen iz ponude.", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadSaloni();
+            }
+            else
+            {
+                MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

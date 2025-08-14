@@ -38,9 +38,13 @@
             label2 = new Label();
             panel2 = new Panel();
             label1 = new Label();
+            panel3 = new Panel();
+            btnIzbaciSalonIzPonudu = new Button();
+            btnDodajSalonUPonudu = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -51,6 +55,7 @@
             tableLayoutPanel1.Controls.Add(lvProizvodjaci, 0, 1);
             tableLayoutPanel1.Controls.Add(panel1, 0, 2);
             tableLayoutPanel1.Controls.Add(panel2, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel3, 0, 4);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -169,6 +174,46 @@
             label1.TabIndex = 1;
             label1.Text = "Proizvođači:";
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(btnIzbaciSalonIzPonudu);
+            panel3.Controls.Add(btnDodajSalonUPonudu);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(3, 690);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(984, 53);
+            panel3.TabIndex = 7;
+            // 
+            // btnIzbaciSalonIzPonudu
+            // 
+            btnIzbaciSalonIzPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnIzbaciSalonIzPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnIzbaciSalonIzPonudu.Image = Properties.Resources.minus;
+            btnIzbaciSalonIzPonudu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnIzbaciSalonIzPonudu.Location = new Point(225, 13);
+            btnIzbaciSalonIzPonudu.Name = "btnIzbaciSalonIzPonudu";
+            btnIzbaciSalonIzPonudu.Padding = new Padding(10, 0, 0, 0);
+            btnIzbaciSalonIzPonudu.Size = new Size(215, 37);
+            btnIzbaciSalonIzPonudu.TabIndex = 11;
+            btnIzbaciSalonIzPonudu.Text = "Izbaci salon iz ponude";
+            btnIzbaciSalonIzPonudu.UseVisualStyleBackColor = true;
+            btnIzbaciSalonIzPonudu.Click += btnIzbaciSalonIzPonudu_Click;
+            // 
+            // btnDodajSalonUPonudu
+            // 
+            btnDodajSalonUPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDodajSalonUPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDodajSalonUPonudu.Image = Properties.Resources.plus;
+            btnDodajSalonUPonudu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDodajSalonUPonudu.Location = new Point(4, 13);
+            btnDodajSalonUPonudu.Name = "btnDodajSalonUPonudu";
+            btnDodajSalonUPonudu.Padding = new Padding(10, 0, 0, 0);
+            btnDodajSalonUPonudu.Size = new Size(215, 37);
+            btnDodajSalonUPonudu.TabIndex = 10;
+            btnDodajSalonUPonudu.Text = "Dodaj salon u ponudu";
+            btnDodajSalonUPonudu.UseVisualStyleBackColor = true;
+            btnDodajSalonUPonudu.Click += btnDodajSalonUPonudu_Click;
+            // 
             // ProizvodjacNudiUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -181,6 +226,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -196,5 +242,8 @@
         private Button btnAdd;
         private Panel panel2;
         private Label label1;
+        private Panel panel3;
+        private Button btnDodajSalonUPonudu;
+        private Button btnIzbaciSalonIzPonudu;
     }
 }

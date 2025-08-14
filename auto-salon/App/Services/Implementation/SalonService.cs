@@ -3,6 +3,7 @@ using auto_salon.App.Extensions;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Entities;
+using NHibernate.Util;
 
 namespace auto_salon.App.Services.Implementation
 {
@@ -42,6 +43,50 @@ namespace auto_salon.App.Services.Implementation
             catch (Exception ex)
             {
                 return ServiceResult<bool>.Failure($"Greška pri kreiranju salona: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<bool> AddSaloniToNudi(int proizvodjacId, IList<int> salonIds)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+
+                Proizvodjac proizvodjac = session.Load<Proizvodjac>(proizvodjacId);
+
+                if (proizvodjac == null)
+                    return ServiceResult<bool>.Failure("Proizvodjac ne postoji.");
+
+                // Dodaj salone u promotivnu ponudu
+                foreach (var salonId in salonIds)
+                {
+                    SalonNova salon = session.Load<SalonNova>(salonId);
+                    if (salon == null)
+                        return ServiceResult<bool>.Failure($"Salon sa ID {salonId} ne postoji.");
+
+                    // Proveri da li salon već postoji u promotivnoj ponudi
+                    if (proizvodjac.Saloni.Any(s => s.ID == proizvodjacId))
+                        continue; // Salon je već dodat u ovu ponudu
+
+                    // Dodaj salon u promotivnu ponudu
+                    proizvodjac.Saloni.Add(salon);
+                }
+
+                session.SaveOrUpdate(proizvodjac);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri dodavanju salona u ponudu: {ex.Message}");
             }
             finally
             {
@@ -152,6 +197,39 @@ namespace auto_salon.App.Services.Implementation
             catch (Exception ex)
             {
                 return ServiceResult<IList<SalonComboboxDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<IList<SalonDTO>> GetSaloniInNudi(int proizvodjacId)
+        {
+            var session = _dataLayer.OpenSession();
+            IList<SalonDTO> result = new List<SalonDTO>();
+
+            try
+            {
+                if (session == null)
+                    return ServiceResult<IList<SalonDTO>>.Failure("Nema konekcije sa bazom podataka.");
+
+                Proizvodjac proizvodjac = session.Load<Proizvodjac>(proizvodjacId);
+
+                if (proizvodjac == null)
+                    return ServiceResult<IList<SalonDTO>>.Failure("Proizvodjac sa datim ID-jem ne postoji.");
+
+                IEnumerable<SalonNova> saloni = session.Query<SalonNova>()
+                    .Where(s => !s.Proizvodjaci.Any(p => p.ID == proizvodjacId));
+
+                foreach (var salon in saloni)
+                    result.Add(salon.ToSalonDTO());
+
+                return ServiceResult<IList<SalonDTO>>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<IList<SalonDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
             }
             finally
             {

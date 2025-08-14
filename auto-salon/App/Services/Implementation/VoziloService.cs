@@ -3,9 +3,7 @@ using auto_salon.App.Extensions;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Entities;
-using auto_salon.Presentation.FSalon;
 using AutoSalonMac.App.Extensions;
-using System.Windows.Forms.Design.Behavior;
 
 namespace auto_salon.App.Services.Implementation
 {
@@ -248,24 +246,19 @@ namespace auto_salon.App.Services.Implementation
             try
             {
                 if (session == null)
-                {
                     return ServiceResult<IList<VoziloTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
-                }
 
                 PromotivnaPonuda promotivnaPonuda = session.Load<PromotivnaPonuda>(promotivnaPonudaId);
+
                 if (promotivnaPonuda == null)
-                {
                     return ServiceResult<IList<VoziloTableDTO>>.Failure("Promotivna ponuda sa datim ID ne postoji.");
-                }
 
                 // Pribavi sva vozila koja nisu u ovoj promotivnoj ponudi
                 IEnumerable<Vozilo> svaVozila = session.Query<Vozilo>()
                     .Where(v => !v.PromotivnePonude.Any(pp => pp.ID == promotivnaPonudaId));
 
                 foreach (var vozilo in svaVozila)
-                {
                     result.Add(vozilo.ToVoziloTableDTO());
-                }
 
                 return ServiceResult<IList<VoziloTableDTO>>.Success(result);
             }

@@ -147,26 +147,20 @@ namespace auto_salon.App.Services.Implementation
             try
             {
                 if (session == null)
-                {
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
-                }
 
                 var promotivnaPonuda = session.Load<PromotivnaPonuda>(idPromotivnePonude);
+
                 if (promotivnaPonuda == null)
-                {
                     return ServiceResult<bool>.Failure("Promotivna ponuda sa datim ID-jem ne postoji.");
-                }
 
                 var vozilo = session.Load<Vozilo>(brojSasije);
+
                 if (vozilo == null)
-                {
                     return ServiceResult<bool>.Failure("Vozilo sa datim brojem šasije ne postoji.");
-                }
 
                 if (!promotivnaPonuda.Vozila.Contains(vozilo))
-                {
                     return ServiceResult<bool>.Failure("Vozilo nije deo ove promotivne ponude.");
-                }
 
                 promotivnaPonuda.Vozila.Remove(vozilo);
                 session.SaveOrUpdate(promotivnaPonuda);

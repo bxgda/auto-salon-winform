@@ -78,6 +78,7 @@ namespace auto_salon
             services.AddTransient<ProizvodjacNudiUC>();
             services.AddTransient<AddProizvodjac>();
             services.AddTransient<EditProizvodjac>();
+            services.AddTransient<AddSalonToNudi>();
 
             // Kreiranje ServiceProvider-a
             ServiceProvider = services.BuildServiceProvider();

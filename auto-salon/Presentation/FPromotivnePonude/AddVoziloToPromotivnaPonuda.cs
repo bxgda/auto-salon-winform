@@ -76,9 +76,7 @@ namespace auto_salon.Presentation.FPromotivnePonude
 
             // Automatically resize columns based on content
             foreach (ColumnHeader column in lvVozila.Columns)
-            {
                 column.Width = -2; // Auto size to fit content
-            }
 
             lvVozila.Refresh();
         }

@@ -74,6 +74,44 @@ namespace auto_salon.App.Services.Implementation
             }
         }
 
+        public ServiceResult<bool> DeleteSalonFromProizvodjac(int proizvodjacId, int salonId)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+
+                var proizvodjac = session.Load<Proizvodjac>(proizvodjacId);
+
+                if (proizvodjac == null)
+                    return ServiceResult<bool>.Failure("Proizvodjac sa datim ID-jem ne postoji.");
+
+                SalonNova salon = session.Load<SalonNova>(salonId);
+
+                if (salon == null)
+                    return ServiceResult<bool>.Failure("Salon sa datim ID-jem ne postoji.");
+
+                if (!proizvodjac.Saloni.Contains(salon))
+                    return ServiceResult<bool>.Failure("Salon nije deo ove ponude.");
+
+                proizvodjac.Saloni.Remove(salon);
+                session.SaveOrUpdate(proizvodjac);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri izbacivanju salona iz ponude: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
         public ServiceResult<IList<ProizvodjacDTO>> GetProizvodjaciZaSalonNova(int salonId)
         {
             var session = _dataLayer.OpenSession();
