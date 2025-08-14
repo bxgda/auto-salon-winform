@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditServisnaStavka));
             btnSubmit = new Button();
             groupBox1 = new GroupBox();
             label1 = new Label();
@@ -121,6 +122,7 @@
             ClientSize = new Size(352, 383);
             Controls.Add(btnSubmit);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MaximumSize = new Size(368, 422);
             MinimizeBox = false;

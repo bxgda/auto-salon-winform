@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddKupac));
             groupBox1 = new GroupBox();
             rbPravnoLice = new RadioButton();
             rbFizickoLice = new RadioButton();
@@ -204,8 +205,11 @@
             // btnSubmit
             // 
             btnSubmit.Font = new Font("Segoe UI", 11F);
+            btnSubmit.Image = Properties.Resources.plus;
+            btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
             btnSubmit.Location = new Point(337, 299);
             btnSubmit.Name = "btnSubmit";
+            btnSubmit.Padding = new Padding(10, 0, 0, 0);
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 2;
             btnSubmit.Text = "Dodaj";
@@ -220,6 +224,7 @@
             Controls.Add(btnSubmit);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MaximumSize = new Size(510, 392);
             MinimizeBox = false;

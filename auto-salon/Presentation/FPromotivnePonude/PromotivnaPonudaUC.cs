@@ -211,5 +211,37 @@ namespace auto_salon.Presentation.FPromotivnePonude
                 LoadVozila();
             }
         }
+
+        private void btnIzbaciVoziloIzPonudu_Click(object sender, EventArgs e)
+        {
+            if (lvPromotivnePonude.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite promotivnu ponudu.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (lvVozila.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite vozilo koje želite da izbacite iz ponude.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedPonudaIndex = lvPromotivnePonude.SelectedItems[0].Index;
+            int promotivnaPonudaId = _promotivnePonude[selectedPonudaIndex].ID;
+
+            string brojSasije = lvVozila.SelectedItems[0].SubItems[2].Text;
+
+            var result = _promotivnaPonudaService.RemoveVoziloFromPromotivnaPonuda(promotivnaPonudaId, brojSasije);
+
+            if (result.IsSuccess)
+            {
+                MessageBox.Show("Vozilo je uspešno izbačeno iz promotivne ponude.", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadVozila();
+            }
+            else
+            {
+                MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

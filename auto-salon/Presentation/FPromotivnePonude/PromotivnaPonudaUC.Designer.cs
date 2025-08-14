@@ -38,6 +38,7 @@
             btnEdit = new Button();
             btnAdd = new Button();
             btnDelete = new Button();
+            btnIzbaciVoziloIzPonudu = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -108,6 +109,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnIzbaciVoziloIzPonudu);
             panel1.Controls.Add(btnDodajVoziloUPonudu);
             panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnAdd);
@@ -178,6 +180,21 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
+            // btnIzbaciVoziloIzPonudu
+            // 
+            btnIzbaciVoziloIzPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnIzbaciVoziloIzPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnIzbaciVoziloIzPonudu.Image = Properties.Resources.minus;
+            btnIzbaciVoziloIzPonudu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnIzbaciVoziloIzPonudu.Location = new Point(545, 31);
+            btnIzbaciVoziloIzPonudu.Name = "btnIzbaciVoziloIzPonudu";
+            btnIzbaciVoziloIzPonudu.Padding = new Padding(10, 0, 0, 0);
+            btnIzbaciVoziloIzPonudu.Size = new Size(215, 37);
+            btnIzbaciVoziloIzPonudu.TabIndex = 10;
+            btnIzbaciVoziloIzPonudu.Text = "Izbaci vozilo iz ponude";
+            btnIzbaciVoziloIzPonudu.UseVisualStyleBackColor = true;
+            btnIzbaciVoziloIzPonudu.Click += btnIzbaciVoziloIzPonudu_Click;
+            // 
             // PromotivnaPonudaUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -203,5 +220,6 @@
         private Button btnAdd;
         private Button btnEdit;
         private Button btnDodajVoziloUPonudu;
+        private Button btnIzbaciVoziloIzPonudu;
     }
 }

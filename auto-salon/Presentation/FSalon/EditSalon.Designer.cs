@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditSalon));
             groupBox1 = new GroupBox();
             timePickerDo = new DateTimePicker();
             timePickerOd = new DateTimePicker();
@@ -128,7 +129,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(212, 129);
             label7.Name = "label7";
-            label7.Size = new Size(24, 15);
+            label7.Size = new Size(23, 15);
             label7.TabIndex = 15;
             label7.Text = "Tip";
             label7.TextAlign = ContentAlignment.MiddleLeft;
@@ -213,8 +214,11 @@
             // btnSubmit
             // 
             btnSubmit.Font = new Font("Segoe UI", 11F);
+            btnSubmit.Image = Properties.Resources.pencil;
+            btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
             btnSubmit.Location = new Point(261, 249);
             btnSubmit.Name = "btnSubmit";
+            btnSubmit.Padding = new Padding(10, 0, 0, 0);
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 3;
             btnSubmit.Text = "Izmeni";
@@ -228,6 +232,7 @@
             ClientSize = new Size(420, 302);
             Controls.Add(groupBox1);
             Controls.Add(btnSubmit);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimumSize = new Size(436, 341);
             Name = "EditSalon";

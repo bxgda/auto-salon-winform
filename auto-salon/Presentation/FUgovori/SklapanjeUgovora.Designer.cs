@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SklapanjeUgovora));
             lvProdavci = new ListView();
             label1 = new Label();
             label4 = new Label();
@@ -447,6 +448,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(959, 851);
             Controls.Add(tblMain);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(867, 890);
             Name = "SklapanjeUgovora";
             StartPosition = FormStartPosition.CenterParent;

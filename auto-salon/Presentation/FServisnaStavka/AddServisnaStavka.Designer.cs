@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddServisnaStavka));
             groupBox1 = new GroupBox();
             label1 = new Label();
             tbxOpis = new RichTextBox();
@@ -103,8 +104,11 @@
             // btnSubmit
             // 
             btnSubmit.Font = new Font("Segoe UI", 11F);
+            btnSubmit.Image = Properties.Resources.plus;
+            btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
             btnSubmit.Location = new Point(188, 328);
             btnSubmit.Name = "btnSubmit";
+            btnSubmit.Padding = new Padding(10, 0, 0, 0);
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 3;
             btnSubmit.Text = "Dodaj";
@@ -118,6 +122,7 @@
             ClientSize = new Size(352, 383);
             Controls.Add(btnSubmit);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MaximumSize = new Size(368, 422);
             MinimizeBox = false;

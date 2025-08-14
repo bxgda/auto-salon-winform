@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VozilaSalona));
             tableLayoutPanel1 = new TableLayoutPanel();
             lvVozila = new ListView();
             panel1 = new Panel();
@@ -99,11 +100,14 @@
             // 
             btnServisnaIstorija.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnServisnaIstorija.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnServisnaIstorija.Image = Properties.Resources.service;
+            btnServisnaIstorija.ImageAlign = ContentAlignment.MiddleLeft;
             btnServisnaIstorija.Location = new Point(351, 31);
             btnServisnaIstorija.Name = "btnServisnaIstorija";
+            btnServisnaIstorija.Padding = new Padding(7, 0, 0, 0);
             btnServisnaIstorija.Size = new Size(145, 37);
             btnServisnaIstorija.TabIndex = 6;
-            btnServisnaIstorija.Text = "Vidi servisnu istoriju";
+            btnServisnaIstorija.Text = "  Servisna istorija";
             btnServisnaIstorija.UseVisualStyleBackColor = true;
             btnServisnaIstorija.Click += btnServisnaIstorija_Click;
             // 
@@ -158,6 +162,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(816, 489);
             Name = "VozilaSalona";
             StartPosition = FormStartPosition.CenterParent;

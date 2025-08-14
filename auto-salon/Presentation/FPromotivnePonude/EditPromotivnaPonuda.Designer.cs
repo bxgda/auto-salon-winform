@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditPromotivnaPonuda));
             btnSubmit = new Button();
             label5 = new Label();
             dtpDo = new DateTimePicker();
@@ -45,10 +46,13 @@
             // btnSubmit
             // 
             btnSubmit.Font = new Font("Segoe UI", 11F);
+            btnSubmit.Image = Properties.Resources.pencil;
+            btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
             btnSubmit.Location = new Point(255, 264);
             btnSubmit.MaximumSize = new Size(145, 39);
             btnSubmit.MinimumSize = new Size(145, 39);
             btnSubmit.Name = "btnSubmit";
+            btnSubmit.Padding = new Padding(10, 0, 0, 0);
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 5;
             btnSubmit.Text = "Izmeni";
@@ -156,6 +160,7 @@
             Controls.Add(tbxNazivPromocije);
             Controls.Add(label1);
             Controls.Add(rtbUslovi);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(432, 354);
             MinimumSize = new Size(432, 354);
             Name = "EditPromotivnaPonuda";

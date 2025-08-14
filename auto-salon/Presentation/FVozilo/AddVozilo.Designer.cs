@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddVozilo));
             tbxBrSasije = new TextBox();
             label1 = new Label();
             label2 = new Label();
@@ -257,15 +258,18 @@
             label10.AutoSize = true;
             label10.Location = new Point(214, 31);
             label10.Name = "label10";
-            label10.Size = new Size(65, 15);
+            label10.Size = new Size(64, 15);
             label10.TabIndex = 24;
             label10.Text = "Tip goriva*";
             // 
             // btnSubmit
             // 
             btnSubmit.Font = new Font("Segoe UI", 11F);
+            btnSubmit.Image = Properties.Resources.plus;
+            btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
             btnSubmit.Location = new Point(267, 483);
             btnSubmit.Name = "btnSubmit";
+            btnSubmit.Padding = new Padding(10, 0, 0, 0);
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 2;
             btnSubmit.Text = "Dodaj";
@@ -361,6 +365,7 @@
             Controls.Add(groupBox1);
             Controls.Add(gbStanje);
             Controls.Add(btnSubmit);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MaximumSize = new Size(450, 576);
             MinimizeBox = false;

@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddVoziloToPromotivnaPonuda));
             tableLayoutPanel1 = new TableLayoutPanel();
             lvVozila = new ListView();
             panel1 = new Panel();
-            btnPotvrdi = new Button();
             label1 = new Label();
+            btnPotvrdi = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -74,6 +75,16 @@
             panel1.Size = new Size(794, 69);
             panel1.TabIndex = 1;
             // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Location = new Point(604, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(187, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Izaberite jedno ili više vozila iz liste";
+            // 
             // btnPotvrdi
             // 
             btnPotvrdi.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
@@ -89,22 +100,13 @@
             btnPotvrdi.UseVisualStyleBackColor = true;
             btnPotvrdi.Click += btnPotvrdi_Click;
             // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Location = new Point(604, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(187, 15);
-            label1.TabIndex = 7;
-            label1.Text = "Izaberite jedno ili više vozila iz liste";
-            // 
             // AddVoziloToPromotivnaPonuda
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(816, 489);
             Name = "AddVoziloToPromotivnaPonuda";
             StartPosition = FormStartPosition.CenterParent;

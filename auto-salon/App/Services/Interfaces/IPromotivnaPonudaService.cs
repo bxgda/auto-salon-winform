@@ -13,5 +13,7 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<bool> Add(PromotivnaPonudaDTO promotivnaPonudaDTO);
 
         ServiceResult<bool> Update(PromotivnaPonudaDTO promotivnaPonudaDTO);
+
+        ServiceResult<bool> RemoveVoziloFromPromotivnaPonuda(int idPromotivnePonude, string brojSasije);
     }
 }

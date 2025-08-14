@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditZaposleni));
             btnSubmit = new Button();
             groupBox2 = new GroupBox();
+            label10 = new Label();
+            cbxStatus = new ComboBox();
             label9 = new Label();
             cbxUloga = new ComboBox();
             label8 = new Label();
@@ -49,8 +52,6 @@
             label2 = new Label();
             tbxIme = new TextBox();
             label1 = new Label();
-            cbxStatus = new ComboBox();
-            label10 = new Label();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -58,8 +59,11 @@
             // btnSubmit
             // 
             btnSubmit.Font = new Font("Segoe UI", 11F);
+            btnSubmit.Image = Properties.Resources.pencil;
+            btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
             btnSubmit.Location = new Point(283, 384);
             btnSubmit.Name = "btnSubmit";
+            btnSubmit.Padding = new Padding(10, 0, 0, 0);
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 5;
             btnSubmit.Text = "Izmeni";
@@ -82,6 +86,25 @@
             groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
             groupBox2.Text = "Podaci o poziciji";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(18, 32);
+            label10.Name = "label10";
+            label10.Size = new Size(97, 15);
+            label10.TabIndex = 20;
+            label10.Text = "Status zaposlenja";
+            // 
+            // cbxStatus
+            // 
+            cbxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxStatus.FormattingEnabled = true;
+            cbxStatus.Items.AddRange(new object[] { "Aktivan", "Neaktivan", "Na odmoru", "Na bolovanju" });
+            cbxStatus.Location = new Point(18, 50);
+            cbxStatus.Name = "cbxStatus";
+            cbxStatus.Size = new Size(159, 23);
+            cbxStatus.TabIndex = 19;
             // 
             // label9
             // 
@@ -255,25 +278,6 @@
             label1.TabIndex = 0;
             label1.Text = "Ime *";
             // 
-            // cbxStatus
-            // 
-            cbxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxStatus.FormattingEnabled = true;
-            cbxStatus.Items.AddRange(new object[] { "Aktivan", "Neaktivan", "Na odmoru", "Na bolovanju" });
-            cbxStatus.Location = new Point(18, 50);
-            cbxStatus.Name = "cbxStatus";
-            cbxStatus.Size = new Size(159, 23);
-            cbxStatus.TabIndex = 19;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(18, 32);
-            label10.Name = "label10";
-            label10.Size = new Size(97, 15);
-            label10.TabIndex = 20;
-            label10.Text = "Status zaposlenja";
-            // 
             // EditZaposleni
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -283,6 +287,7 @@
             Controls.Add(btnSubmit);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MaximumSize = new Size(458, 477);
             MinimizeBox = false;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServisnaIstorijaVozila));
             tableLayoutPanel1 = new TableLayoutPanel();
             lvServisneStavke = new ListView();
             panel1 = new Panel();
@@ -127,6 +128,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(688, 511);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimizeBox = false;
             MinimumSize = new Size(500, 500);
             Name = "ServisnaIstorijaVozila";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditVozilo));
             groupBox1 = new GroupBox();
             cbSaloni = new ComboBox();
             label12 = new Label();
@@ -214,7 +215,7 @@
             label10.AutoSize = true;
             label10.Location = new Point(214, 31);
             label10.Name = "label10";
-            label10.Size = new Size(65, 15);
+            label10.Size = new Size(64, 15);
             label10.TabIndex = 24;
             label10.Text = "Tip goriva*";
             // 
@@ -350,6 +351,7 @@
             ClientSize = new Size(419, 539);
             Controls.Add(groupBox1);
             Controls.Add(btnSubmit);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MaximumSize = new Size(435, 578);
             MinimizeBox = false;
