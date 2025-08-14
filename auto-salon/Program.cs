@@ -65,6 +65,7 @@ namespace auto_salon
             services.AddTransient<KupacUC>();
 
             services.AddTransient<PromotivnaPonudaUC>();
+            services.AddTransient<AddPromotivnaPonuda>();
 
             // Kreiranje ServiceProvider-a
             ServiceProvider = services.BuildServiceProvider();

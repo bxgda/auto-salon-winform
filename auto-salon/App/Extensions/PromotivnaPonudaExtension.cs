@@ -1,6 +1,5 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.Entities;
-using AutoSalonMac.App.Extensions;
  
 namespace auto_salon.App.Extensions
 {
@@ -15,8 +14,19 @@ namespace auto_salon.App.Extensions
                 PopustUProcentima = promotivnaPonuda.PopustUProcentima,
                 DatumOd = promotivnaPonuda.DatumOd,
                 DatumDo = promotivnaPonuda.DatumDo,
-                Vozila = promotivnaPonuda.Vozila.Select(v => v.ToVoziloTableDTO()).ToList(),
                 Uslovi = promotivnaPonuda.Uslovi
+            };
+        }
+
+        public static PromotivnaPonuda CreateNewEntity(this PromotivnaPonudaDTO promotivnaPonudaDTO)
+        {
+            return new PromotivnaPonuda
+            {
+                NazivPromocije = promotivnaPonudaDTO.NazivPromocije,
+                PopustUProcentima = promotivnaPonudaDTO.PopustUProcentima,
+                DatumOd = promotivnaPonudaDTO.DatumOd,
+                DatumDo = promotivnaPonudaDTO.DatumDo,
+                Uslovi = promotivnaPonudaDTO.Uslovi
             };
         }
     }

@@ -1,6 +1,8 @@
 ﻿using Antlr.Runtime.Tree;
 using auto_salon.App.DTOs;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Presentation.FSalon;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FPromotivnePonude
 {
@@ -148,6 +150,17 @@ namespace auto_salon.Presentation.FPromotivnePonude
             else
             {
                 MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var form = _serviceProvider.GetRequiredService<AddPromotivnaPonuda>();
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
             }
         }
     }

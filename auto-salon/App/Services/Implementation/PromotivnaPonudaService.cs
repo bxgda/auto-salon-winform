@@ -16,6 +16,40 @@ namespace auto_salon.App.Services.Implementation
             _dataLayer = dataLayer;
         }
 
+        public ServiceResult<bool> Add(PromotivnaPonudaDTO promotivnaPonudaDTO)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+                }
+
+                if (promotivnaPonudaDTO == null)
+                {
+                    return ServiceResult<bool>.Failure("Promotivna ponuda ne može biti null.");
+                }
+
+                // Kreiraj domenski entitet
+                PromotivnaPonuda ponudaEntity = promotivnaPonudaDTO.CreateNewEntity();
+
+                session.SaveOrUpdate(ponudaEntity);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri kreiranju promotivne ponude: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
         public ServiceResult<bool> Delete(int id)
         {
             var session = _dataLayer.OpenSession();

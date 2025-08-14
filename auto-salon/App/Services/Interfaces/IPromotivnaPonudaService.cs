@@ -9,5 +9,7 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<IList<VoziloTableDTO>> GetVozilaPromotivnePonude(int idPonude);
 
         ServiceResult<bool> Delete(int id);
+
+        ServiceResult<bool> Add(PromotivnaPonudaDTO promotivnaPonudaDTO);
     }
 }
