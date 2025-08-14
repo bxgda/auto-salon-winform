@@ -5,5 +5,7 @@ namespace auto_salon.App.Services.Interfaces
     public interface IJeOcenioService
     {
         ServiceResult<IList<JeOcenioDTO>> GetAll();
+
+        ServiceResult<bool> Delete(int id);
     }
 }

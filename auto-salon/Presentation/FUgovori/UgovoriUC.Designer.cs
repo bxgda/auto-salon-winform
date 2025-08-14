@@ -105,9 +105,12 @@
             // 
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.Image = Properties.Resources.trash;
+            btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
             btnDelete.Location = new Point(3, 82);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(88, 37);
+            btnDelete.Padding = new Padding(10, 0, 0, 0);
+            btnDelete.Size = new Size(105, 37);
             btnDelete.TabIndex = 2;
             btnDelete.Text = "Obriši";
             btnDelete.UseVisualStyleBackColor = true;
@@ -178,9 +181,8 @@
             // 
             // lblTelefonProdavca
             // 
-            lblTelefonProdavca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTelefonProdavca.AutoSize = true;
-            lblTelefonProdavca.Location = new Point(172, 114);
+            lblTelefonProdavca.Location = new Point(145, 114);
             lblTelefonProdavca.Name = "lblTelefonProdavca";
             lblTelefonProdavca.Size = new Size(12, 15);
             lblTelefonProdavca.TabIndex = 14;
@@ -188,9 +190,8 @@
             // 
             // lblPozicijaProdavca
             // 
-            lblPozicijaProdavca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblPozicijaProdavca.AutoSize = true;
-            lblPozicijaProdavca.Location = new Point(172, 87);
+            lblPozicijaProdavca.Location = new Point(145, 87);
             lblPozicijaProdavca.Name = "lblPozicijaProdavca";
             lblPozicijaProdavca.Size = new Size(12, 15);
             lblPozicijaProdavca.TabIndex = 13;
@@ -198,9 +199,8 @@
             // 
             // lblPrezimeProdavca
             // 
-            lblPrezimeProdavca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblPrezimeProdavca.AutoSize = true;
-            lblPrezimeProdavca.Location = new Point(172, 58);
+            lblPrezimeProdavca.Location = new Point(145, 58);
             lblPrezimeProdavca.Name = "lblPrezimeProdavca";
             lblPrezimeProdavca.Size = new Size(12, 15);
             lblPrezimeProdavca.TabIndex = 12;
@@ -208,9 +208,8 @@
             // 
             // lblImeProdavca
             // 
-            lblImeProdavca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblImeProdavca.AutoSize = true;
-            lblImeProdavca.Location = new Point(172, 31);
+            lblImeProdavca.Location = new Point(145, 31);
             lblImeProdavca.Name = "lblImeProdavca";
             lblImeProdavca.Size = new Size(12, 15);
             lblImeProdavca.TabIndex = 11;
@@ -314,9 +313,8 @@
             // 
             // lblKupacJe
             // 
-            lblKupacJe.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblKupacJe.AutoSize = true;
-            lblKupacJe.Location = new Point(172, 32);
+            lblKupacJe.Location = new Point(145, 32);
             lblKupacJe.Name = "lblKupacJe";
             lblKupacJe.Size = new Size(12, 15);
             lblKupacJe.TabIndex = 9;
@@ -333,9 +331,8 @@
             // 
             // lblTelefonKupca
             // 
-            lblTelefonKupca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTelefonKupca.AutoSize = true;
-            lblTelefonKupca.Location = new Point(172, 153);
+            lblTelefonKupca.Location = new Point(145, 153);
             lblTelefonKupca.Name = "lblTelefonKupca";
             lblTelefonKupca.Size = new Size(12, 15);
             lblTelefonKupca.TabIndex = 7;
@@ -343,9 +340,8 @@
             // 
             // lblEmailKupca
             // 
-            lblEmailKupca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblEmailKupca.AutoSize = true;
-            lblEmailKupca.Location = new Point(172, 125);
+            lblEmailKupca.Location = new Point(145, 125);
             lblEmailKupca.Name = "lblEmailKupca";
             lblEmailKupca.Size = new Size(12, 15);
             lblEmailKupca.TabIndex = 6;
@@ -353,9 +349,8 @@
             // 
             // lblPrezimeKupca
             // 
-            lblPrezimeKupca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblPrezimeKupca.AutoSize = true;
-            lblPrezimeKupca.Location = new Point(172, 93);
+            lblPrezimeKupca.Location = new Point(145, 93);
             lblPrezimeKupca.Name = "lblPrezimeKupca";
             lblPrezimeKupca.Size = new Size(12, 15);
             lblPrezimeKupca.TabIndex = 5;
@@ -363,9 +358,8 @@
             // 
             // lblImeKupca
             // 
-            lblImeKupca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblImeKupca.AutoSize = true;
-            lblImeKupca.Location = new Point(172, 63);
+            lblImeKupca.Location = new Point(145, 63);
             lblImeKupca.Name = "lblImeKupca";
             lblImeKupca.Size = new Size(12, 15);
             lblImeKupca.TabIndex = 4;
@@ -439,9 +433,8 @@
             // 
             // lblGodinaProizvodnje
             // 
-            lblGodinaProizvodnje.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblGodinaProizvodnje.AutoSize = true;
-            lblGodinaProizvodnje.Location = new Point(172, 114);
+            lblGodinaProizvodnje.Location = new Point(145, 114);
             lblGodinaProizvodnje.Name = "lblGodinaProizvodnje";
             lblGodinaProizvodnje.Size = new Size(12, 15);
             lblGodinaProizvodnje.TabIndex = 10;
@@ -449,9 +442,8 @@
             // 
             // lblModel
             // 
-            lblModel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblModel.AutoSize = true;
-            lblModel.Location = new Point(172, 87);
+            lblModel.Location = new Point(145, 87);
             lblModel.Name = "lblModel";
             lblModel.Size = new Size(12, 15);
             lblModel.TabIndex = 8;
@@ -459,9 +451,8 @@
             // 
             // lblBrojSasije
             // 
-            lblBrojSasije.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblBrojSasije.AutoSize = true;
-            lblBrojSasije.Location = new Point(172, 31);
+            lblBrojSasije.Location = new Point(145, 31);
             lblBrojSasije.Name = "lblBrojSasije";
             lblBrojSasije.Size = new Size(12, 15);
             lblBrojSasije.TabIndex = 7;
@@ -487,9 +478,8 @@
             // 
             // lblStanje
             // 
-            lblStanje.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblStanje.AutoSize = true;
-            lblStanje.Location = new Point(172, 58);
+            lblStanje.Location = new Point(145, 58);
             lblStanje.Name = "lblStanje";
             lblStanje.Size = new Size(12, 15);
             lblStanje.TabIndex = 3;

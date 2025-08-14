@@ -31,16 +31,18 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             lvPromotivnePonude = new ListView();
             label1 = new Label();
-            label2 = new Label();
             lvVozila = new ListView();
             panel1 = new Panel();
-            btnDodajVoziloUPonudu = new Button();
-            btnEdit = new Button();
-            btnAdd = new Button();
-            btnDelete = new Button();
             btnIzbaciVoziloIzPonudu = new Button();
+            btnDodajVoziloUPonudu = new Button();
+            panel2 = new Panel();
+            label2 = new Label();
+            btnEdit = new Button();
+            btnDelete = new Button();
+            btnAdd = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -49,16 +51,16 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(lvPromotivnePonude, 0, 1);
             tableLayoutPanel1.Controls.Add(label1, 0, 0);
-            tableLayoutPanel1.Controls.Add(label2, 0, 2);
             tableLayoutPanel1.Controls.Add(lvVozila, 0, 3);
             tableLayoutPanel1.Controls.Add(panel1, 0, 4);
+            tableLayoutPanel1.Controls.Add(panel2, 0, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 309F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 21F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 254F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 94F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 74.01575F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
             tableLayoutPanel1.Size = new Size(990, 746);
@@ -71,7 +73,7 @@
             lvPromotivnePonude.GridLines = true;
             lvPromotivnePonude.Location = new Point(3, 23);
             lvPromotivnePonude.Name = "lvPromotivnePonude";
-            lvPromotivnePonude.Size = new Size(984, 303);
+            lvPromotivnePonude.Size = new Size(984, 248);
             lvPromotivnePonude.TabIndex = 0;
             lvPromotivnePonude.UseCompatibleStateImageBehavior = false;
             lvPromotivnePonude.View = View.Details;
@@ -86,23 +88,14 @@
             label1.TabIndex = 1;
             label1.Text = "Promotivne ponude";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(3, 329);
-            label2.Name = "label2";
-            label2.Size = new Size(139, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Vozila u izabranoj ponudi";
-            // 
             // lvVozila
             // 
             lvVozila.Dock = DockStyle.Fill;
             lvVozila.FullRowSelect = true;
             lvVozila.GridLines = true;
-            lvVozila.Location = new Point(3, 353);
+            lvVozila.Location = new Point(3, 371);
             lvVozila.Name = "lvVozila";
-            lvVozila.Size = new Size(984, 313);
+            lvVozila.Size = new Size(984, 295);
             lvVozila.TabIndex = 3;
             lvVozila.UseCompatibleStateImageBehavior = false;
             lvVozila.View = View.Details;
@@ -111,22 +104,34 @@
             // 
             panel1.Controls.Add(btnIzbaciVoziloIzPonudu);
             panel1.Controls.Add(btnDodajVoziloUPonudu);
-            panel1.Controls.Add(btnEdit);
-            panel1.Controls.Add(btnAdd);
-            panel1.Controls.Add(btnDelete);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 672);
             panel1.Name = "panel1";
             panel1.Size = new Size(984, 71);
             panel1.TabIndex = 4;
             // 
+            // btnIzbaciVoziloIzPonudu
+            // 
+            btnIzbaciVoziloIzPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnIzbaciVoziloIzPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnIzbaciVoziloIzPonudu.Image = Properties.Resources.minus;
+            btnIzbaciVoziloIzPonudu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnIzbaciVoziloIzPonudu.Location = new Point(225, 31);
+            btnIzbaciVoziloIzPonudu.Name = "btnIzbaciVoziloIzPonudu";
+            btnIzbaciVoziloIzPonudu.Padding = new Padding(10, 0, 0, 0);
+            btnIzbaciVoziloIzPonudu.Size = new Size(215, 37);
+            btnIzbaciVoziloIzPonudu.TabIndex = 10;
+            btnIzbaciVoziloIzPonudu.Text = "Izbaci vozilo iz ponude";
+            btnIzbaciVoziloIzPonudu.UseVisualStyleBackColor = true;
+            btnIzbaciVoziloIzPonudu.Click += btnIzbaciVoziloIzPonudu_Click;
+            // 
             // btnDodajVoziloUPonudu
             // 
-            btnDodajVoziloUPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnDodajVoziloUPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDodajVoziloUPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDodajVoziloUPonudu.Image = Properties.Resources.car_side;
+            btnDodajVoziloUPonudu.Image = Properties.Resources.plus;
             btnDodajVoziloUPonudu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDodajVoziloUPonudu.Location = new Point(766, 31);
+            btnDodajVoziloUPonudu.Location = new Point(4, 31);
             btnDodajVoziloUPonudu.Name = "btnDodajVoziloUPonudu";
             btnDodajVoziloUPonudu.Padding = new Padding(10, 0, 0, 0);
             btnDodajVoziloUPonudu.Size = new Size(215, 37);
@@ -135,13 +140,33 @@
             btnDodajVoziloUPonudu.UseVisualStyleBackColor = true;
             btnDodajVoziloUPonudu.Click += btnDodajVoziloUPonudu_Click;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(btnEdit);
+            panel2.Controls.Add(btnDelete);
+            panel2.Controls.Add(btnAdd);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(3, 277);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(984, 88);
+            panel2.TabIndex = 5;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(3, 73);
+            label2.Name = "label2";
+            label2.Size = new Size(139, 15);
+            label2.TabIndex = 9;
+            label2.Text = "Vozila u izabranoj ponudi";
+            // 
             // btnEdit
             // 
-            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEdit.Location = new Point(227, 31);
+            btnEdit.Location = new Point(225, 3);
             btnEdit.Name = "btnEdit";
             btnEdit.Padding = new Padding(10, 0, 0, 0);
             btnEdit.Size = new Size(102, 37);
@@ -150,28 +175,12 @@
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
             // 
-            // btnAdd
-            // 
-            btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAdd.Image = Properties.Resources.plus;
-            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdd.Location = new Point(119, 31);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Padding = new Padding(10, 0, 0, 0);
-            btnAdd.Size = new Size(102, 37);
-            btnAdd.TabIndex = 7;
-            btnAdd.Text = "Dodaj";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
-            // 
             // btnDelete
             // 
-            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.Image = Properties.Resources.trash;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(5, 31);
+            btnDelete.Location = new Point(111, 3);
             btnDelete.Name = "btnDelete";
             btnDelete.Padding = new Padding(10, 0, 0, 0);
             btnDelete.Size = new Size(108, 37);
@@ -180,20 +189,19 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // btnIzbaciVoziloIzPonudu
+            // btnAdd
             // 
-            btnIzbaciVoziloIzPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnIzbaciVoziloIzPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnIzbaciVoziloIzPonudu.Image = Properties.Resources.minus;
-            btnIzbaciVoziloIzPonudu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnIzbaciVoziloIzPonudu.Location = new Point(545, 31);
-            btnIzbaciVoziloIzPonudu.Name = "btnIzbaciVoziloIzPonudu";
-            btnIzbaciVoziloIzPonudu.Padding = new Padding(10, 0, 0, 0);
-            btnIzbaciVoziloIzPonudu.Size = new Size(215, 37);
-            btnIzbaciVoziloIzPonudu.TabIndex = 10;
-            btnIzbaciVoziloIzPonudu.Text = "Izbaci vozilo iz ponude";
-            btnIzbaciVoziloIzPonudu.UseVisualStyleBackColor = true;
-            btnIzbaciVoziloIzPonudu.Click += btnIzbaciVoziloIzPonudu_Click;
+            btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdd.Image = Properties.Resources.plus;
+            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAdd.Location = new Point(3, 3);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Padding = new Padding(10, 0, 0, 0);
+            btnAdd.Size = new Size(102, 37);
+            btnAdd.TabIndex = 7;
+            btnAdd.Text = "Dodaj";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // PromotivnaPonudaUC
             // 
@@ -205,6 +213,8 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -213,7 +223,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private ListView lvPromotivnePonude;
         private Label label1;
-        private Label label2;
         private ListView lvVozila;
         private Panel panel1;
         private Button btnDelete;
@@ -221,5 +230,7 @@
         private Button btnEdit;
         private Button btnDodajVoziloUPonudu;
         private Button btnIzbaciVoziloIzPonudu;
+        private Panel panel2;
+        private Label label2;
     }
 }

@@ -15,6 +15,39 @@ namespace auto_salon.App.Services.Implementation
             _dataLayer = dataLayer;
         }
 
+        public ServiceResult<bool> Delete(int id)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Nema konekcije sa bazom podataka.");
+                }
+                
+                // Pribavi domenski entitet
+                var ocena = session.Get<JeOcenio>(id);
+                if (ocena == null)
+                {
+                    return ServiceResult<bool>.Failure("Ocena sa datim ID-jem ne postoji.");
+                }
+                
+                session.Delete(ocena);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri brisanju ocene: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
         public ServiceResult<IList<JeOcenioDTO>> GetAll()
         {
             var session = _dataLayer.OpenSession();

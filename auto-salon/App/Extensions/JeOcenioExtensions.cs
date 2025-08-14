@@ -19,22 +19,27 @@ namespace auto_salon.App.Extensions
             if (ocena.Kupac.FizickoLice != null)
             {
                 dto.TipKupca = "Fizicko lice";
-                dto.JMBGKupca = ocena.Kupac.FizickoLice.JMBG;
                 dto.ImeKupca = ocena.Kupac.FizickoLice.Ime;
                 dto.PrezimeKupca = ocena.Kupac.FizickoLice.Prezime;
+                dto.EmailKupca = ocena.Kupac.FizickoLice.Email;
+                dto.TelefonKupca = ocena.Kupac.FizickoLice.KontaktTelefon;
+                dto.AdresaKupca = ocena.Kupac.FizickoLice.Adresa;
             }
             else if (ocena.Kupac.PravnoLice != null)
             {
                 dto.TipKupca = "Pravno lice";
                 dto.PIBKupca = ocena.Kupac.PravnoLice.PIB;
                 dto.NazivFirmeKupca = ocena.Kupac.PravnoLice.NazivFirme;
+                dto.SedisteFirmeKupca = ocena.Kupac.PravnoLice.Sediste;
+                dto.KontaktOsobaFirme = ocena.Kupac.PravnoLice.KontaktOsoba;
             }
 
             // Prodavac
-            dto.JMBGProdavca = ocena.Prodavac.JMBG;
             dto.ImeProdavca = ocena.Prodavac.Ime;
             dto.PrezimeProdavca = ocena.Prodavac.Prezime;
-            
+            dto.PozicijaProdavca = ocena.Prodavac.Pozicija;
+            dto.TelefonProdavca = ocena.Prodavac.KontaktTelefon;
+
             return dto;
         }
     }

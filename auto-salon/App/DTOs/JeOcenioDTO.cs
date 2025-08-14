@@ -3,31 +3,29 @@
     public class JeOcenioDTO
     {
         public int ID { get; set; }
-
         public decimal Ocena { get; set; }
-
         public int IdKupca { get; set; }
 
-        // Kupac
-        public string TipKupca { get; set; } = string.Empty;
+        // Podaci o kupcu
+        public string TipKupca { get; set; } = string.Empty; // Fizicko lice / Pravno lice
 
-        // Fizicko lice
-        public string? JMBGKupca { get; set; }
-        
+        // Fizičko lice
         public string? ImeKupca { get; set; }
-
         public string? PrezimeKupca { get; set; }
+        public string? EmailKupca { get; set; }
+        public string? TelefonKupca { get; set; }
+        public string? AdresaKupca { get; set; }
 
         // Pravno lice
         public string? PIBKupca { get; set; }
-        
         public string? NazivFirmeKupca { get; set; }
+        public string? SedisteFirmeKupca { get; set; }
+        public string? KontaktOsobaFirme { get; set; }
 
-        // Prodavac
-        public string JMBGProdavca { get; set; } = string.Empty;
-        
+        // Podaci o prodavcu
         public string ImeProdavca { get; set; } = string.Empty;
-
         public string PrezimeProdavca { get; set; } = string.Empty;
+        public string PozicijaProdavca { get; set; } = string.Empty;
+        public string TelefonProdavca { get; set; } = string.Empty;
     }
 }
