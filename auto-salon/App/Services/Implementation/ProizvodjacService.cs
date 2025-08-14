@@ -15,6 +15,65 @@ namespace auto_salon.App.Services.Implementation
             _dataLayer = dataLayer;
         }
 
+        public ServiceResult<bool> Add(ProizvodjacDTO proizvodjacDTO)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+
+                if (proizvodjacDTO == null)
+                    return ServiceResult<bool>.Failure("Proizvodjac ne može biti null.");
+
+                // Kreiraj domenski entitet
+                Proizvodjac proizvodjacEntity = proizvodjacDTO.CreateNewEntity();
+
+                session.SaveOrUpdate(proizvodjacEntity);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri dodavanju proizvodjača: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<bool> Delete(int proizvodjacId)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+
+                var proizvodjac = session.Load<Proizvodjac>(proizvodjacId);
+
+                if (proizvodjac == null)
+                    return ServiceResult<bool>.Failure("Proizvodjac sa datim ID ne postoji.");
+
+                session.Delete(proizvodjac);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri brisanju proizvodjača: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
         public ServiceResult<IList<ProizvodjacDTO>> GetProizvodjaciZaSalonNova(int salonId)
         {
             var session = _dataLayer.OpenSession();
@@ -102,6 +161,41 @@ namespace auto_salon.App.Services.Implementation
             catch (Exception ex)
             {
                 return ServiceResult<IList<ProizvodjacDTO>>.Failure($"Greška: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<bool> Update(ProizvodjacDTO proizvodjacDTO)
+        {
+            var session = _dataLayer.OpenSession();
+            try
+            {
+                if (session == null)
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+
+                if (proizvodjacDTO == null)
+                    return ServiceResult<bool>.Failure("Proizvodjac ne može biti null.");
+
+                // Proveri da li proizvodjac postoji
+                var oldProizvodjac = session.Load<Proizvodjac>(proizvodjacDTO.ID);
+                
+                if (oldProizvodjac == null)
+                    return ServiceResult<bool>.Failure("Proizvodjac sa datim ID ne postoji.");
+
+                // Ažuriraj entitet
+                oldProizvodjac.Naziv = proizvodjacDTO.Naziv;
+
+                session.Update(oldProizvodjac);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri ažuriranju proizvodjača: {ex.Message}");
             }
             finally
             {

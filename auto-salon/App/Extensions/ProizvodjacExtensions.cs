@@ -13,5 +13,13 @@ namespace auto_salon.App.Extensions
                 Naziv = proizvodjac.Naziv
             };
         }
+
+        public static Proizvodjac CreateNewEntity(this ProizvodjacDTO dto)
+        {
+            return new Proizvodjac
+            {
+                Naziv = dto.Naziv
+            };
+        }
     }
 }

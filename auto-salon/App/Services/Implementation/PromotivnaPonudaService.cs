@@ -57,15 +57,12 @@ namespace auto_salon.App.Services.Implementation
             try
             {
                 if (session == null)
-                {
                     return ServiceResult<bool>.Failure("Nema konekcije sa bazom podataka.");
-                }
                 
                 var promotivnaPonuda = session.Load<PromotivnaPonuda>(id);
+
                 if (promotivnaPonuda == null)
-                {
                     return ServiceResult<bool>.Failure("Promotivna ponuda sa datim ID-jem ne postoji.");
-                }
 
                 // Ovo brise promotivne ponude i sve instance u tabeli JE_DEO
                 session.Delete(promotivnaPonuda);
@@ -194,22 +191,16 @@ namespace auto_salon.App.Services.Implementation
             try
             {
                 if (session == null)
-                {
                     return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
-                }
 
                 if (promotivnaPonudaDTO == null)
-                {
                     return ServiceResult<bool>.Failure("Salon ne može biti null.");
-                }
 
                 // Pribavi domenski entitet
                 PromotivnaPonuda oldPonuda = session.Load<PromotivnaPonuda>(promotivnaPonudaDTO.ID);
 
                 if (oldPonuda == null)
-                {
                     return ServiceResult<bool>.Failure("Promotivna ponuda sa datim ID-jem ne postoji.");
-                }
 
                 // Azuriraj property-e
                 oldPonuda.NazivPromocije = promotivnaPonudaDTO.NazivPromocije;

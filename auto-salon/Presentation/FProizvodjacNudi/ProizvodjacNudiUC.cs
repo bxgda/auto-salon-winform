@@ -1,5 +1,7 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Presentation.FPromotivnePonude;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FProizvodjacNudi
 {
@@ -108,6 +110,60 @@ namespace auto_salon.Presentation.FProizvodjacNudi
             }
 
             lvSaloni.Refresh();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var form = _serviceProvider.GetRequiredService<AddProizvodjac>();
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = lvProizvodjaci.SelectedItems.Count > 0 ? lvProizvodjaci.SelectedItems[0].Index : -1;
+
+            if (selectedIndex == -1)
+                return;
+
+            int proizvodjacId = _proizvodjaci[selectedIndex].ID;
+
+            var result = _proizvodjacService.Delete(proizvodjacId);
+
+            if (result.IsSuccess)
+            {
+                MessageBox.Show("Proizvođač uspešno obrisan.", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
+            }
+            else
+            {
+                MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (lvProizvodjaci.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite ponudu koju želite da izmenite.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedRowIndex = lvProizvodjaci.SelectedItems[0].Index;
+
+            // Prosleđivanje DTO-a se i dalje može raditi ručno
+            var form = ActivatorUtilities.CreateInstance<EditProizvodjac>(_serviceProvider, _proizvodjaci[selectedRowIndex]);
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
+            }
         }
     }
 }

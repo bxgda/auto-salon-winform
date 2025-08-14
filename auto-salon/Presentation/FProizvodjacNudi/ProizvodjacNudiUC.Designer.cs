@@ -112,6 +112,7 @@
             btnEdit.TabIndex = 11;
             btnEdit.Text = "Izmeni";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 
@@ -125,6 +126,7 @@
             btnDelete.TabIndex = 9;
             btnDelete.Text = "Obriši";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnAdd
             // 
@@ -138,6 +140,7 @@
             btnAdd.TabIndex = 10;
             btnAdd.Text = "Dodaj";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // label2
             // 

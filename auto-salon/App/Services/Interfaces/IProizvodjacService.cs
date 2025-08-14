@@ -9,5 +9,11 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<IList<SalonDTO>> GetSaloniZaProizvodjaca(int proizvodjacId);
 
         ServiceResult<IList<ProizvodjacDTO>> GetSviProizvodjaci();
+
+        ServiceResult<bool> Add(ProizvodjacDTO proizvodjacDTO);
+
+        ServiceResult<bool> Delete(int proizvodjacId);
+
+        ServiceResult<bool> Update(ProizvodjacDTO proizvodjacDTO);
     }
 }
