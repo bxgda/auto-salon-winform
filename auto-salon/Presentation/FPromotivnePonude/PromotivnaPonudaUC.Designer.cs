@@ -34,8 +34,9 @@
             label2 = new Label();
             lvVozila = new ListView();
             panel1 = new Panel();
-            btnDelete = new Button();
             btnAdd = new Button();
+            btnDelete = new Button();
+            btnEdit = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -106,6 +107,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnAdd);
             panel1.Controls.Add(btnDelete);
             panel1.Dock = DockStyle.Fill;
@@ -113,6 +115,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(984, 71);
             panel1.TabIndex = 4;
+            // 
+            // btnAdd
+            // 
+            btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdd.Image = Properties.Resources.plus;
+            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAdd.Location = new Point(119, 31);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Padding = new Padding(10, 0, 0, 0);
+            btnAdd.Size = new Size(102, 37);
+            btnAdd.TabIndex = 7;
+            btnAdd.Text = "Dodaj";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnDelete
             // 
@@ -129,20 +146,20 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // btnAdd
+            // btnEdit
             // 
-            btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAdd.Image = Properties.Resources.plus;
-            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdd.Location = new Point(119, 31);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Padding = new Padding(10, 0, 0, 0);
-            btnAdd.Size = new Size(102, 37);
-            btnAdd.TabIndex = 7;
-            btnAdd.Text = "Dodaj";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.Image = Properties.Resources.pencil;
+            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEdit.Location = new Point(227, 31);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Padding = new Padding(10, 0, 0, 0);
+            btnEdit.Size = new Size(102, 37);
+            btnEdit.TabIndex = 8;
+            btnEdit.Text = "Izmeni";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // PromotivnaPonudaUC
             // 
@@ -167,5 +184,6 @@
         private Panel panel1;
         private Button btnDelete;
         private Button btnAdd;
+        private Button btnEdit;
     }
 }

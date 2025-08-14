@@ -153,6 +153,7 @@ namespace auto_salon.App.Services.Implementation
                     DodatnaOprema = ugovorDto.DodatnaOprema,
                     KonacnaOcena = ugovorDto.KonacnaOcena,
                     OcenaProdavca = ugovorDto.OcenaProdavca,
+                    KonacnaCena = ugovorDto.KonacnaCena,
                     Vozilo = vozilo,
                     Prodavac = prodavac,
                     Kupac = kupac

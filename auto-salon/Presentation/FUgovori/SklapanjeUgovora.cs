@@ -13,6 +13,7 @@ namespace auto_salon.Presentation.FUgovori
         private readonly IUgovoriService _ugovoriService;
         private readonly IZaposleniService _zaposleniService;
         private readonly IKupacService _kupacService;
+        private readonly IVoziloService _voziloService;
         private readonly VoziloTableDTO _vozilo;
         private IList<ZaposleniDTO> _prodavci = [];
         private IList<FizickoLiceDTO> _fizickaLica = [];
@@ -21,7 +22,9 @@ namespace auto_salon.Presentation.FUgovori
         private FizickoLiceDTO? _selectedFizickoLice = null;
         private PravnoLiceDTO? _selectedPravnoLice = null;
 
-        public SklapanjeUgovora(VoziloTableDTO _vozilo, IServiceProvider serviceProvider, IUgovoriService ugovoriService, IZaposleniService zaposleniService, IKupacService kupacService)
+        decimal novaCena = 0;
+
+        public SklapanjeUgovora(VoziloTableDTO _vozilo, IServiceProvider serviceProvider, IUgovoriService ugovoriService, IZaposleniService zaposleniService, IKupacService kupacService, IVoziloService voziloService)
         {
             InitializeComponent();
             this.Text = $"Prodaja vozila: {_vozilo.NazivProizvodjaca} {_vozilo.Model}";
@@ -31,13 +34,11 @@ namespace auto_salon.Presentation.FUgovori
             _ugovoriService = ugovoriService;
             _zaposleniService = zaposleniService;
             _kupacService = kupacService;
+            _voziloService = voziloService;
 
             lblCena.Text = _vozilo.Cena.ToString("C2");
-
             DefineColumnNamesForLists();
 
-            LoadProdavci();
-            LoadKupci();
             InsertIntoNacinPlacanjaComboBox();
         }
 
@@ -70,6 +71,13 @@ namespace auto_salon.Presentation.FUgovori
             lvPravnaLica.Columns.Add("Telefon");
             lvPravnaLica.Columns.Add("Sediste");
             lvPravnaLica.Columns.Add("Kontakt osoba");
+        }
+
+        private void SklapanjeUgovora_Load(object sender, EventArgs e)
+        {
+            LoadProdavci();
+            LoadKupci();
+            LoadPonude();
         }
 
         private void LoadProdavci()
@@ -109,6 +117,41 @@ namespace auto_salon.Presentation.FUgovori
 
             PopulateListViewFizickaLica(_fizickaLica);
             PopulateListViewPravnaLica(_pravnaLica);
+        }
+
+        private void LoadPonude()
+        {
+            var result = _voziloService.GetPonude(_vozilo.BrojSasije);
+
+            if (!result.IsSuccess)
+            {
+                MessageBox.Show(result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
+            if (result.Data != null && result.Data.Count > 0)
+            {
+                decimal ukupanPopust = 0;
+                foreach (var ponuda in result.Data)
+                {
+                    ukupanPopust += ponuda.PopustUProcentima;
+                }
+
+                lblPopust.Text = $"Ukupan popust: {ukupanPopust}%";
+                lblPopust.ForeColor = Color.Green;
+
+                // Izracunaj novu cenu nakon popusta
+                novaCena = (decimal)_vozilo.Cena - ((decimal)_vozilo.Cena * (ukupanPopust / 100));
+                lblKonacnaCena.Text = $"Konačna cena: {novaCena:C2}";
+            }
+            else
+            {
+                lblPopust.Text = "Nema dostupnih promotivnih ponuda za ovo vozilo.";
+                lblPopust.ForeColor = Color.Red;
+                lblKonacnaCena.Text = $"Konačna cena: {_vozilo.Cena:C2}";
+                novaCena = (decimal) _vozilo.Cena; // Ako nema popusta, nova cena je originalna cena
+            }
         }
 
         private void AutoResizeColumns(ListView listView)
@@ -250,7 +293,8 @@ namespace auto_salon.Presentation.FUgovori
                 NacinPlacanja = ((NacinPlacanjaItem)cbNacinPlacanja.SelectedItem).Value,
                 DodatnaOprema = tbxDodatnaOprema.Text.Trim(),
                 KonacnaOcena = nupKonacnaOcena.Value,
-                OcenaProdavca = nupOcenaProdavca.Value
+                OcenaProdavca = nupOcenaProdavca.Value,
+                KonacnaCena = novaCena // Koristi novu cenu nakon popusta
             };
 
             var result = _ugovoriService.Create(ugovor);

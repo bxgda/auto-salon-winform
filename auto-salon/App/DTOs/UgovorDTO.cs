@@ -14,6 +14,8 @@ namespace auto_salon.App.DTOs
 
         public decimal OcenaProdavca { get; set; }
 
+        public decimal KonacnaCena { get; set; }
+
         public required VoziloTableDTO Vozilo { get; set; }
 
         public required ZaposleniDTO Prodavac { get; set; }
@@ -33,6 +35,8 @@ namespace auto_salon.App.DTOs
 
         public decimal OcenaProdavca { get; set; }
 
+        public decimal KonacnaCena { get; set; }
+
         public required string JmbgProdavca { get; set; }
 
         public required int KupacId { get; set; }
@@ -49,6 +53,8 @@ namespace auto_salon.App.DTOs
         public decimal KonacnaOcena { get; set; }
 
         public decimal OcenaProdavca { get; set; }
+
+        public decimal KonacnaCena { get; set; } = 0; // for now
 
         public required string BrojSasije { get; set; }
 

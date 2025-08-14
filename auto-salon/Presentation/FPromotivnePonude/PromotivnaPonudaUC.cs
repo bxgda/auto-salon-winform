@@ -163,5 +163,26 @@ namespace auto_salon.Presentation.FPromotivnePonude
                 LoadData();
             }
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (lvPromotivnePonude.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Molimo izaberite ponudu koju želite da izmenite.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedRowIndex = lvPromotivnePonude.SelectedItems[0].Index;
+
+            // Prosleđivanje DTO-a se i dalje može raditi ručno
+            var form = ActivatorUtilities.CreateInstance<EditPromotivnaPonuda>(_serviceProvider, _promotivnePonude[selectedRowIndex]);
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                LoadData();
+            }
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace auto_salon.Infrastructure.Mappers
             Map(x => x.DodatnaOprema).Column("DODATNA_OPREMA");
             Map(x => x.KonacnaOcena).Column("KONACNA_OCENA");
             Map(x => x.OcenaProdavca).Column("OCENA_PRODAVCA");
+            Map(x => x.KonacnaCena).Column("KONACNA_CENA");
 
             References(x => x.Prodavac).Column("JMBG_PRODAVCA").LazyLoad();
             References(x => x.Kupac).Column("ID_KUPCA").LazyLoad();

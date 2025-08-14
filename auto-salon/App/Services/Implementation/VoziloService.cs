@@ -1,8 +1,10 @@
 ﻿using auto_salon.App.DTOs;
+using auto_salon.App.Extensions;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Entities;
 using AutoSalonMac.App.Extensions;
+using System.Windows.Forms.Design.Behavior;
 
 namespace auto_salon.App.Services.Implementation
 {
@@ -136,6 +138,49 @@ namespace auto_salon.App.Services.Implementation
             catch (Exception ex)
             {
                 return ServiceResult<IList<VoziloTableDTO>>.Failure($"Greška pri pribavljanju vozila: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<IList<PromotivnaPonudaDTO>> GetPonude(string brSasije)
+        {
+            var session = _dataLayer.OpenSession();
+            
+            IList<PromotivnaPonudaDTO> result = new List<PromotivnaPonudaDTO>();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<IList<PromotivnaPonudaDTO>>.Failure("Nema konekcije sa bazom podataka.");
+                }
+
+                Vozilo vozilo = session.Load<Vozilo>(brSasije);
+                if (vozilo == null)
+                {
+                    return ServiceResult<IList<PromotivnaPonudaDTO>>.Failure("Vozilo sa datim brojem šasije ne postoji.");
+                }
+
+                // Proveri da li vozilo ima promotivne ponude
+                if (vozilo.PromotivnePonude == null || !vozilo.PromotivnePonude.Any())
+                {
+                    return ServiceResult<IList<PromotivnaPonudaDTO>>.Success(result);
+                }
+
+                // Mapiraj promotivne ponude u DTO
+                foreach (var ponuda in vozilo.PromotivnePonude)
+                {
+                    result.Add(ponuda.ToPromotivnaPonudaDTO());
+                }
+
+                return ServiceResult<IList<PromotivnaPonudaDTO>>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<IList<PromotivnaPonudaDTO>>.Failure($"Greška pri dohvatanju ponuda vozila: {ex.Message}");
             }
             finally
             {

@@ -12,6 +12,8 @@
 
         public virtual decimal OcenaProdavca { get; set; } = 0;
 
+        public virtual decimal KonacnaCena { get; set; }
+
         public virtual required Zaposleni Prodavac { get; set; }
 
         public virtual required Kupac Kupac { get; set; }

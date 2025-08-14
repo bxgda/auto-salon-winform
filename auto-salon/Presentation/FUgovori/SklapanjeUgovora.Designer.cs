@@ -54,8 +54,11 @@
             tbxDodatnaOprema = new TextBox();
             label3 = new Label();
             panel1 = new Panel();
+            lblPopust = new Label();
             lblCena = new Label();
             label8 = new Label();
+            panel3 = new Panel();
+            lblKonacnaCena = new Label();
             tblMain.SuspendLayout();
             tblLeft.SuspendLayout();
             panel2.SuspendLayout();
@@ -68,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)nupKonacnaOcena).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupOcenaProdavca).BeginInit();
             panel1.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // lvProdavci
@@ -105,11 +109,14 @@
             // 
             // btnSubmit
             // 
-            btnSubmit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSubmit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnSubmit.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSubmit.Location = new Point(747, 787);
+            btnSubmit.Image = Properties.Resources.check_circle;
+            btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSubmit.Location = new Point(3, 29);
             btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(194, 46);
+            btnSubmit.Padding = new Padding(10, 0, 0, 0);
+            btnSubmit.Size = new Size(252, 46);
             btnSubmit.TabIndex = 7;
             btnSubmit.Text = "Kreiraj ugovor";
             btnSubmit.UseVisualStyleBackColor = true;
@@ -121,10 +128,10 @@
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 71.64557F));
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 28.3544312F));
             tblMain.Controls.Add(tblLeft, 0, 1);
-            tblMain.Controls.Add(btnSubmit, 1, 2);
             tblMain.Controls.Add(groupBox1, 1, 1);
             tblMain.Controls.Add(label4, 0, 0);
             tblMain.Controls.Add(panel1, 0, 2);
+            tblMain.Controls.Add(panel3, 1, 2);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
             tblMain.Name = "tblMain";
@@ -373,6 +380,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(lblPopust);
             panel1.Controls.Add(lblCena);
             panel1.Controls.Add(label8);
             panel1.Dock = DockStyle.Fill;
@@ -380,6 +388,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(659, 78);
             panel1.TabIndex = 10;
+            // 
+            // lblPopust
+            // 
+            lblPopust.AutoSize = true;
+            lblPopust.Font = new Font("Segoe UI", 12.25F);
+            lblPopust.Location = new Point(6, 43);
+            lblPopust.Name = "lblPopust";
+            lblPopust.Size = new Size(66, 23);
+            lblPopust.TabIndex = 2;
+            lblPopust.Text = "Popust:";
             // 
             // lblCena
             // 
@@ -401,6 +419,28 @@
             label8.TabIndex = 0;
             label8.Text = "Cena:";
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(lblKonacnaCena);
+            panel3.Controls.Add(btnSubmit);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(683, 755);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(258, 78);
+            panel3.TabIndex = 11;
+            // 
+            // lblKonacnaCena
+            // 
+            lblKonacnaCena.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblKonacnaCena.AutoSize = true;
+            lblKonacnaCena.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblKonacnaCena.Location = new Point(0, 1);
+            lblKonacnaCena.Name = "lblKonacnaCena";
+            lblKonacnaCena.Size = new Size(134, 25);
+            lblKonacnaCena.TabIndex = 3;
+            lblKonacnaCena.Text = "Konačna cena:";
+            lblKonacnaCena.TextAlign = ContentAlignment.TopRight;
+            // 
             // SklapanjeUgovora
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -411,6 +451,7 @@
             Name = "SklapanjeUgovora";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Sklapanje ugovora";
+            Load += SklapanjeUgovora_Load;
             tblMain.ResumeLayout(false);
             tblMain.PerformLayout();
             tblLeft.ResumeLayout(false);
@@ -428,6 +469,8 @@
             ((System.ComponentModel.ISupportInitialize)nupOcenaProdavca).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -461,5 +504,8 @@
         private Panel panel1;
         private Label lblCena;
         private Label label8;
+        private Label lblPopust;
+        private Label lblKonacnaCena;
+        private Panel panel3;
     }
 }

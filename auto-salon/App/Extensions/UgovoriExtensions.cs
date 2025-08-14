@@ -15,6 +15,7 @@ namespace auto_salon.App.Extensions
                 DodatnaOprema = ugovor.DodatnaOprema ?? string.Empty,
                 KonacnaOcena = ugovor.KonacnaOcena,
                 OcenaProdavca = ugovor.OcenaProdavca,
+                KonacnaCena = ugovor.KonacnaCena,
                 BrojSasije = ugovor.Vozilo.BrojSasije, // dodatni upit se izvrsi
                 JmbgProdavca = ugovor.Prodavac.JMBG,
                 KupacId = ugovor.Kupac.ID,
@@ -30,6 +31,7 @@ namespace auto_salon.App.Extensions
                 DodatnaOprema = ugovor.DodatnaOprema ?? string.Empty,
                 KonacnaOcena = ugovor.KonacnaOcena,
                 OcenaProdavca = ugovor.OcenaProdavca,
+                KonacnaCena = ugovor.KonacnaCena,
                 Vozilo = ugovor.Vozilo.ToVoziloTableDTO(),
                 Prodavac = ugovor.Prodavac.ToZaposleniDTO(),
                 Kupac = ugovor.Kupac.ToKupacDTO()

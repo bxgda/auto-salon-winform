@@ -16,6 +16,7 @@ namespace auto_salon.Presentation.FUgovori
 
             // Define columns for ListView
             lvUgovori.Columns.Add("ID");
+            lvUgovori.Columns.Add("Konačna cena ($)");
             lvUgovori.Columns.Add("Broj Sasije Vozila");
             lvUgovori.Columns.Add("JMBG Prodavca");
             lvUgovori.Columns.Add("ID Kupca");
@@ -41,6 +42,7 @@ namespace auto_salon.Presentation.FUgovori
                     ListViewItem item = new ListViewItem(new string[]
                     {
                         ugovor.ID.ToString(),
+                        ugovor.KonacnaCena.ToString("C2"), // Format as currency
                         ugovor.BrojSasije,
                         ugovor.JmbgProdavca,
                         ugovor.KupacId.ToString(),
