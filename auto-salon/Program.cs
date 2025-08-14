@@ -3,6 +3,7 @@ using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Presentation.FKupac;
 using auto_salon.Presentation.FOcene;
+using auto_salon.Presentation.FProizvodjacNudi;
 using auto_salon.Presentation.FPromotivnePonude;
 using auto_salon.Presentation.FSalon;
 using auto_salon.Presentation.FServisnaStavka;
@@ -72,6 +73,8 @@ namespace auto_salon
             services.AddTransient<AddVoziloToPromotivnaPonuda>();
 
             services.AddTransient<OceneUC>();
+
+            services.AddTransient<ProizvodjacNudiUC>();
 
             // Kreiranje ServiceProvider-a
             ServiceProvider = services.BuildServiceProvider();

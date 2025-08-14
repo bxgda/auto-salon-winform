@@ -122,18 +122,14 @@ namespace auto_salon.App.Services.Implementation
             try
             {
                 if (session == null)
-                {
                     return ServiceResult<IList<VoziloTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
-                }
 
                 IEnumerable<Vozilo> vozilaPonude = session.Query<PromotivnaPonuda>()
                     .Where(p => p.ID == idPonude)
                     .SelectMany(p => p.Vozila);
 
                 foreach (var vozilo in vozilaPonude)
-                {
                     result.Add(vozilo.ToVoziloTableDTO());
-                }
 
                 return ServiceResult<IList<VoziloTableDTO>>.Success(result);
             }

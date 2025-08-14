@@ -7,6 +7,7 @@ using auto_salon.Presentation.FKupac;
 using auto_salon.Entities;
 using auto_salon.Presentation.FPromotivnePonude;
 using auto_salon.Presentation.FOcene;
+using auto_salon.Presentation.FProizvodjacNudi;
 
 namespace auto_salon
 {
@@ -87,6 +88,13 @@ namespace auto_salon
         {
             SetActiveButton((Button)sender);
             var control = _serviceProvider.GetRequiredService<OceneUC>();
+            LoadControl(control);
+        }
+
+        private void btnProizvodjacNudi_Click(object sender, EventArgs e)
+        {
+            SetActiveButton((Button)sender);
+            var control = _serviceProvider.GetRequiredService<ProizvodjacNudiUC>();
             LoadControl(control);
         }
     }

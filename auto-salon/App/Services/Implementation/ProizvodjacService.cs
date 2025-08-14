@@ -50,6 +50,35 @@ namespace auto_salon.App.Services.Implementation
             }
         }
 
+        public ServiceResult<IList<SalonDTO>> GetSaloniZaProizvodjaca(int proizvodjacId)
+        {
+            var session = _dataLayer.OpenSession();
+
+            IList<SalonDTO> result = new List<SalonDTO>();
+
+            try
+            {
+                if (session == null)
+                    return ServiceResult<IList<SalonDTO>>.Failure("Nema konekcije sa bazom.");
+
+                IEnumerable<SalonNova> saloni = session.Query<SalonNova>()
+                    .Where(s => s.Proizvodjaci.Any(p => p.ID == proizvodjacId));
+
+                foreach (var salon in saloni)
+                    result.Add(salon.ToSalonDTO());
+
+                return ServiceResult<IList<SalonDTO>>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<IList<SalonDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
         public ServiceResult<IList<ProizvodjacDTO>> GetSviProizvodjaci()
         {
             var session = _dataLayer.OpenSession();
