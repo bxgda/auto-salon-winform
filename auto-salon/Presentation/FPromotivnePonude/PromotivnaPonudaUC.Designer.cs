@@ -34,9 +34,9 @@
             lvVozila = new ListView();
             panel1 = new Panel();
             btnIzbaciVoziloIzPonudu = new Button();
-            btnDodajVoziloUPonudu = new Button();
             panel2 = new Panel();
             label2 = new Label();
+            btnDodajVoziloUPonudu = new Button();
             btnEdit = new Button();
             btnDelete = new Button();
             btnAdd = new Button();
@@ -84,9 +84,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(113, 15);
+            label1.Size = new Size(116, 15);
             label1.TabIndex = 1;
-            label1.Text = "Promotivne ponude";
+            label1.Text = "Promotivne ponude:";
             // 
             // lvVozila
             // 
@@ -103,7 +103,6 @@
             // panel1
             // 
             panel1.Controls.Add(btnIzbaciVoziloIzPonudu);
-            panel1.Controls.Add(btnDodajVoziloUPonudu);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 672);
             panel1.Name = "panel1";
@@ -116,7 +115,7 @@
             btnIzbaciVoziloIzPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnIzbaciVoziloIzPonudu.Image = Properties.Resources.minus;
             btnIzbaciVoziloIzPonudu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnIzbaciVoziloIzPonudu.Location = new Point(225, 31);
+            btnIzbaciVoziloIzPonudu.Location = new Point(4, 31);
             btnIzbaciVoziloIzPonudu.Name = "btnIzbaciVoziloIzPonudu";
             btnIzbaciVoziloIzPonudu.Padding = new Padding(10, 0, 0, 0);
             btnIzbaciVoziloIzPonudu.Size = new Size(215, 37);
@@ -125,24 +124,10 @@
             btnIzbaciVoziloIzPonudu.UseVisualStyleBackColor = true;
             btnIzbaciVoziloIzPonudu.Click += btnIzbaciVoziloIzPonudu_Click;
             // 
-            // btnDodajVoziloUPonudu
-            // 
-            btnDodajVoziloUPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnDodajVoziloUPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDodajVoziloUPonudu.Image = Properties.Resources.plus;
-            btnDodajVoziloUPonudu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDodajVoziloUPonudu.Location = new Point(4, 31);
-            btnDodajVoziloUPonudu.Name = "btnDodajVoziloUPonudu";
-            btnDodajVoziloUPonudu.Padding = new Padding(10, 0, 0, 0);
-            btnDodajVoziloUPonudu.Size = new Size(215, 37);
-            btnDodajVoziloUPonudu.TabIndex = 9;
-            btnDodajVoziloUPonudu.Text = "Dodaj vozilo u ponudu";
-            btnDodajVoziloUPonudu.UseVisualStyleBackColor = true;
-            btnDodajVoziloUPonudu.Click += btnDodajVoziloUPonudu_Click;
-            // 
             // panel2
             // 
             panel2.Controls.Add(label2);
+            panel2.Controls.Add(btnDodajVoziloUPonudu);
             panel2.Controls.Add(btnEdit);
             panel2.Controls.Add(btnDelete);
             panel2.Controls.Add(btnAdd);
@@ -157,9 +142,24 @@
             label2.AutoSize = true;
             label2.Location = new Point(3, 73);
             label2.Name = "label2";
-            label2.Size = new Size(139, 15);
+            label2.Size = new Size(142, 15);
             label2.TabIndex = 9;
-            label2.Text = "Vozila u izabranoj ponudi";
+            label2.Text = "Vozila u izabranoj ponudi:";
+            // 
+            // btnDodajVoziloUPonudu
+            // 
+            btnDodajVoziloUPonudu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDodajVoziloUPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDodajVoziloUPonudu.Image = Properties.Resources.plus;
+            btnDodajVoziloUPonudu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDodajVoziloUPonudu.Location = new Point(766, 3);
+            btnDodajVoziloUPonudu.Name = "btnDodajVoziloUPonudu";
+            btnDodajVoziloUPonudu.Padding = new Padding(10, 0, 0, 0);
+            btnDodajVoziloUPonudu.Size = new Size(215, 37);
+            btnDodajVoziloUPonudu.TabIndex = 9;
+            btnDodajVoziloUPonudu.Text = "Dodaj vozilo u ponudu";
+            btnDodajVoziloUPonudu.UseVisualStyleBackColor = true;
+            btnDodajVoziloUPonudu.Click += btnDodajVoziloUPonudu_Click;
             // 
             // btnEdit
             // 

@@ -15,6 +15,8 @@ namespace auto_salon.Presentation.FProizvodjacNudi
             _salonService = salonService;
             _proizvodjacDto = proizvodjacDto;
 
+            this.Text = $"Uredi ponude proizvođača: {_proizvodjacDto.Naziv}";
+
             // Define columns for ListView lvSaloni
             lvSaloni.Columns.Add("ID");
             lvSaloni.Columns.Add("Naziv");
@@ -69,18 +71,18 @@ namespace auto_salon.Presentation.FProizvodjacNudi
 
         private void btnPotvrdi_Click(object sender, EventArgs e)
         {
-            var selectedItems = lvSaloni.SelectedItems
+            var selectedSalonIds = lvSaloni.SelectedItems
                 .Cast<ListViewItem>()
                 .Select(item => int.Parse(item.SubItems[0].Text)) // ID je u prvoj koloni
                 .ToList();
 
-            if (selectedItems.Count == 0)
+            if (selectedSalonIds.Count == 0)
             { 
                 MessageBox.Show("Molimo izaberite barem jedan salon.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var result = _salonService.AddSaloniToNudi(_proizvodjacDto.ID, selectedItems);
+            var result = _salonService.AddSaloniToNudi(_proizvodjacDto.ID, selectedSalonIds);
 
             if (result.IsSuccess)
             {

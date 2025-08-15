@@ -32,6 +32,7 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             lvVozila = new ListView();
             panel1 = new Panel();
+            label2 = new Label();
             label1 = new Label();
             btnPotvrdi = new Button();
             tableLayoutPanel1.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(btnPotvrdi);
             panel1.Dock = DockStyle.Fill;
@@ -74,6 +76,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(794, 69);
             panel1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Location = new Point(408, 15);
+            label2.Name = "label2";
+            label2.Size = new Size(386, 15);
+            label2.TabIndex = 8;
+            label2.Text = "Dodavanjem vozila u promotivnu ponudu ostvaruju popust pri kupovini";
             // 
             // label1
             // 
@@ -94,7 +106,7 @@
             btnPotvrdi.Location = new Point(3, 29);
             btnPotvrdi.Name = "btnPotvrdi";
             btnPotvrdi.Padding = new Padding(10, 0, 0, 0);
-            btnPotvrdi.Size = new Size(156, 37);
+            btnPotvrdi.Size = new Size(180, 37);
             btnPotvrdi.TabIndex = 6;
             btnPotvrdi.Text = "Potvrdi izabrane";
             btnPotvrdi.UseVisualStyleBackColor = true;
@@ -126,5 +138,6 @@
         private Panel panel1;
         private Button btnPotvrdi;
         private Label label1;
+        private Label label2;
     }
 }

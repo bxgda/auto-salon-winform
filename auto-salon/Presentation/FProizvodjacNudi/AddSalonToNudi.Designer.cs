@@ -34,6 +34,7 @@
             panel1 = new Panel();
             label1 = new Label();
             btnPotvrdi = new Button();
+            label2 = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(btnPotvrdi);
             panel1.Dock = DockStyle.Fill;
@@ -94,11 +96,21 @@
             btnPotvrdi.Location = new Point(3, 24);
             btnPotvrdi.Name = "btnPotvrdi";
             btnPotvrdi.Padding = new Padding(10, 0, 0, 0);
-            btnPotvrdi.Size = new Size(156, 37);
+            btnPotvrdi.Size = new Size(179, 37);
             btnPotvrdi.TabIndex = 7;
             btnPotvrdi.Text = "Potvrdi izabrane";
             btnPotvrdi.UseVisualStyleBackColor = true;
             btnPotvrdi.Click += btnPotvrdi_Click;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Location = new Point(438, 24);
+            label2.Name = "label2";
+            label2.Size = new Size(356, 15);
+            label2.TabIndex = 9;
+            label2.Text = "Izabrani saloni će nakon potvrde moći da nude vozila proizvođača.";
             // 
             // AddSalonToNudi
             // 
@@ -127,5 +139,6 @@
         private Panel panel1;
         private Button btnPotvrdi;
         private Label label1;
+        private Label label2;
     }
 }

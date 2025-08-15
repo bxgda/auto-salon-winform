@@ -72,7 +72,7 @@ namespace auto_salon.App.Services.Implementation
                         return ServiceResult<bool>.Failure($"Salon sa ID {salonId} ne postoji.");
 
                     // Proveri da li salon već postoji u promotivnoj ponudi
-                    if (proizvodjac.Saloni.Any(s => s.ID == proizvodjacId))
+                    if (salon.Proizvodjaci.Any(p => p.ID == proizvodjacId))
                         continue; // Salon je već dodat u ovu ponudu
 
                     // Dodaj salon u promotivnu ponudu

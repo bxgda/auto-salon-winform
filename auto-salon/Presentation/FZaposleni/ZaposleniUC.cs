@@ -1,5 +1,7 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Implementation;
+using auto_salon.Entities;
+using auto_salon.Presentation.FOcene;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FZaposleni
@@ -152,6 +154,35 @@ namespace auto_salon.Presentation.FZaposleni
             lblRadnoVreme.Text = salonUKomeJeZaposlen.RadnoVreme;
             lblKontaktTelefon.Text = salonUKomeJeZaposlen.KontaktTelefon;
             lblBrZaposlenih.Text = salonUKomeJeZaposlen.BrojZaposlenih.ToString();
+        }
+
+        private void btnOceni_Click(object sender, EventArgs e)
+        {
+            if (lvZaposleni.SelectedItems.Count == 0)
+            {
+                MessageBox.Show(
+                    "Molimo izaberite prodavca koga želite da izmenite.",
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            int selectedRowIndex = lvZaposleni.SelectedItems[0].Index;
+            ZaposleniDTO zaposleni = _zaposleni[selectedRowIndex];
+
+            if (zaposleni.Uloga != Uloga.PRODAVAC)
+            {
+                MessageBox.Show(
+                    "Samo prodavci mogu biti ocenjeni.",
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            var form = ActivatorUtilities.CreateInstance<OceniProdavca>(_serviceProvider, zaposleni);
+            DialogResult dialogResult = form.ShowDialog();
         }
     }
 }

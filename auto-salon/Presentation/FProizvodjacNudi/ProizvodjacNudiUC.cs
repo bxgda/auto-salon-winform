@@ -170,7 +170,7 @@ namespace auto_salon.Presentation.FProizvodjacNudi
         {
             if (lvProizvodjaci.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Molimo izaberite ponudu kojoj želite da dodate vozilo.",
+                MessageBox.Show("Molimo izaberite proizvođača kome želite da dodate salone.",
                     "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -190,15 +190,15 @@ namespace auto_salon.Presentation.FProizvodjacNudi
 
         private void btnIzbaciSalonIzPonudu_Click(object sender, EventArgs e)
         {
-            if (lvSaloni.SelectedItems.Count == 0)
+            if (lvProizvodjaci.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Molimo izaberite promotivnu ponudu.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Molimo izaberite proizvođača iz kog želite da izaberete salon.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (lvProizvodjaci.SelectedItems.Count == 0)
+            if (lvSaloni.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Molimo izaberite vozilo koje želite da izbacite iz ponude.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Molimo izaberite salon koji želite da izbacite.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

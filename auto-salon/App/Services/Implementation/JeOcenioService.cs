@@ -15,6 +15,47 @@ namespace auto_salon.App.Services.Implementation
             _dataLayer = dataLayer;
         }
 
+        public ServiceResult<bool> Add(string jmbgProdavca, int idKupca, decimal ocena)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<bool>.Failure("Nema konekcije sa bazom podataka.");
+                }
+
+                Kupac kupac = session.Load<Kupac>(idKupca);
+                Zaposleni prodavac = session.Load<Zaposleni>(jmbgProdavca);
+
+                if (kupac == null || prodavac == null)
+                {
+                    return ServiceResult<bool>.Failure("Kupac ili prodavac ne postoji.");
+                }
+
+                JeOcenio newOcenaEntity = new JeOcenio()
+                {
+                    Ocena = ocena,
+                    Kupac = kupac,
+                    Prodavac = prodavac
+                };
+
+                session.Save(newOcenaEntity);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri ocenjivanju prodavca: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
         public ServiceResult<bool> Delete(int id)
         {
             var session = _dataLayer.OpenSession();

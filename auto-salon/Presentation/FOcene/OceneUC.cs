@@ -115,7 +115,14 @@ namespace auto_salon.Presentation.FOcene
             if (selectedIndex == -1)
                 return;
 
-            _selectedOcena = _ocene[selectedIndex];
+            // 1. Uzmi ID iz prve kolone
+            int idKupca = int.Parse(lvFizickaLica.SelectedItems[0].SubItems[0].Text);
+
+            // 2. Pronađi ocenu na osnovu ID-a kupca u listi _ocene
+            _selectedOcena = _ocene.FirstOrDefault(o => o.IdKupca == idKupca);
+
+            if (_selectedOcena == null)
+                return;
 
             lblKupacJe.Text = _selectedOcena.TipKupca;
             lbl1Kupac.Text = "Ime:";
@@ -138,11 +145,18 @@ namespace auto_salon.Presentation.FOcene
 
         private void lvPravnaLica_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedIndex = lvFizickaLica.SelectedIndices.Count > 0 ? lvFizickaLica.SelectedIndices[0] : -1;
+            int selectedIndex = lvPravnaLica.SelectedIndices.Count > 0 ? lvPravnaLica.SelectedIndices[0] : -1;
             if (selectedIndex == -1)
                 return;
 
-            _selectedOcena = _ocene[selectedIndex];
+            // 1. Uzmi ID iz prve kolone
+            int idKupca = int.Parse(lvPravnaLica.SelectedItems[0].SubItems[0].Text);
+
+            // 2. Pronađi ocenu na osnovu ID-a kupca u listi _ocene
+            _selectedOcena = _ocene.FirstOrDefault(o => o.IdKupca == idKupca);
+
+            if (_selectedOcena == null)
+                return;
 
             // Pravno lice
             lblKupacJe.Text = _selectedOcena.TipKupca;
@@ -215,6 +229,8 @@ namespace auto_salon.Presentation.FOcene
                 lblEmailKupca.Text = "/";
                 lblTelefonKupca.Text = "/";
                 lblPrezimeKupca.Text = "/";
+
+                _selectedOcena = null;
             }
         }
     }

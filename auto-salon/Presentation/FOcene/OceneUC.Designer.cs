@@ -336,7 +336,7 @@
             // lbl11
             // 
             lbl11.AutoSize = true;
-            lbl11.Location = new Point(6, 32);
+            lbl11.Location = new Point(15, 32);
             lbl11.Name = "lbl11";
             lbl11.Size = new Size(55, 15);
             lbl11.TabIndex = 8;

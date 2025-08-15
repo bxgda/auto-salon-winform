@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
             lvSaloni = new ListView();
             lvProizvodjaci = new ListView();
             panel1 = new Panel();
             btnEdit = new Button();
+            btnDodajSalonUPonudu = new Button();
             btnDelete = new Button();
             btnAdd = new Button();
             label2 = new Label();
@@ -40,7 +42,8 @@
             label1 = new Label();
             panel3 = new Panel();
             btnIzbaciSalonIzPonudu = new Button();
-            btnDodajSalonUPonudu = new Button();
+            toolTip1 = new ToolTip(components);
+            toolTip2 = new ToolTip(components);
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -96,6 +99,7 @@
             // panel1
             // 
             panel1.Controls.Add(btnEdit);
+            panel1.Controls.Add(btnDodajSalonUPonudu);
             panel1.Controls.Add(btnDelete);
             panel1.Controls.Add(btnAdd);
             panel1.Controls.Add(label2);
@@ -118,6 +122,22 @@
             btnEdit.Text = "Izmeni";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
+            // 
+            // btnDodajSalonUPonudu
+            // 
+            btnDodajSalonUPonudu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDodajSalonUPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDodajSalonUPonudu.Image = Properties.Resources.plus;
+            btnDodajSalonUPonudu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDodajSalonUPonudu.Location = new Point(798, 3);
+            btnDodajSalonUPonudu.Name = "btnDodajSalonUPonudu";
+            btnDodajSalonUPonudu.Padding = new Padding(10, 0, 0, 0);
+            btnDodajSalonUPonudu.Size = new Size(183, 37);
+            btnDodajSalonUPonudu.TabIndex = 10;
+            btnDodajSalonUPonudu.Text = "Ponudi salonima";
+            toolTip1.SetToolTip(btnDodajSalonUPonudu, "Odaberite salone koji će nuditi vozila odabranog proizvođača");
+            btnDodajSalonUPonudu.UseVisualStyleBackColor = true;
+            btnDodajSalonUPonudu.Click += btnDodajSalonUPonudu_Click;
             // 
             // btnDelete
             // 
@@ -177,7 +197,6 @@
             // panel3
             // 
             panel3.Controls.Add(btnIzbaciSalonIzPonudu);
-            panel3.Controls.Add(btnDodajSalonUPonudu);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 690);
             panel3.Name = "panel3";
@@ -190,29 +209,15 @@
             btnIzbaciSalonIzPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnIzbaciSalonIzPonudu.Image = Properties.Resources.minus;
             btnIzbaciSalonIzPonudu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnIzbaciSalonIzPonudu.Location = new Point(225, 13);
+            btnIzbaciSalonIzPonudu.Location = new Point(4, 3);
             btnIzbaciSalonIzPonudu.Name = "btnIzbaciSalonIzPonudu";
             btnIzbaciSalonIzPonudu.Padding = new Padding(10, 0, 0, 0);
             btnIzbaciSalonIzPonudu.Size = new Size(215, 37);
             btnIzbaciSalonIzPonudu.TabIndex = 11;
-            btnIzbaciSalonIzPonudu.Text = "Izbaci salon iz ponude";
+            btnIzbaciSalonIzPonudu.Text = "Skloni salon iz ponude";
+            toolTip2.SetToolTip(btnIzbaciSalonIzPonudu, "Izbacivanje salona iz ponude odabranog proizvođača");
             btnIzbaciSalonIzPonudu.UseVisualStyleBackColor = true;
             btnIzbaciSalonIzPonudu.Click += btnIzbaciSalonIzPonudu_Click;
-            // 
-            // btnDodajSalonUPonudu
-            // 
-            btnDodajSalonUPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnDodajSalonUPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDodajSalonUPonudu.Image = Properties.Resources.plus;
-            btnDodajSalonUPonudu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDodajSalonUPonudu.Location = new Point(4, 13);
-            btnDodajSalonUPonudu.Name = "btnDodajSalonUPonudu";
-            btnDodajSalonUPonudu.Padding = new Padding(10, 0, 0, 0);
-            btnDodajSalonUPonudu.Size = new Size(215, 37);
-            btnDodajSalonUPonudu.TabIndex = 10;
-            btnDodajSalonUPonudu.Text = "Dodaj salon u ponudu";
-            btnDodajSalonUPonudu.UseVisualStyleBackColor = true;
-            btnDodajSalonUPonudu.Click += btnDodajSalonUPonudu_Click;
             // 
             // ProizvodjacNudiUC
             // 
@@ -245,5 +250,7 @@
         private Panel panel3;
         private Button btnDodajSalonUPonudu;
         private Button btnIzbaciSalonIzPonudu;
+        private ToolTip toolTip1;
+        private ToolTip toolTip2;
     }
 }

@@ -30,8 +30,8 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
+            btnOceni = new Button();
             btnEdit = new Button();
-            btnDelete = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             lvZaposleni = new ListView();
             groupBox1 = new GroupBox();
@@ -70,49 +70,48 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.393347F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1124, 775);
+            tableLayoutPanel1.Size = new Size(1028, 833);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnOceni);
             panel1.Controls.Add(btnEdit);
-            panel1.Controls.Add(btnDelete);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 705);
+            panel1.Location = new Point(3, 757);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1118, 67);
+            panel1.Size = new Size(1022, 73);
             panel1.TabIndex = 4;
+            // 
+            // btnOceni
+            // 
+            btnOceni.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnOceni.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnOceni.Image = Properties.Resources.star;
+            btnOceni.ImageAlign = ContentAlignment.MiddleLeft;
+            btnOceni.Location = new Point(114, 33);
+            btnOceni.Name = "btnOceni";
+            btnOceni.Padding = new Padding(10, 0, 0, 0);
+            btnOceni.Size = new Size(105, 37);
+            btnOceni.TabIndex = 8;
+            btnOceni.Text = "Oceni";
+            btnOceni.UseVisualStyleBackColor = true;
+            btnOceni.Click += btnOceni_Click;
             // 
             // btnEdit
             // 
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
-            btnEdit.ImageAlign = ContentAlignment.MiddleRight;
-            btnEdit.Location = new Point(3, 27);
+            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEdit.Location = new Point(3, 33);
             btnEdit.Name = "btnEdit";
+            btnEdit.Padding = new Padding(10, 0, 0, 0);
             btnEdit.Size = new Size(105, 37);
             btnEdit.TabIndex = 7;
             btnEdit.Text = "Izmeni";
-            btnEdit.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnDelete.Enabled = false;
-            btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Image = Properties.Resources.trash;
-            btnDelete.ImageAlign = ContentAlignment.MiddleRight;
-            btnDelete.Location = new Point(114, 27);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(105, 37);
-            btnDelete.TabIndex = 5;
-            btnDelete.Text = "Obriši";
-            btnDelete.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
             // 
             // tableLayoutPanel2
             // 
@@ -126,7 +125,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(1118, 696);
+            tableLayoutPanel2.Size = new Size(1022, 748);
             tableLayoutPanel2.TabIndex = 5;
             // 
             // lvZaposleni
@@ -136,7 +135,7 @@
             lvZaposleni.GridLines = true;
             lvZaposleni.Location = new Point(3, 3);
             lvZaposleni.Name = "lvZaposleni";
-            lvZaposleni.Size = new Size(834, 690);
+            lvZaposleni.Size = new Size(762, 742);
             lvZaposleni.TabIndex = 3;
             lvZaposleni.UseCompatibleStateImageBehavior = false;
             lvZaposleni.View = View.Details;
@@ -159,9 +158,9 @@
             groupBox1.Controls.Add(lbl4);
             groupBox1.Controls.Add(lbl1);
             groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(843, 3);
+            groupBox1.Location = new Point(771, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(272, 690);
+            groupBox1.Size = new Size(248, 742);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "# Salon u kome radi";
@@ -298,7 +297,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel1);
             Name = "ZaposleniUC";
-            Size = new Size(1124, 775);
+            Size = new Size(1028, 833);
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
@@ -312,7 +311,6 @@
         private ListView lvZaposleni;
         private Panel panel1;
         private Button btnEdit;
-        private Button btnDelete;
         private TableLayoutPanel tableLayoutPanel2;
         private GroupBox groupBox1;
         private Label lbl1;
@@ -329,5 +327,6 @@
         private Label lblGrad;
         private Label lblDrzava;
         private Label lblNaziv;
+        private Button btnOceni;
     }
 }
