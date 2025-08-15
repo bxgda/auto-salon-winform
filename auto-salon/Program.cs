@@ -1,6 +1,7 @@
 using auto_salon.App.Services.Implementation;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
+using auto_salon.Presentation;
 using auto_salon.Presentation.FKupac;
 using auto_salon.Presentation.FOcene;
 using auto_salon.Presentation.FProizvodjacNudi;
@@ -42,6 +43,7 @@ namespace auto_salon
 
             // Forme i UserControl-i
             services.AddTransient<MainForm>();
+            services.AddTransient<Home>();
 
             services.AddTransient<SalonUC>();
             services.AddTransient<AddSalon>();

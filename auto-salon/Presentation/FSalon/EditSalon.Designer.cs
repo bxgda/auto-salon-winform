@@ -129,7 +129,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(212, 129);
             label7.Name = "label7";
-            label7.Size = new Size(23, 15);
+            label7.Size = new Size(24, 15);
             label7.TabIndex = 15;
             label7.Text = "Tip";
             label7.TextAlign = ContentAlignment.MiddleLeft;
@@ -234,6 +234,8 @@
             Controls.Add(btnSubmit);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
+            MaximumSize = new Size(436, 341);
+            MinimizeBox = false;
             MinimumSize = new Size(436, 341);
             Name = "EditSalon";
             ShowInTaskbar = false;

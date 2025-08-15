@@ -154,16 +154,27 @@ namespace auto_salon.Presentation.FVozilo
                 return;
             }
 
-            int selectedRowIndex = lvVozila.SelectedItems[0].Index;
+            // Broj sasije je u trecoj koloni (indeks 2)
+            string brojSasije = lvVozila.SelectedItems[0].SubItems[2].Text;
 
-            if (_vozila[selectedRowIndex].Stanje == "Novo")
+            // Pronadji vozilo u _vozila po BrojSasije
+            var vozilo = _vozila.FirstOrDefault(v => v.BrojSasije == brojSasije);
+
+            if (vozilo == null)
+            {
+                MessageBox.Show("Došlo je do greške pri pronalaženju vozila.",
+                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (vozilo.Stanje == "Novo")
             {
                 MessageBox.Show("Vozilo je novo i nema servisnu istoriju.",
                     "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            var form = ActivatorUtilities.CreateInstance<ServisnaIstorijaVozila>(_serviceProvider, _vozila[selectedRowIndex]);
+            var form = ActivatorUtilities.CreateInstance<ServisnaIstorijaVozila>(_serviceProvider, vozilo);
             form.ShowDialog();
         }
 

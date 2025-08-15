@@ -2,7 +2,6 @@
 using auto_salon.Data;
 using auto_salon.Entities;
 using AutoSalonMac.App.Extensions;
-using FluentNHibernate.Conventions.Inspections;
 
 namespace auto_salon.App.Services.Implementation
 {

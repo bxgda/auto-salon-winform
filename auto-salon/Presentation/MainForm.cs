@@ -8,6 +8,7 @@ using auto_salon.Entities;
 using auto_salon.Presentation.FPromotivnePonude;
 using auto_salon.Presentation.FOcene;
 using auto_salon.Presentation.FProizvodjacNudi;
+using auto_salon.Presentation;
 
 namespace auto_salon
 {
@@ -23,8 +24,8 @@ namespace auto_salon
         {
             InitializeComponent();
             _serviceProvider = serviceProvider;
-
-            // Postavi neki naslov ili sliku ili oba u pnlContent
+            var control = _serviceProvider.GetRequiredService<Home>();
+            LoadControl(control);
         }
 
         private void LoadControl(UserControl control)
@@ -95,6 +96,12 @@ namespace auto_salon
         {
             SetActiveButton((Button)sender);
             var control = _serviceProvider.GetRequiredService<ProizvodjacNudiUC>();
+            LoadControl(control);
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+            var control = _serviceProvider.GetRequiredService<Home>();
             LoadControl(control);
         }
     }

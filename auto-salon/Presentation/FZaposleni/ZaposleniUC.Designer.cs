@@ -49,10 +49,14 @@
             lbl5 = new Label();
             lbl4 = new Label();
             lbl1 = new Label();
+            panel2 = new Panel();
+            label1 = new Label();
+            cbFilter = new ComboBox();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             groupBox1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -60,14 +64,16 @@
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(panel1, 0, 1);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel1, 0, 2);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 1);
+            tableLayoutPanel1.Controls.Add(panel2, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 90.60665F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.393347F));
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 88.8597641F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 69F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(1028, 833);
@@ -77,10 +83,9 @@
             // 
             panel1.Controls.Add(btnOceni);
             panel1.Controls.Add(btnEdit);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 757);
+            panel1.Location = new Point(3, 767);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1022, 73);
+            panel1.Size = new Size(1022, 63);
             panel1.TabIndex = 4;
             // 
             // btnOceni
@@ -89,7 +94,7 @@
             btnOceni.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnOceni.Image = Properties.Resources.star;
             btnOceni.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOceni.Location = new Point(114, 33);
+            btnOceni.Location = new Point(114, 23);
             btnOceni.Name = "btnOceni";
             btnOceni.Padding = new Padding(10, 0, 0, 0);
             btnOceni.Size = new Size(105, 37);
@@ -104,7 +109,7 @@
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEdit.Location = new Point(3, 33);
+            btnEdit.Location = new Point(3, 23);
             btnEdit.Name = "btnEdit";
             btnEdit.Padding = new Padding(10, 0, 0, 0);
             btnEdit.Size = new Size(105, 37);
@@ -121,11 +126,11 @@
             tableLayoutPanel2.Controls.Add(lvZaposleni, 0, 0);
             tableLayoutPanel2.Controls.Add(groupBox1, 1, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 3);
+            tableLayoutPanel2.Location = new Point(3, 44);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(1022, 748);
+            tableLayoutPanel2.Size = new Size(1022, 717);
             tableLayoutPanel2.TabIndex = 5;
             // 
             // lvZaposleni
@@ -135,7 +140,7 @@
             lvZaposleni.GridLines = true;
             lvZaposleni.Location = new Point(3, 3);
             lvZaposleni.Name = "lvZaposleni";
-            lvZaposleni.Size = new Size(762, 742);
+            lvZaposleni.Size = new Size(762, 711);
             lvZaposleni.TabIndex = 3;
             lvZaposleni.UseCompatibleStateImageBehavior = false;
             lvZaposleni.View = View.Details;
@@ -160,7 +165,7 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(771, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(248, 742);
+            groupBox1.Size = new Size(248, 711);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "# Salon u kome radi";
@@ -291,6 +296,36 @@
             lbl1.TabIndex = 0;
             lbl1.Text = "ID:";
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(cbFilter);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(3, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1022, 35);
+            panel2.TabIndex = 6;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(4, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(41, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Uloga:";
+            // 
+            // cbFilter
+            // 
+            cbFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbFilter.FormattingEnabled = true;
+            cbFilter.Items.AddRange(new object[] { "Sve", "Menadžer", "Finansijski savetnik", "Prodavac", "Serviser" });
+            cbFilter.Location = new Point(46, 9);
+            cbFilter.Name = "cbFilter";
+            cbFilter.Size = new Size(146, 23);
+            cbFilter.TabIndex = 2;
+            cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
+            // 
             // ZaposleniUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -303,6 +338,8 @@
             tableLayoutPanel2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -328,5 +365,8 @@
         private Label lblDrzava;
         private Label lblNaziv;
         private Button btnOceni;
+        private Panel panel2;
+        private Label label1;
+        private ComboBox cbFilter;
     }
 }

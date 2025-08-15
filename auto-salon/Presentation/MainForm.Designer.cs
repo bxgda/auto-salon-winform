@@ -33,7 +33,7 @@
             pnlDashboard = new Panel();
             btnProizvodjacNudi = new Button();
             btnOcene = new Button();
-            label2 = new Label();
+            lblTitle = new Label();
             pictureBox2 = new PictureBox();
             btnPromotivnePonude = new Button();
             btnKupci = new Button();
@@ -75,7 +75,7 @@
             pnlDashboard.BackColor = SystemColors.InactiveCaption;
             pnlDashboard.Controls.Add(btnProizvodjacNudi);
             pnlDashboard.Controls.Add(btnOcene);
-            pnlDashboard.Controls.Add(label2);
+            pnlDashboard.Controls.Add(lblTitle);
             pnlDashboard.Controls.Add(pictureBox2);
             pnlDashboard.Controls.Add(btnPromotivnePonude);
             pnlDashboard.Controls.Add(btnKupci);
@@ -122,15 +122,16 @@
             btnOcene.UseVisualStyleBackColor = false;
             btnOcene.Click += btnOcene_Click;
             // 
-            // label2
+            // lblTitle
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(66, 34);
-            label2.Name = "label2";
-            label2.Size = new Size(148, 23);
-            label2.TabIndex = 9;
-            label2.Text = "Lanac auto salona";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitle.Location = new Point(66, 34);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(148, 23);
+            lblTitle.TabIndex = 9;
+            lblTitle.Text = "Lanac auto salona";
+            lblTitle.Click += lblTitle_Click;
             // 
             // pictureBox2
             // 
@@ -141,6 +142,7 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 8;
             pictureBox2.TabStop = false;
+            pictureBox2.Click += lblTitle_Click;
             // 
             // btnPromotivnePonude
             // 
@@ -314,9 +316,9 @@
         private TableLayoutPanel tableLayoutPanel1;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
-        private PictureBox pictureBox2;
-        private Label label2;
+        private Label lblTitle;
         private Button btnOcene;
         private Button btnProizvodjacNudi;
+        private PictureBox pictureBox2;
     }
 }
