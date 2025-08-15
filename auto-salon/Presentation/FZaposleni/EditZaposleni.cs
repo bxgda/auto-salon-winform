@@ -1,5 +1,6 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Implementation;
+using auto_salon.App.Services.Interfaces;
 using auto_salon.Entities;
 
 namespace auto_salon.Presentation.FZaposleni
@@ -7,17 +8,21 @@ namespace auto_salon.Presentation.FZaposleni
     public partial class EditZaposleni : Form
     {
         private readonly IZaposleniService _zaposleniService;
+        private readonly ISalonService _salonService;
         private readonly ZaposleniDTO _zaposleni;
+        private IList<SalonComboboxDTO> _saloni = [];
 
-        public EditZaposleni(IZaposleniService zaposleniService, ZaposleniDTO zaposleni)
+        public EditZaposleni(IZaposleniService zaposleniService, ZaposleniDTO zaposleni, ISalonService salonService)
         {
             InitializeComponent();
             _zaposleniService = zaposleniService;
+            _salonService = salonService;
             _zaposleni = zaposleni;
 
             this.Text = $"Izmena zaposlenog: {zaposleni.Ime} {zaposleni.Prezime}";
 
             LoadUIWithData();
+            LoadSaloniForCombobox();
         }
 
         private void LoadUIWithData()
@@ -34,6 +39,30 @@ namespace auto_salon.Presentation.FZaposleni
             cbxUloga.SelectedItem = cbxEnumToItem(_zaposleni.Uloga);
         }
 
+        private void LoadSaloniForCombobox()
+        {
+            var result = _salonService.GetAllForCombobox();
+
+            if (result.IsSuccess)
+            {
+                _saloni = result.Data!;
+
+                cbSaloni.Items.Clear();
+
+                List<SalonComboboxItem> salonItems = _saloni.Select(s => new SalonComboboxItem(s.ID, s.Naziv)).ToList();
+                
+                cbSaloni.DataSource = salonItems;
+                cbSaloni.DisplayMember = "Naziv";
+                cbSaloni.ValueMember = "ID";
+
+                cbSaloni.SelectedItem = salonItems.FirstOrDefault(s => s.Naziv == _zaposleni.Salon?.Naziv);
+            }
+            else
+            {
+                MessageBox.Show("Greška prilikom učitavanja salona: " + result.ErrorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (!TryGetZaposleniFromForm(out var zaposleniDto, out var errorMessage))
@@ -42,7 +71,8 @@ namespace auto_salon.Presentation.FZaposleni
                 return;
             }
 
-            var result = _zaposleniService.Update(zaposleniDto);
+            int selectedSalonId = (cbSaloni.SelectedItem as SalonComboboxItem)!.ID;
+            var result = _zaposleniService.Update(zaposleniDto, selectedSalonId);
 
             if (result.IsSuccess)
             {
@@ -153,5 +183,17 @@ namespace auto_salon.Presentation.FZaposleni
         }
 
         #endregion
+    }
+
+    class SalonComboboxItem
+    {
+        public int ID { get; set; }
+        public string Naziv { get; set; }
+
+        public SalonComboboxItem(int id, string naziv)
+        {
+            ID = id;
+            Naziv = naziv;
+        }
     }
 }

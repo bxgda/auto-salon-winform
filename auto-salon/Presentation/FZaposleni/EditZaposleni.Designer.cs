@@ -52,6 +52,8 @@
             label2 = new Label();
             tbxIme = new TextBox();
             label1 = new Label();
+            cbSaloni = new ComboBox();
+            label12 = new Label();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -72,6 +74,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(cbSaloni);
+            groupBox2.Controls.Add(label12);
             groupBox2.Controls.Add(label10);
             groupBox2.Controls.Add(cbxStatus);
             groupBox2.Controls.Add(label9);
@@ -278,6 +282,25 @@
             label1.TabIndex = 0;
             label1.Text = "Ime *";
             // 
+            // cbSaloni
+            // 
+            cbSaloni.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbSaloni.FormattingEnabled = true;
+            cbSaloni.Items.AddRange(new object[] { "2", "3", "4", "5" });
+            cbSaloni.Location = new Point(18, 258);
+            cbSaloni.Name = "cbSaloni";
+            cbSaloni.Size = new Size(159, 23);
+            cbSaloni.TabIndex = 31;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(18, 240);
+            label12.Name = "label12";
+            label12.Size = new Size(105, 15);
+            label12.TabIndex = 32;
+            label12.Text = "Salon u kome radi:";
+            // 
             // EditZaposleni
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -328,5 +351,7 @@
         private Label label1;
         private ComboBox cbxStatus;
         private Label label10;
+        private ComboBox cbSaloni;
+        private Label label12;
     }
 }

@@ -4,6 +4,7 @@ using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Entities;
 using NHibernate.Util;
+using static System.Windows.Forms.AxHost;
 
 namespace auto_salon.App.Services.Implementation
 {
@@ -190,6 +191,37 @@ namespace auto_salon.App.Services.Implementation
                             Naziv = s.Naziv
                         })
                         .ToList();
+                }
+
+                return ServiceResult<IList<SalonComboboxDTO>>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<IList<SalonComboboxDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<IList<SalonComboboxDTO>> GetAllForCombobox()
+        {
+            var session = _dataLayer.OpenSession();
+
+            IList<SalonComboboxDTO> result = new List<SalonComboboxDTO>();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<IList<SalonComboboxDTO>>.Failure("Nema konekcije sa bazom podataka.");
+                }
+
+                IEnumerable<Salon> sviSaloni = session.Query<Salon>();
+                foreach (var salon in sviSaloni)
+                {
+                    result.Add(salon.ToSalonComboboxDTO());
                 }
 
                 return ServiceResult<IList<SalonComboboxDTO>>.Success(result);

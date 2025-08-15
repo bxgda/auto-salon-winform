@@ -14,6 +14,6 @@ namespace auto_salon.App.Services.Implementation
 
         ServiceResult<Boolean> Add(ZaposleniDTO zaposleniDto, int salonId);
 
-        ServiceResult<Boolean> Update(ZaposleniDTO zaposleniDto); // TODO: omoguciti izmenu salona u kome radi zaposleni
+        ServiceResult<Boolean> Update(ZaposleniDTO zaposleniDto, int newSalonId);
     }
 }

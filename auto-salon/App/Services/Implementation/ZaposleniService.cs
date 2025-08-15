@@ -2,6 +2,7 @@
 using auto_salon.Data;
 using auto_salon.Entities;
 using AutoSalonMac.App.Extensions;
+using FluentNHibernate.Conventions.Inspections;
 
 namespace auto_salon.App.Services.Implementation
 {
@@ -152,7 +153,7 @@ namespace auto_salon.App.Services.Implementation
             }
         }
 
-        public ServiceResult<bool> Update(ZaposleniDTO zaposleniDto)
+        public ServiceResult<bool> Update(ZaposleniDTO zaposleniDto, int newSalonId)
         {
             var session = _dataLayer.OpenSession();
 
@@ -190,6 +191,25 @@ namespace auto_salon.App.Services.Implementation
                 else if (zaposleniDto.Uloga != Uloga.MENADZER)
                 {
                     zaposleni.DatumPostavljenja = default; // Resetuj datum postavljenja ako nije menadzer
+                }
+
+                // Proveri da li je promenjen salon
+                if (newSalonId != zaposleni.Salon.ID)
+                {
+                    // Pribavi novi salon
+                    Salon noviSalon = session.Load<Salon>(newSalonId);
+                    if (noviSalon == null)
+                        return ServiceResult<bool>.Failure("Novi salon u koji želite da premestite zaposlenog ne postoji.");
+                    
+                    // Azuriraj broj zaposlenih u starom salonu
+                    Salon stariSalon = session.Load<Salon>(zaposleni.Salon.ID);
+                    stariSalon.BrojZaposlenih--;
+
+                    // Ažuriraj salon zaposlenog i broj zaposlenih u novom salonu
+                    zaposleni.Salon = noviSalon;
+                    noviSalon.BrojZaposlenih++;
+                    
+                    session.SaveOrUpdate(stariSalon);
                 }
 
                 session.SaveOrUpdate(zaposleni);
