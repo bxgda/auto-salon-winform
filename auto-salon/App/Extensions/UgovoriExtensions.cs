@@ -22,22 +22,6 @@ namespace auto_salon.App.Extensions
             };
         }
 
-        public static UgovorDTO ToUgovorDTO(this KupoprodajniUgovor ugovor)
-        {
-            return new UgovorDTO
-            {
-                ID = ugovor.ID,
-                NacinPlacanja = ugovor.NacinPlacanja,
-                DodatnaOprema = ugovor.DodatnaOprema ?? string.Empty,
-                KonacnaOcena = ugovor.KonacnaOcena,
-                OcenaProdavca = ugovor.OcenaProdavca,
-                KonacnaCena = ugovor.KonacnaCena,
-                Vozilo = ugovor.Vozilo.ToVoziloTableDTO(),
-                Prodavac = ugovor.Prodavac.ToZaposleniDTO(),
-                Kupac = ugovor.Kupac.ToKupacDTO()
-            };
-        }
-
         public static UgovorDetailsDTO ToUgovorDetailsDTO(this KupoprodajniUgovor ugovor)
         {
             var dto = new UgovorDetailsDTO

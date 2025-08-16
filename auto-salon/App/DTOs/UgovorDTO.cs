@@ -2,27 +2,6 @@
 
 namespace auto_salon.App.DTOs
 {
-    public class UgovorDTO
-    {
-        public int ID { get; set; }
-
-        public required NacinPlacanja NacinPlacanja { get; set; }
-
-        public string? DodatnaOprema { get; set; }
-
-        public decimal KonacnaOcena { get; set; }
-
-        public decimal OcenaProdavca { get; set; }
-
-        public decimal KonacnaCena { get; set; }
-
-        public required VoziloTableDTO Vozilo { get; set; }
-
-        public required ZaposleniDTO Prodavac { get; set; }
-
-        public required KupacDTO Kupac { get; set; }
-    }
-
     public class UgovorTableDTO
     {
         public int ID { get; set; }

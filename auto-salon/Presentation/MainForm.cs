@@ -4,11 +4,11 @@ using auto_salon.Presentation.FVozilo;
 using auto_salon.Presentation.FUgovori;
 using Microsoft.Extensions.DependencyInjection;
 using auto_salon.Presentation.FKupac;
-using auto_salon.Entities;
 using auto_salon.Presentation.FPromotivnePonude;
 using auto_salon.Presentation.FOcene;
 using auto_salon.Presentation.FProizvodjacNudi;
 using auto_salon.Presentation;
+using auto_salon.Presentation.FTestVoznja;
 
 namespace auto_salon
 {
@@ -102,6 +102,12 @@ namespace auto_salon
         private void lblTitle_Click(object sender, EventArgs e)
         {
             var control = _serviceProvider.GetRequiredService<Home>();
+            LoadControl(control);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var control = _serviceProvider.GetRequiredService<TestVoznjaUC>();
             LoadControl(control);
         }
     }

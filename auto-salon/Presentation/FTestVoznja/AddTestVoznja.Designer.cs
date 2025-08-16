@@ -48,7 +48,7 @@
             rtbZakljucak = new RichTextBox();
             label5 = new Label();
             nupOcena = new NumericUpDown();
-            dtpOd = new DateTimePicker();
+            dtpDatum = new DateTimePicker();
             label3 = new Label();
             timePickerVreme = new DateTimePicker();
             label9 = new Label();
@@ -135,9 +135,9 @@
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(121, 20);
+            label1.Size = new Size(178, 20);
             label1.TabIndex = 1;
-            label1.Text = "Zaposleni salona";
+            label1.Text = "Zaposleni salona (aktivni)";
             // 
             // lvZaposleni
             // 
@@ -257,7 +257,7 @@
             groupBox1.Controls.Add(rtbZakljucak);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(nupOcena);
-            groupBox1.Controls.Add(dtpOd);
+            groupBox1.Controls.Add(dtpDatum);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(timePickerVreme);
             groupBox1.Controls.Add(label9);
@@ -308,14 +308,14 @@
             nupOcena.TabIndex = 22;
             nupOcena.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // dtpOd
+            // dtpDatum
             // 
-            dtpOd.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dtpOd.Format = DateTimePickerFormat.Short;
-            dtpOd.Location = new Point(20, 53);
-            dtpOd.Name = "dtpOd";
-            dtpOd.Size = new Size(193, 23);
-            dtpOd.TabIndex = 20;
+            dtpDatum.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dtpDatum.Format = DateTimePickerFormat.Short;
+            dtpDatum.Location = new Point(20, 53);
+            dtpDatum.Name = "dtpDatum";
+            dtpDatum.Size = new Size(193, 23);
+            dtpDatum.TabIndex = 20;
             // 
             // label3
             // 
@@ -429,7 +429,7 @@
         private Button btnSubmit;
         private DateTimePicker timePickerVreme;
         private Label label9;
-        private DateTimePicker dtpOd;
+        private DateTimePicker dtpDatum;
         private Label label3;
         private Label label6;
         private RichTextBox rtbZakljucak;

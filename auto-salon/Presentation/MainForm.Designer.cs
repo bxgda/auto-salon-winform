@@ -45,6 +45,7 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            button1 = new Button();
             tblMainLayout.SuspendLayout();
             pnlDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -73,6 +74,7 @@
             // pnlDashboard
             // 
             pnlDashboard.BackColor = SystemColors.InactiveCaption;
+            pnlDashboard.Controls.Add(button1);
             pnlDashboard.Controls.Add(btnProizvodjacNudi);
             pnlDashboard.Controls.Add(btnOcene);
             pnlDashboard.Controls.Add(lblTitle);
@@ -279,6 +281,22 @@
             toolStripStatusLabel1.Size = new Size(251, 17);
             toolStripStatusLabel1.Text = "Sistemi baza podataka © 2025 - Drugi projekat";
             // 
+            // button1
+            // 
+            button1.AutoSize = true;
+            button1.BackColor = SystemColors.Control;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Image = Properties.Resources.steering_wheel;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(4, 445);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 0, 0);
+            button1.Size = new Size(243, 39);
+            button1.TabIndex = 12;
+            button1.Text = "Test vožnje";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -320,5 +338,6 @@
         private Button btnOcene;
         private Button btnProizvodjacNudi;
         private PictureBox pictureBox2;
+        private Button button1;
     }
 }

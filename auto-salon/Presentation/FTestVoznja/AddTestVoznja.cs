@@ -1,5 +1,6 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Interfaces;
+using auto_salon.Entities;
 using auto_salon.Presentation.FKupac;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -112,6 +113,7 @@ namespace auto_salon.Presentation.FTestVoznja
             }
 
             _zaposleni = result.Data!;
+            _zaposleni = _zaposleni.Where(z => z.StatusZaposlenja == StatusZaposlenja.AKTIVAN).ToList();
 
             PopulateListViewZaposleni(_zaposleni);
         }
@@ -291,7 +293,7 @@ namespace auto_salon.Presentation.FTestVoznja
 
             TestVoznjaCreateDTO testVoznja = new TestVoznjaCreateDTO
             {
-                Datum = DateTime.Now,
+                Datum = dtpDatum.Value.Date.Date,
                 Vreme = timePickerVreme.Value.ToString("HH:mm"),
                 Ocena = nupOcena.Value,
                 Zakljucak = rtbZakljucak.Text.Trim(),
