@@ -9,5 +9,9 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<TestVoznjaDetailsDTO> GetDetails(int id);
 
         ServiceResult<bool> Add(TestVoznjaCreateDTO testVoznja);
+
+        ServiceResult<bool> Delete(int id);
+
+        ServiceResult<bool> Update(TestVoznjaTableDTO testVoznja);
     }
 }

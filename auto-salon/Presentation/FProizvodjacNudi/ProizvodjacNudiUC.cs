@@ -1,6 +1,5 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Interfaces;
-using auto_salon.Presentation.FPromotivnePonude;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace auto_salon.Presentation.FProizvodjacNudi

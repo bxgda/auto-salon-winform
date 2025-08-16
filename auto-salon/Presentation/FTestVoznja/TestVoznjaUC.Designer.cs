@@ -30,6 +30,7 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
+            btnEdit = new Button();
             btnDelete = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             lvTestVoznje = new ListView();
@@ -94,12 +95,28 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnDelete);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 676);
             panel1.Name = "panel1";
             panel1.Size = new Size(1054, 128);
             panel1.TabIndex = 1;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.Image = Properties.Resources.pencil;
+            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEdit.Location = new Point(114, 88);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Padding = new Padding(10, 0, 0, 0);
+            btnEdit.Size = new Size(105, 37);
+            btnEdit.TabIndex = 3;
+            btnEdit.Text = "Izmeni";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 
@@ -114,6 +131,7 @@
             btnDelete.TabIndex = 2;
             btnDelete.Text = "Obriši";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // tableLayoutPanel2
             // 
@@ -141,6 +159,7 @@
             lvTestVoznje.TabIndex = 1;
             lvTestVoznje.UseCompatibleStateImageBehavior = false;
             lvTestVoznje.View = View.Details;
+            lvTestVoznje.SelectedIndexChanged += lvTestVoznje_SelectedIndexChanged;
             // 
             // panel2
             // 
@@ -156,7 +175,7 @@
             // 
             // groupBox3
             // 
-            groupBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox3.Controls.Add(lblTelefonProdavca);
             groupBox3.Controls.Add(lblPozicijaProdavca);
             groupBox3.Controls.Add(lblPrezimeProdavca);
@@ -170,9 +189,9 @@
             groupBox3.Controls.Add(label13);
             groupBox3.Controls.Add(label14);
             groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox3.Location = new Point(3, 446);
+            groupBox3.Location = new Point(6, 510);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(440, 148);
+            groupBox3.Size = new Size(297, 148);
             groupBox3.TabIndex = 4;
             groupBox3.TabStop = false;
             groupBox3.Text = "# Podaci o zaposlenom:";
@@ -180,7 +199,7 @@
             // lblTelefonProdavca
             // 
             lblTelefonProdavca.AutoSize = true;
-            lblTelefonProdavca.Location = new Point(145, 114);
+            lblTelefonProdavca.Location = new Point(130, 114);
             lblTelefonProdavca.Name = "lblTelefonProdavca";
             lblTelefonProdavca.Size = new Size(12, 15);
             lblTelefonProdavca.TabIndex = 14;
@@ -189,7 +208,7 @@
             // lblPozicijaProdavca
             // 
             lblPozicijaProdavca.AutoSize = true;
-            lblPozicijaProdavca.Location = new Point(145, 87);
+            lblPozicijaProdavca.Location = new Point(130, 87);
             lblPozicijaProdavca.Name = "lblPozicijaProdavca";
             lblPozicijaProdavca.Size = new Size(12, 15);
             lblPozicijaProdavca.TabIndex = 13;
@@ -198,7 +217,7 @@
             // lblPrezimeProdavca
             // 
             lblPrezimeProdavca.AutoSize = true;
-            lblPrezimeProdavca.Location = new Point(145, 58);
+            lblPrezimeProdavca.Location = new Point(130, 58);
             lblPrezimeProdavca.Name = "lblPrezimeProdavca";
             lblPrezimeProdavca.Size = new Size(12, 15);
             lblPrezimeProdavca.TabIndex = 12;
@@ -207,7 +226,7 @@
             // lblImeProdavca
             // 
             lblImeProdavca.AutoSize = true;
-            lblImeProdavca.Location = new Point(145, 31);
+            lblImeProdavca.Location = new Point(130, 31);
             lblImeProdavca.Name = "lblImeProdavca";
             lblImeProdavca.Size = new Size(12, 15);
             lblImeProdavca.TabIndex = 11;
@@ -217,7 +236,7 @@
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Location = new Point(584, 114);
+            label5.Location = new Point(441, 114);
             label5.Name = "label5";
             label5.Size = new Size(12, 15);
             label5.TabIndex = 10;
@@ -227,7 +246,7 @@
             // 
             label7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label7.AutoSize = true;
-            label7.Location = new Point(584, 87);
+            label7.Location = new Point(441, 87);
             label7.Name = "label7";
             label7.Size = new Size(12, 15);
             label7.TabIndex = 8;
@@ -237,7 +256,7 @@
             // 
             label8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label8.AutoSize = true;
-            label8.Location = new Point(584, 31);
+            label8.Location = new Point(441, 31);
             label8.Name = "label8";
             label8.Size = new Size(12, 15);
             label8.TabIndex = 7;
@@ -265,7 +284,7 @@
             // 
             label12.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label12.AutoSize = true;
-            label12.Location = new Point(584, 58);
+            label12.Location = new Point(441, 58);
             label12.Name = "label12";
             label12.Size = new Size(12, 15);
             label12.TabIndex = 3;
@@ -304,7 +323,7 @@
             groupBox2.Controls.Add(lbl1Kupac);
             groupBox2.Location = new Point(3, 44);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(440, 180);
+            groupBox2.Size = new Size(297, 180);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "# Podaci o kupcu";
@@ -312,7 +331,7 @@
             // lblKupacJe
             // 
             lblKupacJe.AutoSize = true;
-            lblKupacJe.Location = new Point(145, 32);
+            lblKupacJe.Location = new Point(133, 32);
             lblKupacJe.Name = "lblKupacJe";
             lblKupacJe.Size = new Size(12, 15);
             lblKupacJe.TabIndex = 9;
@@ -330,7 +349,7 @@
             // lblTelefonKupca
             // 
             lblTelefonKupca.AutoSize = true;
-            lblTelefonKupca.Location = new Point(145, 153);
+            lblTelefonKupca.Location = new Point(133, 153);
             lblTelefonKupca.Name = "lblTelefonKupca";
             lblTelefonKupca.Size = new Size(12, 15);
             lblTelefonKupca.TabIndex = 7;
@@ -339,7 +358,7 @@
             // lblEmailKupca
             // 
             lblEmailKupca.AutoSize = true;
-            lblEmailKupca.Location = new Point(145, 125);
+            lblEmailKupca.Location = new Point(133, 125);
             lblEmailKupca.Name = "lblEmailKupca";
             lblEmailKupca.Size = new Size(12, 15);
             lblEmailKupca.TabIndex = 6;
@@ -348,7 +367,7 @@
             // lblPrezimeKupca
             // 
             lblPrezimeKupca.AutoSize = true;
-            lblPrezimeKupca.Location = new Point(145, 93);
+            lblPrezimeKupca.Location = new Point(133, 93);
             lblPrezimeKupca.Name = "lblPrezimeKupca";
             lblPrezimeKupca.Size = new Size(12, 15);
             lblPrezimeKupca.TabIndex = 5;
@@ -357,7 +376,7 @@
             // lblImeKupca
             // 
             lblImeKupca.AutoSize = true;
-            lblImeKupca.Location = new Point(145, 63);
+            lblImeKupca.Location = new Point(133, 63);
             lblImeKupca.Name = "lblImeKupca";
             lblImeKupca.Size = new Size(12, 15);
             lblImeKupca.TabIndex = 4;
@@ -406,13 +425,13 @@
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(0, 0);
             label2.Name = "label2";
-            label2.Size = new Size(141, 25);
+            label2.Size = new Size(165, 25);
             label2.TabIndex = 2;
-            label2.Text = "Detalji ugovora";
+            label2.Text = "Detalji test vožnje:";
             // 
             // groupBox1
             // 
-            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(lblGodinaProizvodnje);
             groupBox1.Controls.Add(lblModel);
             groupBox1.Controls.Add(lblBrojSasije);
@@ -422,9 +441,9 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(3, 258);
+            groupBox1.Location = new Point(3, 289);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(440, 148);
+            groupBox1.Size = new Size(297, 148);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "# Podaci o vozilu";
@@ -432,7 +451,7 @@
             // lblGodinaProizvodnje
             // 
             lblGodinaProizvodnje.AutoSize = true;
-            lblGodinaProizvodnje.Location = new Point(145, 114);
+            lblGodinaProizvodnje.Location = new Point(133, 114);
             lblGodinaProizvodnje.Name = "lblGodinaProizvodnje";
             lblGodinaProizvodnje.Size = new Size(12, 15);
             lblGodinaProizvodnje.TabIndex = 10;
@@ -441,7 +460,7 @@
             // lblModel
             // 
             lblModel.AutoSize = true;
-            lblModel.Location = new Point(145, 87);
+            lblModel.Location = new Point(133, 87);
             lblModel.Name = "lblModel";
             lblModel.Size = new Size(12, 15);
             lblModel.TabIndex = 8;
@@ -450,7 +469,7 @@
             // lblBrojSasije
             // 
             lblBrojSasije.AutoSize = true;
-            lblBrojSasije.Location = new Point(145, 31);
+            lblBrojSasije.Location = new Point(133, 31);
             lblBrojSasije.Name = "lblBrojSasije";
             lblBrojSasije.Size = new Size(12, 15);
             lblBrojSasije.TabIndex = 7;
@@ -477,7 +496,7 @@
             // lblStanje
             // 
             lblStanje.AutoSize = true;
-            lblStanje.Location = new Point(145, 58);
+            lblStanje.Location = new Point(133, 58);
             lblStanje.Name = "lblStanje";
             lblStanje.Size = new Size(12, 15);
             lblStanje.TabIndex = 3;
@@ -564,5 +583,6 @@
         private Label lblStanje;
         private Label label3;
         private Label label1;
+        private Button btnEdit;
     }
 }

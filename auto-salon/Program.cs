@@ -87,6 +87,7 @@ namespace auto_salon
 
             services.AddTransient<TestVoznjaUC>();
             services.AddTransient<AddTestVoznja>();
+            services.AddTransient<EditTestVoznja>();
 
             // Kreiranje ServiceProvider-a
             ServiceProvider = services.BuildServiceProvider();

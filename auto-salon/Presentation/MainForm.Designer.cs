@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             tblMainLayout = new TableLayoutPanel();
             pnlDashboard = new Panel();
+            pictureBox1 = new PictureBox();
+            btnTestVoznje = new Button();
             btnProizvodjacNudi = new Button();
             btnOcene = new Button();
-            lblTitle = new Label();
-            pictureBox2 = new PictureBox();
             btnPromotivnePonude = new Button();
             btnKupci = new Button();
             btnUgovori = new Button();
@@ -45,10 +45,9 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
-            button1 = new Button();
             tblMainLayout.SuspendLayout();
             pnlDashboard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -74,11 +73,10 @@
             // pnlDashboard
             // 
             pnlDashboard.BackColor = SystemColors.InactiveCaption;
-            pnlDashboard.Controls.Add(button1);
+            pnlDashboard.Controls.Add(pictureBox1);
+            pnlDashboard.Controls.Add(btnTestVoznje);
             pnlDashboard.Controls.Add(btnProizvodjacNudi);
             pnlDashboard.Controls.Add(btnOcene);
-            pnlDashboard.Controls.Add(lblTitle);
-            pnlDashboard.Controls.Add(pictureBox2);
             pnlDashboard.Controls.Add(btnPromotivnePonude);
             pnlDashboard.Controls.Add(btnKupci);
             pnlDashboard.Controls.Add(btnUgovori);
@@ -92,6 +90,33 @@
             pnlDashboard.Size = new Size(250, 839);
             pnlDashboard.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.mcqueen;
+            pictureBox1.Location = new Point(38, 746);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(169, 90);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 13;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // btnTestVoznje
+            // 
+            btnTestVoznje.AutoSize = true;
+            btnTestVoznje.BackColor = SystemColors.Control;
+            btnTestVoznje.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTestVoznje.Image = Properties.Resources.steering_wheel;
+            btnTestVoznje.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTestVoznje.Location = new Point(3, 372);
+            btnTestVoznje.Name = "btnTestVoznje";
+            btnTestVoznje.Padding = new Padding(10, 0, 0, 0);
+            btnTestVoznje.Size = new Size(243, 39);
+            btnTestVoznje.TabIndex = 12;
+            btnTestVoznje.Text = "Test vožnje";
+            btnTestVoznje.UseVisualStyleBackColor = false;
+            btnTestVoznje.Click += button1_Click;
+            // 
             // btnProizvodjacNudi
             // 
             btnProizvodjacNudi.AutoSize = true;
@@ -99,7 +124,7 @@
             btnProizvodjacNudi.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnProizvodjacNudi.Image = Properties.Resources.hand_shake;
             btnProizvodjacNudi.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProizvodjacNudi.Location = new Point(4, 400);
+            btnProizvodjacNudi.Location = new Point(3, 327);
             btnProizvodjacNudi.Name = "btnProizvodjacNudi";
             btnProizvodjacNudi.Padding = new Padding(10, 0, 0, 0);
             btnProizvodjacNudi.Size = new Size(243, 39);
@@ -115,7 +140,7 @@
             btnOcene.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnOcene.Image = Properties.Resources.feedback_review;
             btnOcene.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOcene.Location = new Point(4, 355);
+            btnOcene.Location = new Point(3, 282);
             btnOcene.Name = "btnOcene";
             btnOcene.Padding = new Padding(10, 0, 0, 0);
             btnOcene.Size = new Size(243, 39);
@@ -124,28 +149,6 @@
             btnOcene.UseVisualStyleBackColor = false;
             btnOcene.Click += btnOcene_Click;
             // 
-            // lblTitle
-            // 
-            lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle.Location = new Point(66, 34);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(148, 23);
-            lblTitle.TabIndex = 9;
-            lblTitle.Text = "Lanac auto salona";
-            lblTitle.Click += lblTitle_Click;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.garage256;
-            pictureBox2.Location = new Point(12, 25);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(48, 41);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 8;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += lblTitle_Click;
-            // 
             // btnPromotivnePonude
             // 
             btnPromotivnePonude.AutoSize = true;
@@ -153,7 +156,7 @@
             btnPromotivnePonude.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPromotivnePonude.Image = Properties.Resources.percentage;
             btnPromotivnePonude.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPromotivnePonude.Location = new Point(4, 310);
+            btnPromotivnePonude.Location = new Point(3, 237);
             btnPromotivnePonude.Name = "btnPromotivnePonude";
             btnPromotivnePonude.Padding = new Padding(10, 0, 0, 0);
             btnPromotivnePonude.Size = new Size(243, 39);
@@ -169,7 +172,7 @@
             btnKupci.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnKupci.Image = Properties.Resources.user_bag;
             btnKupci.ImageAlign = ContentAlignment.MiddleLeft;
-            btnKupci.Location = new Point(4, 265);
+            btnKupci.Location = new Point(3, 192);
             btnKupci.Name = "btnKupci";
             btnKupci.Padding = new Padding(10, 0, 0, 0);
             btnKupci.Size = new Size(243, 39);
@@ -185,7 +188,7 @@
             btnUgovori.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnUgovori.Image = Properties.Resources.contract;
             btnUgovori.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUgovori.Location = new Point(4, 220);
+            btnUgovori.Location = new Point(3, 147);
             btnUgovori.Name = "btnUgovori";
             btnUgovori.Padding = new Padding(10, 0, 0, 0);
             btnUgovori.Size = new Size(243, 39);
@@ -201,7 +204,7 @@
             btnVozila.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnVozila.Image = Properties.Resources.cars;
             btnVozila.ImageAlign = ContentAlignment.MiddleLeft;
-            btnVozila.Location = new Point(4, 175);
+            btnVozila.Location = new Point(3, 102);
             btnVozila.Name = "btnVozila";
             btnVozila.Padding = new Padding(10, 0, 0, 0);
             btnVozila.Size = new Size(243, 39);
@@ -217,7 +220,7 @@
             btnZaposleni.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnZaposleni.Image = Properties.Resources.users;
             btnZaposleni.ImageAlign = ContentAlignment.MiddleLeft;
-            btnZaposleni.Location = new Point(4, 130);
+            btnZaposleni.Location = new Point(3, 57);
             btnZaposleni.Name = "btnZaposleni";
             btnZaposleni.Padding = new Padding(10, 0, 0, 0);
             btnZaposleni.Size = new Size(243, 39);
@@ -233,7 +236,7 @@
             btnSaloni.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSaloni.Image = Properties.Resources.garage_car;
             btnSaloni.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSaloni.Location = new Point(4, 85);
+            btnSaloni.Location = new Point(3, 12);
             btnSaloni.Name = "btnSaloni";
             btnSaloni.Padding = new Padding(10, 0, 0, 0);
             btnSaloni.Size = new Size(243, 41);
@@ -281,22 +284,6 @@
             toolStripStatusLabel1.Size = new Size(251, 17);
             toolStripStatusLabel1.Text = "Sistemi baza podataka © 2025 - Drugi projekat";
             // 
-            // button1
-            // 
-            button1.AutoSize = true;
-            button1.BackColor = SystemColors.Control;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Image = Properties.Resources.steering_wheel;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(4, 445);
-            button1.Name = "button1";
-            button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(243, 39);
-            button1.TabIndex = 12;
-            button1.Text = "Test vožnje";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -312,7 +299,7 @@
             tblMainLayout.ResumeLayout(false);
             pnlDashboard.ResumeLayout(false);
             pnlDashboard.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             statusStrip1.ResumeLayout(false);
@@ -334,10 +321,9 @@
         private TableLayoutPanel tableLayoutPanel1;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
-        private Label lblTitle;
         private Button btnOcene;
         private Button btnProizvodjacNudi;
-        private PictureBox pictureBox2;
-        private Button button1;
+        private Button btnTestVoznje;
+        private PictureBox pictureBox1;
     }
 }

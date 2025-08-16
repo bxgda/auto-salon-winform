@@ -99,15 +99,15 @@ namespace auto_salon
             LoadControl(control);
         }
 
-        private void lblTitle_Click(object sender, EventArgs e)
-        {
-            var control = _serviceProvider.GetRequiredService<Home>();
-            LoadControl(control);
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             var control = _serviceProvider.GetRequiredService<TestVoznjaUC>();
+            LoadControl(control);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            var control = _serviceProvider.GetRequiredService<Home>();
             LoadControl(control);
         }
     }

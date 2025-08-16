@@ -63,6 +63,16 @@ namespace auto_salon.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap autoSalonBg {
+            get {
+                object obj = ResourceManager.GetObject("autoSalonBg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap car_side {
             get {
                 object obj = ResourceManager.GetObject("car-side", resourceCulture);
@@ -146,6 +156,16 @@ namespace auto_salon.Properties {
         public static System.Drawing.Bitmap hand_shake {
             get {
                 object obj = ResourceManager.GetObject("hand-shake", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap mcqueen {
+            get {
+                object obj = ResourceManager.GetObject("mcqueen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

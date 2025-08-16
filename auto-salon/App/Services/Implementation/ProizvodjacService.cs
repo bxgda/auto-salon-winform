@@ -209,6 +209,7 @@ namespace auto_salon.App.Services.Implementation
         public ServiceResult<bool> Update(ProizvodjacDTO proizvodjacDTO)
         {
             var session = _dataLayer.OpenSession();
+
             try
             {
                 if (session == null)

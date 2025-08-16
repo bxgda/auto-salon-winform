@@ -75,6 +75,32 @@ namespace auto_salon.App.Services.Implementation
             }
         }
 
+        public ServiceResult<bool> Delete(int id)
+        {
+            var session = _dataLayer.OpenSession();
+
+            try
+            {
+                if (session == null)
+                    return ServiceResult<bool>.Failure("Greška prilikom uspostavljanja sesije.");
+
+                TestVoznja testVoznja = session.Load<TestVoznja>(id);
+
+                session.Delete(testVoznja);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri brisanju test vožnje: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
         public ServiceResult<IList<TestVoznjaTableDTO>> GetAll()
         {
             var session = _dataLayer.OpenSession();
@@ -137,6 +163,40 @@ namespace auto_salon.App.Services.Implementation
             catch (Exception ex)
             {
                 return ServiceResult<TestVoznjaDetailsDTO>.Failure($"Greška pri dohvatanju detalja test vožnje: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<bool> Update(TestVoznjaTableDTO testVoznja)
+        {
+            var session = _dataLayer.OpenSession();
+            try
+            {
+                if (session == null)
+                    return ServiceResult<bool>.Failure("Nema konekcije sa bazom podataka.");
+                
+                if (testVoznja == null)
+                    return ServiceResult<bool>.Failure("Test vožnja ne može biti null.");
+
+                var existingTestVoznja = session.Get<TestVoznja>(testVoznja.ID);
+
+                if (existingTestVoznja == null)
+                    return ServiceResult<bool>.Failure("Test vožnja sa datim ID-jem ne postoji.");
+
+                existingTestVoznja.Ocena = testVoznja.Ocena;
+                existingTestVoznja.Zakljucak = testVoznja.Zakljucak;
+
+                session.Update(existingTestVoznja);
+                session.Flush();
+
+                return ServiceResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.Failure($"Greška pri ažuriranju test vožnje: {ex.Message}");
             }
             finally
             {
