@@ -55,6 +55,18 @@ namespace auto_salon.Presentation.FZaposleni
             }
         }
 
+        private void ResetLabels()
+        {
+            lblID.Text = "/";
+            lblNaziv.Text = "/";
+            lblDrzava.Text = "/";
+            lblGrad.Text = "/";
+            lblRadnoVreme.Text = "/";
+            lblKontaktTelefon.Text = "/";
+            lblBrZaposlenih.Text = "/";
+            lblStatus.Text = "";
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (lvZaposleni.SelectedItems.Count == 0)
@@ -75,6 +87,7 @@ namespace auto_salon.Presentation.FZaposleni
             if (result.IsSuccess)
             {
                 LoadData();
+                ResetLabels();
                 MessageBox.Show(
                     "Zaposleni je uspešno obrisan.",
                     "Uspeh",
@@ -149,13 +162,7 @@ namespace auto_salon.Presentation.FZaposleni
 
             if (zaposleni == null || zaposleni.Salon == null)
             {
-                lblID.Text = "";
-                lblNaziv.Text = "";
-                lblDrzava.Text = "";
-                lblGrad.Text = "";
-                lblRadnoVreme.Text = "";
-                lblKontaktTelefon.Text = "";
-                lblBrZaposlenih.Text = "";
+                ResetLabels();
                 return;
             }
 
@@ -167,6 +174,27 @@ namespace auto_salon.Presentation.FZaposleni
             lblRadnoVreme.Text = salon.RadnoVreme;
             lblKontaktTelefon.Text = salon.KontaktTelefon;
             lblBrZaposlenih.Text = salon.BrojZaposlenih.ToString();
+
+            if (zaposleni.StatusZaposlenja == StatusZaposlenja.AKTIVAN)
+            {
+                lblStatus.Text = "Zaposleni je aktivan.";
+                lblStatus.ForeColor = Color.Green;
+            }
+            if (zaposleni.StatusZaposlenja == StatusZaposlenja.NEAKTIVAN)
+            {
+                lblStatus.Text = "Zaposleni je neaktivan.";
+                lblStatus.ForeColor = Color.Red;
+            }
+            if (zaposleni.StatusZaposlenja == StatusZaposlenja.NA_BOLOVANJU)
+            {
+                lblStatus.Text = "Zaposleni je na bolovanju.";
+                lblStatus.ForeColor = Color.Orange;
+            }
+            if (zaposleni.StatusZaposlenja == StatusZaposlenja.NA_ODMORU)
+            {
+                lblStatus.Text = "Zaposleni je na odmoru.";
+                lblStatus.ForeColor = Color.Orange;
+            }
         }
 
         private void btnOceni_Click(object sender, EventArgs e)
@@ -217,6 +245,7 @@ namespace auto_salon.Presentation.FZaposleni
 
             filter = cbFilter.SelectedItem.ToString() ?? "Sve";
 
+            ResetLabels();
             InsertDataIntoListView();
         }
 

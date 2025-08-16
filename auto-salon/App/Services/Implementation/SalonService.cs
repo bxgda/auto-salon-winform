@@ -5,7 +5,6 @@ using auto_salon.Data;
 using auto_salon.Entities;
 using AutoSalonMac.App.Extensions;
 using NHibernate.Util;
-using static System.Windows.Forms.AxHost;
 
 namespace auto_salon.App.Services.Implementation
 {
@@ -132,15 +131,12 @@ namespace auto_salon.App.Services.Implementation
             try
             {
                 if (session == null)
-                {
                     return ServiceResult<IList<SalonDTO>>.Failure("Nema konekcije sa bazom podataka.");
-                }
 
                 IEnumerable<Salon> sviSaloni = session.Query<Salon>();
+
                 foreach (var salon in sviSaloni)
-                {
                     result.Add(salon.ToSalonDTO());
-                }
 
                 return ServiceResult<IList<SalonDTO>>.Success(result);
             }
@@ -215,21 +211,43 @@ namespace auto_salon.App.Services.Implementation
             try
             {
                 if (session == null)
-                {
                     return ServiceResult<IList<SalonComboboxDTO>>.Failure("Nema konekcije sa bazom podataka.");
-                }
 
                 IEnumerable<Salon> sviSaloni = session.Query<Salon>();
+
                 foreach (var salon in sviSaloni)
-                {
                     result.Add(salon.ToSalonComboboxDTO());
-                }
 
                 return ServiceResult<IList<SalonComboboxDTO>>.Success(result);
             }
             catch (Exception ex)
             {
                 return ServiceResult<IList<SalonComboboxDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<SalonDTO> GetById(int salonId)
+        {
+            var session = _dataLayer.OpenSession();
+            try
+            {
+                if (session == null)
+                    return ServiceResult<SalonDTO>.Failure("Nema konekcije sa bazom podataka.");
+
+                Salon salon = session.Load<Salon>(salonId);
+
+                if (salon == null)
+                    return ServiceResult<SalonDTO>.Failure("Salon sa datim ID-jem ne postoji.");
+
+                return ServiceResult<SalonDTO>.Success(salon.ToSalonDTO());
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<SalonDTO>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
             }
             finally
             {

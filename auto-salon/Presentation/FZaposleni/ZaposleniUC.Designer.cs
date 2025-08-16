@@ -52,6 +52,8 @@
             panel2 = new Panel();
             label1 = new Label();
             cbFilter = new ComboBox();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            lblStatus = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -148,6 +150,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(lblStatus);
             groupBox1.Controls.Add(lblBrZaposlenih);
             groupBox1.Controls.Add(lblKontaktTelefon);
             groupBox1.Controls.Add(lblRadnoVreme);
@@ -326,6 +329,14 @@
             cbFilter.TabIndex = 2;
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
             // 
+            // lblStatus
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new Point(6, 360);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(0, 15);
+            lblStatus.TabIndex = 16;
+            // 
             // ZaposleniUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -368,5 +379,7 @@
         private Panel panel2;
         private Label label1;
         private ComboBox cbFilter;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Label lblStatus;
     }
 }

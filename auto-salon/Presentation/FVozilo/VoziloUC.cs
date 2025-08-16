@@ -1,6 +1,5 @@
 ﻿using auto_salon.App.DTOs;
 using auto_salon.App.Services.Interfaces;
-using auto_salon.Entities;
 using auto_salon.Presentation.FServisnaStavka;
 using auto_salon.Presentation.FTestVoznja;
 using auto_salon.Presentation.FUgovori;
@@ -12,16 +11,18 @@ namespace auto_salon.Presentation.FVozilo
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly IVoziloService _voziloService;
+        private readonly ISalonService _salonService;
         private IList<VoziloTableDTO> _vozila = [];
 
         private string filter = "Sve";
 
-        public VoziloUC(IServiceProvider serviceProvider, IVoziloService voziloService)
+        public VoziloUC(IServiceProvider serviceProvider, IVoziloService voziloService, ISalonService salonService)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             cbFilter.SelectedIndex = 0; // Set default filter to "Sve"
             _voziloService = voziloService;
+            _salonService = salonService;
             _serviceProvider = serviceProvider;
 
             // Define columns for ListView
@@ -97,6 +98,18 @@ namespace auto_salon.Presentation.FVozilo
             lvVozila.Refresh();
         }
 
+        private void ResetLabels()
+        {
+            lblID.Text = "/";
+            lblNaziv.Text = "/";
+            lblDrzava.Text = "/";
+            lblGrad.Text = "/";
+            lblRadnoVreme.Text = "/";
+            lblKontaktTelefon.Text = "/";
+            lblBrZaposlenih.Text = "/";
+            lblJeProdato.Text = "";
+        }
+
         #region Event Handlers
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -130,6 +143,7 @@ namespace auto_salon.Presentation.FVozilo
             if (result.IsSuccess)
             {
                 LoadData();
+                ResetLabels();
                 MessageBox.Show(
                     "Vozilo je uspešno obrisano.",
                     "Uspeh",
@@ -185,7 +199,8 @@ namespace auto_salon.Presentation.FVozilo
                 return;
 
             filter = cbFilter.SelectedItem.ToString() ?? "Sve";
-
+            
+            ResetLabels();
             InsertDataIntoListView();
         }
 
@@ -219,6 +234,7 @@ namespace auto_salon.Presentation.FVozilo
             var form = ActivatorUtilities.CreateInstance<SklapanjeUgovora>(_serviceProvider, vozilo);
             form.ShowDialog();
 
+            ResetLabels();
             LoadData();
         }
 
@@ -258,6 +274,7 @@ namespace auto_salon.Presentation.FVozilo
 
             if (dialogResult == DialogResult.OK)
             {
+                ResetLabels();
                 LoadData();
             }
         }
@@ -297,7 +314,39 @@ namespace auto_salon.Presentation.FVozilo
             DialogResult dialogResult = form.ShowDialog();
         }
 
-        #endregion
+        private void lvVozila_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvVozila.SelectedItems.Count == 0)
+                return;
 
+            string selectedBrojSasije = lvVozila.SelectedItems[0].SubItems[2].Text;
+            var selectedVozilo = _vozila.FirstOrDefault(v => v.BrojSasije == selectedBrojSasije);
+
+            if (selectedVozilo == null || selectedVozilo.JeProdato)
+            {
+                ResetLabels();
+                lblJeProdato.Text = "Vozilo je prodato.";
+                lblJeProdato.ForeColor = Color.Red;
+                return;
+            }
+
+            var result = _salonService.GetById(selectedVozilo.IdSalona);
+
+            if (result.IsSuccess)
+            {
+                var salon = result.Data!;
+                lblID.Text = salon.ID.ToString();
+                lblNaziv.Text = salon.Naziv;
+                lblDrzava.Text = salon.Drzava;
+                lblGrad.Text = salon.Grad;
+                lblRadnoVreme.Text = salon.RadnoVreme;
+                lblKontaktTelefon.Text = salon.KontaktTelefon;
+                lblBrZaposlenih.Text = salon.BrojZaposlenih.ToString();
+                lblJeProdato.Text = "Vozilo je dostupno u ovom salonu.";
+                lblJeProdato.ForeColor = Color.Green;
+            }
+        }
+
+        #endregion
     }
 }
