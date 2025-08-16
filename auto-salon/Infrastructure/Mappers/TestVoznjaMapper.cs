@@ -18,7 +18,7 @@ namespace auto_salon.Infrastructure.Mappers
 
             References(x => x.Vozilo, "BROJ_SASIJE");
             References(x => x.Kupac, "ID_KUPCA");
-            References(x => x.Prodavac, "JMBG_ZAPOSLENOG");
+            References(x => x.Zaposleni, "JMBG_ZAPOSLENOG");
         }
     }
 }

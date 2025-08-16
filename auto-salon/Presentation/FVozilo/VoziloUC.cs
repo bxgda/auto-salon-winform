@@ -266,7 +266,7 @@ namespace auto_salon.Presentation.FVozilo
         {
             if (lvVozila.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Molimo izaberite vozilo koje želite da izmenite.",
+                MessageBox.Show("Molimo izaberite vozilo za koje želite da dodate test vožnju.",
                     "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }

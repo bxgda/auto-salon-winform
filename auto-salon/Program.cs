@@ -41,6 +41,7 @@ namespace auto_salon
             services.AddTransient<IKupacService, KupacService>();
             services.AddTransient<IPromotivnaPonudaService, PromotivnaPonudaService>();
             services.AddTransient<IJeOcenioService, JeOcenioService>();
+            services.AddTransient<ITestVoznjaService, TestVoznjaService>();
 
             // Forme i UserControl-i
             services.AddTransient<MainForm>();
