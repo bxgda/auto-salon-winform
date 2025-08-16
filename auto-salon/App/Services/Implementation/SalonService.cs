@@ -3,6 +3,7 @@ using auto_salon.App.Extensions;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Entities;
+using AutoSalonMac.App.Extensions;
 using NHibernate.Util;
 using static System.Windows.Forms.AxHost;
 
@@ -262,6 +263,42 @@ namespace auto_salon.App.Services.Implementation
             catch (Exception ex)
             {
                 return ServiceResult<IList<SalonDTO>>.Failure($"Greška pri dohvatanju salona: {ex.Message}");
+            }
+            finally
+            {
+                session?.Close();
+            }
+        }
+
+        public ServiceResult<IList<ZaposleniDTO>> GetZaposleniSalona(int salonId)
+        {
+            var session = _dataLayer.OpenSession();
+            
+            IList<ZaposleniDTO> result = new List<ZaposleniDTO>();
+
+            try
+            {
+                if (session == null)
+                {
+                    return ServiceResult<IList<ZaposleniDTO>>.Failure("Nema konekcije sa bazom podataka.");
+                }
+            
+                Salon salon = session.Load<Salon>(salonId);
+                if (salon == null)
+                {
+                    return ServiceResult<IList<ZaposleniDTO>>.Failure("Salon sa datim ID-jem ne postoji.");
+                }
+                
+                foreach (var zaposleni in salon.Zaposleni)
+                {
+                    result.Add(zaposleni.ToZaposleniDTO());
+                }
+                
+                return ServiceResult<IList<ZaposleniDTO>>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<IList<ZaposleniDTO>>.Failure($"Greška pri dohvatanju zaposlenih salona: {ex.Message}");
             }
             finally
             {

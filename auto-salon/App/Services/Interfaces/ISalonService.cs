@@ -21,5 +21,7 @@ namespace auto_salon.App.Services.Interfaces
         ServiceResult<IList<SalonDTO>> GetSaloniInNudi(int proizvodjacId);
 
         ServiceResult<bool> AddSaloniToNudi(int proizvodjacId, IList<int> salonIds);
+
+        ServiceResult<IList<ZaposleniDTO>> GetZaposleniSalona(int salonId);
     }
 }

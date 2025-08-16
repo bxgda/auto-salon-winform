@@ -30,6 +30,7 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
+            btnTestVoznja = new Button();
             btnEdit = new Button();
             btnProdaj = new Button();
             btnServisnaIstorija = new Button();
@@ -62,6 +63,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnTestVoznja);
             panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnProdaj);
             panel1.Controls.Add(btnServisnaIstorija);
@@ -71,6 +73,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1025, 86);
             panel1.TabIndex = 1;
+            // 
+            // btnTestVoznja
+            // 
+            btnTestVoznja.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnTestVoznja.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTestVoznja.Image = Properties.Resources.steering_wheel;
+            btnTestVoznja.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTestVoznja.Location = new Point(677, 46);
+            btnTestVoznja.Name = "btnTestVoznja";
+            btnTestVoznja.Padding = new Padding(10, 0, 0, 0);
+            btnTestVoznja.Size = new Size(183, 37);
+            btnTestVoznja.TabIndex = 7;
+            btnTestVoznja.Text = "Dodaj test vožnju";
+            btnTestVoznja.UseVisualStyleBackColor = true;
+            btnTestVoznja.Click += btnTestVoznja_Click;
             // 
             // btnEdit
             // 
@@ -200,5 +217,6 @@
         private ComboBox cbFilter;
         private Button btnProdaj;
         private Button btnEdit;
+        private Button btnTestVoznja;
     }
 }

@@ -13,7 +13,9 @@ namespace auto_salon.App.DTOs
         public required string Model { get; set; }
         
         public string? NazivProizvodjaca { get; set; }
-        
+
+        public int IdSalona { get; set; }
+
         public string? NazivSalona { get; set; }
 
         public required string Boja { get; set; }
