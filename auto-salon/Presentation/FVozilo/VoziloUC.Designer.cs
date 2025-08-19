@@ -96,6 +96,7 @@
             // btnTestVoznja
             // 
             btnTestVoznja.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnTestVoznja.BackColor = Color.FromArgb(255, 192, 255);
             btnTestVoznja.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnTestVoznja.Image = Properties.Resources.steering_wheel;
             btnTestVoznja.ImageAlign = ContentAlignment.MiddleLeft;
@@ -105,12 +106,13 @@
             btnTestVoznja.Size = new Size(169, 37);
             btnTestVoznja.TabIndex = 7;
             btnTestVoznja.Text = "Dodaj test vožnju";
-            btnTestVoznja.UseVisualStyleBackColor = true;
+            btnTestVoznja.UseVisualStyleBackColor = false;
             btnTestVoznja.Click += btnTestVoznja_Click;
             // 
             // btnEdit
             // 
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.BackColor = Color.Khaki;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -120,12 +122,13 @@
             btnEdit.Size = new Size(115, 37);
             btnEdit.TabIndex = 6;
             btnEdit.Text = "Izmeni";
-            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
             // 
             // btnProdaj
             // 
             btnProdaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnProdaj.BackColor = Color.LightSkyBlue;
             btnProdaj.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnProdaj.Image = Properties.Resources.shopping_cart;
             btnProdaj.ImageAlign = ContentAlignment.MiddleLeft;
@@ -135,12 +138,13 @@
             btnProdaj.Size = new Size(112, 37);
             btnProdaj.TabIndex = 5;
             btnProdaj.Text = "Prodaj";
-            btnProdaj.UseVisualStyleBackColor = true;
+            btnProdaj.UseVisualStyleBackColor = false;
             btnProdaj.Click += btnProdaj_Click;
             // 
             // btnServisnaIstorija
             // 
             btnServisnaIstorija.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnServisnaIstorija.BackColor = Color.SandyBrown;
             btnServisnaIstorija.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnServisnaIstorija.Image = Properties.Resources.service;
             btnServisnaIstorija.ImageAlign = ContentAlignment.MiddleLeft;
@@ -150,12 +154,13 @@
             btnServisnaIstorija.Size = new Size(165, 37);
             btnServisnaIstorija.TabIndex = 4;
             btnServisnaIstorija.Text = "Servisna istorija";
-            btnServisnaIstorija.UseVisualStyleBackColor = true;
+            btnServisnaIstorija.UseVisualStyleBackColor = false;
             btnServisnaIstorija.Click += btnServisnaIstorija_Click;
             // 
             // btnDelete
             // 
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDelete.BackColor = Color.FromArgb(255, 128, 128);
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.Image = Properties.Resources.trash;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
@@ -165,7 +170,7 @@
             btnDelete.Size = new Size(115, 37);
             btnDelete.TabIndex = 3;
             btnDelete.Text = "Obriši";
-            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // lvVozila

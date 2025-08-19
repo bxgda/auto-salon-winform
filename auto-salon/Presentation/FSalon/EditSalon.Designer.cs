@@ -129,7 +129,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(212, 129);
             label7.Name = "label7";
-            label7.Size = new Size(24, 15);
+            label7.Size = new Size(23, 15);
             label7.TabIndex = 15;
             label7.Text = "Tip";
             label7.TextAlign = ContentAlignment.MiddleLeft;
@@ -213,6 +213,7 @@
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.Khaki;
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.pencil;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -222,7 +223,7 @@
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 3;
             btnSubmit.Text = "Izmeni";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // EditSalon

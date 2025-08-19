@@ -45,6 +45,7 @@
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.Khaki;
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.pencil;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -56,7 +57,7 @@
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 5;
             btnSubmit.Text = "Izmeni";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // label5

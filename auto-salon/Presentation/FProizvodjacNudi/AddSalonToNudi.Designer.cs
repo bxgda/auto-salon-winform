@@ -32,9 +32,9 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             lvSaloni = new ListView();
             panel1 = new Panel();
+            label2 = new Label();
             label1 = new Label();
             btnPotvrdi = new Button();
-            label2 = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -77,6 +77,16 @@
             panel1.Size = new Size(794, 64);
             panel1.TabIndex = 2;
             // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Location = new Point(438, 24);
+            label2.Name = "label2";
+            label2.Size = new Size(356, 15);
+            label2.TabIndex = 9;
+            label2.Text = "Izabrani saloni će nakon potvrde moći da nude vozila proizvođača.";
+            // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -90,6 +100,7 @@
             // btnPotvrdi
             // 
             btnPotvrdi.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnPotvrdi.BackColor = Color.PaleGreen;
             btnPotvrdi.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPotvrdi.Image = Properties.Resources.check_circle;
             btnPotvrdi.ImageAlign = ContentAlignment.MiddleLeft;
@@ -99,18 +110,8 @@
             btnPotvrdi.Size = new Size(179, 37);
             btnPotvrdi.TabIndex = 7;
             btnPotvrdi.Text = "Potvrdi izabrane";
-            btnPotvrdi.UseVisualStyleBackColor = true;
+            btnPotvrdi.UseVisualStyleBackColor = false;
             btnPotvrdi.Click += btnPotvrdi_Click;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Location = new Point(438, 24);
-            label2.Name = "label2";
-            label2.Size = new Size(356, 15);
-            label2.TabIndex = 9;
-            label2.Text = "Izabrani saloni će nakon potvrde moći da nude vozila proizvođača.";
             // 
             // AddSalonToNudi
             // 

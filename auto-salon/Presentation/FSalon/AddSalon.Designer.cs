@@ -153,6 +153,7 @@
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.PaleGreen;
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.plus;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -162,7 +163,7 @@
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 1;
             btnSubmit.Text = "Dodaj";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // groupBox1

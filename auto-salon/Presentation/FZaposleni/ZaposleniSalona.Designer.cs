@@ -68,6 +68,7 @@
             // btnEdit
             // 
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.BackColor = Color.Khaki;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -77,12 +78,13 @@
             btnEdit.Size = new Size(88, 37);
             btnEdit.TabIndex = 4;
             btnEdit.Text = "Izmeni";
-            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
             // 
             // btnAdd
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAdd.BackColor = Color.PaleGreen;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAdd.Image = Properties.Resources.plus;
             btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
@@ -92,12 +94,13 @@
             btnAdd.Size = new Size(88, 37);
             btnAdd.TabIndex = 3;
             btnAdd.Text = "Dodaj";
-            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
             // btnDelete
             // 
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDelete.BackColor = Color.FromArgb(255, 128, 128);
             btnDelete.Enabled = false;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.Image = Properties.Resources.trash;
@@ -108,7 +111,7 @@
             btnDelete.Size = new Size(88, 37);
             btnDelete.TabIndex = 2;
             btnDelete.Text = "Obriši";
-            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // lvZaposleni

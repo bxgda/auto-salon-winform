@@ -77,6 +77,7 @@
             // btnEdit
             // 
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.BackColor = Color.Khaki;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -86,12 +87,13 @@
             btnEdit.Size = new Size(108, 37);
             btnEdit.TabIndex = 8;
             btnEdit.Text = "Izmeni";
-            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
             // 
             // btnAdd
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAdd.BackColor = Color.PaleGreen;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAdd.Image = Properties.Resources.plus;
             btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
@@ -101,7 +103,7 @@
             btnAdd.Size = new Size(103, 37);
             btnAdd.TabIndex = 3;
             btnAdd.Text = "Dodaj";
-            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
             // tcKupci
@@ -129,6 +131,7 @@
             // 
             // lvFizickaLica
             // 
+            lvFizickaLica.BackColor = SystemColors.Window;
             lvFizickaLica.Dock = DockStyle.Fill;
             lvFizickaLica.FullRowSelect = true;
             lvFizickaLica.GridLines = true;
@@ -153,6 +156,7 @@
             // 
             // lvPravnaLica
             // 
+            lvPravnaLica.BackColor = SystemColors.Window;
             lvPravnaLica.Dock = DockStyle.Fill;
             lvPravnaLica.FullRowSelect = true;
             lvPravnaLica.GridLines = true;

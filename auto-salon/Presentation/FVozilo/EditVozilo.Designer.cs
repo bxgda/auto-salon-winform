@@ -168,6 +168,7 @@
             // 
             // tbxBrSasije
             // 
+            tbxBrSasije.BackColor = Color.White;
             tbxBrSasije.Enabled = false;
             tbxBrSasije.Location = new Point(17, 49);
             tbxBrSasije.MaxLength = 17;
@@ -332,6 +333,7 @@
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.Khaki;
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.pencil;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -341,7 +343,7 @@
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 1;
             btnSubmit.Text = "Izmeni";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // EditVozilo

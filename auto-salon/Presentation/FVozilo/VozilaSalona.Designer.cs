@@ -84,6 +84,7 @@
             // btnEdit
             // 
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.BackColor = Color.Khaki;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -93,12 +94,13 @@
             btnEdit.Size = new Size(115, 37);
             btnEdit.TabIndex = 7;
             btnEdit.Text = "Izmeni";
-            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
             // 
             // btnServisnaIstorija
             // 
             btnServisnaIstorija.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnServisnaIstorija.BackColor = Color.SandyBrown;
             btnServisnaIstorija.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnServisnaIstorija.Image = Properties.Resources.service;
             btnServisnaIstorija.ImageAlign = ContentAlignment.MiddleLeft;
@@ -108,12 +110,13 @@
             btnServisnaIstorija.Size = new Size(145, 37);
             btnServisnaIstorija.TabIndex = 6;
             btnServisnaIstorija.Text = "  Servisna istorija";
-            btnServisnaIstorija.UseVisualStyleBackColor = true;
+            btnServisnaIstorija.UseVisualStyleBackColor = false;
             btnServisnaIstorija.Click += btnServisnaIstorija_Click;
             // 
             // btnProdaj
             // 
             btnProdaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnProdaj.BackColor = Color.LightSkyBlue;
             btnProdaj.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnProdaj.Image = Properties.Resources.shopping_cart;
             btnProdaj.ImageAlign = ContentAlignment.MiddleLeft;
@@ -123,12 +126,13 @@
             btnProdaj.Size = new Size(130, 37);
             btnProdaj.TabIndex = 5;
             btnProdaj.Text = "Prodaj";
-            btnProdaj.UseVisualStyleBackColor = true;
+            btnProdaj.UseVisualStyleBackColor = false;
             btnProdaj.Click += btnProdaj_Click;
             // 
             // btnAdd
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAdd.BackColor = Color.PaleGreen;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAdd.Image = Properties.Resources.plus;
             btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
@@ -138,12 +142,13 @@
             btnAdd.Size = new Size(104, 37);
             btnAdd.TabIndex = 4;
             btnAdd.Text = "Dodaj";
-            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
             // btnDelete
             // 
             btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDelete.BackColor = Color.FromArgb(255, 128, 128);
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.Image = Properties.Resources.trash;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
@@ -153,7 +158,7 @@
             btnDelete.Size = new Size(111, 37);
             btnDelete.TabIndex = 3;
             btnDelete.Text = "Obriši";
-            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // VozilaSalona

@@ -69,6 +69,7 @@
             // 
             // tbxBrSasije
             // 
+            tbxBrSasije.BackColor = Color.White;
             tbxBrSasije.Location = new Point(17, 49);
             tbxBrSasije.MaxLength = 17;
             tbxBrSasije.Name = "tbxBrSasije";
@@ -264,6 +265,7 @@
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.PaleGreen;
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.plus;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -273,7 +275,7 @@
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 2;
             btnSubmit.Text = "Dodaj";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // gbStanje

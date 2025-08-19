@@ -162,6 +162,7 @@
             // 
             // panel2
             // 
+            panel2.BackColor = SystemColors.Control;
             panel2.Controls.Add(btnSubmit);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 400);
@@ -172,6 +173,7 @@
             // btnSubmit
             // 
             btnSubmit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSubmit.BackColor = Color.PaleGreen;
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.plus;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -181,7 +183,7 @@
             btnSubmit.Size = new Size(184, 39);
             btnSubmit.TabIndex = 13;
             btnSubmit.Text = "Dodaj ocenu";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // panel3

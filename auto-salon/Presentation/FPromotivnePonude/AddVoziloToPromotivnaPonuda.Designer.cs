@@ -100,6 +100,7 @@
             // btnPotvrdi
             // 
             btnPotvrdi.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnPotvrdi.BackColor = Color.PaleGreen;
             btnPotvrdi.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPotvrdi.Image = Properties.Resources.check_circle;
             btnPotvrdi.ImageAlign = ContentAlignment.MiddleLeft;
@@ -109,7 +110,7 @@
             btnPotvrdi.Size = new Size(180, 37);
             btnPotvrdi.TabIndex = 6;
             btnPotvrdi.Text = "Potvrdi izabrane";
-            btnPotvrdi.UseVisualStyleBackColor = true;
+            btnPotvrdi.UseVisualStyleBackColor = false;
             btnPotvrdi.Click += btnPotvrdi_Click;
             // 
             // AddVoziloToPromotivnaPonuda

@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditZaposleni));
             btnSubmit = new Button();
             groupBox2 = new GroupBox();
+            cbSaloni = new ComboBox();
+            label12 = new Label();
             label10 = new Label();
             cbxStatus = new ComboBox();
             label9 = new Label();
@@ -52,14 +54,13 @@
             label2 = new Label();
             tbxIme = new TextBox();
             label1 = new Label();
-            cbSaloni = new ComboBox();
-            label12 = new Label();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.Khaki;
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.pencil;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -69,7 +70,7 @@
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 5;
             btnSubmit.Text = "Izmeni";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // groupBox2
@@ -90,6 +91,25 @@
             groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
             groupBox2.Text = "Podaci o poziciji";
+            // 
+            // cbSaloni
+            // 
+            cbSaloni.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbSaloni.FormattingEnabled = true;
+            cbSaloni.Items.AddRange(new object[] { "2", "3", "4", "5" });
+            cbSaloni.Location = new Point(18, 258);
+            cbSaloni.Name = "cbSaloni";
+            cbSaloni.Size = new Size(159, 23);
+            cbSaloni.TabIndex = 31;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(18, 240);
+            label12.Name = "label12";
+            label12.Size = new Size(105, 15);
+            label12.TabIndex = 32;
+            label12.Text = "Salon u kome radi:";
             // 
             // label10
             // 
@@ -281,25 +301,6 @@
             label1.Size = new Size(35, 15);
             label1.TabIndex = 0;
             label1.Text = "Ime *";
-            // 
-            // cbSaloni
-            // 
-            cbSaloni.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbSaloni.FormattingEnabled = true;
-            cbSaloni.Items.AddRange(new object[] { "2", "3", "4", "5" });
-            cbSaloni.Location = new Point(18, 258);
-            cbSaloni.Name = "cbSaloni";
-            cbSaloni.Size = new Size(159, 23);
-            cbSaloni.TabIndex = 31;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(18, 240);
-            label12.Name = "label12";
-            label12.Size = new Size(105, 15);
-            label12.TabIndex = 32;
-            label12.Text = "Salon u kome radi:";
             // 
             // EditZaposleni
             // 

@@ -111,6 +111,7 @@
             // btnSubmit
             // 
             btnSubmit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnSubmit.BackColor = Color.PaleGreen;
             btnSubmit.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSubmit.Image = Properties.Resources.check_circle;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -120,7 +121,7 @@
             btnSubmit.Size = new Size(252, 46);
             btnSubmit.TabIndex = 7;
             btnSubmit.Text = "Kreiraj ugovor";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // tblMain
@@ -275,13 +276,17 @@
             // btnDodajKupca
             // 
             btnDodajKupca.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnDodajKupca.BackColor = Color.PaleGreen;
             btnDodajKupca.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDodajKupca.Location = new Point(494, 316);
+            btnDodajKupca.Image = Properties.Resources.plus;
+            btnDodajKupca.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDodajKupca.Location = new Point(469, 316);
             btnDodajKupca.Name = "btnDodajKupca";
-            btnDodajKupca.Size = new Size(156, 37);
+            btnDodajKupca.Padding = new Padding(10, 0, 0, 0);
+            btnDodajKupca.Size = new Size(181, 37);
             btnDodajKupca.TabIndex = 6;
-            btnDodajKupca.Text = "Dodaj kupca";
-            btnDodajKupca.UseVisualStyleBackColor = true;
+            btnDodajKupca.Text = "Dodaj novog kupca";
+            btnDodajKupca.UseVisualStyleBackColor = false;
             btnDodajKupca.Click += btnDodajKupca_Click;
             // 
             // groupBox1

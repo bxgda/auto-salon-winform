@@ -58,6 +58,7 @@
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.Khaki;
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.pencil;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -67,7 +68,7 @@
             btnSubmit.Size = new Size(182, 39);
             btnSubmit.TabIndex = 6;
             btnSubmit.Text = "Izmeni";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // lblProdavac

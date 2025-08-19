@@ -126,6 +126,7 @@
             // 
             // tbxJmbg
             // 
+            tbxJmbg.BackColor = Color.FromArgb(255, 192, 192);
             tbxJmbg.Location = new Point(20, 153);
             tbxJmbg.MaxLength = 13;
             tbxJmbg.Name = "tbxJmbg";
@@ -257,6 +258,7 @@
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.PaleGreen;
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.plus;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -266,7 +268,7 @@
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 2;
             btnSubmit.Text = "Dodaj";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // AddZaposleni

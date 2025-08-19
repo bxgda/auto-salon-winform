@@ -52,6 +52,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = SystemColors.Control;
             groupBox1.Controls.Add(rbPravnoLice);
             groupBox1.Controls.Add(rbFizickoLice);
             groupBox1.Location = new Point(12, 12);
@@ -178,6 +179,7 @@
             // 
             // tbx1Kupac
             // 
+            tbx1Kupac.BackColor = Color.White;
             tbx1Kupac.Location = new Point(17, 48);
             tbx1Kupac.MaxLength = 13;
             tbx1Kupac.Name = "tbx1Kupac";
@@ -204,6 +206,7 @@
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.PaleGreen;
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.plus;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -213,13 +216,14 @@
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 2;
             btnSubmit.Text = "Dodaj";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // AddKupac
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(494, 353);
             Controls.Add(btnSubmit);
             Controls.Add(groupBox2);

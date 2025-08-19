@@ -28,37 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label9 = new Label();
             SuspendLayout();
-            // 
-            // label9
-            // 
-            label9.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(-2, 650);
-            label9.Name = "label9";
-            label9.Size = new Size(310, 21);
-            label9.TabIndex = 14;
-            label9.Text = "Elektronski fakultet Univerziteta u Nišu";
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
-            BackgroundImage = Properties.Resources.autoSalonBg;
+            BackColor = SystemColors.GradientActiveCaption;
+            BackgroundImage = Properties.Resources.pozadinaAutoSalon;
             BackgroundImageLayout = ImageLayout.Zoom;
             BorderStyle = BorderStyle.Fixed3D;
-            Controls.Add(label9);
             DoubleBuffered = true;
             Name = "Home";
             Size = new Size(843, 671);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-        private Label label9;
     }
 }

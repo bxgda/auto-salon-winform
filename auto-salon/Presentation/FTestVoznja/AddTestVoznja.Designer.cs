@@ -242,13 +242,17 @@
             // btnDodajKupca
             // 
             btnDodajKupca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDodajKupca.BackColor = Color.PaleGreen;
             btnDodajKupca.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDodajKupca.Location = new Point(601, 311);
+            btnDodajKupca.Image = Properties.Resources.plus;
+            btnDodajKupca.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDodajKupca.Location = new Point(580, 311);
             btnDodajKupca.Name = "btnDodajKupca";
-            btnDodajKupca.Size = new Size(156, 37);
+            btnDodajKupca.Padding = new Padding(10, 0, 0, 0);
+            btnDodajKupca.Size = new Size(177, 37);
             btnDodajKupca.TabIndex = 6;
-            btnDodajKupca.Text = "Dodaj kupca";
-            btnDodajKupca.UseVisualStyleBackColor = true;
+            btnDodajKupca.Text = "Dodaj novog kupca";
+            btnDodajKupca.UseVisualStyleBackColor = false;
             btnDodajKupca.Click += btnDodajKupca_Click;
             // 
             // groupBox1
@@ -366,6 +370,7 @@
             // btnSubmit
             // 
             btnSubmit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnSubmit.BackColor = Color.PaleGreen;
             btnSubmit.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSubmit.Image = Properties.Resources.plus;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -374,8 +379,8 @@
             btnSubmit.Padding = new Padding(10, 0, 0, 0);
             btnSubmit.Size = new Size(226, 46);
             btnSubmit.TabIndex = 7;
-            btnSubmit.Text = "Dodaj";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Text = "Dodaj test vožnju";
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // AddTestVoznja

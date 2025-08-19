@@ -111,6 +111,7 @@
             // 
             // btnEdit
             // 
+            btnEdit.BackColor = Color.FromArgb(255, 128, 128);
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -120,12 +121,13 @@
             btnEdit.Size = new Size(102, 37);
             btnEdit.TabIndex = 11;
             btnEdit.Text = "Izmeni";
-            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
             // 
             // btnDodajSalonUPonudu
             // 
             btnDodajSalonUPonudu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDodajSalonUPonudu.BackColor = SystemColors.Info;
             btnDodajSalonUPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDodajSalonUPonudu.Image = Properties.Resources.plus;
             btnDodajSalonUPonudu.ImageAlign = ContentAlignment.MiddleLeft;
@@ -136,11 +138,12 @@
             btnDodajSalonUPonudu.TabIndex = 10;
             btnDodajSalonUPonudu.Text = "Ponudi salonima";
             toolTip1.SetToolTip(btnDodajSalonUPonudu, "Odaberite salone koji će nuditi vozila odabranog proizvođača");
-            btnDodajSalonUPonudu.UseVisualStyleBackColor = true;
+            btnDodajSalonUPonudu.UseVisualStyleBackColor = false;
             btnDodajSalonUPonudu.Click += btnDodajSalonUPonudu_Click;
             // 
             // btnDelete
             // 
+            btnDelete.BackColor = Color.Khaki;
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.Image = Properties.Resources.trash;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
@@ -150,11 +153,12 @@
             btnDelete.Size = new Size(108, 37);
             btnDelete.TabIndex = 9;
             btnDelete.Text = "Obriši";
-            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // btnAdd
             // 
+            btnAdd.BackColor = Color.PaleGreen;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAdd.Image = Properties.Resources.plus;
             btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
@@ -164,7 +168,7 @@
             btnAdd.Size = new Size(102, 37);
             btnAdd.TabIndex = 10;
             btnAdd.Text = "Dodaj";
-            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
             // label2
@@ -206,6 +210,7 @@
             // btnIzbaciSalonIzPonudu
             // 
             btnIzbaciSalonIzPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnIzbaciSalonIzPonudu.BackColor = Color.FromArgb(255, 192, 192);
             btnIzbaciSalonIzPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnIzbaciSalonIzPonudu.Image = Properties.Resources.minus;
             btnIzbaciSalonIzPonudu.ImageAlign = ContentAlignment.MiddleLeft;
@@ -216,7 +221,7 @@
             btnIzbaciSalonIzPonudu.TabIndex = 11;
             btnIzbaciSalonIzPonudu.Text = "Skloni salon iz ponude";
             toolTip2.SetToolTip(btnIzbaciSalonIzPonudu, "Izbacivanje salona iz ponude odabranog proizvođača");
-            btnIzbaciSalonIzPonudu.UseVisualStyleBackColor = true;
+            btnIzbaciSalonIzPonudu.UseVisualStyleBackColor = false;
             btnIzbaciSalonIzPonudu.Click += btnIzbaciSalonIzPonudu_Click;
             // 
             // ProizvodjacNudiUC

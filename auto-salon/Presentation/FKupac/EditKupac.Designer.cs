@@ -48,6 +48,7 @@
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.Khaki;
             btnSubmit.Font = new Font("Segoe UI", 11F);
             btnSubmit.Image = Properties.Resources.pencil;
             btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -57,7 +58,7 @@
             btnSubmit.Size = new Size(145, 39);
             btnSubmit.TabIndex = 5;
             btnSubmit.Text = "Izmeni";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // groupBox2
@@ -154,6 +155,7 @@
             // 
             // tbx1Kupac
             // 
+            tbx1Kupac.BackColor = Color.White;
             tbx1Kupac.Enabled = false;
             tbx1Kupac.Location = new Point(17, 48);
             tbx1Kupac.MaxLength = 13;

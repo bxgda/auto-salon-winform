@@ -35,6 +35,7 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             lvZaposleni = new ListView();
             groupBox1 = new GroupBox();
+            lblStatus = new Label();
             lblBrZaposlenih = new Label();
             lblKontaktTelefon = new Label();
             lblRadnoVreme = new Label();
@@ -53,7 +54,6 @@
             label1 = new Label();
             cbFilter = new ComboBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            lblStatus = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -93,6 +93,7 @@
             // btnOceni
             // 
             btnOceni.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnOceni.BackColor = Color.Yellow;
             btnOceni.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnOceni.Image = Properties.Resources.star;
             btnOceni.ImageAlign = ContentAlignment.MiddleLeft;
@@ -102,12 +103,13 @@
             btnOceni.Size = new Size(105, 37);
             btnOceni.TabIndex = 8;
             btnOceni.Text = "Oceni";
-            btnOceni.UseVisualStyleBackColor = true;
+            btnOceni.UseVisualStyleBackColor = false;
             btnOceni.Click += btnOceni_Click;
             // 
             // btnEdit
             // 
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.BackColor = Color.Khaki;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -117,7 +119,7 @@
             btnEdit.Size = new Size(105, 37);
             btnEdit.TabIndex = 7;
             btnEdit.Text = "Izmeni";
-            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
             // 
             // tableLayoutPanel2
@@ -172,6 +174,14 @@
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "# Salon u kome radi";
+            // 
+            // lblStatus
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new Point(6, 360);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(0, 15);
+            lblStatus.TabIndex = 16;
             // 
             // lblBrZaposlenih
             // 
@@ -328,14 +338,6 @@
             cbFilter.Size = new Size(146, 23);
             cbFilter.TabIndex = 2;
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
-            // 
-            // lblStatus
-            // 
-            lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(6, 360);
-            lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(0, 15);
-            lblStatus.TabIndex = 16;
             // 
             // ZaposleniUC
             // 

@@ -112,6 +112,7 @@
             // btnIzbaciVoziloIzPonudu
             // 
             btnIzbaciVoziloIzPonudu.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnIzbaciVoziloIzPonudu.BackColor = Color.FromArgb(255, 192, 192);
             btnIzbaciVoziloIzPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnIzbaciVoziloIzPonudu.Image = Properties.Resources.minus;
             btnIzbaciVoziloIzPonudu.ImageAlign = ContentAlignment.MiddleLeft;
@@ -121,7 +122,7 @@
             btnIzbaciVoziloIzPonudu.Size = new Size(215, 37);
             btnIzbaciVoziloIzPonudu.TabIndex = 10;
             btnIzbaciVoziloIzPonudu.Text = "Izbaci vozilo iz ponude";
-            btnIzbaciVoziloIzPonudu.UseVisualStyleBackColor = true;
+            btnIzbaciVoziloIzPonudu.UseVisualStyleBackColor = false;
             btnIzbaciVoziloIzPonudu.Click += btnIzbaciVoziloIzPonudu_Click;
             // 
             // panel2
@@ -149,6 +150,7 @@
             // btnDodajVoziloUPonudu
             // 
             btnDodajVoziloUPonudu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDodajVoziloUPonudu.BackColor = SystemColors.Info;
             btnDodajVoziloUPonudu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDodajVoziloUPonudu.Image = Properties.Resources.plus;
             btnDodajVoziloUPonudu.ImageAlign = ContentAlignment.MiddleLeft;
@@ -158,39 +160,42 @@
             btnDodajVoziloUPonudu.Size = new Size(215, 37);
             btnDodajVoziloUPonudu.TabIndex = 9;
             btnDodajVoziloUPonudu.Text = "Dodaj vozilo u ponudu";
-            btnDodajVoziloUPonudu.UseVisualStyleBackColor = true;
+            btnDodajVoziloUPonudu.UseVisualStyleBackColor = false;
             btnDodajVoziloUPonudu.Click += btnDodajVoziloUPonudu_Click;
             // 
             // btnEdit
             // 
+            btnEdit.BackColor = Color.Khaki;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEdit.Location = new Point(225, 3);
+            btnEdit.Location = new Point(111, 3);
             btnEdit.Name = "btnEdit";
             btnEdit.Padding = new Padding(10, 0, 0, 0);
             btnEdit.Size = new Size(102, 37);
             btnEdit.TabIndex = 8;
             btnEdit.Text = "Izmeni";
-            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 
+            btnDelete.BackColor = Color.FromArgb(255, 128, 128);
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.Image = Properties.Resources.trash;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(111, 3);
+            btnDelete.Location = new Point(219, 3);
             btnDelete.Name = "btnDelete";
             btnDelete.Padding = new Padding(10, 0, 0, 0);
             btnDelete.Size = new Size(108, 37);
             btnDelete.TabIndex = 6;
             btnDelete.Text = "Obriši";
-            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // btnAdd
             // 
+            btnAdd.BackColor = Color.PaleGreen;
             btnAdd.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAdd.Image = Properties.Resources.plus;
             btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
@@ -200,7 +205,7 @@
             btnAdd.Size = new Size(102, 37);
             btnAdd.TabIndex = 7;
             btnAdd.Text = "Dodaj";
-            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
             // PromotivnaPonudaUC
