@@ -93,6 +93,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Image = Properties.Resources.mcqueen;
             pictureBox1.Location = new Point(38, 746);
             pictureBox1.Name = "pictureBox1";

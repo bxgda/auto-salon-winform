@@ -244,6 +244,7 @@
             // lblJeProdato
             // 
             lblJeProdato.AutoSize = true;
+            lblJeProdato.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblJeProdato.Location = new Point(6, 352);
             lblJeProdato.Name = "lblJeProdato";
             lblJeProdato.Size = new Size(0, 15);
