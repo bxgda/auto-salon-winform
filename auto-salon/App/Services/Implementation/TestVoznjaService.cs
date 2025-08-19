@@ -105,20 +105,14 @@ namespace auto_salon.App.Services.Implementation
         {
             var session = _dataLayer.OpenSession();
 
-            IList<TestVoznjaTableDTO> result = new List<TestVoznjaTableDTO>();
-
             try
             {
                 if (session == null)
-                {
                     return ServiceResult<IList<TestVoznjaTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
-                }
-
-                IEnumerable<TestVoznja> sveTestVoznje = session.Query<TestVoznja>();
-                foreach (var testVoznja in sveTestVoznje)
-                {
-                    result.Add(testVoznja.ToTestVoznjaTableDTO());
-                }
+                
+                var result = session.Query<TestVoznja>()
+                                    .Select(x => x.ToTestVoznjaTableDTO())
+                                    .ToList();
 
                 return ServiceResult<IList<TestVoznjaTableDTO>>.Success(result);
             }

@@ -4,6 +4,7 @@ using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Entities;
 using AutoSalonMac.App.Extensions;
+using NHibernate.Linq;
 
 namespace auto_salon.App.Services.Implementation
 {
@@ -138,8 +139,7 @@ namespace auto_salon.App.Services.Implementation
         public ServiceResult<IList<VoziloTableDTO>> GetAll()
         {
             var session = _dataLayer.OpenSession();
-            IList<VoziloTableDTO> result = new List<VoziloTableDTO>();
-
+            
             try
             {
                 if (session == null)
@@ -147,13 +147,14 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<IList<VoziloTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                IEnumerable<Vozilo> svaVozila = session.Query<Vozilo>();
-                foreach (var vozilo in svaVozila)
-                {
-                    result.Add(vozilo.ToVoziloTableDTO());
-                }
+                var vozila = session.Query<Vozilo>()
+                    .Fetch(v => v.Proizvodjac) // svakako u DTO treba da bude Proizvodjac pa ga fetchuj u jedan upit umesto u svaki poseban
+                    .Fetch(v => v.Salon)
+                    .Fetch(v => v.Ugovor)
+                    .Select(v => v.ToVoziloTableDTO())
+                    .ToList();
 
-                return ServiceResult<IList<VoziloTableDTO>>.Success(result);
+                return ServiceResult<IList<VoziloTableDTO>>.Success(vozila);
             }
             catch (Exception ex)
             {

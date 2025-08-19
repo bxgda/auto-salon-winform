@@ -4,6 +4,7 @@ using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Entities;
 using AutoSalonMac.App.Extensions;
+using NHibernate.Linq;
 
 namespace auto_salon.App.Services.Implementation
 {
@@ -71,8 +72,6 @@ namespace auto_salon.App.Services.Implementation
         {
             var session = _dataLayer.OpenSession();
 
-            IList<KupacDTO> result = new List<KupacDTO>();
-
             try
             {
                 if (session == null)
@@ -80,13 +79,13 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<IList<KupacDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                IEnumerable<Kupac> sviKupci = session.Query<Kupac>();
-                foreach (var kupac in sviKupci)
-                {
-                    result.Add(kupac.ToKupacDTO());
-                }
+                var kupci = session.Query<Kupac>()
+                    .Fetch(k => k.FizickoLice)
+                    .Fetch(k => k.PravnoLice)
+                    .Select(k => k.ToKupacDTO())
+                    .ToList();
 
-                return ServiceResult<IList<KupacDTO>>.Success(result);
+                return ServiceResult<IList<KupacDTO>>.Success(kupci);
             }
             catch (Exception ex)
             {

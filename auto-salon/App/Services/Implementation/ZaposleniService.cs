@@ -2,6 +2,7 @@
 using auto_salon.Data;
 using auto_salon.Entities;
 using AutoSalonMac.App.Extensions;
+using NHibernate.Linq;
 
 namespace auto_salon.App.Services.Implementation
 {
@@ -17,20 +18,17 @@ namespace auto_salon.App.Services.Implementation
         public ServiceResult<IList<ZaposleniDTO>> GetAll()
         {
             var session = _dataLayer.OpenSession();
-            IList<ZaposleniDTO> result = new List<ZaposleniDTO>();
 
             try
             {
                 if (session == null)
-                {
                     return ServiceResult<IList<ZaposleniDTO>>.Failure("Nema konekcije sa bazom podataka.");
-                }
 
-                IEnumerable<Zaposleni> sviZaposleni = session.Query<Zaposleni>();
-                foreach (var zaposleni in sviZaposleni)
-                {
-                    result.Add(zaposleni.ToZaposleniDTO());
-                }
+
+                var result = session.Query<Zaposleni>()
+                       .Fetch(z => z.Salon) // prefetch salone to avoid N+1 problem
+                       .Select(z => z.ToZaposleniDTO())
+                       .ToList();
 
                 return ServiceResult<IList<ZaposleniDTO>>.Success(result);
             }

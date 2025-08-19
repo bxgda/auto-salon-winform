@@ -19,7 +19,6 @@ namespace auto_salon.App.Services.Implementation
         public ServiceResult<IList<UgovorTableDTO>> GetAll()
         {
             var session = _dataLayer.OpenSession();
-            IList<UgovorTableDTO> result = new List<UgovorTableDTO>();
 
             try
             {
@@ -28,11 +27,16 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<IList<UgovorTableDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                IEnumerable<KupoprodajniUgovor> sviUgovori = session.Query<KupoprodajniUgovor>();
-                foreach (var ugovor in sviUgovori)
-                {
-                    result.Add(ugovor.ToUgovorTableDTO());
-                }
+                var result = session.Query<KupoprodajniUgovor>()
+                    .Fetch(x => x.Vozilo)
+                    .Fetch(x => x.Prodavac)
+                    .Fetch(x => x.Kupac)
+                    .ThenFetch(k => k.FizickoLice)
+                    .Fetch(x => x.Kupac)
+                    .ThenFetch(k => k.PravnoLice)
+                    .Select(x => x.ToUgovorTableDTO())
+                    .ToList();
+
 
                 return ServiceResult<IList<UgovorTableDTO>>.Success(result);
             }

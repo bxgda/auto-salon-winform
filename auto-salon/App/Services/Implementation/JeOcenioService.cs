@@ -3,6 +3,7 @@ using auto_salon.App.Extensions;
 using auto_salon.App.Services.Interfaces;
 using auto_salon.Data;
 using auto_salon.Entities;
+using NHibernate.Linq;
 
 namespace auto_salon.App.Services.Implementation
 {
@@ -93,8 +94,6 @@ namespace auto_salon.App.Services.Implementation
         {
             var session = _dataLayer.OpenSession();
 
-            IList<JeOcenioDTO> result = new List<JeOcenioDTO>();
-
             try
             {
                 if (session == null)
@@ -102,11 +101,14 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<IList<JeOcenioDTO>>.Failure("Nema konekcije sa bazom podataka.");
                 }
 
-                IEnumerable<JeOcenio> sveOcene = session.Query<JeOcenio>();
-                foreach (var ocena in sveOcene)
-                {
-                    result.Add(ocena.ToJeOcenioDTO());
-                }
+                var result = session.Query<JeOcenio>()
+                    .Fetch(o => o.Kupac) // prefetch kupca
+                    .ThenFetch(k => k.FizickoLice) // prefetch fizicko lice unutar kupca
+                    .Fetch(o => o.Kupac)
+                    .ThenFetch(k => k.PravnoLice) // prefetch pravno lice unutar kupca
+                    .Fetch(o => o.Prodavac) // prefetch prodavca
+                    .Select(o => o.ToJeOcenioDTO())
+                    .ToList();
 
                 return ServiceResult<IList<JeOcenioDTO>>.Success(result);
             }
