@@ -21,3 +21,10 @@ Jednostavna desktop aplikacija za upravljanje auto-salonom: saloni, vozila, ugov
 ![Snimak 2](/screenshots/2.jpg)
 ![Snimak 3](/screenshots/3.jpg)
 ![Snimak 4](/screenshots/4.jpg)
+
+##
+
+### Elektronski fakultet Univerziteta u Nišu
+smer: računarstvo i informatika<br>
+semestar: 6
+
