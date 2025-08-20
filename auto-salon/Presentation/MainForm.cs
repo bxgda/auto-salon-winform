@@ -1,14 +1,15 @@
-using auto_salon.Presentation.FSalon;
-using auto_salon.Presentation.FZaposleni;
-using auto_salon.Presentation.FVozilo;
-using auto_salon.Presentation.FUgovori;
-using Microsoft.Extensions.DependencyInjection;
+using auto_salon.Presentation;
 using auto_salon.Presentation.FKupac;
-using auto_salon.Presentation.FPromotivnePonude;
 using auto_salon.Presentation.FOcene;
 using auto_salon.Presentation.FProizvodjacNudi;
-using auto_salon.Presentation;
+using auto_salon.Presentation.FPromotivnePonude;
+using auto_salon.Presentation.FSalon;
 using auto_salon.Presentation.FTestVoznja;
+using auto_salon.Presentation.FUgovori;
+using auto_salon.Presentation.FVozilo;
+using auto_salon.Presentation.FZaposleni;
+using Microsoft.Extensions.DependencyInjection;
+using System.Media;
 
 namespace auto_salon
 {
@@ -109,6 +110,26 @@ namespace auto_salon
         {
             var control = _serviceProvider.GetRequiredService<Home>();
             LoadControl(control);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                SoundPlayer player = new SoundPlayer(Properties.Resources.open_sound);
+                player.Play();
+            }
+            catch (Exception ex) { }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+
+            var player = new SoundPlayer(Properties.Resources.car_lock_sound);
+            player.PlaySync();
+
+            e.Cancel = false;
         }
     }
 }

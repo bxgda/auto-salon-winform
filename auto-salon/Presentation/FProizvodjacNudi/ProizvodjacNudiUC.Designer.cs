@@ -111,11 +111,11 @@
             // 
             // btnEdit
             // 
-            btnEdit.BackColor = Color.FromArgb(255, 128, 128);
+            btnEdit.BackColor = Color.Khaki;
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.Image = Properties.Resources.pencil;
             btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEdit.Location = new Point(225, 3);
+            btnEdit.Location = new Point(111, 3);
             btnEdit.Name = "btnEdit";
             btnEdit.Padding = new Padding(10, 0, 0, 0);
             btnEdit.Size = new Size(102, 37);
@@ -143,11 +143,11 @@
             // 
             // btnDelete
             // 
-            btnDelete.BackColor = Color.Khaki;
+            btnDelete.BackColor = Color.FromArgb(255, 128, 128);
             btnDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.Image = Properties.Resources.trash;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(111, 3);
+            btnDelete.Location = new Point(219, 3);
             btnDelete.Name = "btnDelete";
             btnDelete.Padding = new Padding(10, 0, 0, 0);
             btnDelete.Size = new Size(108, 37);

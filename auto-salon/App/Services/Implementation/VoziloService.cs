@@ -242,7 +242,6 @@ namespace auto_salon.App.Services.Implementation
         public ServiceResult<IList<VoziloTableDTO>> GetVozilaNotInPonuda(int promotivnaPonudaId)
         {
             var session = _dataLayer.OpenSession();
-            IList<VoziloTableDTO> result = new List<VoziloTableDTO>();
 
             try
             {
@@ -255,13 +254,12 @@ namespace auto_salon.App.Services.Implementation
                     return ServiceResult<IList<VoziloTableDTO>>.Failure("Promotivna ponuda sa datim ID ne postoji.");
 
                 // Pribavi sva vozila koja nisu u ovoj promotivnoj ponudi
-                IEnumerable<Vozilo> svaVozila = session.Query<Vozilo>()
-                    .Where(v => !v.PromotivnePonude.Any(pp => pp.ID == promotivnaPonudaId));
+                var svaVozila = session.Query<Vozilo>()
+                    .Fetch(u => u.Ugovor) // Fetch Ugovor da bi se izbegao N+1 problem
+                    .Where(v => !v.PromotivnePonude.Any(pp => pp.ID == promotivnaPonudaId))
+                    .Select(v => v.ToVoziloTableDTO()).ToList();
 
-                foreach (var vozilo in svaVozila)
-                    result.Add(vozilo.ToVoziloTableDTO());
-
-                return ServiceResult<IList<VoziloTableDTO>>.Success(result);
+                return ServiceResult<IList<VoziloTableDTO>>.Success(svaVozila);
             }
             catch (Exception ex)
             {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             tblMainLayout = new TableLayoutPanel();
             pnlDashboard = new Panel();
@@ -45,6 +46,7 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            toolTip1 = new ToolTip(components);
             tblMainLayout.SuspendLayout();
             pnlDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -101,6 +103,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
+            toolTip1.SetToolTip(pictureBox1, "Početna");
             pictureBox1.Click += pictureBox1_Click;
             // 
             // btnTestVoznje
@@ -298,6 +301,8 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Lanac Auto Salona";
+            FormClosing += MainForm_FormClosing;
+            Load += MainForm_Load;
             tblMainLayout.ResumeLayout(false);
             pnlDashboard.ResumeLayout(false);
             pnlDashboard.PerformLayout();
@@ -327,5 +332,6 @@
         private Button btnProizvodjacNudi;
         private Button btnTestVoznje;
         private PictureBox pictureBox1;
+        private ToolTip toolTip1;
     }
 }
